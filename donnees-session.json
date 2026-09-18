@@ -16,11 +16,11 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"emoji": "💻", "nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
+    "web":     {"emoji": "🌐", "nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
+    "litt":    {"emoji": "📕", "nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
+    "anglais": {"emoji": "🗣️", "nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
+    "philo":   {"emoji": "⚖️", "nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
@@ -107,5 +107,21 @@
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": false},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
-  ]
+  ],
+  "methodes": {
+    "devlog": "Le code se retient par les doigts. Refaire les exercices dirigés **sans la correction**, puis comparer. S'entraîner à écrire du code **sur papier** — c'est ce qui est demandé à l'examen.",
+    "web": "Chaque TP s'appuie sur le précédent. Un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes **ce qui a bloqué** : c'est exactement ce qui tombera à l'Évaluation #1.",
+    "litt": "Annoter **pendant** la lecture, jamais après. Tenir un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction — la langue vaut **25 %** de chaque dissertation.",
+    "anglais": "Tout se joue en classe. Remplir le journal Odyssey **le jour même** (5 % garantis). Les évaluations orales valent **45 %** du cours : elles se préparent à voix haute, pas par écrit.",
+    "philo": "Droit aux notes de cours à **toutes** les évaluations — donc la vraie préparation, c'est de construire de bonnes notes. Un tableau par penseur : thèse, critère du juste, objection, exemple."
+  },
+  "_methodes": "Affichees dans Notion, triees par difficulte decroissante. Les cours de difficulte >= 4 portent en plus la mention 'cours le plus fragile'.",
+
+  "regles_semaines": {
+    "5":  "Les deux TP finis **dimanche 20 au soir**, pas lundi.",
+    "7":  "**65 % en quatre jours.** Tout doit être prêt le 4 octobre, avant la semaine d'études.",
+    "11": "Le plan de dissertation du 6 nov. est la répétition générale du 13.",
+    "15": "Quatre finaux plus l'entrevue. Les révisions commencent le **16 novembre**."
+  },
+  "_regles_semaines": "Regle ecrite a la main pour ces semaines-la. Les autres semaines rouges recoivent une regle calculee automatiquement."
 }

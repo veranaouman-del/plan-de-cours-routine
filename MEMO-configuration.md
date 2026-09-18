@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère la page Notion complète à partir du même JSON. `python3 notion.py` (sortie Markdown), `--sortie page.md`, + une date en argument. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,8 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion du tableau de bord : **3df73824-e620-811e-9e6c-d07440cb6ec7**
+  (<https://app.notion.com/p/3df73824e620811e9e6cd07440cb6ec7>)
 
 ## Mon horaire — Automne 2026
 
@@ -47,7 +50,10 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 4. `python3 notion.py` puis remplace le contenu de la page Notion
+>    3df73824-e620-811e-9e6c-d07440cb6ec7 (commande `replace_content`).
+>    La page commence par le bloc « ☀️ Aujourd'hui ».
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
@@ -71,6 +77,14 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **`notion.py` avait été écrit puis perdu** : le pied de page Notion le mentionnait,
+   mais le fichier n'avait jamais été committé. Il est maintenant dans le dépôt. Rien ne
+   doit vivre uniquement dans une session Claude — une session finit, le dépôt reste.
+8. **Les méthodes par cours et les règles de semaine rouge sont dans le JSON**
+   (`methodes`, `regles_semaines`), pas dans `notion.py`. Les semaines rouges, elles,
+   sont calculées : une semaine est rouge à partir de 30 % de pondération ou 3 remises.
+9. **Une page Notion de test traîne** : « 🧪 TEST — sortie de notion.py (à supprimer) ».
+   À supprimer à la main quand tu veux — je ne supprime rien sans te le demander.
 
 ## Points à confirmer auprès des profs
 
