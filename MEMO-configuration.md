@@ -35,17 +35,28 @@ Après-midis libres : mardi, mercredi, jeudi. Ce sont mes trois vrais blocs de t
 
 ## Prompt à coller dans une routine Claude (tous les jours à 6 h 30)
 
-> Génère ma carte du jour (Cégep de Granby, Techniques de l'informatique, Automne 2026,
-> session du 24 août au 11 décembre, semaine d'études du 12 au 16 octobre).
-> Mon horaire : lundi Dév. de logiciels 10 h 45–12 h 30 A307 et Prog. Web I 13 h 30–16 h 10 A307 ;
-> mardi Littérature 8 h 55–12 h 30 A208 ; mercredi Dév. de logiciels 8 h–10 h 40 A307 ;
-> jeudi Anglais 8 h 55–11 h 35 A311 ; vendredi Philosophie 8 h 55–11 h 35 E204 et
-> Prog. Web I 13 h 30–16 h 10 A307. Samedi et dimanche : aucun cours.
-> Affiche les cours du jour, la priorité, mes tâches, les échéances avec compteurs J-x
-> et la part déjà évaluée. Poste-la dans mon DM Slack (canal D0C2RFRRWKU) en texte —
-> titres en MAJUSCULES, puces, JAMAIS de tableau Markdown, Slack les supprime —
-> avec le lien de l'image Canva (design DAHVgw0Y3QU).
-> Puis envoie-moi une notification push.
+Depuis que le système est piloté par `donnees-session.json`, le prompt n'a plus besoin de
+répéter l'horaire ni les échéances : tout est dans le dépôt. Version courte à utiliser :
+
+> Génère ma carte du jour.
+> 1. `pip install --quiet pillow` si nécessaire, puis `python3 carte.py --texte`
+>    à la racine du dépôt. Le script lit `donnees-session.json` et sort la carte
+>    d'aujourd'hui : cours, priorité, tâches avec leur étape de préparation,
+>    échéances avec compteurs J-x, blocs de travail, avancement par cours.
+> 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
+>    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
+> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+>    tombe à J-3 ou moins.
+> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+>    `donnees-session.json` et pousse le commit.
+
+Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
+d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+
+⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
+Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
+Pour une routine qui tient toute la session d'automne, coller le prompt ci-dessus dans
+Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 
 ## Pièges rencontrés, à ne pas refaire
 
