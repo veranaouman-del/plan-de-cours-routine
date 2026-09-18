@@ -2,6 +2,14 @@
 
 Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue.
 
+## Les fichiers du système
+
+| Fichier | Rôle |
+|---|---|
+| `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
+| `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+
 ## Identifiants à conserver
 
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
@@ -46,8 +54,11 @@ Après-midis libres : mardi, mercredi, jeudi. Ce sont mes trois vrais blocs de t
 3. **Slack ne notifie jamais de mes propres messages.** Le connecteur poste sous mon compte,
    donc aucune notification Slack n'arrivera. La notification doit venir du push de la routine,
    ou d'un `/remind` Slackbot, ou d'un second compte membre du MÊME workspace.
-4. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-5. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+4. **La carte n'est plus codée en dur.** Avant, `carte.py` contenait le contenu du
+   18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
+   qui bouge se change à un seul endroit.
+5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
+6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
