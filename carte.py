@@ -14,6 +14,7 @@ import json
 import os
 import sys
 import datetime as dt
+from zoneinfo import ZoneInfo
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DONNEES = os.path.join(BASE, "donnees-session.json")
@@ -28,6 +29,15 @@ MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
 # --------------------------------------------------------------------------
 # Données
 # --------------------------------------------------------------------------
+FUSEAU = ZoneInfo("America/Toronto")
+
+
+def aujourdhui():
+    """La date ici, pas celle du serveur. Sans ça, une carte générée le soir
+    (après 20 h, heure de l'Est) sortirait déjà celle du lendemain."""
+    return dt.datetime.now(FUSEAU).date()
+
+
 def charger():
     with open(DONNEES, encoding="utf-8") as fh:
         return json.load(fh)
@@ -383,7 +393,7 @@ def main():
     args = [a for a in sys.argv[1:]]
     mode_texte = "--texte" in args
     args = [a for a in args if a != "--texte"]
-    jour = d(args[0]) if args else dt.date.today()
+    jour = d(args[0]) if args else aujourdhui()
     sortie = args[1] if len(args) > 1 else os.path.join(BASE, "ma_journee.png")
 
     data = charger()
