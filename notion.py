@@ -59,6 +59,13 @@ def semaines_rouges(data):
     return out
 
 
+def rouge_passee(evs, jour):
+    """Une semaine rouge est derrière moi quand sa dernière évaluation l'est —
+    pas quand le dimanche est atteint. Le dimanche d'une semaine dont l'examen
+    tombait le mardi, tout est déjà joué."""
+    return max(d(e["date"]) for e in evs) < jour
+
+
 # --------------------------------------------------------------------------
 # Mise en forme
 # --------------------------------------------------------------------------
@@ -170,7 +177,7 @@ def bloc_semaine(data, jour):
 def bloc_rouges(data, jour):
     L = ["| Semaine | Dates | Ce qui tombe | La règle |", "| --- | --- | --- | --- |"]
     for num, lundi, dimanche, evs, poids in semaines_rouges(data):
-        passee = dimanche < jour
+        passee = rouge_passee(evs, jour)
         etiquette = "~~**%d**~~" % num if passee else "**%d**" % num
         dates = intervalle(lundi, dimanche)
         contenu = ", ".join(
@@ -276,7 +283,7 @@ def page(data, jour):
     L.append("---")
     L.append("")
 
-    rouges = [r for r in semaines_rouges(data) if r[2] >= jour]
+    rouges = [r for r in semaines_rouges(data) if not rouge_passee(r[3], jour)]
     L.append("## 🔴 Mes semaines rouges — %d encore devant moi" % len(rouges))
     L.append("")
     L += bloc_rouges(data, jour)

@@ -94,6 +94,10 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
+7. **Ne pas mettre d'emoji dans le titre d'une page Notion** si la page a déjà une icône :
+   Notion affiche les deux, et le titre ressort en « 🎓 🎓 Ma session ». L'icône suffit.
+8. **Éviter un nom de fichier en `.py` dans un titre de page Notion** : il est transformé
+   en lien vers `http://notion.py`. Dans le corps de la page, entre accents graves, aucun problème.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
