@@ -9,6 +9,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+| `notion-tableau-de-bord.md` | Le contenu de la page Notion. Modifier ici, puis reporter dans Notion — pas l'inverse. |
 
 ## Identifiants à conserver
 
@@ -18,6 +19,9 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « 🎓 Ma session — Automne 2026 » : **3df73824e620811e9e6cd07440cb6ec7**
+  (https://app.notion.com/p/3df73824e620811e9e6cd07440cb6ec7 — page privée, créée le 18 sept.)
+  Ancienne page « 📥 À déposer ici » : 3df73824e620817c8d0ce132a9519352, vidée et redirigée vers la précédente.
 
 ## Mon horaire — Automne 2026
 
@@ -52,6 +56,10 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+
+La page Notion est la vue d'ensemble, pas la carte du jour. Elle se met à jour quand quelque
+chose bouge dans `donnees-session.json` (une échéance qui change, une tâche admin réglée,
+un cours dont la difficulté est réévaluée), pas tous les matins. Source : `notion-tableau-de-bord.md`.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
