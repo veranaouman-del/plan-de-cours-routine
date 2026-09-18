@@ -152,7 +152,8 @@ def etape(e):
 
 
 def court(j):
-    return "%d %s" % (j.day, ABREV[j.month - 1])
+    # En francais le premier du mois s'ecrit « 1er », pas « 1 ».
+    return "%s %s" % ("1er" if j.day == 1 else j.day, ABREV[j.month - 1])
 
 
 def avancement(data, jour):

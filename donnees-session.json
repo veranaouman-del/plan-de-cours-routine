@@ -1,111 +1,609 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "420.B0 Techniques de l'informatique — Cégep de Granby",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
     "fin": "2026-12-11",
-    "semaine_etudes": ["2026-10-12", "2026-10-16"],
+    "semaine_etudes": [
+      "2026-10-12",
+      "2026-10-16"
+    ],
     "semaines": {
-      "1": "2026-08-24", "2": "2026-08-31", "3": "2026-09-07", "4": "2026-09-14",
-      "5": "2026-09-21", "6": "2026-09-28", "7": "2026-10-05", "8": "2026-10-19",
-      "9": "2026-10-26", "10": "2026-11-02", "11": "2026-11-09", "12": "2026-11-16",
-      "13": "2026-11-23", "14": "2026-11-30", "15": "2026-12-07"
+      "1": "2026-08-24",
+      "2": "2026-08-31",
+      "3": "2026-09-07",
+      "4": "2026-09-14",
+      "5": "2026-09-21",
+      "6": "2026-09-28",
+      "7": "2026-10-05",
+      "8": "2026-10-19",
+      "9": "2026-10-26",
+      "10": "2026-11-02",
+      "11": "2026-11-09",
+      "12": "2026-11-16",
+      "13": "2026-11-23",
+      "14": "2026-11-30",
+      "15": "2026-12-07"
     }
   },
-
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog": {
+      "nom": "Développement de logiciels",
+      "court": "Dév. logiciels",
+      "code": "420-325-GR",
+      "prof": "Antoine Grenier",
+      "couleur": "#2563eb",
+      "difficulte": 2,
+      "emoji": "💻",
+      "methode": "Le code se retient par les doigts. Refaire les exercices dirigés **sans la correction**, puis comparer. S'entraîner à écrire du code **sur papier** — c'est ce qui est demandé à l'examen."
+    },
+    "web": {
+      "nom": "Programmation Web I",
+      "court": "Prog. Web I",
+      "code": "420-346-GR",
+      "prof": "David Lacasse",
+      "couleur": "#0891b2",
+      "difficulte": 2,
+      "emoji": "🌐",
+      "methode": "Chaque TP s'appuie sur le précédent. Un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes **ce qui a bloqué** : c'est exactement ce qui tombera à l'Évaluation #1."
+    },
+    "litt": {
+      "nom": "Littérature et imaginaire",
+      "court": "Littérature",
+      "code": "601-102-MQ",
+      "prof": "Julie Chamberland",
+      "couleur": "#e63946",
+      "difficulte": 4,
+      "emoji": "📕",
+      "methode": "Annoter **pendant** la lecture, jamais après. Tenir un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction — la langue vaut **25 %** de chaque dissertation."
+    },
+    "anglais": {
+      "nom": "Anglais propre au programme",
+      "court": "Anglais",
+      "code": "604-CT0-GR",
+      "prof": "Aleksandra Serebrenik",
+      "couleur": "#7c3aed",
+      "difficulte": 3,
+      "emoji": "🗣️",
+      "methode": "Tout se joue en classe. Remplir le journal Odyssey **le jour même** (5 % garantis). Les évaluations orales valent **45 %** du cours : elles se préparent à voix haute, pas par écrit."
+    },
+    "philo": {
+      "nom": "Éthique et politique",
+      "court": "Éthique",
+      "code": "340-CSA-GR",
+      "prof": "Cyndelle Gagnon",
+      "couleur": "#f4a261",
+      "difficulte": 4,
+      "emoji": "⚖️",
+      "methode": "Droit aux notes de cours à **toutes** les évaluations — donc la vraie préparation, c'est de construire de bonnes notes. Un tableau par penseur : thèse, critère du juste, objection, exemple."
+    }
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
-
   "horaire": [
-    {"jour": 1, "cours": "devlog",  "debut": "10:45", "fin": "12:30", "local": "A307"},
-    {"jour": 1, "cours": "web",     "debut": "13:30", "fin": "16:10", "local": "A307"},
-    {"jour": 2, "cours": "litt",    "debut": "08:55", "fin": "12:30", "local": "A208"},
-    {"jour": 3, "cours": "devlog",  "debut": "08:00", "fin": "10:40", "local": "A307"},
-    {"jour": 4, "cours": "anglais", "debut": "08:55", "fin": "11:35", "local": "A311"},
-    {"jour": 5, "cours": "philo",   "debut": "08:55", "fin": "11:35", "local": "E204"},
-    {"jour": 5, "cours": "web",     "debut": "13:30", "fin": "16:10", "local": "A307"}
+    {
+      "jour": 1,
+      "cours": "devlog",
+      "debut": "10:45",
+      "fin": "12:30",
+      "local": "A307"
+    },
+    {
+      "jour": 1,
+      "cours": "web",
+      "debut": "13:30",
+      "fin": "16:10",
+      "local": "A307"
+    },
+    {
+      "jour": 2,
+      "cours": "litt",
+      "debut": "08:55",
+      "fin": "12:30",
+      "local": "A208"
+    },
+    {
+      "jour": 3,
+      "cours": "devlog",
+      "debut": "08:00",
+      "fin": "10:40",
+      "local": "A307"
+    },
+    {
+      "jour": 4,
+      "cours": "anglais",
+      "debut": "08:55",
+      "fin": "11:35",
+      "local": "A311"
+    },
+    {
+      "jour": 5,
+      "cours": "philo",
+      "debut": "08:55",
+      "fin": "11:35",
+      "local": "E204"
+    },
+    {
+      "jour": 5,
+      "cours": "web",
+      "debut": "13:30",
+      "fin": "16:10",
+      "local": "A307"
+    }
   ],
-
   "blocs_travail": [
-    {"jour": 1, "debut": "16:30", "fin": "18:00", "titre": "Prog Web — TP en cours",        "focus": ["web"]},
-    {"jour": 2, "debut": "13:30", "fin": "16:30", "titre": "GROS BLOC — Français + Philo",  "focus": ["litt", "philo"]},
-    {"jour": 3, "debut": "11:15", "fin": "16:00", "titre": "GROS BLOC — Programmation",     "focus": ["devlog", "web"]},
-    {"jour": 4, "debut": "12:30", "fin": "15:30", "titre": "GROS BLOC — Anglais + prise d'avance",  "focus": ["anglais"]},
-    {"jour": 5, "debut": "11:45", "fin": "12:45", "titre": "Philo à chaud — relire les notes du matin", "focus": ["philo"]},
-    {"jour": 6, "debut": "09:00", "fin": "12:00", "titre": "Lectures longues (roman, textes de philo)", "focus": ["litt", "philo"]},
-    {"jour": 7, "debut": "16:00", "fin": "18:00", "titre": "RATTRAPAGE + plan de la semaine", "focus": ["rattrapage"]}
+    {
+      "jour": 1,
+      "debut": "16:30",
+      "fin": "18:00",
+      "titre": "Prog Web — TP en cours",
+      "focus": [
+        "web"
+      ]
+    },
+    {
+      "jour": 2,
+      "debut": "13:30",
+      "fin": "16:30",
+      "titre": "GROS BLOC — Français + Philo",
+      "focus": [
+        "litt",
+        "philo"
+      ]
+    },
+    {
+      "jour": 3,
+      "debut": "11:15",
+      "fin": "16:00",
+      "titre": "GROS BLOC — Programmation",
+      "focus": [
+        "devlog",
+        "web"
+      ]
+    },
+    {
+      "jour": 4,
+      "debut": "12:30",
+      "fin": "15:30",
+      "titre": "GROS BLOC — Anglais + prise d'avance",
+      "focus": [
+        "anglais"
+      ]
+    },
+    {
+      "jour": 5,
+      "debut": "11:45",
+      "fin": "12:45",
+      "titre": "Philo à chaud — relire les notes du matin",
+      "focus": [
+        "philo"
+      ]
+    },
+    {
+      "jour": 6,
+      "debut": "09:00",
+      "fin": "12:00",
+      "titre": "Lectures longues (roman, textes de philo)",
+      "focus": [
+        "litt",
+        "philo"
+      ]
+    },
+    {
+      "jour": 7,
+      "debut": "16:00",
+      "fin": "18:00",
+      "titre": "RATTRAPAGE + plan de la semaine",
+      "focus": [
+        "rattrapage"
+      ]
+    }
   ],
   "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable.",
-
   "evaluations": [
-    {"cours": "devlog",  "titre": "TP1",                                  "date": "2026-09-04", "poids": 5,  "type": "tp",     "fait": true},
-    {"cours": "devlog",  "titre": "Contrôle 1",                           "date": "2026-09-16", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "devlog",  "titre": "TP2 (ORM)",                            "date": "2026-09-25", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 7},
-    {"cours": "devlog",  "titre": "Examen intra",                         "date": "2026-10-07", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
-    {"cours": "devlog",  "titre": "TP3",                                  "date": "2026-10-23", "poids": 5,  "type": "tp",     "fait": false, "prep_jours": 5},
-    {"cours": "devlog",  "titre": "Contrôle 2",                           "date": "2026-11-13", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 5},
-    {"cours": "devlog",  "titre": "TP4 (MVVM)",                           "date": "2026-11-20", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 10},
-    {"cours": "devlog",  "titre": "Examen final",                         "date": "2026-12-09", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
-
-    {"cours": "web",     "titre": "Remise TP1 — VueJS",                   "date": "2026-09-25", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7, "poids_approx": true},
-    {"cours": "web",     "titre": "Remise TP2 — Vue Router",              "date": "2026-10-09", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7, "poids_approx": true},
-    {"cours": "web",     "titre": "Évaluation #1",                        "date": "2026-10-09", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
-    {"cours": "web",     "titre": "Remise TP3 — WebAPI",                  "date": "2026-11-13", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
-    {"cours": "web",     "titre": "Évaluation #2",                        "date": "2026-11-20", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
-    {"cours": "web",     "titre": "Remise TP4 — EF Core",                 "date": "2026-11-27", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
-    {"cours": "web",     "titre": "Remise TP5 — fetch + API",             "date": "2026-12-11", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
-    {"cours": "web",     "titre": "Examen final",                         "date": "2026-12-11", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
-
-    {"cours": "litt",    "titre": "Matière vue en classe",           "date": "2026-09-01", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "litt",    "titre": "Test de lecture — La vie devant soi",  "date": "2026-09-08", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 10},
-    {"cours": "litt",    "titre": "Test sur les procédés d'écriture",     "date": "2026-10-27", "poids": 10, "type": "test",   "fait": false, "prep_jours": 21},
-    {"cours": "litt",    "titre": "Dissertation — intro + conclusion",    "date": "2026-11-03", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 14},
-    {"cours": "litt",    "titre": "Dissertation complète (épreuve terminale)", "date": "2026-12-08", "poids": 30, "type": "redaction", "fait": false, "prep_jours": 28},
-    {"cours": "litt",    "titre": "Cercles de discussion",                "date": "2026-12-15", "poids": 10, "type": "oral",   "fait": false, "prep_jours": 10},
-
-    {"cours": "anglais", "titre": "Midterm Reading & Writing",            "date": "2026-10-01", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
-    {"cours": "anglais", "titre": "Midterm Speaking & Listening",         "date": "2026-10-08", "poids": 15, "type": "oral",   "fait": false, "prep_jours": 12, "a_confirmer": "La case semaine 7 dit aussi 'Thursday group: READING WEEK'. Confirmer la date par MIO."},
-    {"cours": "anglais", "titre": "Odyssey reflection journal",           "date": "2026-11-19", "poids": 5,  "type": "remise", "fait": false, "prep_jours": 60},
-    {"cours": "anglais", "titre": "Final Speaking & Listening",           "date": "2026-11-26", "poids": 30, "type": "oral",   "fait": false, "prep_jours": 21, "a_confirmer": "Semaine 13 ou 14 selon le groupe (A ou B). Confirmer."},
-    {"cours": "anglais", "titre": "Final Reading & Writing",              "date": "2026-12-10", "poids": 30, "type": "examen", "fait": false, "prep_jours": 21},
-
-    {"cours": "philo",   "titre": "Test utilitarisme + déontologisme",    "date": "2026-09-25", "poids": 10, "type": "test",   "fait": false, "prep_jours": 10},
-    {"cours": "philo",   "titre": "Examen sur les théories éthiques",     "date": "2026-10-02", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
-    {"cours": "philo",   "titre": "Plan de dissertation détaillé (en classe)", "date": "2026-11-06", "poids": 0, "type": "atelier", "fait": false, "prep_jours": 7},
-    {"cours": "philo",   "titre": "Dissertation philosophique (900 mots)","date": "2026-11-13", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 21},
-    {"cours": "philo",   "titre": "Test Nussbaum / Phillips",             "date": "2026-12-04", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 10},
-    {"cours": "philo",   "titre": "Épreuve finale — entrevue 20 min",     "date": "2026-12-11", "poids": 40, "type": "oral",   "fait": false, "prep_jours": 28, "a_confirmer": "Semaine 15 OU semaine d'examens, sur rendez-vous Microsoft Bookings. S'inscrire des l'ouverture."}
+    {
+      "cours": "devlog",
+      "titre": "TP1",
+      "date": "2026-09-04",
+      "poids": 5,
+      "type": "tp",
+      "fait": true
+    },
+    {
+      "cours": "devlog",
+      "titre": "Contrôle 1",
+      "date": "2026-09-16",
+      "poids": 5,
+      "type": "test",
+      "fait": true
+    },
+    {
+      "cours": "devlog",
+      "titre": "TP2 (ORM)",
+      "date": "2026-09-25",
+      "poids": 10,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 7
+    },
+    {
+      "cours": "devlog",
+      "titre": "Examen intra",
+      "date": "2026-10-07",
+      "poids": 25,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 14
+    },
+    {
+      "cours": "devlog",
+      "titre": "TP3",
+      "date": "2026-10-23",
+      "poids": 5,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 5
+    },
+    {
+      "cours": "devlog",
+      "titre": "Contrôle 2",
+      "date": "2026-11-13",
+      "poids": 5,
+      "type": "test",
+      "fait": false,
+      "prep_jours": 5
+    },
+    {
+      "cours": "devlog",
+      "titre": "TP4 (MVVM)",
+      "date": "2026-11-20",
+      "poids": 10,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 10
+    },
+    {
+      "cours": "devlog",
+      "titre": "Examen final",
+      "date": "2026-12-09",
+      "poids": 35,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 21
+    },
+    {
+      "cours": "web",
+      "titre": "Remise TP1 — VueJS",
+      "date": "2026-09-25",
+      "poids": 4,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 7,
+      "poids_approx": true
+    },
+    {
+      "cours": "web",
+      "titre": "Remise TP2 — Vue Router",
+      "date": "2026-10-09",
+      "poids": 4,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 7,
+      "poids_approx": true
+    },
+    {
+      "cours": "web",
+      "titre": "Évaluation #1",
+      "date": "2026-10-09",
+      "poids": 25,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 14
+    },
+    {
+      "cours": "web",
+      "titre": "Remise TP3 — WebAPI",
+      "date": "2026-11-13",
+      "poids": 4,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 10,
+      "poids_approx": true
+    },
+    {
+      "cours": "web",
+      "titre": "Évaluation #2",
+      "date": "2026-11-20",
+      "poids": 20,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 12
+    },
+    {
+      "cours": "web",
+      "titre": "Remise TP4 — EF Core",
+      "date": "2026-11-27",
+      "poids": 4,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 10,
+      "poids_approx": true
+    },
+    {
+      "cours": "web",
+      "titre": "Remise TP5 — fetch + API",
+      "date": "2026-12-11",
+      "poids": 4,
+      "type": "tp",
+      "fait": false,
+      "prep_jours": 10,
+      "poids_approx": true
+    },
+    {
+      "cours": "web",
+      "titre": "Examen final",
+      "date": "2026-12-11",
+      "poids": 35,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 21
+    },
+    {
+      "cours": "litt",
+      "titre": "Matière vue en classe",
+      "date": "2026-09-01",
+      "poids": 5,
+      "type": "test",
+      "fait": true
+    },
+    {
+      "cours": "litt",
+      "titre": "Test de lecture — La vie devant soi",
+      "date": "2026-09-08",
+      "poids": 5,
+      "type": "test",
+      "fait": true
+    },
+    {
+      "cours": "litt",
+      "titre": "Dissertation — développement",
+      "date": "2026-09-22",
+      "poids": 20,
+      "type": "redaction",
+      "fait": false,
+      "prep_jours": 10
+    },
+    {
+      "cours": "litt",
+      "titre": "Test sur les procédés d'écriture",
+      "date": "2026-10-27",
+      "poids": 10,
+      "type": "test",
+      "fait": false,
+      "prep_jours": 21
+    },
+    {
+      "cours": "litt",
+      "titre": "Dissertation — intro + conclusion",
+      "date": "2026-11-03",
+      "poids": 20,
+      "type": "redaction",
+      "fait": false,
+      "prep_jours": 14
+    },
+    {
+      "cours": "litt",
+      "titre": "Dissertation complète (épreuve terminale)",
+      "date": "2026-12-08",
+      "poids": 30,
+      "type": "redaction",
+      "fait": false,
+      "prep_jours": 28
+    },
+    {
+      "cours": "litt",
+      "titre": "Cercles de discussion",
+      "date": "2026-12-15",
+      "poids": 10,
+      "type": "oral",
+      "fait": false,
+      "prep_jours": 10
+    },
+    {
+      "cours": "anglais",
+      "titre": "Midterm Reading & Writing",
+      "date": "2026-10-01",
+      "poids": 20,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 12
+    },
+    {
+      "cours": "anglais",
+      "titre": "Midterm Speaking & Listening",
+      "date": "2026-10-08",
+      "poids": 15,
+      "type": "oral",
+      "fait": false,
+      "prep_jours": 12,
+      "a_confirmer": "La case semaine 7 dit aussi 'Thursday group: READING WEEK'. Confirmer la date par MIO."
+    },
+    {
+      "cours": "anglais",
+      "titre": "Odyssey reflection journal",
+      "date": "2026-11-19",
+      "poids": 5,
+      "type": "remise",
+      "fait": false,
+      "prep_jours": 60
+    },
+    {
+      "cours": "anglais",
+      "titre": "Final Speaking & Listening",
+      "date": "2026-11-26",
+      "poids": 30,
+      "type": "oral",
+      "fait": false,
+      "prep_jours": 21,
+      "a_confirmer": "Semaine 13 ou 14 selon le groupe (A ou B). Confirmer."
+    },
+    {
+      "cours": "anglais",
+      "titre": "Final Reading & Writing",
+      "date": "2026-12-10",
+      "poids": 30,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 21
+    },
+    {
+      "cours": "philo",
+      "titre": "Test utilitarisme + déontologisme",
+      "date": "2026-09-25",
+      "poids": 10,
+      "type": "test",
+      "fait": false,
+      "prep_jours": 10
+    },
+    {
+      "cours": "philo",
+      "titre": "Examen sur les théories éthiques",
+      "date": "2026-10-02",
+      "poids": 25,
+      "type": "examen",
+      "fait": false,
+      "prep_jours": 14
+    },
+    {
+      "cours": "philo",
+      "titre": "Plan de dissertation détaillé (en classe)",
+      "date": "2026-11-06",
+      "poids": 0,
+      "type": "atelier",
+      "fait": false,
+      "prep_jours": 7
+    },
+    {
+      "cours": "philo",
+      "titre": "Dissertation philosophique (900 mots)",
+      "date": "2026-11-13",
+      "poids": 20,
+      "type": "redaction",
+      "fait": false,
+      "prep_jours": 21
+    },
+    {
+      "cours": "philo",
+      "titre": "Test Nussbaum / Phillips",
+      "date": "2026-12-04",
+      "poids": 5,
+      "type": "test",
+      "fait": false,
+      "prep_jours": 10
+    },
+    {
+      "cours": "philo",
+      "titre": "Épreuve finale — entrevue 20 min",
+      "date": "2026-12-11",
+      "poids": 40,
+      "type": "oral",
+      "fait": false,
+      "prep_jours": 28,
+      "a_confirmer": "Semaine 15 OU semaine d'examens, sur rendez-vous Microsoft Bookings. S'inscrire des l'ouverture."
+    }
   ],
   "_evaluations": "Les dates du plan Ethique sont calees sur les semaines de session (S5 = 25 sept). Le PDF recu est une version Hiver/services sociaux : sa semaine d'etudes tombe apres la S6 au lieu de la S7. Si la prof decale d'une semaine, tout Ethique glisse de +7 jours. Etre pret une semaine trop tot ne coute rien ; l'inverse, oui.",
-
   "lectures": [
-    {"cours": "litt", "quoi": "La vie devant soi p. 176-223",      "pour": "2026-09-22"},
-    {"cours": "litt", "quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)","pour": "2026-10-27"},
-    {"cours": "litt", "quoi": "Marie-Claire p. 8-53",              "pour": "2026-11-10"},
-    {"cours": "litt", "quoi": "Marie-Claire p. 54-96",             "pour": "2026-11-17"},
-    {"cours": "litt", "quoi": "Marie-Claire p. 97-145",            "pour": "2026-11-24"},
-    {"cours": "litt", "quoi": "Marie-Claire p. 146-197",           "pour": "2026-12-01"},
-    {"cours": "litt", "quoi": "Oscar et la dame rose + les 2 scènes de La vie est belle", "pour": "2026-12-15"},
-    {"cours": "philo","quoi": "Extrait « Théorie de la justice » de Rawls",   "pour": "2026-10-30"},
-    {"cours": "philo","quoi": "Extrait « Les capabilités » de Nussbaum",      "pour": "2026-11-06"},
-    {"cours": "philo","quoi": "Extrait « Espaces publics, vies privées » d'Anne Phillips", "pour": "2026-11-27"}
+    {
+      "cours": "litt",
+      "quoi": "La vie devant soi p. 176-223",
+      "pour": "2026-09-22"
+    },
+    {
+      "cours": "litt",
+      "quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)",
+      "pour": "2026-10-27"
+    },
+    {
+      "cours": "litt",
+      "quoi": "Marie-Claire p. 8-53",
+      "pour": "2026-11-10"
+    },
+    {
+      "cours": "litt",
+      "quoi": "Marie-Claire p. 54-96",
+      "pour": "2026-11-17"
+    },
+    {
+      "cours": "litt",
+      "quoi": "Marie-Claire p. 97-145",
+      "pour": "2026-11-24"
+    },
+    {
+      "cours": "litt",
+      "quoi": "Marie-Claire p. 146-197",
+      "pour": "2026-12-01"
+    },
+    {
+      "cours": "litt",
+      "quoi": "Oscar et la dame rose + les 2 scènes de La vie est belle",
+      "pour": "2026-12-15"
+    },
+    {
+      "cours": "philo",
+      "quoi": "Extrait « Théorie de la justice » de Rawls",
+      "pour": "2026-10-30"
+    },
+    {
+      "cours": "philo",
+      "quoi": "Extrait « Les capabilités » de Nussbaum",
+      "pour": "2026-11-06"
+    },
+    {
+      "cours": "philo",
+      "quoi": "Extrait « Espaces publics, vies privées » d'Anne Phillips",
+      "pour": "2026-11-27"
+    }
   ],
-
   "taches_admin": [
-    {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},
-    {"quoi": "Anglais : confirmer par MIO la date du midterm oral (8 oct ?)",   "pour": "2026-09-24", "urgent": true},
-    {"quoi": "Français : demander à Julie Chamberland pourquoi le mardi 6 octobre saute au calendrier", "pour": "2026-09-29", "urgent": false},
-    {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
-    {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": false},
-    {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
-  ]
+    {
+      "quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu",
+      "pour": "2026-09-11",
+      "urgent": true,
+      "note": "En retard depuis la semaine 3. L'echeance portee ici est celle du plan de cours, pas la date ou j'espere m'en occuper."
+    },
+    {
+      "quoi": "Anglais : confirmer par MIO la date du midterm oral (8 oct ?)",
+      "pour": "2026-09-24",
+      "urgent": true
+    },
+    {
+      "quoi": "Français : demander à Julie Chamberland pourquoi le mardi 6 octobre saute au calendrier",
+      "pour": "2026-09-29",
+      "urgent": false
+    },
+    {
+      "quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)",
+      "pour": "2026-09-25",
+      "urgent": true
+    },
+    {
+      "quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)",
+      "pour": "2026-11-20",
+      "urgent": false
+    },
+    {
+      "quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir",
+      "pour": "recurrent",
+      "urgent": false
+    }
+  ],
+  "consignes_semaines": {
+    "5": "Les deux TP finis **dimanche 20 au soir**, pas lundi.",
+    "7": "**65 % en quatre jours.** Tout doit être prêt le 4 octobre, avant la semaine d'études.",
+    "11": "Le plan de dissertation du 6 nov. est la répétition générale du 13.",
+    "15": "Quatre finaux plus l'entrevue. Les révisions commencent le **16 novembre**."
+  },
+  "_consignes": "Note manuelle ajoutee a une semaine rouge. Les semaines rouges elles-memes sont calculees par notion.py a partir du poids des evaluations."
 }

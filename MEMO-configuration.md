@@ -9,7 +9,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
-| `notion-tableau-de-bord.md` | Le contenu de la page Notion. Modifier ici, puis reporter dans Notion — pas l'inverse. |
+| `notion.py` | Génère la page Notion de vue d'ensemble à partir du même JSON. `python3 notion.py` (la page entière), `--semaine` (juste la liste à cocher), + une date en argument. |
 
 ## Identifiants à conserver
 
@@ -57,9 +57,26 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
 
-La page Notion est la vue d'ensemble, pas la carte du jour. Elle se met à jour quand quelque
-chose bouge dans `donnees-session.json` (une échéance qui change, une tâche admin réglée,
-un cours dont la difficulté est réévaluée), pas tous les matins. Source : `notion-tableau-de-bord.md`.
+## Prompt de la routine du dimanche (18 h, après mon bloc rattrapage)
+
+La page Notion est la vue d'ensemble, pas la carte du jour. Elle se regénère une fois par
+semaine, au moment où je planifie la semaine suivante :
+
+> Mets à jour ma page Notion de session.
+> 1. `python3 notion.py` à la racine du dépôt. Le script lit `donnees-session.json`
+>    et sort la page entière en Markdown : les sept prochains jours à cocher, les
+>    semaines rouges recalculées, les 30 échéances avec leur compteur J-x, la semaine
+>    type, les méthodes par cours, les questions aux profs, l'avancement.
+> 2. Remplace tout le contenu de la page Notion 3df73824e620811e9e6cd07440cb6ec7
+>    par cette sortie (`replace_content`, pas un ajout : sinon la page double).
+> 3. Poste dans mon DM Slack D0C2RFRRWKU un résumé de cinq lignes maximum :
+>    ce qui tombe la semaine qui vient, ce qui est en retard, et le lien de la page.
+> 4. Si une évaluation est passée ou qu'une tâche admin est réglée, mets à jour
+>    `donnees-session.json` et pousse le commit.
+
+Rien n'est à cocher à la main dans Notion : une évaluation dont la date est passée
+bascule toute seule en ✅, une tâche admin dépassée bascule en 🔴 « en retard ».
+Cocher les cases sert seulement à suivre ce qui est vraiment fait dans la semaine.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
