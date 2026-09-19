@@ -1,7 +1,7 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "420.B0 Techniques de l'informatique - Cégep de Granby",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
@@ -16,11 +16,11 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"nom": "Développement de logiciels", "emoji": "💻", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
+    "web":     {"nom": "Programmation Web I", "emoji": "🌐", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
+    "litt":    {"nom": "Littérature et imaginaire", "emoji": "📕", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
+    "anglais": {"nom": "Anglais propre au programme", "emoji": "🗣️", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
+    "philo":   {"nom": "Éthique et politique", "emoji": "⚖️", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
@@ -99,6 +99,24 @@
     {"cours": "philo","quoi": "Extrait « Les capabilités » de Nussbaum",      "pour": "2026-11-06"},
     {"cours": "philo","quoi": "Extrait « Espaces publics, vies privées » d'Anne Phillips", "pour": "2026-11-27"}
   ],
+
+  "methodes": {
+    "litt":    "Annoter PENDANT la lecture, jamais après. Un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction : la langue vaut 25 % de chaque dissertation.",
+    "philo":   "Droit aux notes de cours à TOUTES les évaluations — donc la vraie préparation, c'est de construire de bonnes notes. Un tableau par penseur : thèse, critère du juste, objection, exemple.",
+    "anglais": "Tout se joue en classe. Remplir le journal Odyssey le jour même (5 % garantis). Les évaluations orales valent 45 % du cours : elles se préparent à voix haute, pas par écrit.",
+    "devlog":  "Le code se retient par les doigts. Refaire les exercices dirigés SANS la correction, puis comparer. S'entraîner à écrire du code sur papier : c'est ce qui est demandé à l'examen.",
+    "web":     "Chaque TP s'appuie sur le précédent ; un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes ce qui a bloqué : c'est exactement ce qui tombera à l'Évaluation #1."
+  },
+
+  "regles_semaines": {
+    "5":  "Les deux TP finis dimanche 20 au soir, pas lundi.",
+    "6":  "45 % de la session en une semaine. Rien ne commence ce lundi-là.",
+    "7":  "65 % en quatre jours. Tout doit être prêt le 4 octobre, avant la semaine d'études.",
+    "11": "Le plan de dissertation du 6 nov. est la répétition générale du 13.",
+    "12": "35 % de la session en une semaine. Rien ne commence ce lundi-là.",
+    "13": "34 % de la session en une semaine. Rien ne commence ce lundi-là.",
+    "15": "Quatre finaux plus l'entrevue. Les révisions commencent le 16 novembre."
+  },
 
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},

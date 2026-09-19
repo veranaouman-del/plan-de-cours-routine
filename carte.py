@@ -101,7 +101,7 @@ def taches_du_jour(data, jour, actifs):
     # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
     retards = []
     for t in data["taches_admin"]:
-        if t["pour"] == "recurrent":
+        if t["pour"] == "recurrent" or t.get("fait"):
             continue
         echeance = d(t["pour"])
         if echeance < jour and t.get("urgent"):
