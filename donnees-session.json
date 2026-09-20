@@ -1,7 +1,7 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "420.B0 Techniques de l'informatique — Cégep de Granby",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
@@ -16,12 +16,33 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "emoji": "💻", "couleur": "#2563eb", "difficulte": 2},
+    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "emoji": "🌐", "couleur": "#0891b2", "difficulte": 2},
+    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "emoji": "📕", "couleur": "#e63946", "difficulte": 4},
+    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","emoji": "🗣️", "couleur": "#7c3aed", "difficulte": 3},
+    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "emoji": "⚖️", "couleur": "#f4a261", "difficulte": 4}
   },
+  "methodes": {
+    "devlog":  "Le code se retient par les doigts. Refaire les exercices dirigés SANS la correction, puis comparer. S'entraîner à écrire du code sur papier : c'est ce qui est demandé à l'examen.",
+    "web":     "Chaque TP s'appuie sur le précédent ; un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes ce qui a bloqué : c'est exactement ce qui tombera à l'Évaluation #1.",
+    "litt":    "Annoter PENDANT la lecture, jamais après. Un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction : la langue vaut 25 % de chaque dissertation.",
+    "anglais": "Tout se joue en classe. Remplir le journal Odyssey le jour même (5 % garantis). Les évaluations orales valent 45 % du cours : elles se préparent à voix haute, pas par écrit.",
+    "philo":   "Droit aux notes de cours à TOUTES les évaluations — donc la vraie préparation, c'est de construire de bonnes notes. Un tableau par penseur : thèse, critère du juste, objection, exemple."
+  },
+
+  "notes_semaines": {
+    "5":  "Les deux TP finis dimanche 20 au soir, pas lundi.",
+    "7":  "65 % en quatre jours. Tout doit être prêt le 4 octobre, avant la semaine d'études.",
+    "11": "Le plan de dissertation du 6 nov. est la répétition générale du 13.",
+    "15": "Quatre finaux plus l'entrevue. Les révisions commencent le 16 novembre."
+  },
+
+  "rattrapage": [
+    "Une journée sautée → elle se reprend dans le bloc du dimanche, pas en empilant sur le lendemain.",
+    "Une semaine sautée → je laisse tomber la prise d'avance du jeudi et je protège les deux gros blocs (mardi, mercredi).",
+    "Deux semaines de retard → j'écris au prof concerné avant l'échéance, jamais après. Une remise négociée vaut mieux qu'une remise ratée."
+  ],
+
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
   "horaire": [

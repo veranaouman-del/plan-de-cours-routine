@@ -8,10 +8,12 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère **toute** la page Notion à partir du même JSON. `python3 notion.py` sort le markdown ; le coller dans la page avec `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
 
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
@@ -45,9 +47,11 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 3. `python3 notion.py` et colle la sortie dans la page Notion
+>    3df73824-e620-811e-9e6c-d07440cb6ec7 avec `replace_content`.
+> 4. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
@@ -69,7 +73,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **Tout le contenu de la page Notion se recalcule.** Les semaines rouges, les méthodes,
+   les règles de rattrapage : plus rien n'est tapé à la main. Les textes longs (méthodes,
+   règles des semaines, rattrapage) vivent dans `donnees-session.json`, pas dans `notion.py`.
+7. **Cocher une case dans Notion ne remonte pas dans le JSON.** La page est réécrite à
+   chaque exécution : une case cochée disparaît au matin suivant. Pour qu'une tâche cesse
+   de revenir, la retirer de `taches_admin` (ou passer l'évaluation à `"fait": true`).
+8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
