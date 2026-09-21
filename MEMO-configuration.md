@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Regénère la page Notion complète à partir du même JSON. `python3 notion.py` (sortie écran), `--fichier` (écrit aussi `notion-tableau-de-bord.md`), + une date en argument. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -45,6 +46,8 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
+> 2b. `python3 notion.py` et remplace le contenu de la page Notion
+>    3df73824-e620-811e-9e6c-d07440cb6ec7 (`replace_content`) par cette sortie.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
@@ -69,7 +72,12 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **Tout ce qui sert à regénérer doit être commité.** `notion.py` a été écrit le 20 sept.,
+   utilisé, puis perdu avec le conteneur faute de commit : la page Notion s'est figée au 20.
+   Un script qui n'est pas dans le dépôt n'existe pas le lendemain.
+7. **La semaine 7 déborde si on ne la plafonne pas.** Les semaines de session ne se suivent
+   pas (la semaine d'études sépare la 7 de la 8). Une semaine fait sept jours, point.
+8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs

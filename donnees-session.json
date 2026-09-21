@@ -1,7 +1,7 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "420.B0 Techniques de l'informatique — Cégep de Granby",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
@@ -23,6 +23,30 @@
     "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
+
+  "emojis": {"devlog": "\ud83d\udcbb", "web": "\ud83c\udf10", "litt": "\ud83d\udcd5", "anglais": "\ud83d\udde3\ufe0f", "philo": "\u2696\ufe0f"},
+
+  "methodes": {
+    "litt": "Annoter PENDANT la lecture, jamais apr\u00e8s. Un carnet de citations class\u00e9es par th\u00e8me. Garder 10 minutes de relecture linguistique en fin de r\u00e9daction : la langue vaut 25 % de chaque dissertation.",
+    "philo": "Droit aux notes de cours \u00e0 TOUTES les \u00e9valuations \u2014 donc la vraie pr\u00e9paration, c'est de construire de bonnes notes. Un tableau par penseur : th\u00e8se, crit\u00e8re du juste, objection, exemple.",
+    "anglais": "Tout se joue en classe. Remplir le journal Odyssey le jour m\u00eame (5 % garantis). Les \u00e9valuations orales valent 45 % du cours : elles se pr\u00e9parent \u00e0 voix haute, pas par \u00e9crit.",
+    "devlog": "Le code se retient par les doigts. Refaire les exercices dirig\u00e9s SANS la correction, puis comparer. S'entra\u00eener \u00e0 \u00e9crire du code sur papier : c'est ce qui est demand\u00e9 \u00e0 l'examen.",
+    "web": "Chaque TP s'appuie sur le pr\u00e9c\u00e9dent ; un TP b\u00e2cl\u00e9 se paie deux fois. Apr\u00e8s chaque remise, noter en trois lignes ce qui a bloqu\u00e9 : c'est exactement ce qui tombera \u00e0 l'\u00c9valuation #1."
+  },
+
+  "regles_semaines_rouges": {
+    "5":  "Les deux TP finis dimanche 20 au soir, pas lundi.",
+    "7":  "65 % en quatre jours. Tout doit \u00eatre pr\u00eat le 4 octobre, avant la semaine d'\u00e9tudes.",
+    "11": "Le plan de dissertation du 6 nov. est la r\u00e9p\u00e9tition g\u00e9n\u00e9rale du 13.",
+    "15": "Quatre finaux plus l'entrevue. Les r\u00e9visions commencent le 16 novembre."
+  },
+  "_regles": "Texte de la colonne \u00ab La r\u00e8gle \u00bb du tableau des semaines rouges. Sans entr\u00e9e, notion.py compose une phrase g\u00e9n\u00e9rique \u00e0 partir du total des points en jeu.",
+
+  "rattrapage": [
+    "Une journ\u00e9e saut\u00e9e \u2192 elle se reprend dans le bloc du dimanche, pas en empilant sur le lendemain.",
+    "Une semaine saut\u00e9e \u2192 je laisse tomber la prise d'avance du jeudi et je prot\u00e8ge les deux gros blocs (mardi, mercredi).",
+    "Deux semaines de retard \u2192 j'\u00e9cris au prof concern\u00e9 avant l'\u00e9ch\u00e9ance, jamais apr\u00e8s. Une remise n\u00e9goci\u00e9e vaut mieux qu'une remise rat\u00e9e."
+  ],
 
   "horaire": [
     {"jour": 1, "cours": "devlog",  "debut": "10:45", "fin": "12:30", "local": "A307"},
