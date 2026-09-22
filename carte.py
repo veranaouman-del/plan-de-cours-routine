@@ -92,6 +92,33 @@ def blocs_du_jour(data, jour):
     return [b for b in data["blocs_travail"] if b["jour"] == jour.isoweekday()]
 
 
+def evenements_du_jour(data, jour):
+    """Rendez-vous ponctuels (rencontres, convocations) : ni cours, ni bloc de travail."""
+    return sorted((e for e in data.get("evenements", []) if d(e["date"]) == jour),
+                  key=lambda e: e.get("debut", ""))
+
+
+def evenements_a_venir(data, jour, horizon=7):
+    out = []
+    for e in data.get("evenements", []):
+        reste = (d(e["date"]) - jour).days
+        if 0 <= reste <= horizon:
+            ev = dict(e)
+            ev["reste"] = reste
+            out.append(ev)
+    return sorted(out, key=lambda e: (e["reste"], e.get("debut", "")))
+
+
+def bloc_ampute(data, jour, ev):
+    """Le bloc de travail que cet événement chevauche, s'il y en a un."""
+    if not (ev.get("debut") and ev.get("fin")):
+        return None
+    for b in blocs_du_jour(data, d(ev["date"])):
+        if ev["debut"] < b["fin"] and b["debut"] < ev["fin"]:
+            return b
+    return None
+
+
 def taches_du_jour(data, jour, actifs):
     """Construit la liste de tâches : admin urgent, lectures qui arrivent, puis
     les chantiers qui correspondent aux blocs de travail de la journée."""
@@ -189,6 +216,18 @@ def texte(data, jour):
         L.append("• Aucun cours")
     L.append("")
 
+    ej = evenements_du_jour(data, jour)
+    if ej:
+        L.append("AUTRES ENGAGEMENTS AUJOURD'HUI")
+        for e in ej:
+            L.append("• %s – %s  %s  (%s)" % (e["debut"].replace(":", " h "),
+                                              e["fin"].replace(":", " h "),
+                                              e["quoi"], e.get("local", "—")))
+            b = bloc_ampute(data, jour, e)
+            if b:
+                L.append("  ↳ ampute le bloc « %s »" % b["titre"])
+        L.append("")
+
     if actifs:
         p = actifs[0]
         L.append("PRIORITÉ DU JOUR")
@@ -217,6 +256,21 @@ def texte(data, jour):
         L.append("• %s — %s — %s — %s, %s" % (e["titre"], data["cours"][e["cours"]]["nom"],
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
+
+    # Les engagements des prochains jours : ils changent le temps disponible, donc
+    # ils doivent se voir avant la journée où ils tombent, pas le matin même.
+    av = [e for e in evenements_a_venir(data, jour) if e["reste"] > 0]
+    if av:
+        L.append("ENGAGEMENTS À VENIR")
+        for e in av:
+            L.append("• %s, %s — %s – %s  %s  (%s)" % (
+                court(d(e["date"])), jx(e["reste"]),
+                e["debut"].replace(":", " h "), e["fin"].replace(":", " h "),
+                e["quoi"], e.get("local", "—")))
+            b = bloc_ampute(data, jour, e)
+            if b:
+                L.append("  ↳ ampute le bloc « %s »" % b["titre"])
+        L.append("")
 
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
     for _, (nom, pct) in avancement(data, jour).items():
@@ -307,6 +361,21 @@ def image(data, jour, sortie):
         dr.text((66, y + 12), "Aucun cours — journée de travail libre", font=f(19), fill=GREY)
         y += 64
 
+    # engagements ponctuels : même forme que les cours, mais en gris pour qu'on
+    # voie tout de suite que ce n'est pas un cours
+    for e in evenements_du_jour(data, jour):
+        dr.rounded_rectangle([40, y, W - 40, y + 54], radius=10, fill="#f3f4f6", outline=LIGHT, width=2)
+        dr.rectangle([40, y + 9, 46, y + 45], fill=GREY)
+        dr.text((66, y + 8), "%s – %s" % (e["debut"].replace(":", " h "), e["fin"].replace(":", " h ")),
+                font=f(19, True), fill=GREY)
+        # le local est aligne a droite : le titre doit s'arreter avant, sinon les
+        # deux textes se chevauchent (les noms de rencontres sont longs)
+        loc = tronque(e.get("local", "—"), f(18), 200)
+        marge = dr.textlength(loc, font=f(18)) + 24
+        dr.text((300, y + 8), tronque(e["quoi"], f(19), W - 340 - marge), font=f(19), fill=GREY)
+        dr.text((W - 40, y + 8), loc, font=f(18), fill=GREY, anchor="ra")
+        y += 64
+
     # priorité
     y += 10
     if actifs:
@@ -325,9 +394,9 @@ def image(data, jour, sortie):
     for tag, t in taches_du_jour(data, jour, actifs):
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        dr.rounded_rectangle([80, y, 80 + 128, y + 26], radius=6, fill=couleur)
+        dr.text((88, y + 4), tronque(tag, f(14, True), 114), font=f(14, True), fill=WHITE)
+        dr.text((222, y + 1), tronque(t, f(19), W - 270), font=f(19), fill=DARK)
         y += 38
 
     # échéances

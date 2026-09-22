@@ -100,6 +100,12 @@
     {"cours": "philo","quoi": "Extrait « Espaces publics, vies privées » d'Anne Phillips", "pour": "2026-11-27"}
   ],
 
+  "evenements": [
+    {"quoi": "Rencontre — assurance maladie 2027", "date": "2026-09-23", "debut": "12:45", "fin": "14:15", "local": "Auditorium B303",
+     "note": "Présence déjà confirmée par courriel. Le local a été corrigé de A-207 vers B303. Ampute le gros bloc de programmation de 1 h 30, à deux jours du TP2 et du TP1."}
+  ],
+  "_evenements": "Rendez-vous ponctuels qui ne sont pas des cours mais qui mangent un bloc de travail. Les ajouter ici des qu'ils sont confirmes : la carte du jour signale alors le bloc ampute au lieu de promettre du temps qui n'existe pas.",
+
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},
     {"quoi": "Anglais : confirmer par MIO la date du midterm oral (8 oct ?)",   "pour": "2026-09-24", "urgent": true},
