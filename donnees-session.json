@@ -1,7 +1,7 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "420.B0 Techniques de l’informatique — Cégep de Granby",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
@@ -16,11 +16,16 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "emoji": "💻", "difficulte": 2,
+                "methode": "Le code se retient par les doigts. Refaire les exercices dirigés SANS la correction, puis comparer. S'entraîner à écrire du code sur papier : c'est ce qui est demandé à l'examen."},
+    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "emoji": "🌐", "difficulte": 2,
+                "methode": "Chaque TP s'appuie sur le précédent ; un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes ce qui a bloqué : c'est exactement ce qui tombera à l'Évaluation #1."},
+    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "emoji": "📕", "difficulte": 4,
+                "methode": "Annoter PENDANT la lecture, jamais après. Un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction : la langue vaut 25 % de chaque dissertation."},
+    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "emoji": "🗣️", "difficulte": 3,
+                "methode": "Tout se joue en classe. Remplir le journal Odyssey le jour même (5 % garantis). Les évaluations orales valent 45 % du cours : elles se préparent à voix haute, pas par écrit."},
+    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "emoji": "⚖️", "difficulte": 4,
+                "methode": "Droit aux notes de cours à TOUTES les évaluations — donc la vraie préparation, c'est de construire de bonnes notes. Un tableau par penseur : thèse, critère du juste, objection, exemple."}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
@@ -43,7 +48,7 @@
     {"jour": 6, "debut": "09:00", "fin": "12:00", "titre": "Lectures longues (roman, textes de philo)", "focus": ["litt", "philo"]},
     {"jour": 7, "debut": "16:00", "fin": "18:00", "titre": "RATTRAPAGE + plan de la semaine", "focus": ["rattrapage"]}
   ],
-  "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable.",
+  "_blocs": "Vendredi soir, samedi après-midi et dimanche matin restent volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable, semaine après semaine.",
 
   "evaluations": [
     {"cours": "devlog",  "titre": "TP1",                                  "date": "2026-09-04", "poids": 5,  "type": "tp",     "fait": true},
@@ -66,7 +71,7 @@
 
     {"cours": "litt",    "titre": "Matière vue en classe",           "date": "2026-09-01", "poids": 5,  "type": "test",   "fait": true},
     {"cours": "litt",    "titre": "Test de lecture — La vie devant soi",  "date": "2026-09-08", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 10},
+    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": true,  "prep_jours": 10},
     {"cours": "litt",    "titre": "Test sur les procédés d'écriture",     "date": "2026-10-27", "poids": 10, "type": "test",   "fait": false, "prep_jours": 21},
     {"cours": "litt",    "titre": "Dissertation — intro + conclusion",    "date": "2026-11-03", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 14},
     {"cours": "litt",    "titre": "Dissertation complète (épreuve terminale)", "date": "2026-12-08", "poids": 30, "type": "redaction", "fait": false, "prep_jours": 28},
@@ -99,6 +104,20 @@
     {"cours": "philo","quoi": "Extrait « Les capabilités » de Nussbaum",      "pour": "2026-11-06"},
     {"cours": "philo","quoi": "Extrait « Espaces publics, vies privées » d'Anne Phillips", "pour": "2026-11-27"}
   ],
+
+  "regles_semaines_rouges": {
+    "5":  "Les deux TP finis dimanche soir, pas lundi.",
+    "6":  "45 % de la session en une semaine. Rien ne commence ce lundi-là.",
+    "7":  "69 % en quatre jours. Tout doit être prêt le 4 octobre, avant la semaine d'études.",
+    "11": "Le plan de dissertation du 6 nov. est la répétition générale du 13.",
+    "15": "Quatre finaux plus l'entrevue. Les révisions commencent le 16 novembre."
+  },
+  "_regles": "Texte de la colonne « La regle » du tableau des semaines rouges. Si une semaine rouge n'a pas d'entree ici, notion.py en genere une automatiquement.",
+
+  "evenements": [
+    {"quoi": "Rencontre — assurance maladie obligatoire 2027", "date": "2026-09-23", "debut": "12:45", "fin": "14:15", "lieu": "Auditorium B303", "note": "Présence confirmée par courriel. Ampute le GROS BLOC — Programmation du mercredi."}
+  ],
+  "_evenements": "Rendez-vous ponctuels hors horaire de cours. Ils passent AVANT les blocs de travail : la carte du jour les affiche et signale le bloc rogne.",
 
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},

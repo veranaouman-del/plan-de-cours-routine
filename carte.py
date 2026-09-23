@@ -92,6 +92,19 @@ def blocs_du_jour(data, jour):
     return [b for b in data["blocs_travail"] if b["jour"] == jour.isoweekday()]
 
 
+def evenements_du_jour(data, jour):
+    """Rendez-vous ponctuels (rencontres, convocations) qui passent avant les blocs."""
+    return sorted((e for e in data.get("evenements", []) if d(e["date"]) == jour),
+                  key=lambda e: e.get("debut", "00:00"))
+
+
+def chevauche(bloc, ev):
+    """Le rendez-vous mord-il dans le bloc de travail ?"""
+    if not ev.get("debut") or not ev.get("fin"):
+        return False
+    return ev["debut"] < bloc["fin"] and ev["fin"] > bloc["debut"]
+
+
 def taches_du_jour(data, jour, actifs):
     """Construit la liste de tâches : admin urgent, lectures qui arrivent, puis
     les chantiers qui correspondent aux blocs de travail de la journée."""
@@ -189,6 +202,14 @@ def texte(data, jour):
         L.append("• Aucun cours")
     L.append("")
 
+    ej = evenements_du_jour(data, jour)
+    if ej:
+        L.append("RENDEZ-VOUS À NE PAS MANQUER")
+        for e in ej:
+            L.append("• %s – %s  %s  (%s)" % (e["debut"].replace(":", " h "), e["fin"].replace(":", " h "),
+                                              e["quoi"], e.get("lieu", "")))
+        L.append("")
+
     if actifs:
         p = actifs[0]
         L.append("PRIORITÉ DU JOUR")
@@ -205,7 +226,11 @@ def texte(data, jour):
     bj = blocs_du_jour(data, jour)
     if bj:
         for b in bj:
-            L.append("• %s – %s  %s" % (b["debut"].replace(":", " h "), b["fin"].replace(":", " h "), b["titre"]))
+            ligne = "• %s – %s  %s" % (b["debut"].replace(":", " h "), b["fin"].replace(":", " h "), b["titre"])
+            rogne = [e for e in ej if chevauche(b, e)]
+            if rogne:
+                ligne += "  ⚠ rogné par : %s" % ", ".join(e["quoi"] for e in rogne)
+            L.append(ligne)
     else:
         L.append("• Journée libre — repos assumé")
     L.append("")
@@ -307,6 +332,17 @@ def image(data, jour, sortie):
         dr.text((66, y + 12), "Aucun cours — journée de travail libre", font=f(19), fill=GREY)
         y += 64
 
+    # rendez-vous ponctuels : ils passent avant les blocs de travail
+    ej = evenements_du_jour(data, jour)
+    for e in ej:
+        dr.rounded_rectangle([40, y, W - 40, y + 54], radius=10, fill="#fff4e0", outline=ORANGE, width=2)
+        dr.rectangle([40, y + 9, 46, y + 45], fill=ORANGE)
+        dr.text((66, y + 8), "%s – %s" % (e["debut"].replace(":", " h "), e["fin"].replace(":", " h ")),
+                font=f(19, True), fill=DARK)
+        dr.text((300, y + 8), tronque(e["quoi"], f(19), 360), font=f(19), fill=DARK)
+        dr.text((W - 210, y + 8), tronque(e.get("lieu", ""), f(18), 170), font=f(18), fill=GREY)
+        y += 64
+
     # priorité
     y += 10
     if actifs:
@@ -325,9 +361,9 @@ def image(data, jour, sortie):
     for tag, t in taches_du_jour(data, jour, actifs):
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        dr.rounded_rectangle([80, y, 80 + 134, y + 26], radius=6, fill=couleur)
+        dr.text((88, y + 4), tronque(tag, f(14, True), 120), font=f(14, True), fill=WHITE)
+        dr.text((226, y + 1), tronque(t, f(19), W - 274), font=f(19), fill=DARK)
         y += 38
 
     # échéances
@@ -352,7 +388,12 @@ def image(data, jour, sortie):
             dr.rounded_rectangle([40, y, W - 40, y + 44], radius=8, fill=WHITE, outline=LIGHT, width=2)
             dr.text((62, y + 11), "%s – %s" % (b["debut"].replace(":", " h "), b["fin"].replace(":", " h ")),
                     font=f(18, True), fill=DARK)
-            dr.text((300, y + 11), tronque(b["titre"], f(18), 520), font=f(18), fill=GREY)
+            rogne = [e for e in ej if chevauche(b, e)]
+            titre_bloc = b["titre"]
+            if rogne:
+                titre_bloc += "  ⚠ rogné par : " + ", ".join(e["quoi"] for e in rogne)
+            dr.text((300, y + 11), tronque(titre_bloc, f(18), 520), font=f(18),
+                    fill=ORANGE if rogne else GREY)
             y += 52
     else:
         dr.text((44, y), "Journée libre — repos assumé, c'est prévu.", font=f(18), fill=GREY)

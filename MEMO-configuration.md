@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère la page Notion complète à partir du même JSON. `python3 notion.py` imprime le Markdown ; il est ensuite poussé avec `update-page` / `replace_content` sur la page `3df73824-e620-811e-9e6c-d07440cb6ec7`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
@@ -43,11 +45,13 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    à la racine du dépôt. Le script lit `donnees-session.json` et sort la carte
 >    d'aujourd'hui : cours, priorité, tâches avec leur étape de préparation,
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
-> 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
+> 2. `python3 notion.py` et pousse le résultat sur la page Notion
+>    `3df73824-e620-811e-9e6c-d07440cb6ec7` (`update-page`, `replace_content`).
+> 3. Poste le texte de la carte dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 4. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
@@ -71,6 +75,11 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **`notion.py` a déjà été perdu une fois** : il avait été écrit dans une session Claude
+   sans jamais être commité. Tout script qui sert à la routine se commite le jour même.
+8. **Les rendez-vous ponctuels vont dans `evenements`** de `donnees-session.json`
+   (date, début, fin, lieu). La carte les affiche et signale le bloc de travail rogné —
+   c'est ce qui a rattrapé la rencontre d'assurance du 23 septembre en plein GROS BLOC.
 
 ## Points à confirmer auprès des profs
 
