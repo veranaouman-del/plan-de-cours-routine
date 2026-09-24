@@ -121,10 +121,15 @@ def taches_du_jour(data, jour, actifs):
     if not focus:
         focus = {"rattrapage"}
 
-    prioritaires = [e for e in actifs if e["cours"] in focus]
-    autres = [e for e in actifs if e["cours"] not in focus]
+    # Ce qui tombe dans les 48 h passe devant le theme du jour : un bloc "Anglais"
+    # ne doit pas enterrer un TP a remettre demain.
+    def rang(e):
+        return (0 if e["reste"] <= 2 else 1,
+                0 if e["cours"] in focus else 1,
+                -e["score"])
+
     # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
-    liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
+    liste = actifs if "rattrapage" in focus else sorted(actifs, key=rang)
 
     for e in liste[:4]:
         taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
