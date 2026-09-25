@@ -8,11 +8,14 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère la page Notion complète à partir du même JSON. `python3 notion.py` (sortie standard), `--sortie fichier.md`, + une date en argument. Le texte produit se colle dans Notion avec `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+| `notion-tableau-de-bord.md` | La dernière sortie de `notion.py`, gardée dans le dépôt pour comparaison. Ne pas l'éditer à la main. |
 
 ## Identifiants à conserver
 
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
@@ -49,6 +52,8 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    tombe à J-3 ou moins.
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
+> 5. Une fois par semaine (ou quand une date bouge), `python3 notion.py` et colle la sortie
+>    dans la page Notion 3df73824-e620-811e-9e6c-d07440cb6ec7 avec `replace_content`.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,6 +76,14 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Un script écrit en session mais non commité est perdu.** `notion.py` a servi le
+   18 septembre puis a disparu avec le conteneur : seule sa sortie était au dépôt. Il a été
+   réécrit le 25 septembre. Tout ce qui doit resservir se commite le jour même.
+8. **Dans Canva, un texte plus long déplace tout ce qui suit.** Les blocs grandissent et
+   viennent chevaucher la section d'en dessous. Respecter le nombre de lignes d'origine :
+   environ 46 caractères par puce de la liste « À FAIRE », 40 pour les légendes des deux
+   grands chiffres, 50 pour la ligne des cours. Toujours vérifier la vignette avant de
+   committer la transaction.
 
 ## Points à confirmer auprès des profs
 
