@@ -1,7 +1,7 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "420.B0 Techniques de l'informatique - Cégep de Granby",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
@@ -16,13 +16,29 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2, "emoji": "💻"},
+    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2, "emoji": "🌐"},
+    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4, "emoji": "📕"},
+    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3, "emoji": "🗣️"},
+    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4, "emoji": "⚖️"}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
+
+  "methodes": {
+    "litt":    "Annoter PENDANT la lecture, jamais après. Un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction : la langue vaut 25 % de chaque dissertation.",
+    "philo":   "Droit aux notes de cours à TOUTES les évaluations — donc la vraie préparation, c'est de construire de bonnes notes. Un tableau par penseur : thèse, critère du juste, objection, exemple.",
+    "anglais": "Tout se joue en classe. Remplir le journal Odyssey le jour même (5 % garantis). Les évaluations orales valent 45 % du cours : elles se préparent à voix haute, pas par écrit.",
+    "devlog":  "Le code se retient par les doigts. Refaire les exercices dirigés SANS la correction, puis comparer. S'entraîner à écrire du code sur papier : c'est ce qui est demandé à l'examen.",
+    "web":     "Chaque TP s'appuie sur le précédent ; un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes ce qui a bloqué : c'est exactement ce qui tombera à l'Évaluation #1."
+  },
+
+  "notes_semaines": {
+    "7":  "Tout doit être prêt le 4 octobre au soir ; les 5, 6, 7, 8 et 9 ne servent qu'à repasser. Bonne nouvelle : la semaine d'études suit immédiatement.",
+    "10": "Le plan du 6 nov. est la répétition générale de la dissertation de philo.",
+    "12": "C'est aussi ici que commencent les révisions des finaux.",
+    "15": "Les révisions commencent trois semaines avant, pas la veille."
+  },
+  "_notes_semaines": "Remarque ajoutee a la fin de la regle d'une semaine rouge. Cle = numero de semaine.",
 
   "horaire": [
     {"jour": 1, "cours": "devlog",  "debut": "10:45", "fin": "12:30", "local": "A307"},

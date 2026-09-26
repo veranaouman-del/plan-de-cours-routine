@@ -108,7 +108,13 @@ def taches_du_jour(data, jour, actifs):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
+    # Deux retards détaillés au maximum, puis un simple compteur : on n'en cache
+    # aucun, mais ils ne mangent pas la journée.
     taches = retards[:2] + taches
+    if len(retards) > 2:
+        taches.insert(2, ("RETARD", "+%d autre%s retard%s à régler (voir le plan de session)"
+                          % (len(retards) - 2, "s" if len(retards) > 3 else "",
+                             "s" if len(retards) > 3 else "")))
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
