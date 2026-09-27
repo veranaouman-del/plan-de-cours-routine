@@ -99,16 +99,22 @@ def taches_du_jour(data, jour, actifs):
 
     # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
     # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
+    # Entre deux retards, celui dont le cours est évalué le plus tôt passe devant :
+    # une question de pondération vaut surtout la peine d'être posée avant l'examen.
     retards = []
     for t in data["taches_admin"]:
         if t["pour"] == "recurrent":
             continue
         echeance = d(t["pour"])
         if echeance < jour and t.get("urgent"):
-            retards.append(("RETARD", t["quoi"]))
+            retards.append((prochaine_echeance(data, jour, t.get("cours")), ("RETARD", t["quoi"])))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+    retards.sort(key=lambda r: r[0])
+    # Un jour de rattrapage sans cours est fait pour ça : il absorbe tout le retard.
+    # Les autres jours, deux maximum, sinon les retards mangent la journée.
+    plafond = 99 if est_jour_de_rattrapage(data, jour) else 2
+    taches = [r[1] for r in retards[:plafond]] + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -129,7 +135,19 @@ def taches_du_jour(data, jour, actifs):
     for e in liste[:4]:
         taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
 
-    return taches[:7]
+    return taches if est_jour_de_rattrapage(data, jour) else taches[:7]
+
+
+def est_jour_de_rattrapage(data, jour):
+    return (not cours_du_jour(data, jour)
+            and any("rattrapage" in b["focus"] for b in blocs_du_jour(data, jour)))
+
+
+def prochaine_echeance(data, jour, cours):
+    """Dans combien de jours ce cours est-il évalué ? Sert à classer les retards."""
+    restes = [(d(e["date"]) - jour).days for e in data["evaluations"]
+              if e["cours"] == cours and not e.get("fait") and d(e["date"]) >= jour]
+    return min(restes) if restes else 999
 
 
 def etape(e):
@@ -265,9 +283,11 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
+            txt = txt[:-1]
+        return txt.rstrip(" ,(") + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
