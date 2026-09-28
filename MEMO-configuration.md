@@ -12,12 +12,15 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 
 ## Identifiants à conserver
 
-- Design Canva du tableau de bord : **DAHVgw0Y3QU**
+- Design Canva du tableau de bord : **DAHWe6rSN7A** (semaine 6 — https://canva.link/i08luj6vm4ugavn)
+- Ancien design Canva (semaine 4, périmé) : DAHVgw0Y3QU
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion du tableau de bord : **3df73824-e620-811e-9e6c-d07440cb6ec7**
+  (« Ma session — Automne 2026 » ; `notion-tableau-de-bord.md` en est le miroir dans le dépôt)
 
 ## Mon horaire — Automne 2026
 
@@ -50,7 +53,7 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
-Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
+Le visuel Canva (design DAHWe6rSN7A) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**

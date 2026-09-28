@@ -11,16 +11,16 @@ Semaine d'études et d'encadrement : **12 au 16 octobre**
 
 ## 1. Où tu en es
 
-Au 18 septembre (semaine 4 sur 15), **4 % de ta session est joué**. Rien n'est perdu,
-rien n'est gagné : tout se décide entre maintenant et le 11 décembre.
+Au 28 septembre (semaine 6 sur 15), **13 % de ta session est joué**. D'ici le 9 octobre
+ce sera près de la moitié : les huit prochains jours pèsent 110 % de notes à eux seuls.
 
 | Cours | Déjà évalué | Reste à jouer | Difficulté retenue |
 |---|---|---|---|
-| Développement de logiciels | 10 % | 90 % | ●●○○○ |
-| Programmation Web I | 0 % | 100 % | ●●○○○ |
-| Littérature et imaginaire | 10 % | 90 % | ●●●●○ |
+| Développement de logiciels | 20 % | 80 % | ●●○○○ |
+| Programmation Web I | 4 % | 96 % | ●●○○○ |
+| Littérature et imaginaire | 30 % | 70 % | ●●●●○ |
 | Anglais propre au programme | 0 % | 100 % | ●●●○○ |
-| Éthique et politique | 0 % | 100 % | ●●●●○ |
+| Éthique et politique | 10 % | 90 % | ●●●●○ |
 
 **Le niveau de difficulté est une hypothèse de départ, pas un verdict.** Je l'ai fixé
 ainsi parce que tu es en Techniques de l'informatique : les deux cours de programmation
