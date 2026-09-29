@@ -8,12 +8,14 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère la page Notion « Ma session » à partir du même JSON. `python3 notion.py` (ou avec une date en argument). |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
 
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
+- Page Notion du tableau de bord : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
@@ -49,6 +51,9 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    tombe à J-3 ou moins.
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
+> 5. Régénère la page Notion : `python3 notion.py`, puis `replace_content` sur la page
+>    3df73824-e620-811e-9e6c-d07440cb6ec7. Compte à rebours, semaine en cours et
+>    avancement sont recalculés ; les méthodes et la semaine type sont fixes.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -69,7 +74,11 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **Les champs texte Canva ne se redimensionnent pas tout seuls.** Une ligne plus longue
+   passe à la ligne, le bloc grandit et recouvre celui du dessous. Les lignes de
+   « À FAIRE AUJOURD'HUI » tiennent jusqu'à ~38 caractères, le sous-titre jusqu'à ~57.
+   Toujours revérifier la vignette après un `edit-design`, avant de committer.
+7. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
