@@ -265,9 +265,11 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
+            txt = txt[:-1]
+        return txt.rstrip() + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
@@ -322,12 +324,16 @@ def image(data, jour, sortie):
 
     # à faire
     y = section("À FAIRE AUJOURD'HUI", y)
-    for tag, t in taches_du_jour(data, jour, actifs):
+    taches = taches_du_jour(data, jour, actifs)
+    # la pastille s'adapte au tag le plus long du jour : les libelles restent alignes
+    larg_tag = max([dr.textlength(tag, font=f(14, True)) for tag, _ in taches] or [0]) + 20
+    for tag, t in taches:
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        dr.rounded_rectangle([80, y, 80 + larg_tag, y + 26], radius=6, fill=couleur)
+        dr.text((90, y + 4), tag, font=f(14, True), fill=WHITE)
+        depart = 80 + larg_tag + 14
+        dr.text((depart, y + 1), tronque(t, f(19), W - depart - 44), font=f(19), fill=DARK)
         y += 38
 
     # échéances
