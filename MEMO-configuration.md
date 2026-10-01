@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère la page Notion « Ma session » à partir du même JSON. `python3 notion.py` (ou + une date) sort le Markdown enrichi à coller via `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
@@ -47,7 +49,9 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 4. Régénère la page Notion : `python3 notion.py`, puis pousse le résultat sur la page
+>    3df73824-e620-811e-9e6c-d07440cb6ec7 avec `replace_content`.
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
@@ -71,6 +75,17 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Notion renvoie parfois une erreur 500 « Cross-cell memcached access is not allowed ».**
+   C'est transitoire et rien n'est écrit. Refaire l'appel avec `allow_async: true`, puis
+   attendre `succeeded` avec `get_async_task`.
+8. **Une évaluation passée restée à `fait: false` disparaissait de la carte en silence**,
+   alors que son poids était déjà compté dans l'avancement. Les deux scripts ont maintenant
+   une section « À confirmer — remises passées jamais cochées » qui les remonte tant qu'on
+   ne les a pas tranchées.
+9. **Le thème du bloc de travail ne doit pas primer sur une échéance imminente.** Le jeudi
+   est « anglais », mais le 1er octobre l'examen d'anglais était écrit à 11 h 35 et un 25 %
+   de philo tombait le lendemain. `taches_du_jour` fait désormais passer devant tout ce qui
+   est à J-1 ou J-0, quel que soit le cours du bloc.
 
 ## Points à confirmer auprès des profs
 
@@ -81,3 +96,15 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
 - **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+
+## Quatre remises passées jamais tranchées (au 1er octobre)
+
+Les données n'avaient pas été reprises depuis le 18 septembre. Ces quatre évaluations sont
+passées et toujours à `fait: false` — 44 % de points. Tant qu'elles y sont, l'avancement
+affiché est une hypothèse. Mettre `"fait": true` pour celles qui sont remises ; pour les
+autres, écrire au prof le jour même.
+
+- Littérature — Dissertation (développement), 20 %, due le 22 sept.
+- Dév. logiciels — TP2 (ORM), 10 %, dû le 25 sept.
+- Prog. Web I — Remise TP1 VueJS, 4 %, due le 25 sept.
+- Éthique — Test utilitarisme + déontologisme, 10 %, dû le 25 sept.

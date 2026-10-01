@@ -121,10 +121,16 @@ def taches_du_jour(data, jour, actifs):
     if not focus:
         focus = {"rattrapage"}
 
-    prioritaires = [e for e in actifs if e["cours"] in focus]
-    autres = [e for e in actifs if e["cours"] not in focus]
+    # Ce qui tombe aujourd'hui ou demain passe devant le theme du bloc, toujours.
+    # Sinon le modele hebdomadaire ("jeudi = anglais") ferait reviser l'anglais
+    # l'apres-midi du jour ou son examen est deja ecrit, pendant qu'un 25 %
+    # tombe le lendemain.
+    imminents = [e for e in actifs if e["reste"] <= 1]
+    reste_actifs = [e for e in actifs if e["reste"] > 1]
+    prioritaires = [e for e in reste_actifs if e["cours"] in focus]
+    autres = [e for e in reste_actifs if e["cours"] not in focus]
     # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
-    liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
+    liste = imminents + ((prioritaires + autres) if "rattrapage" not in focus else reste_actifs)
 
     for e in liste[:4]:
         taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
@@ -218,6 +224,17 @@ def texte(data, jour):
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
 
+    passees = passees_non_reglees(data, jour)
+    if passees:
+        L.append("À CONFIRMER — REMISES PASSÉES JAMAIS COCHÉES")
+        for e in passees:
+            L.append("• %s — %s — %d %% — était dû le %s (il y a %d jours)"
+                     % (e["titre"], data["cours"][e["cours"]]["nom"], e["poids"],
+                        court(d(e["date"])), e["depuis"]))
+        L.append("→ Si c'est remis, coche \"fait\": true dans donnees-session.json.")
+        L.append("→ Si ce n'est pas remis, c'est un zéro : écris au prof aujourd'hui.")
+        L.append("")
+
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
     for _, (nom, pct) in avancement(data, jour).items():
         L.append("• %s : %d %%" % (nom, pct))
@@ -237,6 +254,25 @@ def chantiers_tous(data, jour):
         e["reste"] = reste
         out.append(e)
     return sorted(out, key=lambda e: (e["reste"], -e["poids"]))
+
+
+def passees_non_reglees(data, jour):
+    """Evaluations dont la date est passee mais qui sont encore a fait:false.
+
+    Sans ca elles disparaissent de la carte en silence alors que leur poids est
+    deja compte dans l'avancement. Tant qu'elles sont la, l'avancement est une
+    hypothese, pas un fait : il faut les cocher (ou les corriger) dans le JSON.
+    """
+    out = []
+    for ev in data["evaluations"]:
+        if ev.get("fait"):
+            continue
+        echeance = d(ev["date"])
+        if echeance < jour:
+            e = dict(ev)
+            e["depuis"] = (jour - echeance).days
+            out.append(e)
+    return sorted(out, key=lambda e: -e["depuis"])
 
 
 def jx(reste):
@@ -340,7 +376,8 @@ def image(data, jour, sortie):
         dr.text((76, y), tronque(e["titre"], f(19, True), 372), font=f(19, True), fill=DARK)
         dr.text((456, y + 1), tronque(co.get("court", co["nom"]), f(17), 150), font=f(17), fill=GREY)
         dr.text((614, y), ("%d %%" % e["poids"]) if e["poids"] else "—", font=f(19, True), fill=pastille)
-        dr.text((684, y + 1), "%s · %s" % (court(d(e["date"])), jx(e["reste"])), font=f(17), fill=GREY)
+        dr.text((672, y + 1), tronque("%s · %s" % (court(d(e["date"])), jx(e["reste"])),
+                                       f(17), W - 40 - 672), font=f(17), fill=GREY)
         y += 36
 
     # blocs de travail
@@ -357,6 +394,25 @@ def image(data, jour, sortie):
     else:
         dr.text((44, y), "Journée libre — repos assumé, c'est prévu.", font=f(18), fill=GREY)
         y += 52
+
+    # remises passees jamais cochees
+    passees = passees_non_reglees(data, jour)
+    if passees:
+        y += 14
+        y = section("À CONFIRMER — REMISES PASSÉES JAMAIS COCHÉES", y)
+        for e in passees:
+            co = data["cours"][e["cours"]]
+            dr.rounded_rectangle([40, y, W - 40, y + 44], radius=8, fill="#fff1f2",
+                                 outline=RED, width=2)
+            dr.text((62, y + 11), tronque(e["titre"], f(18, True), 346), font=f(18, True), fill=RED)
+            dr.text((414, y + 12), tronque(co.get("court", co["nom"]), f(16), 150), font=f(16), fill=GREY)
+            dr.text((574, y + 11), "%d %%" % e["poids"], font=f(18, True), fill=RED)
+            dr.text((644, y + 12), "dû le %s · +%d j" % (court(d(e["date"])), e["depuis"]),
+                    font=f(16), fill=GREY)
+            y += 52
+        dr.text((44, y - 4), "Coche-les dans le JSON si c'est remis — sinon ce sont des zéros.",
+                font=f(16), fill=GREY)
+        y += 24
 
     # avancement — collé sous le contenu, la carte est rognée juste après
     y += 8
