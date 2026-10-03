@@ -16,11 +16,11 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  { "emoji": "💻","nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
+    "web":     { "emoji": "🌐","nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
+    "litt":    { "emoji": "📕","nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
+    "anglais": { "emoji": "🗣️","nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
+    "philo":   { "emoji": "⚖️","nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
@@ -86,6 +86,19 @@
     {"cours": "philo",   "titre": "Épreuve finale — entrevue 20 min",     "date": "2026-12-11", "poids": 40, "type": "oral",   "fait": false, "prep_jours": 28, "a_confirmer": "Semaine 15 OU semaine d'examens, sur rendez-vous Microsoft Bookings. S'inscrire des l'ouverture."}
   ],
   "_evaluations": "Les dates du plan Ethique sont calees sur les semaines de session (S5 = 25 sept). Le PDF recu est une version Hiver/services sociaux : sa semaine d'etudes tombe apres la S6 au lieu de la S7. Si la prof decale d'une semaine, tout Ethique glisse de +7 jours. Etre pret une semaine trop tot ne coute rien ; l'inverse, oui.",
+
+  "methodes": {
+    "litt": "Annoter **pendant** la lecture, jamais après. Un carnet de citations classées par thème. Garder 10 minutes de relecture linguistique en fin de rédaction — la langue vaut **25 %** de chaque dissertation.",
+    "philo": "Droit aux notes de cours à **toutes** les évaluations. La vraie préparation, c'est donc de **construire de bonnes notes**, pas de mémoriser. Un tableau par penseur : thèse, critère du juste, objection principale, exemple concret. C'est ce tableau qu'on apporte à l'examen.",
+    "anglais": "Tout se joue en classe. Remplir le journal Odyssey **le jour même** (5 % garantis). Les évaluations orales valent **45 %** du cours : elles se préparent **à voix haute**, pas par écrit. Enregistrer deux minutes au téléphone et se réécouter.",
+    "devlog": "Le code se retient par les doigts. Refaire les exercices dirigés **sans la correction**, puis comparer. S'entraîner à écrire du code **sur papier** — c'est ce qui est demandé à l'examen.",
+    "web": "Chaque TP s'appuie sur le précédent. Un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes **ce qui a bloqué** : c'est exactement ce qui tombera à l'Évaluation #1."
+  },
+
+  "rattrapage": [
+    "Le bloc du dimanche 16 h – 18 h existe pour ça. L'ordre est toujours le même : **ce qui est noté le plus lourd et qui tombe le plus tôt d'abord.** Une lecture en retard se rattrape ; une remise manquée, non.",
+    "Si deux semaines de suite débordent, ce n'est pas un problème d'effort : c'est que le plan est trop chargé. On retire quelque chose plutôt que d'accumuler."
+  ],
 
   "lectures": [
     {"cours": "litt", "quoi": "La vie devant soi p. 176-223",      "pour": "2026-09-22"},

@@ -210,6 +210,15 @@ def texte(data, jour):
         L.append("• Journée libre — repos assumé")
     L.append("")
 
+    retards = a_confirmer(data, jour)
+    if retards:
+        L.append("À CONFIRMER — DÉJÀ PASSÉ, PAS ENCORE COCHÉ")
+        for e in retards:
+            L.append("• %s — %s — %d %% — était le %s" % (
+                e["titre"], data["cours"][e["cours"]]["nom"], e["poids"], court(d(e["date"]))))
+        L.append("  → si c'est remis, cocher \"fait\": true dans donnees-session.json")
+        L.append("")
+
     L.append("ÉCHÉANCES QUI APPROCHENT")
     prochaines = [e for e in chantiers_tous(data, jour) if e["reste"] <= 28][:7]
     for e in prochaines:
@@ -222,6 +231,25 @@ def texte(data, jour):
     for _, (nom, pct) in avancement(data, jour).items():
         L.append("• %s : %d %%" % (nom, pct))
     return "\n".join(L)
+
+
+def a_confirmer(data, jour, fenetre=21):
+    """Échéances passées jamais cochées « fait ».
+
+    Sans cette liste, une remise oubliée disparaît de la carte le lendemain :
+    le script ne garde que l'avenir. On les remonte pendant `fenetre` jours
+    pour forcer la question « est-ce que je l'ai vraiment remis ? ».
+    """
+    out = []
+    for ev in data["evaluations"]:
+        if ev.get("fait"):
+            continue
+        passe = (jour - d(ev["date"])).days
+        if 0 < passe <= fenetre:
+            e = dict(ev)
+            e["passe"] = passe
+            out.append(e)
+    return sorted(out, key=lambda e: (e["passe"], -e["poids"]))
 
 
 def chantiers_tous(data, jour):

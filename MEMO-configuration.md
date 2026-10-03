@@ -8,12 +8,14 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète à partir du JSON. `python3 notion.py` (+ une date en argument). Sortie à coller dans `notion-update-page`, commande `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
 
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
@@ -45,9 +47,13 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 3. `python3 notion.py` et colle la sortie dans la page Notion
+>    3df73824-e620-811e-9e6c-d07440cb6ec7 avec `notion-update-page`,
+>    commande `replace_content`. Le format de tableau sort déjà tel que Notion
+>    le relit, donc la page ne se déforme pas d'un jour à l'autre.
+> 4. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
@@ -68,8 +74,12 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 4. **La carte n'est plus codée en dur.** Avant, `carte.py` contenait le contenu du
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
-5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+5. **Une échéance passée jamais cochée disparaissait de la carte.** Le moteur ne
+   gardait que l'avenir : une remise oubliée s'effaçait du tableau de bord le
+   lendemain, et l'avancement affiché devenait faux sans prévenir. D'où la section
+   « À CONFIRMER — déjà passé, pas encore coché », qui remonte 21 jours en arrière.
+6. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
+7. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
