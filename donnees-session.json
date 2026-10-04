@@ -1,7 +1,7 @@
 {
   "_commentaire": "Source de verite unique du systeme. carte.py et le plan de session lisent ce fichier. Modifier ici, pas ailleurs.",
   "etudiant": "Efozoudoumi Daniel Veran Aouman (6334145)",
-  "programme": "420.B0 Techniques de l'informatique - Cegep de Granby",
+  "programme": "Cégep de Granby · Techniques de l'informatique (420.B0)",
   "session": {
     "nom": "Automne 2026",
     "debut": "2026-08-24",
@@ -16,11 +16,11 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "emoji": "💻", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
+    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "emoji": "🌐", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
+    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "emoji": "📕", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
+    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "emoji": "🗣️", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
+    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "emoji": "⚖️", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
@@ -66,20 +66,20 @@
 
     {"cours": "litt",    "titre": "Matière vue en classe",           "date": "2026-09-01", "poids": 5,  "type": "test",   "fait": true},
     {"cours": "litt",    "titre": "Test de lecture — La vie devant soi",  "date": "2026-09-08", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 10},
+    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": true , "prep_jours": 10},
     {"cours": "litt",    "titre": "Test sur les procédés d'écriture",     "date": "2026-10-27", "poids": 10, "type": "test",   "fait": false, "prep_jours": 21},
     {"cours": "litt",    "titre": "Dissertation — intro + conclusion",    "date": "2026-11-03", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 14},
     {"cours": "litt",    "titre": "Dissertation complète (épreuve terminale)", "date": "2026-12-08", "poids": 30, "type": "redaction", "fait": false, "prep_jours": 28},
     {"cours": "litt",    "titre": "Cercles de discussion",                "date": "2026-12-15", "poids": 10, "type": "oral",   "fait": false, "prep_jours": 10},
 
-    {"cours": "anglais", "titre": "Midterm Reading & Writing",            "date": "2026-10-01", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
+    {"cours": "anglais", "titre": "Midterm Reading & Writing",            "date": "2026-10-01", "poids": 20, "type": "examen", "fait": true , "prep_jours": 12},
     {"cours": "anglais", "titre": "Midterm Speaking & Listening",         "date": "2026-10-08", "poids": 15, "type": "oral",   "fait": false, "prep_jours": 12, "a_confirmer": "La case semaine 7 dit aussi 'Thursday group: READING WEEK'. Confirmer la date par MIO."},
     {"cours": "anglais", "titre": "Odyssey reflection journal",           "date": "2026-11-19", "poids": 5,  "type": "remise", "fait": false, "prep_jours": 60},
     {"cours": "anglais", "titre": "Final Speaking & Listening",           "date": "2026-11-26", "poids": 30, "type": "oral",   "fait": false, "prep_jours": 21, "a_confirmer": "Semaine 13 ou 14 selon le groupe (A ou B). Confirmer."},
     {"cours": "anglais", "titre": "Final Reading & Writing",              "date": "2026-12-10", "poids": 30, "type": "examen", "fait": false, "prep_jours": 21},
 
-    {"cours": "philo",   "titre": "Test utilitarisme + déontologisme",    "date": "2026-09-25", "poids": 10, "type": "test",   "fait": false, "prep_jours": 10},
-    {"cours": "philo",   "titre": "Examen sur les théories éthiques",     "date": "2026-10-02", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
+    {"cours": "philo",   "titre": "Test utilitarisme + déontologisme",    "date": "2026-09-25", "poids": 10, "type": "test",   "fait": true , "prep_jours": 10},
+    {"cours": "philo",   "titre": "Examen sur les théories éthiques",     "date": "2026-10-02", "poids": 25, "type": "examen", "fait": true , "prep_jours": 14},
     {"cours": "philo",   "titre": "Plan de dissertation détaillé (en classe)", "date": "2026-11-06", "poids": 0, "type": "atelier", "fait": false, "prep_jours": 7},
     {"cours": "philo",   "titre": "Dissertation philosophique (900 mots)","date": "2026-11-13", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 21},
     {"cours": "philo",   "titre": "Test Nussbaum / Phillips",             "date": "2026-12-04", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 10},

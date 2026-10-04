@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Reconstruit la page Notion « Ma session » à partir du même JSON. `python3 notion.py` sort le Markdown à coller (replace_content), + une date en argument pour n'importe quel jour. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : 3df73824-e620-811e-9e6c-d07440cb6ec7
 
 ## Mon horaire — Automne 2026
 
@@ -71,6 +73,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Un script non commité est un script perdu.** `notion.py` a généré la page du 3 octobre
+   puis a disparu avec le conteneur : il a fallu le réécrire. Tout ce que la routine fabrique
+   se commite le jour même, sinon le lendemain repart de zéro.
+8. **Une évaluation passée n'est pas une évaluation faite.** Un examen écrit en classe a
+   forcément eu lieu, donc il se coche tout seul une fois la date passée. Une remise sur LÉA,
+   non : elle reste « à confirmer » tant que je n'ai pas dit qu'elle était déposée, parce
+   qu'une remise manquée vaut zéro et que l'avancement affiché serait faux.
 
 ## Points à confirmer auprès des profs
 
