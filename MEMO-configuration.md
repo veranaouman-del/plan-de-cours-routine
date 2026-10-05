@@ -8,11 +8,14 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète à partir du même JSON. `python3 notion.py` (sortie standard), `--sortie fichier.md`, + une date en argument. Le résultat se colle dans la page avec `update-page` / `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+| `notion-tableau-de-bord.md` | La dernière sortie de `notion.py`, gardée dans le dépôt comme trace. Ne pas l'éditer à la main : la régénérer. |
 
 ## Identifiants à conserver
 
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
@@ -47,7 +50,9 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 4. `python3 notion.py` et colle la sortie dans la page Notion
+>    3df73824-e620-811e-9e6c-d07440cb6ec7 (`update-page`, commande `replace_content`).
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
@@ -71,6 +76,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **`notion.py` avait été écrit dans une session perdue et jamais versionné** : la page
+   Notion portait « généré par notion.py » alors que le fichier n'existait nulle part.
+   Reconstruit le 5 octobre, cette fois commité. Tout script qui touche au système
+   doit vivre dans le dépôt, pas seulement dans une session.
+8. **Le texte des blocs Canva ne se replie pas tout seul.** Une ligne de plus de
+   ~45 caractères passe sur deux lignes et vient chevaucher les chiffres du bas.
+   Vérifier la vignette après chaque `edit-design`, avant de committer.
 
 ## Points à confirmer auprès des profs
 

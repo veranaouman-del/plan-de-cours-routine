@@ -115,21 +115,26 @@ def taches_du_jour(data, jour, actifs):
         if 0 <= reste <= 6:
             taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))
 
+    for e in taches_prioritaires(data, jour, actifs)[:4]:
+        taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
+
+    return taches[:7]
+
+
+def taches_prioritaires(data, jour, actifs):
+    """Les chantiers du jour, remis dans l'ordre : d'abord ceux qui tombent dans
+    un bloc de travail de la journee, le reste ensuite. Un jour de rattrapage
+    attaque ce qui presse le plus, peu importe le cours."""
     focus = set()
     for b in blocs_du_jour(data, jour):
         focus.update(b["focus"])
     if not focus:
         focus = {"rattrapage"}
-
+    if "rattrapage" in focus:
+        return actifs
     prioritaires = [e for e in actifs if e["cours"] in focus]
     autres = [e for e in actifs if e["cours"] not in focus]
-    # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
-    liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
-
-    for e in liste[:4]:
-        taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
-
-    return taches[:7]
+    return prioritaires + autres
 
 
 def etape(e):
@@ -325,9 +330,10 @@ def image(data, jour, sortie):
     for tag, t in taches_du_jour(data, jour, actifs):
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        # la pastille doit tenir "TEST BLANC" en entier, sinon l'etape ne veut plus rien dire
+        dr.rounded_rectangle([80, y, 80 + 126, y + 26], radius=6, fill=couleur)
+        dr.text((88, y + 4), tronque(tag, f(14, True), 112), font=f(14, True), fill=WHITE)
+        dr.text((220, y + 1), tronque(t, f(19), W - 268), font=f(19), fill=DARK)
         y += 38
 
     # échéances
