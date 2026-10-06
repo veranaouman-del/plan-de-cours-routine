@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion « Ma session — Automne 2026 » à partir du même JSON. `python3.13 notion.py` sort le Markdown à coller dans `notion-update-page` (commande `replace_content`). |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion du tableau de bord : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
@@ -39,10 +41,11 @@ Depuis que le système est piloté par `donnees-session.json`, le prompt n'a plu
 répéter l'horaire ni les échéances : tout est dans le dépôt. Version courte à utiliser :
 
 > Génère ma carte du jour.
-> 1. `pip install --quiet pillow` si nécessaire, puis `python3 carte.py --texte`
->    à la racine du dépôt. Le script lit `donnees-session.json` et sort la carte
->    d'aujourd'hui : cours, priorité, tâches avec leur étape de préparation,
->    échéances avec compteurs J-x, blocs de travail, avancement par cours.
+> 1. `python3.13 carte.py --texte` à la racine du dépôt (voir le piège 7 : c'est
+>    `python3.13` qui a Pillow, pas `python3`). Le script lit `donnees-session.json`
+>    et sort la carte d'aujourd'hui : cours, priorité, tâches avec leur étape de
+>    préparation, remises dépassées non cochées, échéances avec compteurs J-x,
+>    blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
@@ -71,6 +74,20 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **`python3` est en 3.11, Pillow est installé sur 3.13.** `python3 carte.py` échoue
+   sur `ModuleNotFoundError: No module named 'PIL'` alors que `pip install pillow` dit
+   « already satisfied ». Utiliser `python3.13` pour l'image. Le mode `--texte` marche
+   sur les deux.
+8. **Les blocs de travail sont fixés par jour de semaine, pas par urgence.** La veille
+   de l'intra, la carte conseillait de réviser le français parce que c'était mardi.
+   `bloc_detourne()` signale maintenant qu'il faut basculer le bloc ; ça reste une
+   suggestion, le JSON n'est pas modifié.
+9. **Une remise passée et non cochée disparaissait de la carte.** `chantiers()` ferme
+   la fenêtre de préparation à l'échéance. La section « remises dépassées » les
+   rattrape. Ne jamais cocher `fait: true` à ma place : seul moi sais si c'est remis.
+10. **Dans Canva, allonger un texte pousse les éléments voisins.** Une puce qui passe
+   sur deux lignes fait grandir la zone et chevaucher le bloc du dessous. Garder les
+   puces sous ~45 caractères, et relire la vignette après chaque `edit-design`.
 
 ## Points à confirmer auprès des profs
 
