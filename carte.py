@@ -126,10 +126,42 @@ def taches_du_jour(data, jour, actifs):
     # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
     liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
 
+    # La veille d'une evaluation lourde, le focus du bloc ne tient plus : un examen a
+    # 25 % demain passe devant la matiere prevue au calendrier, sinon la carte conseille
+    # de travailler le bon cours le mauvais jour.
+    imminents = [e for e in liste if e["reste"] <= 1 and e["poids"] >= 10]
+    if imminents:
+        liste = imminents + [e for e in liste if e not in imminents]
+
     for e in liste[:4]:
         taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
 
     return taches[:7]
+
+
+def bloc_detourne(data, jour, actifs):
+    """Le bloc du jour porte-t-il sur le bon cours ?
+
+    Les blocs sont fixes par jour de semaine. La veille d'un examen lourd, suivre le
+    calendrier a la lettre revient a reviser la mauvaise matiere : on le signale.
+    """
+    if not actifs:
+        return None
+    urgent = [e for e in actifs if e["reste"] <= 1 and e["poids"] >= 10]
+    if not urgent:
+        return None
+    focus = set()
+    for b in blocs_du_jour(data, jour):
+        focus.update(b["focus"])
+    if not focus or "rattrapage" in focus:
+        return None
+    e = urgent[0]
+    if e["cours"] in focus:
+        return None
+    return "Bloc prévu sur %s, mais %s (%d %%) tombe %s : bascule le bloc sur %s." % (
+        " + ".join(data["cours"][c]["court"] for c in sorted(focus) if c in data["cours"]),
+        e["titre"], e["poids"], jx(e["reste"]).lower(),
+        data["cours"][e["cours"]]["court"])
 
 
 def etape(e):
@@ -196,6 +228,17 @@ def texte(data, jour):
                                             p["poids"], jx(p["reste"])))
         L.append("")
 
+    dep = depassees(data, jour)
+    if dep:
+        L.append("À CONFIRMER — REMISES DÉPASSÉES")
+        for e in dep[:5]:
+            L.append("• %s — %s — %s, il y a %d jours"
+                     % (e["titre"], data["cours"][e["cours"]]["nom"],
+                        court(d(e["date"])), e["depuis"]))
+        L.append("  → déjà remis ? cocher \"fait\": true dans donnees-session.json.")
+        L.append("  → pas remis ? un MIO au prof aujourd'hui vaut mieux que le silence.")
+        L.append("")
+
     L.append("À FAIRE AUJOURD'HUI")
     for tag, t in taches_du_jour(data, jour, actifs):
         L.append("• [%s] %s" % (tag, t))
@@ -208,6 +251,9 @@ def texte(data, jour):
             L.append("• %s – %s  %s" % (b["debut"].replace(":", " h "), b["fin"].replace(":", " h "), b["titre"]))
     else:
         L.append("• Journée libre — repos assumé")
+    note = bloc_detourne(data, jour, actifs)
+    if note:
+        L.append("  ⚠ %s" % note)
     L.append("")
 
     L.append("ÉCHÉANCES QUI APPROCHENT")
@@ -222,6 +268,31 @@ def texte(data, jour):
     for _, (nom, pct) in avancement(data, jour).items():
         L.append("• %s : %d %%" % (nom, pct))
     return "\n".join(L)
+
+
+def depassees(data, jour):
+    """Evaluations dont la date est passee sans que `fait` soit coche.
+
+    chantiers() les ignore (fenetre de preparation fermee) : sans cette liste, une
+    remise oubliee sortirait silencieusement de la carte. On ne devine pas si elle a
+    ete rendue — on l'affiche pour qu'elle soit confirmee ou cochee dans le JSON.
+    """
+    out = []
+    for ev in data["evaluations"]:
+        if ev.get("fait"):
+            continue
+        # Un examen ou un test se passe en classe : la date passee, il est passe, et
+        # avancement() le compte deja comme joue. Seules les remises dependent encore
+        # d'un geste de ma part, donc seules elles remontent ici.
+        if ev["type"] not in ("tp", "remise", "redaction"):
+            continue
+        ecart = (jour - d(ev["date"])).days
+        if ecart <= 0:
+            continue
+        e = dict(ev)
+        e["depuis"] = ecart
+        out.append(e)
+    return sorted(out, key=lambda e: (-e["poids"], e["depuis"]))
 
 
 def chantiers_tous(data, jour):
@@ -263,6 +334,20 @@ def image(data, jour, sortie):
 
     img = Image.new("RGB", (W, H), BG)
     dr = ImageDraw.Draw(img)
+
+    def plier(txt, font, largeur, dr):
+        """Coupe un texte en lignes qui tiennent dans `largeur`."""
+        lignes, courante = [], ""
+        for mot in txt.split(" "):
+            essai = (courante + " " + mot).strip()
+            if dr.textlength(essai, font=font) <= largeur or not courante:
+                courante = essai
+            else:
+                lignes.append(courante)
+                courante = mot
+        if courante:
+            lignes.append(courante)
+        return lignes
 
     def tronque(txt, font, largeur):
         while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
@@ -320,14 +405,35 @@ def image(data, jour, sortie):
             dr.text((W - 146, y + 34), "%d %%" % p["poids"], font=f(36, True), fill="#1f2937")
         y += 128
 
+    # échéances dépassées — bandeau d'alerte, avant tout le reste
+    dep = depassees(data, jour)
+    if dep:
+        liste = dep[:4]
+        h = 46 + 28 * len(liste)
+        dr.rounded_rectangle([40, y, W - 40, y + h], radius=12, fill="#fde2e4", outline=RED, width=2)
+        dr.text((66, y + 12), "À CONFIRMER — REMISES DÉPASSÉES", font=f(17, True), fill=RED)
+        yy = y + 40
+        for e in liste:
+            co = data["cours"][e["cours"]]
+            libelle = "%s — %s  ·  %s, il y a %d j" % (co.get("court", co["nom"]), e["titre"],
+                                                       court(d(e["date"])), e["depuis"])
+            dr.text((66, yy), tronque(libelle, f(16), W - 190), font=f(16), fill="#7f1d1d")
+            if e["poids"]:
+                dr.text((W - 108, yy), "%d %%" % e["poids"], font=f(16, True), fill=RED)
+            yy += 28
+        y += h + 20
+
     # à faire
     y = section("À FAIRE AUJOURD'HUI", y)
     for tag, t in taches_du_jour(data, jour, actifs):
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        # le badge s'ajuste au libelle, sinon "TEST BLANC" sort tronque en "TEST BLA"
+        larg = max(110, int(dr.textlength(tag, font=f(14, True))) + 18)
+        dr.rounded_rectangle([80, y, 80 + larg, y + 26], radius=6, fill=couleur)
+        dr.text((80 + (larg - dr.textlength(tag, font=f(14, True))) / 2, y + 4),
+                tag, font=f(14, True), fill=WHITE)
+        dr.text((80 + larg + 16, y + 1), tronque(t, f(19), W - 120 - larg), font=f(19), fill=DARK)
         y += 38
 
     # échéances
@@ -354,6 +460,12 @@ def image(data, jour, sortie):
                     font=f(18, True), fill=DARK)
             dr.text((300, y + 11), tronque(b["titre"], f(18), 520), font=f(18), fill=GREY)
             y += 52
+        note = bloc_detourne(data, jour, actifs)
+        if note:
+            for ligne in plier("⚠ " + note, f(16), W - 100, dr):
+                dr.text((44, y - 6), ligne, font=f(16), fill=RED)
+                y += 22
+            y += 8
     else:
         dr.text((44, y), "Journée libre — repos assumé, c'est prévu.", font=f(18), fill=GREY)
         y += 52
