@@ -265,9 +265,11 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
+            txt = txt[:-1]
+        return txt.rstrip(" ,;(—-") + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
@@ -325,9 +327,12 @@ def image(data, jour, sortie):
     for tag, t in taches_du_jour(data, jour, actifs):
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        largeur_tag = max(110, int(dr.textlength(tag, font=f(14, True))) + 18)
+        dr.rounded_rectangle([80, y, 80 + largeur_tag, y + 26], radius=6, fill=couleur)
+        dr.text((80 + (largeur_tag - dr.textlength(tag, font=f(14, True))) / 2, y + 4),
+                tag, font=f(14, True), fill=WHITE)
+        depart = 80 + largeur_tag + 22
+        dr.text((depart, y + 1), tronque(t, f(19), W - 40 - depart), font=f(19), fill=DARK)
         y += 38
 
     # échéances
@@ -337,10 +342,10 @@ def image(data, jour, sortie):
         co = data["cours"][e["cours"]]
         pastille = RED if e["reste"] <= 4 else (ORANGE if e["reste"] <= 12 else "#3b82f6")
         dr.ellipse([44, y + 6, 60, y + 22], fill=pastille)
-        dr.text((76, y), tronque(e["titre"], f(19, True), 372), font=f(19, True), fill=DARK)
-        dr.text((456, y + 1), tronque(co.get("court", co["nom"]), f(17), 150), font=f(17), fill=GREY)
-        dr.text((614, y), ("%d %%" % e["poids"]) if e["poids"] else "—", font=f(19, True), fill=pastille)
-        dr.text((684, y + 1), "%s · %s" % (court(d(e["date"])), jx(e["reste"])), font=f(17), fill=GREY)
+        dr.text((76, y), tronque(e["titre"], f(19, True), 336), font=f(19, True), fill=DARK)
+        dr.text((420, y + 1), tronque(co.get("court", co["nom"]), f(17), 136), font=f(17), fill=GREY)
+        dr.text((566, y), ("%d %%" % e["poids"]) if e["poids"] else "—", font=f(19, True), fill=pastille)
+        dr.text((636, y + 1), "%s · %s" % (court(d(e["date"])), jx(e["reste"])), font=f(17), fill=GREY)
         y += 36
 
     # blocs de travail

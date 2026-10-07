@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète. `python3 notion.py` (stdout) ou `python3 notion.py 2026-10-07 sortie.md`. Importe `carte.py` : même moteur, même source. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -71,6 +72,16 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Deux Python dans l'environnement.** `python3` est un 3.11 sans Pillow ; Pillow est
+   installé pour le 3.13. Pour l'image, lancer **`python3.13 carte.py`**. Le mode `--texte`
+   marche avec les deux (aucune dépendance). `pip install pillow` répond « already satisfied »
+   sans rien régler : ce n'est pas le même interpréteur.
+8. **`notion.py` avait disparu du dépôt.** La page Notion disait « généré par notion.py »
+   alors que le fichier n'avait jamais été commité — il est mort avec sa session. Réécrit
+   le 7 octobre. Règle : tout ce qui génère quelque chose doit être dans le dépôt, tout de suite.
+9. **Ne jamais cocher une remise à ma place.** Un examen à date fixe a eu lieu : on le ferme.
+   Une remise (TP, dissertation) dépend de moi : impossible de savoir. Elle reste ouverte et
+   signalée tant que je n'ai pas confirmé. Marquer « fait » par commodité fausse l'avancement.
 
 ## Points à confirmer auprès des profs
 
@@ -81,3 +92,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
 - **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+- **Prog Web / Dév. logiciels — conflit de dates sur les TP2** (relevé le 7 octobre) :
+
+  | Travail | Plan de cours (PDF) | Mon plan d'action Notion (30 sept.) | Retenu |
+  |---|---|---|---|
+  | TP2 C# / ORM (Dév. log., 10 %) | semaine 5 → 25 sept. | remise **9 oct.**, « à commencer » | **9 oct.** |
+  | TP2 Vue Router (Prog. Web, 4 %) | semaine 7 → **9 oct.** | remise **21 oct.** | **9 oct.** |
+
+  Les deux plans de cours renvoient à **LÉA** pour la date officielle, et le calendrier
+  « pourrait être modifié sans préavis ». Règle appliquée : **on retient la date la plus tôt**,
+  être prêt en avance ne coûte rien. À trancher sur LÉA.
