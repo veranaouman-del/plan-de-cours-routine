@@ -8,6 +8,8 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion « 🎓 Ma session — Automne 2026 » à partir du même JSON. `python3 notion.py` sort le Markdown enrichi à coller dans `notion-update-page` / `replace_content`. |
+| `notion-tableau-de-bord.md` | La dernière sortie de `notion.py`, gardée dans le dépôt comme témoin. Ne pas l'éditer à la main : la régénérer. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -52,6 +54,10 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+Il se met à jour **par remplacement de texte**, pas en y poussant une image : `read-design`
+avec `open_transaction`, puis des opérations `replace_text` sur les éléments, puis `commit`.
+Les puces du bloc « À FAIRE AUJOURD'HUI » doivent rester sous ~47 caractères, sinon elles
+passent sur deux lignes et viennent chevaucher les deux grands pourcentages.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
@@ -69,7 +75,12 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **Une remise dont la date est passée disparaissait de la carte.** Corrigé le 8 octobre :
+   la section « À confirmer — remises passées non cochées » remonte tout ce qui est resté
+   à `"fait": false` après son échéance, avec le total de points au statut incertain. Une
+   évaluation qui a bel et bien eu lieu se coche (`"fait": true`) ; une remise dont on n'est
+   pas sûr reste ouverte et reçoit une note `"a_confirmer"`.
+7. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
