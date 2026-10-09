@@ -51,11 +51,15 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    sur la page 3df73824-e620-811e-9e6c-d07440cb6ec7. Là, les tableaux passent.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+> 4. Mets aussi à jour le visuel Canva DAHVgw0Y3QU (voir plus bas pour les contraintes
+>    de gabarit) et la page Notion.
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
-Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
-d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+Le visuel Canva (design DAHVgw0Y3QU) se met à jour tous les jours lui aussi, directement
+dans le design : `read-design` avec `open_transaction` pour récupérer les locator_id, puis
+des `replace_text`, puis `commit`. C'est le *lien d'export* qui expire en quelques heures,
+pas le design — donc on édite le design, on n'exporte pas.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
@@ -77,7 +81,12 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    alors que le script n'avait jamais été commité : chaque exécution le réécrivait de zéro.
    Il est maintenant dans le dépôt, et il importe `carte.py` pour partager le même moteur —
    une échéance modifiée bouge dans les deux sorties à la fois.
-7. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+7. **Le gabarit Canva ne se redimensionne pas tout seul.** Les blocs de couleur et les
+   deux gros chiffres sont à des positions fixes. Une puce de « À FAIRE » qui dépasse
+   ~47 caractères passe sur deux lignes, la liste grandit vers le bas et vient toucher le
+   trait rouge des chiffres. Garder 4 puces d'au plus 47 caractères, et vérifier la
+   vignette renvoyée par `edit-design` **avant** de faire `commit`.
+8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
