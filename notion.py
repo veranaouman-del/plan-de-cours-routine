@@ -137,9 +137,9 @@ def a_confirmer(data, jour):
          "<tr><td>Évaluation</td><td>Cours</td><td>Poids</td><td>Était dû le</td><td>Retard</td></tr>"]
     for e in en_jeu:
         retard = (jour - C.d(e["date"])).days
-        L.append("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%d jours</td></tr>"
+        L.append("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>"
                  % (e["titre"], nom(data, e["cours"]), poids_txt(e["poids"]),
-                    dcourt(C.d(e["date"])), retard))
+                    dcourt(C.d(e["date"])), jours(retard)))
     L.append("</table>")
     L.append("- [ ] Cocher sur LÉA celles qui sont bien déposées → l'avancement redevient exact")
     L.append("- [ ] Écrire au prof **le jour même** pour celles qui ne le sont pas — "
@@ -157,6 +157,10 @@ def a_faire(data, jour, actifs):
     if len(L) == 1:
         L.append("- [ ] 🌿 Rien d'imposé aujourd'hui — prendre de l'avance ou se reposer")
     return L
+
+
+def jours(n):
+    return "1 jour" if n == 1 else "%d jours" % n
 
 
 def sept_jours(data, jour):
@@ -180,6 +184,16 @@ def sept_jours(data, jour):
         else:
             liste = ([e for e in actifs if e["cours"] in focus]
                      + [e for e in actifs if e["cours"] not in focus])
+
+        # Une journee qui a son propre horaire (semaine d'etudes) dit ce qu'elle fait,
+        # pas ce que le moteur aurait choisi : le plan ecrit prime.
+        propres = [b for b in data.get("blocs_exception", []) if C.d(b["date"]) == j]
+        if propres:
+            L.append("<tr><td>%s</td><td>%s</td><td>%s</td></tr>"
+                     % ("**%s**%s" % (dcourt(j), " ← *aujourd'hui*" if i == 0 else ""),
+                        "<br>".join(gauche) or "—",
+                        "<br>".join("**%s**" % b["titre"] for b in propres)))
+            continue
 
         droite = []
         for e in liste[:3]:
@@ -211,7 +225,7 @@ def admin(data, jour):
     for t in dates:
         reste = (C.d(t["pour"]) - jour).days
         if reste < 0:
-            L.append("- [ ] 🔴 **%s** — *%d jours de retard*" % (t["quoi"], -reste))
+            L.append("- [ ] 🔴 **%s** — *%s de retard*" % (t["quoi"], jours(-reste)))
         else:
             L.append("- [ ] %s %s — *pour le %s*" % (puce(reste), t["quoi"], dcourt(C.d(t["pour"]))))
     return L + rec
