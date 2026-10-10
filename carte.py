@@ -82,6 +82,25 @@ def chantiers(data, jour):
     return sorted(actifs, key=lambda e: -e["score"])
 
 
+def en_souffrance(data, jour):
+    """Evaluations dont la date est passee et qui ne sont toujours pas cochees.
+
+    Sans cette liste, une remise oubliee disparait de la carte le lendemain de
+    son echeance : c'est exactement ce qu'il ne faut pas laisser arriver.
+    """
+    out = []
+    for ev in data["evaluations"]:
+        if ev.get("fait"):
+            continue
+        echeance = d(ev["date"])
+        if echeance >= jour:
+            continue
+        e = dict(ev)
+        e["retard"] = (jour - echeance).days
+        out.append(e)
+    return sorted(out, key=lambda e: (-e["poids"], e["retard"]))
+
+
 def cours_du_jour(data, jour):
     if jour.isoweekday() > 5 or en_semaine_etudes(data, jour):
         return []
@@ -199,6 +218,19 @@ def texte(data, jour):
         L.append("PRIORITÉ DU JOUR")
         L.append("• %s — %s (%d %%), %s" % (data["cours"][p["cours"]]["nom"], p["titre"],
                                             p["poids"], jx(p["reste"])))
+        L.append("")
+
+    souffrance = en_souffrance(data, jour)
+    if souffrance:
+        L.append("À CONFIRMER — REMISES PASSÉES JAMAIS COCHÉES")
+        for e in souffrance:
+            poids = "%d %%" % e["poids"] if e["poids"] else "formatif"
+            L.append("• %s — %s — %s — était dû le %s (%d j)" % (
+                e["titre"], data["cours"][e["cours"]]["nom"], poids,
+                court(d(e["date"])), e["retard"]))
+        total = sum(e["poids"] for e in souffrance)
+        if total:
+            L.append("→ %d %% de la session au statut incertain. À trancher sur LÉA." % total)
         L.append("")
 
     L.append("À FAIRE AUJOURD'HUI")
@@ -324,6 +356,31 @@ def image(data, jour, sortie):
         if p["poids"]:
             dr.text((W - 146, y + 34), "%d %%" % p["poids"], font=f(36, True), fill="#1f2937")
         y += 128
+
+    # remises passées jamais cochées
+    souffrance = en_souffrance(data, jour)
+    if souffrance:
+        total = sum(e["poids"] for e in souffrance)
+        hauteur = 48 + 30 * len(souffrance)
+        dr.rounded_rectangle([40, y, W - 40, y + hauteur], radius=12, fill="#fee2e2",
+                             outline=RED, width=2)
+        titre = "À CONFIRMER — REMISES PASSÉES NON COCHÉES"
+        dr.text((66, y + 14), titre, font=f(17, True), fill="#991b1b")
+        if total:
+            marque = "%d %% INCERTAIN" % total
+            dr.text((W - 66 - dr.textlength(marque, font=f(17, True)), y + 14),
+                    marque, font=f(17, True), fill=RED)
+        yy = y + 44
+        for e in souffrance:
+            co = data["cours"][e["cours"]]
+            poids = ("%d %%" % e["poids"]) if e["poids"] else "—"
+            dr.text((66, yy), tronque(e["titre"], f(18, True), 370), font=f(18, True), fill="#7f1d1d")
+            dr.text((452, yy + 1), tronque(co.get("court", co["nom"]), f(16), 140), font=f(16), fill="#b91c1c")
+            dr.text((606, yy), poids, font=f(18, True), fill=RED)
+            dr.text((672, yy + 1), "dû le %s · %d j" % (court(d(e["date"])), e["retard"]),
+                    font=f(16), fill="#b91c1c")
+            yy += 30
+        y += hauteur + 22
 
     # à faire
     y = section("À FAIRE AUJOURD'HUI", y)

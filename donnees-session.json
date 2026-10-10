@@ -46,30 +46,30 @@
   "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable.",
 
   "blocs_exception": [
-    {"date": "2026-10-12", "debut": "14:00", "fin": "16:00", "titre": "BILAN semaine 7 — reprendre les copies corrigées, lister les erreurs par cours", "focus": ["rattrapage"]},
-    {"date": "2026-10-13", "debut": "09:30", "fin": "12:00", "titre": "GROS BLOC — Littérature : fiche maîtresse des procédés d'écriture", "focus": ["litt"]},
-    {"date": "2026-10-13", "debut": "13:30", "fin": "15:00", "titre": "Éthique — un tableau par penseur : thèse, critère du juste, objection, exemple", "focus": ["philo"]},
+    {"date": "2026-10-12", "debut": "14:00", "fin": "16:00", "titre": "BILAN semaine 7 — reprendre les copies corrigées", "focus": ["rattrapage"]},
+    {"date": "2026-10-13", "debut": "09:30", "fin": "12:00", "titre": "GROS BLOC — Littérature : fiche des procédés d'écriture", "focus": ["litt"]},
+    {"date": "2026-10-13", "debut": "13:30", "fin": "15:00", "titre": "Éthique — un tableau par penseur", "focus": ["philo"]},
     {"date": "2026-10-14", "debut": "09:30", "fin": "12:30", "titre": "GROS BLOC — Programmation : démarrer le TP3 en entier", "focus": ["devlog"]},
-    {"date": "2026-10-14", "debut": "14:00", "fin": "15:30", "titre": "Prog Web — reprendre ce qui a bloqué à l'Évaluation #1", "focus": ["web"]},
-    {"date": "2026-10-15", "debut": "09:30", "fin": "11:30", "titre": "GROS BLOC — Littérature : plan de dissertation chronométré 40 min", "focus": ["litt"]},
+    {"date": "2026-10-14", "debut": "14:00", "fin": "15:30", "titre": "Prog Web — ce qui a bloqué à l'Évaluation #1", "focus": ["web"]},
+    {"date": "2026-10-15", "debut": "09:30", "fin": "11:30", "titre": "GROS BLOC — Littérature : plan chronométré 40 min", "focus": ["litt"]},
     {"date": "2026-10-15", "debut": "13:00", "fin": "14:30", "titre": "Anglais — journal Odyssey + oral à voix haute", "focus": ["anglais"]},
     {"date": "2026-10-16", "debut": "10:00", "fin": "12:00", "titre": "Éthique — lecture annotée de l'extrait de Rawls", "focus": ["philo"]},
     {"date": "2026-10-16", "debut": "13:00", "fin": "14:00", "titre": "RATTRAPAGE + plan de la semaine 8", "focus": ["rattrapage"]}
   ],
-  "_blocs_exception": "Priment sur blocs_travail pour la date donnee. Semaine d'etudes du 12 au 16 octobre : 4 h par jour au maximum, lundi matin libre, samedi et dimanche vides. C'est une semaine de reprise, pas une semaine de rattrapage force.",
+  "_blocs_exception": "Priment sur blocs_travail pour la date donnee. Semaine d'etudes du 12 au 16 octobre : 4 h par jour au maximum, lundi matin libre, samedi et dimanche vides. C'est une semaine de reprise, pas de rattrapage force.",
 
   "evaluations": [
     {"cours": "devlog",  "titre": "TP1",                                  "date": "2026-09-04", "poids": 5,  "type": "tp",     "fait": true},
     {"cours": "devlog",  "titre": "Contrôle 1",                           "date": "2026-09-16", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "devlog",  "titre": "TP2 (ORM)",                            "date": "2026-09-25", "poids": 10, "type": "tp",     "fait": true , "prep_jours": 7},
+    {"cours": "devlog",  "titre": "TP2 (ORM)",                            "date": "2026-09-25", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 7, "a_confirmer": "Date contradictoire : le plan de cours dit « semaine du 21 sept. », mon plan d'action du 30 sept. dit remise le 9 oct. À trancher sur LÉA. 10 % en jeu."},
     {"cours": "devlog",  "titre": "Examen intra",                         "date": "2026-10-07", "poids": 25, "type": "examen", "fait": true , "prep_jours": 14},
     {"cours": "devlog",  "titre": "TP3",                                  "date": "2026-10-23", "poids": 5,  "type": "tp",     "fait": false, "prep_jours": 11},
     {"cours": "devlog",  "titre": "Contrôle 2",                           "date": "2026-11-13", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 5},
     {"cours": "devlog",  "titre": "TP4 (MVVM)",                           "date": "2026-11-20", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 10},
     {"cours": "devlog",  "titre": "Examen final",                         "date": "2026-12-09", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
 
-    {"cours": "web",     "titre": "Remise TP1 — VueJS",                   "date": "2026-09-25", "poids": 4,  "type": "tp",     "fait": true , "prep_jours": 7, "poids_approx": true},
-    {"cours": "web",     "titre": "Remise TP2 — Vue Router",              "date": "2026-10-09", "poids": 4,  "type": "tp",     "fait": true , "prep_jours": 7, "poids_approx": true},
+    {"cours": "web",     "titre": "Remise TP1 — VueJS",                   "date": "2026-09-25", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7, "poids_approx": true, "a_confirmer": "Remise passée jamais cochée. Confirmer sur LÉA que c'est bien déposé."},
+    {"cours": "web",     "titre": "Remise TP2 — Vue Router",              "date": "2026-10-09", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7, "poids_approx": true, "a_confirmer": "Remise passée jamais cochée. Confirmer sur LÉA que le dépôt est bien enregistré."},
     {"cours": "web",     "titre": "Évaluation #1",                        "date": "2026-10-09", "poids": 25, "type": "examen", "fait": true , "prep_jours": 14},
     {"cours": "web",     "titre": "Remise TP3 — WebAPI",                  "date": "2026-11-13", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
     {"cours": "web",     "titre": "Évaluation #2",                        "date": "2026-11-20", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
@@ -79,14 +79,14 @@
 
     {"cours": "litt",    "titre": "Matière vue en classe",           "date": "2026-09-01", "poids": 5,  "type": "test",   "fait": true},
     {"cours": "litt",    "titre": "Test de lecture — La vie devant soi",  "date": "2026-09-08", "poids": 5,  "type": "test",   "fait": true},
-    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": true , "prep_jours": 10},
+    {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 10, "a_confirmer": "Remise passée jamais cochée. Confirmer sur LÉA que c'est bien déposé — 20 % au statut incertain."},
     {"cours": "litt",    "titre": "Test sur les procédés d'écriture",     "date": "2026-10-27", "poids": 10, "type": "test",   "fait": false, "prep_jours": 21},
     {"cours": "litt",    "titre": "Dissertation — intro + conclusion",    "date": "2026-11-03", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 14},
     {"cours": "litt",    "titre": "Dissertation complète (épreuve terminale)", "date": "2026-12-08", "poids": 30, "type": "redaction", "fait": false, "prep_jours": 28},
     {"cours": "litt",    "titre": "Cercles de discussion",                "date": "2026-12-15", "poids": 10, "type": "oral",   "fait": false, "prep_jours": 10},
 
     {"cours": "anglais", "titre": "Midterm Reading & Writing",            "date": "2026-10-01", "poids": 20, "type": "examen", "fait": true , "prep_jours": 12},
-    {"cours": "anglais", "titre": "Midterm Speaking & Listening",         "date": "2026-10-08", "poids": 15, "type": "oral",   "fait": true , "prep_jours": 12, "a_confirmer": "La case semaine 7 dit aussi 'Thursday group: READING WEEK'. Confirmer la date par MIO."},
+    {"cours": "anglais", "titre": "Midterm Speaking & Listening",         "date": "2026-10-08", "poids": 15, "type": "oral",   "fait": true , "prep_jours": 12},
     {"cours": "anglais", "titre": "Odyssey reflection journal",           "date": "2026-11-19", "poids": 5,  "type": "remise", "fait": false, "prep_jours": 60},
     {"cours": "anglais", "titre": "Final Speaking & Listening",           "date": "2026-11-26", "poids": 30, "type": "oral",   "fait": false, "prep_jours": 21, "a_confirmer": "Semaine 13 ou 14 selon le groupe (A ou B). Confirmer."},
     {"cours": "anglais", "titre": "Final Reading & Writing",              "date": "2026-12-10", "poids": 30, "type": "examen", "fait": false, "prep_jours": 21},
@@ -115,6 +115,7 @@
 
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "Trois semaines de retard. À régler avant le retour en classe du 19 octobre."},
+    {"quoi": "LÉA : confirmer les remises passées jamais cochées", "pour": "2026-10-13", "urgent": true, "note": "Dissertation de français 20 %, TP2 ORM 10 %, TP1 VueJS 4 %, TP2 Vue Router 4 %. La carte en tient le compte à jour."},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-10-19", "urgent": true, "note": "Zone d'ombre la plus coûteuse : l'entrevue finale vaut 40 %."},
     {"quoi": "Relever les résultats de la semaine 7 sur LÉA et réajuster les difficultés", "pour": "2026-10-19", "urgent": true, "note": "65 % de la note vient d'être joué : c'est ce qui dit où mettre le temps d'ici décembre."},
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": false},

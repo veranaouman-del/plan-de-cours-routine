@@ -22,6 +22,12 @@ Environ **36 % de ta session est joué**, et la semaine d'études commence lundi
 | Anglais propre au programme | 35 % | 65 % | ●●●○○ |
 | Éthique et politique | 35 % | 65 % | ●●●●○ |
 
+> 🔴 **Et quatre de ces remises ne sont toujours pas cochées.** La dissertation de français
+> (20 %), le TP2 ORM (10 %), le TP1 VueJS (4 %) et le TP2 Vue Router (4 %) sont passés sans
+> jamais être marqués déposés : **38 % de la session au statut incertain**. Tant que ce
+> n'est pas tranché sur LÉA, le tableau ci-dessus est une hypothèse. C'est cinq minutes de
+> vérification, et c'est la chose la plus rentable de toute la semaine d'études.
+
 > ⚠ **Ces chiffres comptent ce qui est passé, pas ce que tu as obtenu.** Dès que les
 > résultats de la semaine 7 sortent sur LÉA, c'est le moment de rouvrir le champ
 > `difficulte` : un cours noté plus bas que prévu mérite un bloc de plus par semaine,
@@ -361,13 +367,14 @@ Tu vas prendre du retard. C'est prévu, ce n'est pas un échec, et il y a de la 
 
 ## 9. À confirmer — les vraies zones d'ombre
 
-Ce plan est bâti sur les plans de cours que tu as fournis. Quatre points ne peuvent pas
+Ce plan est bâti sur les plans de cours que tu as fournis. Cinq points ne peuvent pas
 être tranchés à partir d'eux seuls, et trois sont urgents.
 
 | Urgence | Quoi | Auprès de qui |
 |---|---|---|
 | 🔴 **En retard** | Carton #723 + photo du reçu (échéance semaine 3) | Aleksandra Serebrenik |
 | 🔴 **Cette semaine** | Pondérations et dates d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux* | Cyndelle Gagnon |
+| 🔴 **Tout de suite** | Quatre remises passées jamais cochées — 38 % au statut incertain | LÉA |
 | 🔴 **Avant le 19 oct.** | Résultats de la semaine 7 sur LÉA — intra, Éval. #1, midterms, examen de philo | LÉA |
 | 🟡 Sur LÉA | Dates officielles de remise des TP de Prog. Web et répartition exacte des 20 % | David Lacasse / LÉA |
 
