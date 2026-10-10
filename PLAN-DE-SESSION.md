@@ -11,16 +11,21 @@ Semaine d'études et d'encadrement : **12 au 16 octobre**
 
 ## 1. Où tu en es
 
-Au 18 septembre (semaine 4 sur 15), **4 % de ta session est joué**. Rien n'est perdu,
-rien n'est gagné : tout se décide entre maintenant et le 11 décembre.
+Au 10 octobre, la semaine 7 est derrière toi — **la pire de la session est passée**.
+Environ **36 % de ta session est joué**, et la semaine d'études commence lundi.
 
 | Cours | Déjà évalué | Reste à jouer | Difficulté retenue |
 |---|---|---|---|
-| Développement de logiciels | 10 % | 90 % | ●●○○○ |
-| Programmation Web I | 0 % | 100 % | ●●○○○ |
-| Littérature et imaginaire | 10 % | 90 % | ●●●●○ |
-| Anglais propre au programme | 0 % | 100 % | ●●●○○ |
-| Éthique et politique | 0 % | 100 % | ●●●●○ |
+| Développement de logiciels | 45 % | 55 % | ●●○○○ |
+| Programmation Web I | 33 % | 67 % | ●●○○○ |
+| Littérature et imaginaire | 30 % | 70 % | ●●●●○ |
+| Anglais propre au programme | 35 % | 65 % | ●●●○○ |
+| Éthique et politique | 35 % | 65 % | ●●●●○ |
+
+> ⚠ **Ces chiffres comptent ce qui est passé, pas ce que tu as obtenu.** Dès que les
+> résultats de la semaine 7 sortent sur LÉA, c'est le moment de rouvrir le champ
+> `difficulte` : un cours noté plus bas que prévu mérite un bloc de plus par semaine,
+> un cours bien réussi peut en céder un. C'est le seul réglage qui redistribue le temps.
 
 **Le niveau de difficulté est une hypothèse de départ, pas un verdict.** Je l'ai fixé
 ainsi parce que tu es en Techniques de l'informatique : les deux cours de programmation
@@ -206,6 +211,26 @@ en tranches de 45 minutes) ; les matières difficiles reçoivent plus de temps e
 passages plus fréquents (c'est la répétition espacée qui fait la différence en langue et
 en philo).
 
+
+### Exception : la semaine d'études, 12 au 16 octobre
+
+Pas de cours, donc pas la semaine type. Ces cinq jours ont leur propre horaire, déjà
+chargé dans `donnees-session.json` — la carte du jour l'affichera toute seule.
+
+| Jour | Bloc | Ce que tu fais |
+|---|---|---|
+| **Lundi 12** | 14 h – 16 h | **Bilan de la semaine 7** : reprendre les copies corrigées, lister les erreurs par cours. La matinée est à toi. |
+| **Mardi 13** | 9 h 30 – 12 h<br>13 h 30 – 15 h | Littérature : **fiche maîtresse des procédés d'écriture**<br>Éthique : un tableau par penseur — thèse, critère du juste, objection, exemple |
+| **Mercredi 14** | 9 h 30 – 12 h 30<br>14 h – 15 h 30 | Programmation : **démarrer le TP3 en entier** (remise le 23)<br>Prog. Web : reprendre les trois points qui ont bloqué à l'Évaluation #1 |
+| **Jeudi 15** | 9 h 30 – 11 h 30<br>13 h – 14 h 30 | Littérature : **plan de dissertation chronométré 40 min**<br>Anglais : journal Odyssey + oral à voix haute |
+| **Vendredi 16** | 10 h – 12 h<br>13 h – 14 h | Éthique : lecture annotée de l'extrait de Rawls (dû le 30)<br>**Rattrapage** + plan de la semaine 8 |
+
+**Quatre heures par jour au maximum, lundi matin libre, samedi et dimanche vides.**
+Tu sors de 65 % de poids en quatre jours : une semaine d'études bourrée ne se récupère
+pas, elle se paie en novembre. Les trois choses qui comptent vraiment cette semaine-là :
+le **TP3 démarré**, la **fiche des procédés d'écriture** faite, et le **carton #723**
+enfin réglé.
+
 ---
 
 ## 5. Semaine par semaine : ta priorité numéro un
@@ -216,7 +241,7 @@ en philo).
 | **5** | 21–25 sept. | 🔴 **Dissertation de français, mardi 22** | Test de philo vendredi · finir TP2 + TP1 VueJS |
 | 6 | 28 sept.–2 oct. | 🔴 **Examen de philo, vendredi 2** (25 %) | Midterm écrit d'anglais jeudi 1er · finir TP2 Vue Router |
 | **7** | 5–9 oct. | 🔴 **Trois examens. Aucune matière neuve.** | Uniquement repasser ce qui est déjà su |
-| — | 12–16 oct. | 😮‍💨 Souffler, puis prendre de l'avance sur *Marie-Claire* | Acheter *Marie-Claire* · rattraper ce qui traîne |
+| — | 12–16 oct. | 😮‍💨 **Semaine d'études — [horaire détaillé plus haut](#exception--la-semaine-détudes-12-au-16-octobre)** | TP3 démarré · fiche des procédés · carton #723 |
 | 8 | 19–23 oct. | TP3 Dév. logiciels | Procédés d'écriture : 20 min par jour |
 | 9 | 26–30 oct. | **Test des procédés, mardi 27** + le plan tournant (présence obligatoire) | Lire Rawls pour le 30 |
 | 10 | 2–6 nov. | 🔴 **Dissertation intro + conclusion, mardi 3** | Lire Nussbaum · plan de philo vendredi 6 |
@@ -336,16 +361,18 @@ Tu vas prendre du retard. C'est prévu, ce n'est pas un échec, et il y a de la 
 
 ## 9. À confirmer — les vraies zones d'ombre
 
-Ce plan est bâti sur les plans de cours que tu as fournis. Cinq points ne peuvent pas être
-tranchés à partir d'eux seuls, et deux sont urgents.
+Ce plan est bâti sur les plans de cours que tu as fournis. Quatre points ne peuvent pas
+être tranchés à partir d'eux seuls, et trois sont urgents.
 
 | Urgence | Quoi | Auprès de qui |
 |---|---|---|
 | 🔴 **En retard** | Carton #723 + photo du reçu (échéance semaine 3) | Aleksandra Serebrenik |
 | 🔴 **Cette semaine** | Pondérations et dates d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux* | Cyndelle Gagnon |
-| 🟠 D'ici le 24 sept. | Date réelle du midterm oral d'anglais (8 octobre ?) — la case du plan porte aussi *Thursday group: READING WEEK* | Aleksandra Serebrenik |
-| 🟠 D'ici fin sept. | Pourquoi le mardi 6 octobre saute au calendrier du groupe 00009 | Julie Chamberland |
+| 🔴 **Avant le 19 oct.** | Résultats de la semaine 7 sur LÉA — intra, Éval. #1, midterms, examen de philo | LÉA |
 | 🟡 Sur LÉA | Dates officielles de remise des TP de Prog. Web et répartition exacte des 20 % | David Lacasse / LÉA |
+
+Deux points sont tombés d'eux-mêmes : le midterm oral d'anglais a eu lieu le 8 octobre,
+et le mardi 6 octobre est passé. Ils sortent de la liste.
 
 ---
 

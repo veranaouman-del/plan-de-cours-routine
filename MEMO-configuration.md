@@ -6,7 +6,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 
 | Fichier | Rôle |
 |---|---|
-| `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
+| `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, blocs d'exception, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
@@ -71,13 +71,38 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **`python3` n'est pas la bonne version.** Dans l'environnement Claude, `python3` est
+   un 3.11 sans Pillow ; Pillow est installé pour 3.13. Pour l'image : `python3.13 carte.py`.
+   Le mode `--texte` n'a besoin de rien et marche avec les deux.
+8. **Ne jamais ouvrir le JSON en lecture et en écriture dans la même expression Python** —
+   le mode `"w"` vide le fichier avant que la lecture s'exécute. Lire, fermer, puis écrire.
+
+## Les semaines sans cours : `blocs_exception`
+
+La semaine type (`blocs_travail`) est calée sur les jours de cours. Une semaine sans cours
+— semaine d'études, congé — ne se travaille pas avec cet horaire-là. D'où `blocs_exception` :
+
+```json
+{"date": "2026-10-14", "debut": "09:30", "fin": "12:30",
+ "titre": "GROS BLOC — Programmation : démarrer le TP3", "focus": ["devlog"]}
+```
+
+Dès qu'une date a au moins un bloc d'exception, **ces blocs remplacent entièrement** ceux
+de la semaine type pour cette journée. Le champ `focus` pilote aussi les tâches affichées.
+La semaine d'études du 12 au 16 octobre est déjà chargée.
 
 ## Points à confirmer auprès des profs
 
-- **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
-  en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
-- **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
-  saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
+*Mis à jour le 10 octobre. Le midterm oral d'anglais et la question du mardi 6 octobre
+sont tombés d'eux-mêmes : les deux dates sont passées.*
+
+- **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, trois
+  semaines de retard. À régler avant le retour en classe du 19 octobre.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
-  Confirmer les pondérations avec Cyndelle Gagnon.
-- **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+  Confirmer les pondérations avec Cyndelle Gagnon — c'est la zone d'ombre la plus
+  coûteuse, l'entrevue finale vaut 40 %.
+- **LÉA** : relever les résultats de la semaine 7 (intra 25 %, Éval. #1 Web 25 %, les deux
+  midterms d'anglais, examen de philo 25 %) et **réajuster le champ `difficulte`**.
+  C'est ce réglage qui redistribue les blocs de travail d'ici décembre.
+- **Prog. Web** : dates officielles de remise des TP et répartition exacte des 20 %,
+  à vérifier sur LÉA auprès de David Lacasse.

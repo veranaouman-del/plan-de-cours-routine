@@ -89,6 +89,11 @@ def cours_du_jour(data, jour):
 
 
 def blocs_du_jour(data, jour):
+    """Les blocs d'exception d'une date priment sur la semaine type : une semaine
+    sans cours ne se travaille pas avec l'horaire d'une semaine de cours."""
+    exceptions = [b for b in data.get("blocs_exception", []) if d(b["date"]) == jour]
+    if exceptions:
+        return exceptions
     return [b for b in data["blocs_travail"] if b["jour"] == jour.isoweekday()]
 
 
