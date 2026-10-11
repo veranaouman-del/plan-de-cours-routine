@@ -82,6 +82,17 @@ def chantiers(data, jour):
     return sorted(actifs, key=lambda e: -e["score"])
 
 
+def a_confirmer(data, jour):
+    """Remises passees dont le depot n'est pas confirme sur LEA.
+
+    Un examen passe a eu lieu. Une remise passee, non : elle a pu ne jamais etre
+    deposee. Tant que le drapeau est la, l'avancement affiche est une hypothese.
+    """
+    return sorted((e for e in data["evaluations"]
+                   if e.get("confirmer_lea") and d(e["date"]) < jour),
+                  key=lambda e: (-e["poids"], e["date"]))
+
+
 def cours_du_jour(data, jour):
     if jour.isoweekday() > 5 or en_semaine_etudes(data, jour):
         return []
@@ -89,6 +100,18 @@ def cours_du_jour(data, jour):
 
 
 def blocs_du_jour(data, jour):
+    """Les blocs d'une date precise remplacent la semaine type.
+
+    C'est ce qui permet de planifier une semaine hors gabarit — semaine d'etudes,
+    revisions de fin de session — sans toucher au rythme habituel. A defaut de plan
+    explicite, une journee de semaine d'etudes reste vide : mieux vaut un blanc
+    assume qu'un bloc de cours qui n'existe pas cette semaine-la.
+    """
+    speciaux = [b for b in data.get("blocs_speciaux", []) if b["date"] == jour.isoformat()]
+    if speciaux:
+        return sorted(speciaux, key=lambda b: b["debut"])
+    if en_semaine_etudes(data, jour):
+        return []
     return [b for b in data["blocs_travail"] if b["jour"] == jour.isoweekday()]
 
 
@@ -108,7 +131,13 @@ def taches_du_jour(data, jour, actifs):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+    tete = retards[:2]
+    conf = a_confirmer(data, jour)
+    if conf:
+        tete.append(("CONFIRMER", "LÉA : %d remise%s passée%s jamais confirmée%s — %d %% au statut incertain"
+                                  % (len(conf), "s" if len(conf) > 1 else "", "s" if len(conf) > 1 else "",
+                                     "s" if len(conf) > 1 else "", sum(e["poids"] for e in conf))))
+    taches = tete + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -201,6 +230,15 @@ def texte(data, jour):
         L.append("• [%s] %s" % (tag, t))
     L.append("")
 
+    conf = a_confirmer(data, jour)
+    if conf:
+        L.append("À CONFIRMER SUR LÉA — REMISES PASSÉES AU STATUT INCONNU")
+        for e in conf:
+            L.append("• %s — %s — %d %% — était dû le %s" % (
+                e["titre"], data["cours"][e["cours"]]["nom"], e["poids"], court(d(e["date"]))))
+        L.append("• Tant que ce bloc est là, mon avancement est une hypothèse, pas un fait.")
+        L.append("")
+
     L.append("MES BLOCS DE TRAVAIL")
     bj = blocs_du_jour(data, jour)
     if bj:
@@ -265,9 +303,11 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
             txt = txt[:-2]
-        return txt
+        return txt.rstrip(" ,;(-") + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
@@ -323,12 +363,29 @@ def image(data, jour, sortie):
     # à faire
     y = section("À FAIRE AUJOURD'HUI", y)
     for tag, t in taches_du_jour(data, jour, actifs):
-        couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
+        couleur = RED if tag in ("RETARD", "REMISE", "CONFIRMER") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
         dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
         dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
         dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
         y += 38
+
+    # remises passées non confirmées
+    conf = a_confirmer(data, jour)
+    if conf:
+        y += 14
+        y = section("À CONFIRMER SUR LÉA — STATUT INCONNU", y)
+        for e in conf:
+            co = data["cours"][e["cours"]]
+            dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=RED, width=2)
+            dr.text((80, y), tronque(e["titre"], f(19, True), 372), font=f(19, True), fill=DARK)
+            dr.text((456, y + 1), tronque(co.get("court", co["nom"]), f(17), 150), font=f(17), fill=GREY)
+            dr.text((614, y), "%d %%" % e["poids"], font=f(19, True), fill=RED)
+            dr.text((684, y + 1), "dû %s" % court(d(e["date"])), font=f(17), fill=GREY)
+            y += 36
+        dr.text((44, y + 2), "%d %% de points au statut incertain tant que LÉA ne confirme pas."
+                % sum(e["poids"] for e in conf), font=f(16), fill=RED)
+        y += 30
 
     # échéances
     y += 14
