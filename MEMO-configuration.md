@@ -18,6 +18,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « 🎓 Ma session — Automne 2026 » : **3df73824e620811e9e6cd07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
