@@ -89,7 +89,12 @@ def cours_du_jour(data, jour):
 
 
 def blocs_du_jour(data, jour):
-    return [b for b in data["blocs_travail"] if b["jour"] == jour.isoweekday()]
+    """Pendant la semaine d'etudes, les blocs habituels ne tiennent plus : on lit
+    blocs_semaine_etudes si le JSON en fournit."""
+    source = data["blocs_travail"]
+    if en_semaine_etudes(data, jour) and data.get("blocs_semaine_etudes"):
+        source = data["blocs_semaine_etudes"]
+    return [b for b in source if b["jour"] == jour.isoweekday()]
 
 
 def taches_du_jour(data, jour, actifs):
@@ -120,6 +125,11 @@ def taches_du_jour(data, jour, actifs):
         focus.update(b["focus"])
     if not focus:
         focus = {"rattrapage"}
+
+    # Journee de repos assumee : on garde l'admin et les lectures, on n'ouvre
+    # aucun chantier. C'est le seul cas ou la carte dit explicitement "rien".
+    if focus == {"repos"}:
+        return taches[:4] or [("REPOS", "Rien a faire aujourd'hui. C'est voulu.")]
 
     prioritaires = [e for e in actifs if e["cours"] in focus]
     autres = [e for e in actifs if e["cours"] not in focus]

@@ -45,6 +45,18 @@
   ],
   "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable.",
 
+  "blocs_semaine_etudes": [
+    {"jour": 1, "debut": "10:00", "fin": "11:00", "titre": "Action de grâce — congé. Au plus 1 h : classer les notes des 3 examens", "focus": ["repos"]},
+    {"jour": 2, "debut": "09:30", "fin": "12:00", "titre": "ÉTHIQUE — bâtir les fiches penseurs : thèse, critère du juste, objection, exemple", "focus": ["philo"]},
+    {"jour": 2, "debut": "13:30", "fin": "14:30", "titre": "ÉTHIQUE — lire l'extrait de Rawls, « Théorie de la justice » (pour le 30 oct.)", "focus": ["philo"]},
+    {"jour": 3, "debut": "09:30", "fin": "12:00", "titre": "DÉV. LOGICIELS — attaquer le TP3 maintenant (remise le 23 oct.)", "focus": ["devlog"]},
+    {"jour": 3, "debut": "13:30", "fin": "15:00", "titre": "PROG WEB — post-mortem de l'Éval #1 : 3 lignes sur ce qui a bloqué", "focus": ["web"]},
+    {"jour": 4, "debut": "09:30", "fin": "11:00", "titre": "ANGLAIS — journal Odyssey à jour (5 % offerts) + 30 min d'oral à voix haute", "focus": ["anglais"]},
+    {"jour": 4, "debut": "13:00", "fin": "14:30", "titre": "LITTÉRATURE — relire la dissertation corrigée et lister mes 5 fautes récurrentes", "focus": ["litt"]},
+    {"jour": 5, "debut": "09:30", "fin": "12:00", "titre": "LITTÉRATURE — fiches des procédés d'écriture + 1 plan chronométré de 40 min", "focus": ["litt"]}
+  ],
+  "_blocs_semaine_etudes": "Semaine du 12 au 16 octobre, aucun cours. Plan deja publie sur Slack le 11 octobre, dans Notion et dans le visuel Canva : lundi ferie (Action de grace), 3 h 30 mardi, 4 h mercredi, 3 h jeudi, 2 h 30 vendredi, week-end vide. Volontairement moins que les 17 h 30 d'une semaine normale : elle suit la pire semaine de la session.",
+
   "evaluations": [
     {"cours": "devlog",  "titre": "TP1",                                  "date": "2026-09-04", "poids": 5,  "type": "tp",     "fait": true},
     {"cours": "devlog",  "titre": "Contrôle 1",                           "date": "2026-09-16", "poids": 5,  "type": "test",   "fait": true},
@@ -106,6 +118,7 @@
     {"quoi": "Français : demander à Julie Chamberland pourquoi le mardi 6 octobre saute au calendrier", "pour": "2026-09-29", "urgent": false},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": false},
+    {"quoi": "LÉA : confirmer 4 remises passées jamais cochées (dissertation 20 %, TP2 ORM 10 %, TP1 VueJS 4 %, TP2 Vue Router 4 %) — 38 % de la session au statut incertain", "pour": "2026-10-13", "urgent": true, "note": "Signale chaque jour depuis le 8 octobre. Si une remise n'est pas déposée : MIO au prof le jour même."},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
   ]
 }
