@@ -112,7 +112,7 @@ def taches_du_jour(data, jour, actifs):
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
-        if 0 <= reste <= 6:
+        if 0 <= reste <= l.get("fenetre", 6):
             taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))
 
     focus = set()
@@ -265,9 +265,21 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
+            txt = txt[:-1]
+        return txt + "…"
+
+    def ajuster(txt, largeur, tailles, gras=False):
+        """Rend (texte, police) : la plus grande taille de la liste qui tient
+        sur la largeur. En dernier recours seulement, on coupe."""
+        for sz in tailles:
+            police = f(sz, gras)
+            if dr.textlength(txt, font=police) <= largeur:
+                return txt, police
+        police = f(tailles[-1], gras)
+        return tronque(txt, police, largeur), police
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
@@ -314,7 +326,8 @@ def image(data, jour, sortie):
         dr.rounded_rectangle([40, y, W - 40, y + 102], radius=12, fill=ORANGE)
         dr.text((66, y + 14), "PRIORITÉ DU JOUR", font=f(18, True), fill="#7c3d07")
         libelle = "%s — %s" % (p["titre"], jx(p["reste"]))
-        dr.text((66, y + 44), tronque(libelle, f(22, True), 640), font=f(22, True), fill="#1f2937")
+        txt, police = ajuster(libelle, 640, (22, 21, 20, 19, 18), gras=True)
+        dr.text((66, y + 45), txt, font=police, fill="#1f2937")
         dr.text((66, y + 74), tronque(data["cours"][p["cours"]]["nom"], f(17), 640), font=f(17), fill="#7c3d07")
         if p["poids"]:
             dr.text((W - 146, y + 34), "%d %%" % p["poids"], font=f(36, True), fill="#1f2937")
@@ -327,7 +340,8 @@ def image(data, jour, sortie):
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
         dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
         dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        txt, police = ajuster(t, W - 250, (19, 18, 17, 16, 15))
+        dr.text((202, y + 2), txt, font=police, fill=DARK)
         y += 38
 
     # échéances
@@ -337,7 +351,8 @@ def image(data, jour, sortie):
         co = data["cours"][e["cours"]]
         pastille = RED if e["reste"] <= 4 else (ORANGE if e["reste"] <= 12 else "#3b82f6")
         dr.ellipse([44, y + 6, 60, y + 22], fill=pastille)
-        dr.text((76, y), tronque(e["titre"], f(19, True), 372), font=f(19, True), fill=DARK)
+        txt, police = ajuster(e["titre"], 372, (19, 18, 17, 16), gras=True)
+        dr.text((76, y + 1), txt, font=police, fill=DARK)
         dr.text((456, y + 1), tronque(co.get("court", co["nom"]), f(17), 150), font=f(17), fill=GREY)
         dr.text((614, y), ("%d %%" % e["poids"]) if e["poids"] else "—", font=f(19, True), fill=pastille)
         dr.text((684, y + 1), "%s · %s" % (court(d(e["date"])), jx(e["reste"])), font=f(17), fill=GREY)

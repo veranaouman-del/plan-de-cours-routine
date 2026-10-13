@@ -11,16 +11,28 @@ Semaine d'études et d'encadrement : **12 au 16 octobre**
 
 ## 1. Où tu en es
 
-Au 18 septembre (semaine 4 sur 15), **4 % de ta session est joué**. Rien n'est perdu,
-rien n'est gagné : tout se décide entre maintenant et le 11 décembre.
+Au 13 octobre, pendant la semaine d'études, **un tiers de ta session est joué**. Les trois
+semaines rouges de l'automne (5, 6 et 7) sont derrière toi. Il reste deux mois, et la plus
+grosse — la semaine 15 — est encore loin devant.
 
 | Cours | Déjà évalué | Reste à jouer | Difficulté retenue |
 |---|---|---|---|
-| Développement de logiciels | 10 % | 90 % | ●●○○○ |
-| Programmation Web I | 0 % | 100 % | ●●○○○ |
-| Littérature et imaginaire | 10 % | 90 % | ●●●●○ |
-| Anglais propre au programme | 0 % | 100 % | ●●●○○ |
-| Éthique et politique | 0 % | 100 % | ●●●●○ |
+| Développement de logiciels | 45 % | 55 % | ●●○○○ |
+| Éthique et politique | 35 % | 65 % | ●●●●○ |
+| Programmation Web I | 33 % | 67 % | ●●○○○ |
+| Littérature et imaginaire | 30 % | 70 % | ●●●●○ |
+| Anglais propre au programme | 20 % | 80 % | ●●●○○ |
+
+> ⚠️ **Ces pourcentages sont des hypothèses sur deux points.**
+> **Un :** trois remises (TP2 ORM 10 %, TP1 VueJS 4 %, TP2 Vue Router 4 %) sont passées
+> sans que leur dépôt soit confirmé sur LÉA. Soit 18 % de points au statut inconnu.
+> **Deux :** le midterm oral d'anglais (15 %) était noté au 8 octobre, mais la case
+> « semaine 7 » du plan portait aussi *Thursday group: READING WEEK*. Il est reporté ici
+> au **jeudi 22 octobre** par prudence. Un MIO à Serebrenik tranche.
+>
+> **La difficulté est toujours l'hypothèse de départ du 18 septembre.** Sept évaluations
+> sont tombées depuis : relève tes notes sur LÉA et corrige le champ `difficulte` dans
+> `donnees-session.json`. C'est lui qui décide de la répartition de ton temps.
 
 **Le niveau de difficulté est une hypothèse de départ, pas un verdict.** Je l'ai fixé
 ainsi parce que tu es en Techniques de l'informatique : les deux cours de programmation
@@ -341,10 +353,11 @@ tranchés à partir d'eux seuls, et deux sont urgents.
 
 | Urgence | Quoi | Auprès de qui |
 |---|---|---|
-| 🔴 **En retard** | Carton #723 + photo du reçu (échéance semaine 3) | Aleksandra Serebrenik |
-| 🔴 **Cette semaine** | Pondérations et dates d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux* | Cyndelle Gagnon |
-| 🟠 D'ici le 24 sept. | Date réelle du midterm oral d'anglais (8 octobre ?) — la case du plan porte aussi *Thursday group: READING WEEK* | Aleksandra Serebrenik |
-| 🟠 D'ici fin sept. | Pourquoi le mardi 6 octobre saute au calendrier du groupe 00009 | Julie Chamberland |
+| 🔴 **En retard de 25 jours** | Carton #723 + photo du reçu (échéance semaine 3) | Aleksandra Serebrenik |
+| 🔴 **15 % en jeu** | Le midterm oral a-t-il eu lieu le 8 octobre, ou tombe-t-il le 22 ? | Aleksandra Serebrenik |
+| 🔴 **18 % en jeu** | Les trois remises passées sont-elles bien déposées ? | LÉA |
+| 🔴 **Avant le 13 nov.** | Pondérations et dates d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux* | Cyndelle Gagnon |
+| 🟠 Cette semaine | Mes notes de mi-session, pour réajuster le champ `difficulte` | LÉA |
 | 🟡 Sur LÉA | Dates officielles de remise des TP de Prog. Web et répartition exacte des 20 % | David Lacasse / LÉA |
 
 ---
@@ -356,6 +369,10 @@ python3 carte.py                      # la carte du jour → ma_journee.png
 python3 carte.py --texte              # la même chose en texte, pour Slack
 python3 carte.py 2026-10-07           # n'importe quelle date, pour voir venir
 python3 carte.py --texte 2026-12-08
+
+python3 notion.py                     # la page Notion complète, à coller dans replace_content
+python3 notion.py --sortie page.md    # ou dans un fichier
+python3 notion.py 2026-12-07          # la page telle qu'elle sera ce jour-là
 ```
 
 La carte se lit en quinze secondes et répond aux cinq questions, dans cet ordre :

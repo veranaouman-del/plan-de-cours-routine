@@ -8,10 +8,13 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète à partir du même JSON. `python3 notion.py` (sortie standard), `--sortie page.md`, + une date en argument. Le texte produit se colle tel quel dans `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
 
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
+  (https://app.notion.com/p/3df73824e620811e9e6cd07440cb6ec7)
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
@@ -45,6 +48,8 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
+> 2b. `python3 notion.py` et colle le résultat dans `replace_content` de la page Notion
+>    3df73824-e620-811e-9e6c-d07440cb6ec7.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
@@ -71,6 +76,17 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Un script écrit en session et non commité est perdu.** `notion.py` a été écrit lors
+   d'une session de la fin septembre, utilisé pour fabriquer la page Notion, puis effacé
+   avec le conteneur. Il a fallu le réécrire le 13 octobre à partir de la page Notion
+   elle-même. **Tout ce qui sert plus d'une fois se commite le jour même.**
+8. **`python3` n'est pas toujours la même version que `pip`.** Dans le conteneur du
+   13 octobre, `pip` installait pour Python 3.13 alors que `python3` était en 3.11, et
+   `carte.py` échouait sur `ModuleNotFoundError: PIL`. La commande sûre :
+   `/usr/local/bin/python3 -m pip install --break-system-packages pillow`.
+9. **`fait: true` veut dire « l'évaluation a eu lieu », pas « j'ai eu une note ».**
+   Pour une remise dont le dépôt n'est pas confirmé sur LÉA, ajouter `"a_verifier_lea": true` :
+   elle sort des échéances à venir mais reste affichée en rouge tant qu'elle n'est pas vérifiée.
 
 ## Points à confirmer auprès des profs
 
