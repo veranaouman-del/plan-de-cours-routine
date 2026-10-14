@@ -176,6 +176,19 @@ def page(data, jour):
     for b in carte.blocs_du_jour(data, jour):
         L.append("- 🎯 **%s – %s** · %s"
                  % (b["debut"].replace(":", " h "), b["fin"].replace(":", " h "), b["titre"]))
+    # Pendant la semaine d'etudes, le temps libre est une ressource qui expire :
+    # le dire noir sur blanc, sinon la semaine passe et les courriels ne sont pas faits.
+    if carte.en_semaine_etudes(data, jour):
+        fin = carte.d(data["session"]["semaine_etudes"][1])
+        reste = (fin - jour).days
+        if reste > 0:
+            L.append("<callout icon=\"⏳\" color=\"orange_bg\">")
+            L.append("\t**Il reste %d jour%s de semaine d'études.** Les gros blocs retombent à "
+                     "1 h 30 – 3 h dès le retour en classe : ce qui n'est pas réglé avant le "
+                     "%s %d %s attendra une vraie semaine de cours."
+                     % (reste, "s" if reste > 1 else "",
+                        carte.JOURS[fin.weekday()], fin.day, carte.MOIS[fin.month - 1]))
+            L.append("</callout>")
     if actifs:
         p = actifs[0]
         L.append("> 🔥 **Priorité du jour :** %s — %s (%s), %s. Étape : **%s**."

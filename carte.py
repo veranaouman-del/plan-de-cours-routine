@@ -196,6 +196,16 @@ def texte(data, jour):
                                             p["poids"], jx(p["reste"])))
         L.append("")
 
+    douteuses = a_verifier_lea(data)
+    if douteuses:
+        total = sum(e["poids"] for e in douteuses)
+        L.append("À VÉRIFIER SUR LÉA — %d %% DE POINTS AU STATUT INCERTAIN" % total)
+        for e in douteuses:
+            L.append("• %s — %s — %d %% — était dû le %s" % (
+                e["titre"], data["cours"][e["cours"]]["nom"], e["poids"], court(d(e["date"]))))
+        L.append("• Tant que ce n'est pas vérifié, mon avancement est une hypothèse.")
+        L.append("")
+
     L.append("À FAIRE AUJOURD'HUI")
     for tag, t in taches_du_jour(data, jour, actifs):
         L.append("• [%s] %s" % (tag, t))
@@ -222,6 +232,12 @@ def texte(data, jour):
     for _, (nom, pct) in avancement(data, jour).items():
         L.append("• %s : %d %%" % (nom, pct))
     return "\n".join(L)
+
+
+def a_verifier_lea(data):
+    """Remises passées dont le dépôt n'est pas confirmé sur LÉA : des points au statut
+    incertain, donc la première chose à régler, pas la dernière."""
+    return [e for e in data["evaluations"] if e.get("a_verifier_lea")]
 
 
 def chantiers_tous(data, jour):

@@ -55,8 +55,14 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
-Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
-d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+> 2c. Mettre le visuel Canva DAHVgw0Y3QU à la journée du jour : `read-design` avec
+>    `open_transaction`, puis `replace_text` sur les quatre blocs — la date et le bloc,
+>    les 4 puces d'« À FAIRE AUJOURD'HUI », la liste de la semaine (déplacer le ▸),
+>    et la ligne « ÉCHÉANCES » avec ses compteurs J-x.
+
+Le visuel Canva **se met bien à jour tous les jours** : c'est la pièce qu'on regarde le matin.
+Ce qui ne se refait pas tous les jours, c'est son *export* — les liens expirent en quelques
+heures, alors que le texte Slack et la page Notion restent lisibles pour toujours.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
@@ -87,6 +93,21 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 9. **`fait: true` veut dire « l'évaluation a eu lieu », pas « j'ai eu une note ».**
    Pour une remise dont le dépôt n'est pas confirmé sur LÉA, ajouter `"a_verifier_lea": true` :
    elle sort des échéances à venir mais reste affichée en rouge tant qu'elle n'est pas vérifiée.
+
+10. **Les blocs de texte Canva ne se redimensionnent pas tout seuls.** Une puce qui passe
+    sur deux lignes pousse le bloc vers le bas et chevauche la section suivante. Les limites
+    du gabarit : **~50 caractères** par puce d'« À FAIRE », **~50** par ligne de la date,
+    **~80** par ligne de la liste de la semaine. Après chaque `replace_text`, vérifier que
+    la `height` du bloc est revenue à sa valeur d'origine (172,8 / 54,7 / 122,25) avant de
+    `commit` — si elle a grandi, le texte est trop long.
+11. **La branche `main` du dépôt ne bouge plus depuis le 18 septembre.** Chaque exécution
+    de la routine crée une branche `claude/epic-newton-xxxxxx` et ne la fusionne jamais :
+    31 branches au 14 octobre. La session du jour repart donc de `main`, c'est-à-dire d'un
+    dépôt vieux de trois semaines — c'est exactement pourquoi `notion.py` a dû être réécrit
+    cinq fois. **Premier geste de chaque session : `git fetch origin`, repérer la branche
+    qui porte le commit le plus récent, et `git merge --ff-only` dessus** avant de toucher
+    à quoi que ce soit. Le vrai correctif serait de fusionner dans `main` une fois pour
+    toutes — à faire quand j'ai cinq minutes.
 
 ## Points à confirmer auprès des profs
 
