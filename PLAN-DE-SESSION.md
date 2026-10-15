@@ -11,6 +11,15 @@ Semaine d'études et d'encadrement : **12 au 16 octobre**
 
 ## 1. Où tu en es
 
+> **Mise à jour du 15 octobre (semaine d'études).** Les chiffres de cette section datent
+> du 18 septembre et sont conservés comme point de départ. Pour l'état réel d'aujourd'hui,
+> lire la page Notion ou lancer `python3 carte.py --texte` : les deux sortent de
+> `donnees-session.json`, ce document non.
+>
+> Trois choses ont bougé depuis : le **midterm oral d'anglais est passé au 22 octobre**,
+> **18 % de points sont au statut incertain** (trois remises dont le dépôt n'est pas
+> confirmé sur LÉA), et **33 % de la session est joué** en moyenne.
+
 Au 18 septembre (semaine 4 sur 15), **4 % de ta session est joué**. Rien n'est perdu,
 rien n'est gagné : tout se décide entre maintenant et le 11 décembre.
 
@@ -101,7 +110,7 @@ Jeudi 8 h 55 – 11 h 35 — **groupe du jeudi**
 | Quand | Quoi | Poids |
 |---|---|---|
 | **jeudi 1er octobre** | **Midterm Reading & Writing** (12 writing + 3 revision + 5 reading) | **20 %** |
-| jeudi 8 octobre (?) | Midterm Speaking & Listening | 15 % |
+| **jeudi 22 octobre** | Midterm Speaking & Listening — *reporté après la semaine d'études* | 15 % |
 | jeudi 19 novembre | Odyssey reflection journal | 5 % |
 | **jeu. 26 nov. ou 3 déc.** | **Final Speaking & Listening** | **30 %** |
 | **jeudi 10 décembre** | **Final Reading & Writing** | **30 %** |
@@ -217,7 +226,7 @@ en philo).
 | 6 | 28 sept.–2 oct. | 🔴 **Examen de philo, vendredi 2** (25 %) | Midterm écrit d'anglais jeudi 1er · finir TP2 Vue Router |
 | **7** | 5–9 oct. | 🔴 **Trois examens. Aucune matière neuve.** | Uniquement repasser ce qui est déjà su |
 | — | 12–16 oct. | 😮‍💨 Souffler, puis prendre de l'avance sur *Marie-Claire* | Acheter *Marie-Claire* · rattraper ce qui traîne |
-| 8 | 19–23 oct. | TP3 Dév. logiciels | Procédés d'écriture : 20 min par jour |
+| **8** | 19–23 oct. | 🔴 **Midterm oral d'anglais jeudi 22** + TP3 Dév. logiciels vendredi 23 | L'oral se prépare à voix haute · procédés d'écriture : 20 min par jour |
 | 9 | 26–30 oct. | **Test des procédés, mardi 27** + le plan tournant (présence obligatoire) | Lire Rawls pour le 30 |
 | 10 | 2–6 nov. | 🔴 **Dissertation intro + conclusion, mardi 3** | Lire Nussbaum · plan de philo vendredi 6 |
 | **11** | 9–13 nov. | 🔴 **Dissertation de philo, vendredi 13** (900 mots) | Contrôle 2 · remise TP3 WebAPI |
@@ -343,8 +352,8 @@ tranchés à partir d'eux seuls, et deux sont urgents.
 |---|---|---|
 | 🔴 **En retard** | Carton #723 + photo du reçu (échéance semaine 3) | Aleksandra Serebrenik |
 | 🔴 **Cette semaine** | Pondérations et dates d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux* | Cyndelle Gagnon |
-| 🟠 D'ici le 24 sept. | Date réelle du midterm oral d'anglais (8 octobre ?) — la case du plan porte aussi *Thursday group: READING WEEK* | Aleksandra Serebrenik |
-| 🟠 D'ici fin sept. | Pourquoi le mardi 6 octobre saute au calendrier du groupe 00009 | Julie Chamberland |
+| 🟠 D'ici le 16 oct. | Confirmer que le midterm oral d'anglais tombe bien le **jeudi 22 octobre** | Aleksandra Serebrenik |
+| 🔴 D'ici le 16 oct. | Les **trois remises non confirmées sur LÉA** — 18 % de points au statut incertain | Antoine Grenier / David Lacasse |
 | 🟡 Sur LÉA | Dates officielles de remise des TP de Prog. Web et répartition exacte des 20 % | David Lacasse / LÉA |
 
 ---

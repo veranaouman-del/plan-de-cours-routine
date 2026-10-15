@@ -8,10 +8,12 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
-| `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+| `notion.py` | Génère la page Notion complète à partir du même JSON. `python3 notion.py` (aujourd'hui), `--section apercu` (juste le haut), + une date en argument. Le script **imprime** le Markdown : c'est le connecteur Notion qui le colle, pas le shell. |
+| `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. Écrit le 18 septembre, pas régénéré : les chiffres vivants sont dans le JSON. |
 
 ## Identifiants à conserver
 
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Design Canva du tableau de bord : **DAHVgw0Y3QU**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
@@ -47,8 +49,11 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit.
+> 4. Lance `python3 notion.py`, colle la sortie dans la page Notion
+>    (`replace_content` sur 3df73824-e620-811e-9e6c-d07440cb6ec7).
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+>    `donnees-session.json` et **pousse le commit** — sinon le travail du jour meurt
+>    avec le conteneur.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,13 +76,30 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Ce qui n'est pas commité est perdu.** Le 15 octobre, le dépôt était resté au
+   18 septembre pendant que Notion et Canva avançaient tout seuls : `notion.py` avait
+   disparu et le JSON ignorait encore que l'oral d'anglais était passé au 22 octobre.
+   Chaque exécution termine par un commit poussé, même si elle n'a changé qu'une date.
+8. **Une remise passée n'est pas une remise acquise.** Le champ `a_verifier_lea` marque
+   celles dont le dépôt n'est pas confirmé : elles comptent dans l'avancement, mais à
+   part, parce qu'un zéro silencieux ressemble exactement à une bonne note.
+9. **L'administratif ne doit pas manger la carte.** Au-delà de deux tâches admin,
+   `carte.py` résume le reste en une ligne — sinon cinq courriels chassent les révisions.
 
 ## Points à confirmer auprès des profs
 
 - **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
   en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
-- **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
-  saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
+- **Anglais** : le midterm oral est passé au **22 octobre** (J-7 au 15 octobre). À faire
+  confirmer par MIO : c'est 15 % et la date n'a jamais été écrite noir sur blanc.
+- **LÉA** : trois remises passées au dépôt non confirmé — TP2 ORM (10 %), TP1 VueJS (4 %),
+  TP2 Vue Router (4 %). **18 % de points au statut incertain** tant que ce n'est pas vérifié.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
-- **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+- **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée
+  depuis 27 jours au 15 octobre.
+- **Prog. Web** : relever sur LÉA les dates officielles des TP3 à TP5 et la répartition
+  exacte des 20 % — les 4 % par TP sont une estimation, pas une pondération confirmée.
+- **Mi-session** : relever les notes sur LÉA et réajuster le champ `difficulte` des cinq
+  cours. C'est lui qui décide de la répartition des blocs ; il est encore à sa valeur
+  d'hypothèse du 18 septembre.

@@ -99,7 +99,7 @@ def taches_du_jour(data, jour, actifs):
 
     # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
     # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
-    retards = []
+    retards, admin = [], []
     for t in data["taches_admin"]:
         if t["pour"] == "recurrent":
             continue
@@ -107,7 +107,17 @@ def taches_du_jour(data, jour, actifs):
         if echeance < jour and t.get("urgent"):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
-            taches.append(("ADMIN", t["quoi"]))
+            admin.append((echeance, t))
+
+    # L'administratif ne doit jamais manger la journée. Au-delà de deux, le reste
+    # se résume en une ligne : la liste complète vit dans donnees-session.json.
+    admin.sort(key=lambda p: (p[0], not p[1].get("urgent")))
+    for _, t in admin[:2]:
+        taches.append(("ADMIN", t["quoi"]))
+    if len(admin) > 2:
+        reste = admin[2:]
+        taches.append(("ADMIN", "+ %d autres vérifications et courriels à régler avant le %s"
+                       % (len(reste), court(max(e for e, _ in reste)))))
     taches = retards[:2] + taches
 
     for l in data["lectures"]:
@@ -156,13 +166,25 @@ def court(j):
 
 
 def avancement(data, jour):
-    """Part de la note déjà jouée, par cours."""
+    """Part de la note déjà jouée, par cours — et la part dont le dépôt n'est pas confirmé.
+
+    Une remise passée mais non confirmée sur LÉA compte dans le total joué : les points
+    sont bel et bien engagés. Mais on la garde à part, parce qu'un zéro silencieux
+    ressemble exactement à une bonne note tant qu'on n'a pas vérifié."""
     out = {}
     for cle, c in data["cours"].items():
-        fait = sum(e["poids"] for e in data["evaluations"]
-                   if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour))
-        out[cle] = (c["nom"], fait)
+        jouees = [e for e in data["evaluations"]
+                  if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour)]
+        fait = sum(e["poids"] for e in jouees)
+        incertain = sum(e["poids"] for e in jouees if e.get("a_verifier_lea"))
+        out[cle] = (c["nom"], fait, incertain)
     return out
+
+
+def a_verifier(data, jour):
+    """Remises passées dont le dépôt n'est toujours pas confirmé sur LÉA."""
+    return [e for e in data["evaluations"]
+            if e.get("a_verifier_lea") and not e.get("fait") and d(e["date"]) < jour]
 
 
 # --------------------------------------------------------------------------
@@ -218,9 +240,20 @@ def texte(data, jour):
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
 
+    douteuses = a_verifier(data, jour)
+    if douteuses:
+        L.append("À CONFIRMER SUR LÉA — DÉPÔT NON VÉRIFIÉ")
+        for e in douteuses:
+            L.append("• %s — %s — %d %% — était dû le %s" % (
+                e["titre"], data["cours"][e["cours"]]["nom"], e["poids"], court(d(e["date"]))))
+        L.append("• Tant que ce n'est pas vérifié, %d %% de mes points sont une hypothèse."
+                 % sum(e["poids"] for e in douteuses))
+        L.append("")
+
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
-    for _, (nom, pct) in avancement(data, jour).items():
-        L.append("• %s : %d %%" % (nom, pct))
+    for _, (nom, pct, incertain) in avancement(data, jour).items():
+        note = "  (dont %d %% à confirmer)" % incertain if incertain else ""
+        L.append("• %s : %d %%%s" % (nom, pct, note))
     return "\n".join(L)
 
 
@@ -265,9 +298,15 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
             txt = txt[:-2]
-        return txt
+        # remonter au dernier espace : « 18 % de points au st… » se lit mal
+        coupe = txt.rstrip().rfind(" ")
+        if coupe > len(txt) * 0.6:
+            txt = txt[:coupe]
+        return txt.rstrip(" ,;—-") + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
@@ -362,14 +401,24 @@ def image(data, jour, sortie):
     y += 8
     bas = y + 196
     dr.rectangle([0, y, W, bas], fill="#1f2937")
-    dr.text((40, y + 18), "MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE", font=f(16, True), fill="#9ca3af")
+    douteuses = a_verifier(data, jour)
+    titre = "MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE"
+    if douteuses:
+        titre += "   ·   %d %% NON CONFIRMÉ (GRIS)" % sum(e["poids"] for e in douteuses)
+    dr.text((40, y + 18), tronque(titre, f(16, True), W - 80), font=f(16, True), fill="#9ca3af")
     yy = y + 50
-    for cle, (nom, pct) in avancement(data, jour).items():
+    for cle, (nom, pct, incertain) in avancement(data, jour).items():
         dr.text((40, yy), tronque(nom, f(16), 250), font=f(16), fill=WHITE)
         dr.rounded_rectangle([300, yy + 3, 300 + 480, yy + 17], radius=7, fill="#374151")
         if pct:
             dr.rounded_rectangle([300, yy + 3, 300 + int(480 * pct / 100), yy + 17], radius=7,
                                  fill=data["cours"][cle]["couleur"])
+        if incertain:
+            # le bout de barre non confirme reste visible, en gris : des points engages,
+            # mais pas encore acquis
+            x1 = 300 + int(480 * pct / 100)
+            dr.rounded_rectangle([x1 - int(480 * incertain / 100), yy + 3, x1, yy + 17],
+                                 radius=7, fill="#9ca3af")
         dr.text((W - 80, yy), "%d %%" % pct, font=f(16, True), fill=WHITE)
         yy += 28
 
