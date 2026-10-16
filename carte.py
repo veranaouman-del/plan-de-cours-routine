@@ -92,13 +92,12 @@ def blocs_du_jour(data, jour):
     return [b for b in data["blocs_travail"] if b["jour"] == jour.isoweekday()]
 
 
-def taches_du_jour(data, jour, actifs):
-    """Construit la liste de tâches : admin urgent, lectures qui arrivent, puis
-    les chantiers qui correspondent aux blocs de travail de la journée."""
-    taches = []
+def admin_du_jour(data, jour):
+    """Partage les tâches admin : (retards urgents, tâches dues d'ici trois jours).
 
-    # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
-    # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
+    Les deux listes sont triées par urgence : c'est ce tri qui décide lesquelles
+    tiennent dans la carte et lesquelles tombent dans la section de détail.
+    """
     retards, admin = [], []
     for t in data["taches_admin"]:
         if t["pour"] == "recurrent":
@@ -108,10 +107,21 @@ def taches_du_jour(data, jour, actifs):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
             admin.append((echeance, t))
+    admin.sort(key=lambda p: (p[0], not p[1].get("urgent")))
+    return retards, admin
+
+
+def taches_du_jour(data, jour, actifs):
+    """Construit la liste de tâches : admin urgent, lectures qui arrivent, puis
+    les chantiers qui correspondent aux blocs de travail de la journée."""
+    taches = []
+
+    # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
+    # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
+    retards, admin = admin_du_jour(data, jour)
 
     # L'administratif ne doit jamais manger la journée. Au-delà de deux, le reste
-    # se résume en une ligne : la liste complète vit dans donnees-session.json.
-    admin.sort(key=lambda p: (p[0], not p[1].get("urgent")))
+    # se résume en une ligne — et la liste complète part dans sa propre section.
     for _, t in admin[:2]:
         taches.append(("ADMIN", t["quoi"]))
     if len(admin) > 2:
@@ -239,6 +249,13 @@ def texte(data, jour):
         L.append("• %s — %s — %s — %s, %s" % (e["titre"], data["cours"][e["cours"]]["nom"],
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
+
+    _, admin = admin_du_jour(data, jour)
+    if len(admin) > 2:
+        L.append("LE RESTE DE L'ADMINISTRATIF — RÉSUMÉ EN UNE LIGNE PLUS HAUT")
+        for echeance, t in admin[2:]:
+            L.append("• %s  (pour le %s)" % (t["quoi"], court(echeance)))
+        L.append("")
 
     douteuses = a_verifier(data, jour)
     if douteuses:

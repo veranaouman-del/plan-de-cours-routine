@@ -80,6 +80,22 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre pendant que Notion et Canva avançaient tout seuls : `notion.py` avait
    disparu et le JSON ignorait encore que l'oral d'anglais était passé au 22 octobre.
    Chaque exécution termine par un commit poussé, même si elle n'a changé qu'une date.
+10. **Commiter ne suffit pas : il faut fusionner dans `main`.** Constaté le 16 octobre.
+   Chaque exécution de la routine reçoit une branche neuve (`claude/epic-newton-xxxxxx`)
+   repartie de `main`, y pousse un commit unique, et personne ne fusionne. Résultat :
+   une trentaine de branches orphelines, `main` figé au 18 septembre, et `notion.py`
+   réécrit de zéro presque chaque matin — le message « Reconstruit notion.py » revient
+   dix fois dans l'historique. Deux conséquences à retenir :
+   - **Au début de chaque exécution**, repartir de la branche de la veille, pas de `main` :
+     `git fetch --all && git checkout -B <ma-branche> origin/<branche-la-plus-récente>`
+     (la trouver avec `git for-each-ref --sort=-committerdate refs/remotes/origin`).
+   - **La seule vraie correction appartient à Daniel** : fusionner une de ces branches
+     dans `main` depuis GitHub. Tant que ce n'est pas fait, le dépôt reste une pile de
+     brouillons et chaque matin recommence le travail de la veille.
+11. **`pip` et `python3` ne pointent pas sur la même version.** Dans le conteneur,
+   `pip` installe pour Python 3.13 et `python3` est un 3.11 qui ne voit pas ces paquets.
+   Le texte de la carte sort avec `python3 carte.py --texte` ; l'**image**, elle, a besoin
+   de Pillow, donc de `python3.13 carte.py <date> <sortie.png>`.
 8. **Une remise passée n'est pas une remise acquise.** Le champ `a_verifier_lea` marque
    celles dont le dépôt n'est pas confirmé : elles comptent dans l'avancement, mais à
    part, parce qu'un zéro silencieux ressemble exactement à une bonne note.

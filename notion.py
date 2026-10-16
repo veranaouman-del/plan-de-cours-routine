@@ -157,11 +157,15 @@ def callout(data, jour, sem):
     if en_semaine_etudes(data, jour):
         fin = d(data["session"]["semaine_etudes"][1])
         reste = (fin - jour).days
+        # Le dernier jour ne se dit pas « il reste 1 jour » : c'est aujourd'hui que
+        # ça se joue, et la phrase doit le dire sans détour.
+        tete = ("**C'est le dernier jour de semaine d'études.**" if reste <= 0 else
+                "**Il reste %s de semaine d'études.**" % ("1 jour" if reste == 1
+                                                          else "%d jours" % reste))
         return ('<callout icon="⏳" color="orange_bg">\n'
-                "\t**Il reste %s de semaine d'études.** Les gros blocs retombent à 1 h 30 – 3 h "
-                "dès le retour en classe : ce qui n'est pas réglé avant le %s attendra une "
-                "vraie semaine de cours.\n</callout>" % (
-                    "1 jour" if reste <= 1 else "%d jours" % reste, court_jour(fin)))
+                "\t%s Les gros blocs retombent à 1 h 30 – 3 h "
+                "dès le retour en classe : ce qui n'est pas réglé avant ce soir attendra une "
+                "vraie semaine de cours.\n</callout>" % tete)
 
     rouges = [(n, debut, f, evs, t) for n, debut, f, evs, t in semaines_rouges(data, jour)
               if f >= jour]
