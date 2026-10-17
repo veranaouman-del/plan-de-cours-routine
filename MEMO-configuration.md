@@ -101,6 +101,11 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    part, parce qu'un zéro silencieux ressemble exactement à une bonne note.
 9. **L'administratif ne doit pas manger la carte.** Au-delà de deux tâches admin,
    `carte.py` résume le reste en une ligne — sinon cinq courriels chassent les révisions.
+   Corrigé le 17 octobre : le lendemain d'une salve d'échéances admin, les tâches
+   **en retard** au-delà des deux premières disparaissaient complètement de la carte,
+   et les non urgentes en retard n'y entraient même pas. Elles sont maintenant triées
+   (urgentes d'abord), la ligne de résumé **nomme la suivante**, et le détail complet
+   part dans « LE RESTE DE L'ADMINISTRATIF » / « 📌 À régler ».
 
 ## Points à confirmer auprès des profs
 
@@ -113,7 +118,7 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
 - **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée
-  depuis 27 jours au 15 octobre.
+  depuis 29 jours au 17 octobre.
 - **Prog. Web** : relever sur LÉA les dates officielles des TP3 à TP5 et la répartition
   exacte des 20 % — les 4 % par TP sont une estimation, pas une pondération confirmée.
 - **Mi-session** : relever les notes sur LÉA et réajuster le champ `difficulte` des cinq

@@ -114,10 +114,17 @@ def apercu(data, jour):
     debut, fin = d(data["session"]["debut"]), d(data["session"]["fin"])
     a, b = [d(x) for x in data["session"]["semaine_etudes"]]
     retour = b + dt.timedelta(days=3 if b.weekday() == 4 else 1)
-    L.append("> %s · %s · %s → %s<br>**Semaine d'études** · %s au %s · retour en classe le %s" % (
+    entete = "> %s · %s · %s → %s" % (
         data["programme"].split(" - ")[0], data["programme"].split(" - ")[-1],
-        "%d %s" % (debut.day, MOIS[debut.month - 1]), "%d %s" % (fin.day, MOIS[fin.month - 1]),
-        court_jour(a), court_jour(b), court_jour(retour)))
+        "%d %s" % (debut.day, MOIS[debut.month - 1]), "%d %s" % (fin.day, MOIS[fin.month - 1]))
+    # La ligne de semaine d'études ne reste affichée que tant qu'elle informe :
+    # pendant la semaine, et le week-end de reprise qui la suit.
+    if jour <= b + dt.timedelta(days=2):
+        entete += "<br>**Semaine d'études** · %s au %s · retour en classe le %s" % (
+            court_jour(a), court_jour(b), court_jour(retour))
+    elif sem:
+        entete += "<br>**Semaine %d sur 15**" % sem
+    L.append(entete)
     L.append("---")
 
     L.append("## 📍 Aujourd'hui — %s" % long_date(jour))
@@ -181,7 +188,7 @@ def callout(data, jour, sem):
     restant = sum(e["poids"] for e in chantiers_tous(data, jour))
     return ('<callout icon="🎯" color="blue_bg">\n'
             "\t**%d %% de points restent à jouer d'ici la fin de la session.** "
-            "Rien n'est joué : tout se décide entre aujourd'hui et le %s.\n</callout>" % (
+            "Rien n'est joué : tout se décide entre aujourd'hui et le %s\n</callout>" % (
                 restant, court_jour(d(data["session"]["fin"]))))
 
 
@@ -255,7 +262,8 @@ def section_a_regler(data, jour):
         echeance = d(t["pour"])
         retard = (jour - echeance).days
         if retard > 0:
-            marque = "🔴 **%s** — *%d jours de retard*" % (t["quoi"], retard)
+            marque = "🔴 **%s** — *%d jour%s de retard*" % (
+                t["quoi"], retard, "s" if retard > 1 else "")
         else:
             marque = "%s %s — *pour le %s*" % ("🟠" if t.get("urgent") else "🔵",
                                                t["quoi"], court_jour(echeance))

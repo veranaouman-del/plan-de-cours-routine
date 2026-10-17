@@ -50,6 +50,20 @@ def semaine_de(data, jour):
     return courante
 
 
+def etiquette_semaine(data, jour):
+    """Le libellé de la journée. Le week-end qui suit la semaine d'études n'est ni
+    l'une ni l'autre : le dire évite d'afficher « semaine 7 » trois jours après la 7."""
+    if en_semaine_etudes(data, jour):
+        return "Semaine d'études et d'encadrement — aucun cours"
+    sem = semaine_de(data, jour)
+    if sem is None:
+        return None
+    fin_etudes = d(data["session"]["semaine_etudes"][1])
+    if 0 < (jour - fin_etudes).days <= 2:
+        return "Week-end de reprise — la semaine %d commence lundi" % (sem + 1)
+    return "Semaine %d sur 15" % sem
+
+
 def en_semaine_etudes(data, jour):
     a, b = data["session"]["semaine_etudes"]
     return d(a) <= jour <= d(b)
@@ -103,10 +117,13 @@ def admin_du_jour(data, jour):
         if t["pour"] == "recurrent":
             continue
         echeance = d(t["pour"])
-        if echeance < jour and t.get("urgent"):
-            retards.append(("RETARD", t["quoi"]))
+        if echeance < jour:
+            # Une tache en retard non urgente ne disparait plus : elle passe derriere
+            # les urgentes et, si la carte est pleine, elle est comptee dans le resume.
+            retards.append((echeance, t))
         elif 0 <= (echeance - jour).days <= 3:
             admin.append((echeance, t))
+    retards.sort(key=lambda p: (not p[1].get("urgent"), p[0]))
     admin.sort(key=lambda p: (p[0], not p[1].get("urgent")))
     return retards, admin
 
@@ -128,7 +145,14 @@ def taches_du_jour(data, jour, actifs):
         reste = admin[2:]
         taches.append(("ADMIN", "+ %d autres vérifications et courriels à régler avant le %s"
                        % (len(reste), court(max(e for e, _ in reste)))))
-    taches = retards[:2] + taches
+
+    entete = [("RETARD", t["quoi"]) for _, t in retards[:2]]
+    if len(retards) > 2:
+        # La ligne de résumé nomme la suivante : sinon la troisième tâche en retard
+        # devient invisible le jour même où elle commence à coûter cher.
+        entete.append(("RETARD", "+ %d autres en retard, dont : %s"
+                       % (len(retards) - 2, retards[2][1]["quoi"])))
+    taches = entete + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -205,10 +229,9 @@ def texte(data, jour):
     actifs = chantiers(data, jour)
     L = []
     L.append("MA JOURNÉE — %s %d %s" % (JOURS[jour.weekday()], jour.day, MOIS[jour.month - 1]))
-    if en_semaine_etudes(data, jour):
-        L.append("Semaine d'études et d'encadrement — aucun cours")
-    elif sem:
-        L.append("Semaine %d sur 15" % sem)
+    etiquette = etiquette_semaine(data, jour)
+    if etiquette:
+        L.append(etiquette)
     L.append("")
 
     L.append("MES COURS AUJOURD'HUI")
@@ -250,9 +273,13 @@ def texte(data, jour):
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
 
-    _, admin = admin_du_jour(data, jour)
-    if len(admin) > 2:
+    retards, admin = admin_du_jour(data, jour)
+    if len(retards) > 2 or len(admin) > 2:
         L.append("LE RESTE DE L'ADMINISTRATIF — RÉSUMÉ EN UNE LIGNE PLUS HAUT")
+        for echeance, t in retards[2:]:
+            retard = (jour - echeance).days
+            L.append("• %s  (était dû le %s, %d jour%s de retard)"
+                     % (t["quoi"], court(echeance), retard, "s" if retard > 1 else ""))
         for echeance, t in admin[2:]:
             L.append("• %s  (pour le %s)" % (t["quoi"], court(echeance)))
         L.append("")
@@ -332,10 +359,9 @@ def image(data, jour, sortie):
     dr.rectangle([0, 0, W, 168], fill=RED)
     dr.text((40, 30), "MA JOURNÉE", font=f(50, True), fill=WHITE)
     soustitre = "%s %d %s" % (JOURS[jour.weekday()].capitalize(), jour.day, MOIS[jour.month - 1])
-    if en_semaine_etudes(data, jour):
-        soustitre += "  ·  Semaine d'études"
-    elif sem:
-        soustitre += "  ·  Semaine %d sur 15" % sem
+    etiquette = etiquette_semaine(data, jour)
+    if etiquette:
+        soustitre += "  ·  " + etiquette.replace(" et d'encadrement — aucun cours", "")
     dr.text((42, 100), soustitre, font=f(22), fill="#ffe3e5")
 
     y = 200
