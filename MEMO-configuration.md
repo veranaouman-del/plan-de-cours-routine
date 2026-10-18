@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète à partir du même JSON. `python3 notion.py` sort le markdown à coller dans `replace_content`. Même moteur que `carte.py` : Slack, l'image et Notion disent toujours la même chose. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,9 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : `3df73824-e620-811e-9e6c-d07440cb6ec7`
+  → https://app.notion.com/p/3df73824e620811e9e6cd07440cb6ec7
+- Dépôt GitHub : `veranaouman-del/plan-de-cours-routine`, branche `claude/epic-newton-k2pijx`
 
 ## Mon horaire — Automne 2026
 
@@ -45,10 +49,12 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 3. `python3 notion.py`, puis remplace le contenu de ma page Notion
+>    `3df73824-e620-811e-9e6c-d07440cb6ec7` (`replace_content`) par la sortie.
+> 4. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit.
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+>    `donnees-session.json`. **Puis commit et push, toujours** — voir le piège 7.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,11 +77,20 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Chaque session tourne dans un conteneur jetable.** Entre le 18 septembre et le
+   18 octobre, les routines ont bien mis Notion et Canva à jour, mais rien n'a été
+   commité : le dépôt est resté figé au 18 septembre, `notion.py` a disparu avec son
+   conteneur, et le JSON ignorait que l'oral d'anglais avait glissé au 22 octobre.
+   **Tout ce qui n'est pas poussé n'existe pas.** Terminer chaque routine par un commit.
 
 ## Points à confirmer auprès des profs
 
-- **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
-  en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
+- **Anglais** : je suis dans le groupe du jeudi. Le midterm oral a glissé au
+  **jeudi 22 octobre** (la semaine 7 était « READING WEEK » pour mon groupe) —
+  à faire confirmer par MIO. C'est 15 % et c'est la prochaine échéance.
+- **LÉA** : trois remises passées dont le dépôt n'est pas confirmé (TP2 ORM 10 %,
+  TP1 VueJS 4 %, TP2 Vue Router 4 %) = **18 % de points au statut incertain**.
+  Champ `a_verifier_lea` dans le JSON ; le retirer une fois vérifié.
 - **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
   saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».

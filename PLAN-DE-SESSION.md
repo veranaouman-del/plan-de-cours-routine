@@ -3,9 +3,11 @@
 Techniques de l'informatique (420.B0), Cégep de Granby · 24 août → 11 décembre 2026
 Semaine d'études et d'encadrement : **12 au 16 octobre**
 
-> Ce document est le plan. `donnees-session.json` est la source de vérité que lit
-> `carte.py` pour fabriquer la carte du jour. Quand une date bouge, on la change
-> **dans le JSON**, et tout le reste suit.
+> Ce document est le plan, écrit le 18 septembre : sa méthode et son découpage restent
+> valables, mais **ses chiffres sont ceux de la semaine 4**. L'état réel du jour se lit
+> dans la page Notion « Ma session — Automne 2026 », générée par `notion.py`.
+> `donnees-session.json` est la source de vérité que lisent `carte.py` et `notion.py`.
+> Quand une date bouge, on la change **dans le JSON**, et tout le reste suit.
 
 ---
 

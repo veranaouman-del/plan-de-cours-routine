@@ -55,6 +55,23 @@ def en_semaine_etudes(data, jour):
     return d(a) <= jour <= d(b)
 
 
+def etiquette_semaine(data, jour):
+    """Ce qu'on écrit sous le titre. Un dimanche de veille annonce la semaine qui vient
+    plutôt que celle qui vient de finir : c'est ça qui compte au moment de s'organiser."""
+    if en_semaine_etudes(data, jour):
+        return "Semaine d'études et d'encadrement — aucun cours"
+    sem = semaine_de(data, jour)
+    if sem is None:
+        return None
+    debut = data["session"]["semaines"].get(str(sem + 1))
+    if debut:
+        reste = (d(debut) - jour).days
+        if 0 < reste <= 2:
+            quand = "demain" if reste == 1 else JOURS[d(debut).weekday()]
+            return "La semaine %d commence %s" % (sem + 1, quand)
+    return "Semaine %d sur 15" % sem
+
+
 # --------------------------------------------------------------------------
 # Moteur : qu'est-ce qui est actif aujourd'hui ?
 # --------------------------------------------------------------------------
@@ -108,7 +125,13 @@ def taches_du_jour(data, jour, actifs):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+    if len(retards) > 2:
+        # on n'affiche que deux retards, mais on dit combien il en reste : un retard
+        # qu'on ne voit plus est un retard qu'on oublie.
+        reste = retards[2:]
+        retards = retards[:2] + [("RETARD", "+ %d autre%s en retard, dont : %s"
+                                  % (len(reste), "s" if len(reste) > 1 else "", reste[0][1]))]
+    taches = retards[:3] + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -156,27 +179,34 @@ def court(j):
 
 
 def avancement(data, jour):
-    """Part de la note déjà jouée, par cours."""
+    """Part de la note déjà jouée, par cours, et la part qui reste à confirmer."""
     out = {}
     for cle, c in data["cours"].items():
-        fait = sum(e["poids"] for e in data["evaluations"]
-                   if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour))
-        out[cle] = (c["nom"], fait)
+        joue = [e for e in data["evaluations"]
+                if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour)]
+        fait = sum(e["poids"] for e in joue)
+        incertain = sum(e["poids"] for e in joue if e.get("a_verifier_lea"))
+        out[cle] = (c["nom"], fait, incertain)
     return out
+
+
+def a_verifier_lea(data, jour):
+    """Remises passées dont le dépôt n'est pas confirmé. Tant qu'elles sont là,
+    l'avancement est une hypothèse, pas un fait."""
+    return [e for e in data["evaluations"]
+            if e.get("a_verifier_lea") and not e.get("fait") and d(e["date"]) < jour]
 
 
 # --------------------------------------------------------------------------
 # Sortie texte (Slack : pas de tableaux Markdown, titres en MAJUSCULES)
 # --------------------------------------------------------------------------
 def texte(data, jour):
-    sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
     L = []
     L.append("MA JOURNÉE — %s %d %s" % (JOURS[jour.weekday()], jour.day, MOIS[jour.month - 1]))
-    if en_semaine_etudes(data, jour):
-        L.append("Semaine d'études et d'encadrement — aucun cours")
-    elif sem:
-        L.append("Semaine %d sur 15" % sem)
+    etiquette = etiquette_semaine(data, jour)
+    if etiquette:
+        L.append(etiquette)
     L.append("")
 
     L.append("MES COURS AUJOURD'HUI")
@@ -219,8 +249,9 @@ def texte(data, jour):
     L.append("")
 
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
-    for _, (nom, pct) in avancement(data, jour).items():
-        L.append("• %s : %d %%" % (nom, pct))
+    for _, (nom, pct, inc) in avancement(data, jour).items():
+        suffixe = "  (dont %d %% à confirmer sur LÉA)" % inc if inc else ""
+        L.append("• %s : %d %%%s" % (nom, pct, suffixe))
     return "\n".join(L)
 
 
@@ -265,21 +296,21 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
             txt = txt[:-2]
-        return txt
+        return txt.rstrip() + "…"
 
-    sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
 
     # en-tête
     dr.rectangle([0, 0, W, 168], fill=RED)
     dr.text((40, 30), "MA JOURNÉE", font=f(50, True), fill=WHITE)
     soustitre = "%s %d %s" % (JOURS[jour.weekday()].capitalize(), jour.day, MOIS[jour.month - 1])
-    if en_semaine_etudes(data, jour):
-        soustitre += "  ·  Semaine d'études"
-    elif sem:
-        soustitre += "  ·  Semaine %d sur 15" % sem
+    etiquette = etiquette_semaine(data, jour)
+    if etiquette:
+        soustitre += "  ·  " + etiquette
     dr.text((42, 100), soustitre, font=f(22), fill="#ffe3e5")
 
     y = 200
@@ -360,18 +391,28 @@ def image(data, jour, sortie):
 
     # avancement — collé sous le contenu, la carte est rognée juste après
     y += 8
-    bas = y + 196
+    av = avancement(data, jour)
+    incertain_total = sum(i for _, _, i in av.values())
+    bas = y + 196 + (26 if incertain_total else 0)
     dr.rectangle([0, y, W, bas], fill="#1f2937")
     dr.text((40, y + 18), "MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE", font=f(16, True), fill="#9ca3af")
     yy = y + 50
-    for cle, (nom, pct) in avancement(data, jour).items():
+    for cle, (nom, pct, inc) in av.items():
         dr.text((40, yy), tronque(nom, f(16), 250), font=f(16), fill=WHITE)
         dr.rounded_rectangle([300, yy + 3, 300 + 480, yy + 17], radius=7, fill="#374151")
         if pct:
             dr.rounded_rectangle([300, yy + 3, 300 + int(480 * pct / 100), yy + 17], radius=7,
                                  fill=data["cours"][cle]["couleur"])
-        dr.text((W - 80, yy), "%d %%" % pct, font=f(16, True), fill=WHITE)
+        if inc:
+            # la part non confirmée est grisée : elle compte, mais elle n'est pas acquise
+            debut = 300 + int(480 * (pct - inc) / 100)
+            dr.rounded_rectangle([debut, yy + 3, 300 + int(480 * pct / 100), yy + 17],
+                                 radius=7, fill="#6b7280")
+        dr.text((W - 90, yy), "%d %%%s" % (pct, "*" if inc else ""), font=f(16, True), fill=WHITE)
         yy += 28
+    if incertain_total:
+        dr.text((40, yy + 4), "* dont %d %% en attente de confirmation sur LÉA" % incertain_total,
+                font=f(14), fill="#9ca3af")
 
     img = img.crop((0, 0, W, bas))
     img.save(sortie)
