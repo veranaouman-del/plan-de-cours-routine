@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère le corps complet de la page Notion à partir du même JSON. `python3 notion.py [date]` → à coller dans `notion-update-page`, commande `replace_content`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +19,9 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
+  (https://app.notion.com/p/3df73824e620811e9e6cd07440cb6ec7)
+- Canva, lien de consultation : https://www.canva.com/d/vsBTD0nSe68U4zW
 
 ## Mon horaire — Automne 2026
 
@@ -69,13 +73,24 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **`pip install pillow` ne suffit pas** dans l'environnement Claude : pillow s'installe
+   pour python3.13 alors que `python3` est la 3.11. Faire
+   `python3 -m pip install --quiet --target /tmp/pil pillow` puis
+   `PYTHONPATH=/tmp/pil python3 carte.py`. Sans image, `--texte` marche toujours.
+7. **Le générateur Notion avait été perdu** une première fois : il vivait dans une session
+   Claude et nulle part ailleurs. Tout ce qui fabrique une sortie est maintenant dans le
+   dépôt (`carte.py`, `notion.py`). Ne rien écrire qui ne soit pas commité.
+8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
 
 - **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
-  en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
+  en semaine 7 me vise : le midterm oral a donc glissé au **jeudi 22 octobre**. À faire
+  confirmer par MIO — c'est 15 % de la note.
+- **LÉA** : trois remises passées (TP2 ORM 10 %, TP1 VueJS 4 %, TP2 Vue Router 4 %) n'ont
+  jamais été confirmées comme déposées. 18 % de points au statut incertain, marqués
+  `a_verifier_lea` dans le JSON. À vérifier puis à retirer.
 - **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
   saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».

@@ -155,13 +155,24 @@ def court(j):
     return "%d %s" % (j.day, ABREV[j.month - 1])
 
 
+def a_verifier(data, jour):
+    """Remises passées dont le dépôt sur LÉA n'est pas confirmé.
+
+    Tant qu'elles sont là, l'avancement est une hypothèse, pas un fait."""
+    return [e for e in data["evaluations"]
+            if e.get("a_verifier_lea") and not e.get("fait") and d(e["date"]) < jour]
+
+
 def avancement(data, jour):
-    """Part de la note déjà jouée, par cours."""
+    """Part de la note déjà jouée, par cours, et la part encore incertaine."""
     out = {}
+    douteux = {e["titre"] for e in a_verifier(data, jour)}
     for cle, c in data["cours"].items():
-        fait = sum(e["poids"] for e in data["evaluations"]
-                   if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour))
-        out[cle] = (c["nom"], fait)
+        joues = [e for e in data["evaluations"]
+                 if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour)]
+        fait = sum(e["poids"] for e in joues)
+        incertain = sum(e["poids"] for e in joues if e["titre"] in douteux)
+        out[cle] = (c["nom"], fait, incertain)
     return out
 
 
@@ -210,6 +221,14 @@ def texte(data, jour):
         L.append("• Journée libre — repos assumé")
     L.append("")
 
+    av = a_verifier(data, jour)
+    if av:
+        L.append("À CONFIRMER SUR LÉA — %d %% DE POINTS AU STATUT INCERTAIN" % sum(e["poids"] for e in av))
+        for e in av:
+            L.append("• %s — %s — %d %% — était dû le %s" % (e["titre"], data["cours"][e["cours"]]["nom"],
+                                                             e["poids"], court(d(e["date"]))))
+        L.append("")
+
     L.append("ÉCHÉANCES QUI APPROCHENT")
     prochaines = [e for e in chantiers_tous(data, jour) if e["reste"] <= 28][:7]
     for e in prochaines:
@@ -219,8 +238,9 @@ def texte(data, jour):
     L.append("")
 
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
-    for _, (nom, pct) in avancement(data, jour).items():
-        L.append("• %s : %d %%" % (nom, pct))
+    for _, (nom, pct, incertain) in avancement(data, jour).items():
+        note = "  (dont %d %% à confirmer)" % incertain if incertain else ""
+        L.append("• %s : %d %%%s" % (nom, pct, note))
     return "\n".join(L)
 
 
@@ -325,9 +345,9 @@ def image(data, jour, sortie):
     for tag, t in taches_du_jour(data, jour, actifs):
         couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
-        dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
-        dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)
-        dr.text((202, y + 1), tronque(t, f(19), W - 250), font=f(19), fill=DARK)
+        dr.rounded_rectangle([80, y, 80 + 132, y + 26], radius=6, fill=couleur)
+        dr.text((88, y + 4), tronque(tag, f(14, True), 118), font=f(14, True), fill=WHITE)
+        dr.text((224, y + 1), tronque(t, f(19), W - 272), font=f(19), fill=DARK)
         y += 38
 
     # échéances
@@ -364,12 +384,15 @@ def image(data, jour, sortie):
     dr.rectangle([0, y, W, bas], fill="#1f2937")
     dr.text((40, y + 18), "MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE", font=f(16, True), fill="#9ca3af")
     yy = y + 50
-    for cle, (nom, pct) in avancement(data, jour).items():
+    for cle, (nom, pct, incertain) in avancement(data, jour).items():
         dr.text((40, yy), tronque(nom, f(16), 250), font=f(16), fill=WHITE)
         dr.rounded_rectangle([300, yy + 3, 300 + 480, yy + 17], radius=7, fill="#374151")
         if pct:
             dr.rounded_rectangle([300, yy + 3, 300 + int(480 * pct / 100), yy + 17], radius=7,
                                  fill=data["cours"][cle]["couleur"])
+        if incertain:
+            dr.rounded_rectangle([300 + int(480 * (pct - incertain) / 100), yy + 3,
+                                  300 + int(480 * pct / 100), yy + 17], radius=7, fill="#6b7280")
         dr.text((W - 80, yy), "%d %%" % pct, font=f(16, True), fill=WHITE)
         yy += 28
 
