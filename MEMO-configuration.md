@@ -83,6 +83,19 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
+9. **Pillow est cassé dans le conteneur de la routine** (`ImportError: cannot import name
+   _imaging`). La sortie image de `carte.py` ne se génère donc pas en session : ni le paquet
+   système, ni `pip install --force-reinstall`, ni `pip install --target` ne corrigent
+   l'extension C manquante. Sans conséquence au quotidien — l'image était de toute façon
+   ignorée par git et non téléversable vers Slack (piège 8). Le vrai visuel, c'est Canva.
+   `carte.py --texte` et `notion.py`, eux, n'ont besoin d'aucune dépendance.
+
+10. **Chaque exécution de la routine part d'une branche neuve, taillée sur `main`** — donc sur
+    l'état du 18 septembre, pas sur le travail de la veille. Premier geste de la journée :
+    `git fetch origin`, repérer la branche `claude/epic-newton-*` au commit le plus récent, et
+    `git checkout -B <ma-branche> <ce-commit>`. Sans ça, la carte du jour repart des données
+    périmées et écrase un mois de recalages dans Notion et Canva.
+
 ## Points à confirmer auprès des profs
 
 - **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
