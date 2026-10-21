@@ -8,7 +8,11 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère **toute** la page Notion à partir du JSON, en Markdown Notion. `python3 notion.py` (stdout), `--out page.md`, + une date. Se pousse avec `update-page` / `replace_content` sur la page `3df73824-e620-811e-9e6c-d07440cb6ec7`. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+
+> `notion-tableau-de-bord.md` a été supprimé le 21 octobre : c'était un brouillon figé à la
+> semaine 4, maintenant entièrement remplacé par `notion.py`. Il reste dans l'historique Git.
 
 ## Identifiants à conserver
 
@@ -39,16 +43,17 @@ Depuis que le système est piloté par `donnees-session.json`, le prompt n'a plu
 répéter l'horaire ni les échéances : tout est dans le dépôt. Version courte à utiliser :
 
 > Génère ma carte du jour.
-> 1. `pip install --quiet pillow` si nécessaire, puis `python3 carte.py --texte`
->    à la racine du dépôt. Le script lit `donnees-session.json` et sort la carte
->    d'aujourd'hui : cours, priorité, tâches avec leur étape de préparation,
->    échéances avec compteurs J-x, blocs de travail, avancement par cours.
-> 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
+> 1. `python3 carte.py --texte` à la racine du dépôt. Si Pillow est cassé dans le
+>    conteneur, monter un venv : `python3 -m venv /tmp/v && /tmp/v/bin/pip install pillow`.
+>    Le script lit `donnees-session.json` et sort la carte d'aujourd'hui : cours,
+>    priorité, tâches avec leur étape de préparation, échéances J-x, blocs, avancement.
+> 2. Poste ce texte dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 3. `python3 notion.py` et pousse la sortie sur la page Notion avec `replace_content`.
+> 4. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit.
+> 5. **Tout changement de données se commite et se pousse le jour même.** Le conteneur
+>    est éphémère : ce qui n'est pas dans le dépôt est perdu à la prochaine exécution.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,6 +76,15 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Le conteneur est éphémère — ce qui n'est pas commité est perdu.** Constaté le
+   21 octobre : `notion.py` et un mois de corrections de données (oral d'anglais déplacé,
+   remises à vérifier sur LÉA, tâches de relevé) vivaient dans des sessions jamais
+   commitées. La page Notion était à jour, le dépôt était resté au 18 septembre, et la
+   carte du jour sortait **une mauvaise priorité**. Commiter à chaque exécution.
+8. **Canva reflow le texte.** Une puce qui passe de 44 à 58 caractères se replie sur deux
+   lignes, le bloc grandit et chevauche celui du dessous. Garder les puces de
+   « À FAIRE AUJOURD'HUI » sous ~45 caractères, et le sous-titre sous ~56. Toujours
+   relire la vignette renvoyée par `edit-design` avant de committer la transaction.
 
 ## Points à confirmer auprès des profs
 
