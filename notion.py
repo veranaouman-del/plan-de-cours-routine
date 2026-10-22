@@ -383,7 +383,7 @@ def section_avancement(data, jour, L):
                        "<code>%s%s</code>" % ("▰" * plein, "▱" * (10 - plein))])
     L.append(table(["Cours", "Part de la note déjà jouée", ""], lignes))
     L.append("")
-    moyenne = sum(p for _, p in av.values()) // len(av)
+    moyenne = round(sum(p for _, p in av.values()) / len(av))   # meme arrondi que la carte Canva
     total_incertain = sum(incertain.values())
     phrase = "> <b>%d %%</b> de la session est joué en moyenne, tous cours confondus." % moyenne
     if total_incertain:
