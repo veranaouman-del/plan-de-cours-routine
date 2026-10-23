@@ -73,7 +73,7 @@
     {"cours": "litt",    "titre": "Cercles de discussion",                "date": "2026-12-15", "poids": 10, "type": "oral",   "fait": false, "prep_jours": 10},
 
     {"cours": "anglais", "titre": "Midterm Reading & Writing",            "date": "2026-10-01", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
-    {"cours": "anglais", "titre": "Midterm Speaking & Listening",         "date": "2026-10-22", "poids": 15, "type": "oral",   "fait": false, "prep_jours": 14, "a_confirmer": "Date DEDUITE, pas confirmee : le groupe du jeudi etait en READING WEEK a la semaine 7, donc l'oral glisse au premier jeudi apres la semaine d'etudes. Le MIO a Serebrenik n'a toujours pas de reponse."},
+    {"cours": "anglais", "titre": "Midterm Speaking & Listening",         "date": "2026-10-22", "poids": 15, "type": "oral",   "fait": false, "prep_jours": 14, "a_verifier_lea": true, "a_confirmer": "Date DEDUITE, jamais confirmee, et desormais passee. Si le cours du jeudi 22 ne l'a pas tenu, l'oral glisse au jeudi 29 octobre. Tant que Serebrenik n'a pas repondu, ces 15 % sont au statut incertain."},
     {"cours": "anglais", "titre": "Odyssey reflection journal",           "date": "2026-11-19", "poids": 5,  "type": "remise", "fait": false, "prep_jours": 60},
     {"cours": "anglais", "titre": "Final Speaking & Listening",           "date": "2026-11-26", "poids": 30, "type": "oral",   "fait": false, "prep_jours": 21, "a_confirmer": "Semaine 13 ou 14 selon le groupe (A ou B). Confirmer."},
     {"cours": "anglais", "titre": "Final Reading & Writing",              "date": "2026-12-10", "poids": 30, "type": "examen", "fait": false, "prep_jours": 21},
@@ -102,7 +102,7 @@
 
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},
-    {"quoi": "Anglais : MIO à Serebrenik — faire confirmer que le midterm oral tombe bien le jeudi 22 octobre", "pour": "2026-10-16", "urgent": true},
+    {"quoi": "Anglais : l'oral du midterm a-t-il eu lieu jeudi ? MIO à Serebrenik aujourd'hui — s'il n'a pas eu lieu, il glisse au jeudi 29 octobre", "pour": "2026-10-23", "urgent": true},
     {"quoi": "LÉA : vérifier les 3 remises non confirmées (TP2 ORM, TP1 VueJS, TP2 Vue Router) — 18 % de points au statut incertain", "pour": "2026-10-16", "urgent": true, "note": "Écrire au prof le jour même pour celles qui ne sont pas déposées."},
     {"quoi": "Relever mes notes de mi-session sur LÉA et réajuster le champ difficulte des 5 cours", "pour": "2026-10-16", "urgent": true},
     {"quoi": "Prog. Web : relever sur LÉA les dates officielles des TP3 à TP5 et la répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true},

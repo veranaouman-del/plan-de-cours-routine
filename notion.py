@@ -158,17 +158,18 @@ def section_lea(data, jour, L):
     if not a_verifier:
         return
     total = sum(e["poids"] for e in a_verifier)
-    L.append("## 🔴 À confirmer sur LÉA — remises au dépôt non confirmé")
+    L.append("## 🔴 À confirmer — points au statut incertain")
     L.append("")
-    L.append("> Ces remises sont passées, mais rien ne confirme que le dépôt a bien été "
-             "enregistré. Tant qu'elles sont là, mon avancement est une hypothèse, pas un fait.")
+    L.append("> Ces évaluations sont passées, mais rien ne confirme qu'elles ont bien été "
+             "déposées, ou même tenues. Tant qu'elles sont là, mon avancement est une "
+             "hypothèse, pas un fait.")
     L.append("")
-    L.append(table(["Évaluation", "Cours", "Poids", "Était dû le"],
+    L.append(table(["Évaluation", "Cours", "Poids", "Était prévu le"],
                    [[e["titre"], nom_cours(data, e["cours"]), poids_txt(e),
                      jour_court(carte.d(e["date"]))] for e in a_verifier]))
     L.append("")
-    L.append("- [ ] Vérifier sur LÉA celles qui sont bien déposées → l'avancement redevient exact")
-    L.append("- [ ] Écrire au prof <b>le jour même</b> pour celles qui ne le sont pas — "
+    L.append("- [ ] Vérifier sur LÉA ou par MIO celles qui sont réglées → l'avancement redevient exact")
+    L.append("- [ ] Écrire au prof <b>le jour même</b> pour chaque ligne qui reste — "
              "<b>%d %%</b> de points au statut incertain" % total)
     L.append("- [ ] Une fois vérifié : retirer <code>a_verifier_lea</code> dans "
              "<code>donnees-session.json</code>")
@@ -388,7 +389,7 @@ def section_avancement(data, jour, L):
     phrase = "> <b>%d %%</b> de la session est joué en moyenne, tous cours confondus." % moyenne
     if total_incertain:
         phrase += (" Mais <b>%d %%</b> de points restent au statut incertain tant que les "
-                   "remises ci-dessus ne sont pas confirmées sur LÉA." % total_incertain)
+                   "évaluations ci-dessus ne sont pas confirmées." % total_incertain)
     L.append(phrase)
     L.append("")
     L.append("---")

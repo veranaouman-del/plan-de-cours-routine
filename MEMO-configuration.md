@@ -46,8 +46,8 @@ Après-midis libres : mardi, mercredi, jeudi. Ce sont mes trois vrais blocs de t
    `replace_content` (ça remplace, ça n'empile pas — vérifié).
 5. Le design Canva **DAHVgw0Y3QU** recalé sur la journée : sous-titre, « À faire
    aujourd'hui », la semaine, les échéances.
-6. Les changements de `donnees-session.json` commités et poussés sur
-   `claude/epic-newton-0biukn`.
+6. Les changements de `donnees-session.json` commités et poussés sur la branche du jour
+   (`claude/epic-newton-…`, un nom différent à chaque exécution).
 
 ## Prompt à coller dans une routine Claude (tous les jours à 6 h 30)
 
@@ -91,10 +91,17 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    l'installe pour 3.13. Donc : `pip install --break-system-packages pillow`, puis
    lancer les scripts avec `python3.13`, pas `python3`. Le mode `--texte` de `carte.py`,
    lui, n'a besoin de rien.
-8. **Les lignes du bloc « À FAIRE » de Canva débordent au-delà de ~45 caractères.**
+8. **Les lignes du bloc « À FAIRE » de Canva débordent au-delà de 44 caractères.**
    Au-delà, la ligne se replie, le bloc grandit et recouvre les grands chiffres.
-   Celles de la bande « échéances » tiennent jusqu'à ~105 caractères.
-9. **Le dépôt est reparti du 18 septembre pendant un mois.** Chaque exécution
+   Celles de la bande « échéances » tiennent jusqu'à ~105 caractères ; celles de la
+   bande « ma semaine », jusqu'à ~85. Vérifier la hauteur des blocs dans la réponse
+   de `edit-design` : si elle a grandi, une ligne s'est repliée.
+9. **La routine repart d'une branche neuve chaque matin, mais le dépôt cloné est
+   figé au 18 septembre.** Premier geste de la journée : `git fetch origin`, repérer
+   la branche `claude/epic-newton-*` la plus récente et s'y recaler
+   (`git merge --ff-only origin/<branche>` ; `git checkout -B` est refusé par le
+   classificateur du mode auto). Sans ça, tout le travail de la veille est perdu.
+10. **Le dépôt est reparti du 18 septembre pendant un mois.** Chaque exécution
    quotidienne reconstruisait `notion.py` et les mises à jour du JSON, puis les
    perdait avec le conteneur. Tout changement d'état se commite **le jour même**,
    sinon le lendemain repart d'un plan périmé.
