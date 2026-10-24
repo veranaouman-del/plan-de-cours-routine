@@ -241,10 +241,11 @@ def section_a_regler(data, jour, L):
         e = carte.d(t["pour"])
         note = " · %s" % t["note"] if t.get("note") else ""
         if e < jour:
+            jours = (jour - e).days
             retards.append((-(e - jour).days,
-                            "- [ ] %s <b>%s</b> — <i>%d jours de retard</i>%s" % (
+                            "- [ ] %s <b>%s</b> — <i>%d jour%s de retard</i>%s" % (
                                 "🔴" if t.get("urgent") else "🟠", t["quoi"],
-                                (jour - e).days, note)))
+                                jours, "" if jours == 1 else "s", note)))
         else:
             a_venir.append(((e - jour).days,
                             "- [ ] 🔵 %s — <i>pour le %s</i>%s" % (

@@ -50,7 +50,7 @@
     {"cours": "devlog",  "titre": "Contrôle 1",                           "date": "2026-09-16", "poids": 5,  "type": "test",   "fait": true},
     {"cours": "devlog",  "titre": "TP2 (ORM)",                            "date": "2026-09-25", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 7, "a_verifier_lea": true},
     {"cours": "devlog",  "titre": "Examen intra",                         "date": "2026-10-07", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
-    {"cours": "devlog",  "titre": "TP3",                                  "date": "2026-10-23", "poids": 5,  "type": "tp",     "fait": false, "prep_jours": 5},
+    {"cours": "devlog",  "titre": "TP3",                                  "date": "2026-10-23", "poids": 5,  "type": "tp",     "fait": false, "prep_jours": 5, "a_verifier_lea": true},
     {"cours": "devlog",  "titre": "Contrôle 2",                           "date": "2026-11-13", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 5},
     {"cours": "devlog",  "titre": "TP4 (MVVM)",                           "date": "2026-11-20", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 10},
     {"cours": "devlog",  "titre": "Examen final",                         "date": "2026-12-09", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
@@ -102,8 +102,8 @@
 
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},
-    {"quoi": "Anglais : l'oral du midterm a-t-il eu lieu jeudi ? MIO à Serebrenik aujourd'hui — s'il n'a pas eu lieu, il glisse au jeudi 29 octobre", "pour": "2026-10-23", "urgent": true},
-    {"quoi": "LÉA : vérifier les 3 remises non confirmées (TP2 ORM, TP1 VueJS, TP2 Vue Router) — 18 % de points au statut incertain", "pour": "2026-10-16", "urgent": true, "note": "Écrire au prof le jour même pour celles qui ne sont pas déposées."},
+    {"quoi": "Anglais : l'oral du midterm a-t-il eu lieu le jeudi 22 ? MIO à Serebrenik — s'il n'a pas eu lieu, il glisse au jeudi 29 octobre", "pour": "2026-10-23", "urgent": true},
+    {"quoi": "LÉA : vérifier les 4 remises non confirmées (TP2 ORM, TP1 VueJS, TP2 Vue Router, TP3) — 23 % de points au statut incertain", "pour": "2026-10-16", "urgent": true, "note": "Écrire au prof le jour même pour celles qui ne sont pas déposées."},
     {"quoi": "Relever mes notes de mi-session sur LÉA et réajuster le champ difficulte des 5 cours", "pour": "2026-10-16", "urgent": true},
     {"quoi": "Prog. Web : relever sur LÉA les dates officielles des TP3 à TP5 et la répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
