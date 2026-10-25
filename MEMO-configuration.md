@@ -106,6 +106,10 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    perdait avec le conteneur. Tout changement d'état se commite **le jour même**,
    sinon le lendemain repart d'un plan périmé.
 
+11. **Notion ne connaît pas la balise `<sup>`.** Elle ressort en texte brut
+   (`1<sup>er</sup>`). Écrire « 1er » dans `note-du-jour.md`. Les balises sûres
+   vérifiées : `<b>`, `<i>`, `<code>`, `<br />`, `<callout>`, `<table>`.
+
 ## Points à confirmer auprès des profs
 
 - **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »

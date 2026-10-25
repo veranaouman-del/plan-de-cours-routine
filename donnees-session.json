@@ -107,8 +107,8 @@
     {"quoi": "Relever mes notes de mi-session sur LÉA et réajuster le champ difficulte des 5 cours", "pour": "2026-10-16", "urgent": true},
     {"quoi": "Prog. Web : relever sur LÉA les dates officielles des TP3 à TP5 et la répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
-    {"quoi": "Français : demander à Julie Chamberland pourquoi le mardi 6 octobre saute au calendrier", "pour": "2026-09-29", "urgent": false},
-    {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": false},
+    {"quoi": "Français : faire confirmer par Julie Chamberland que la dissertation intro + conclusion tombe bien le mardi 3 novembre", "pour": "2026-10-27", "urgent": true, "note": "Le calendrier du groupe 00009 sautait le mardi 6 octobre sans explication. Si tout a glissé d'une semaine, cette remise à 20 % bouge aussi."},
+    {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-06", "urgent": true, "note": "Plus grosse note de la session. S'inscrire dès l'ouverture des plages, pas la veille."},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
   ]
 }
