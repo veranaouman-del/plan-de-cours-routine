@@ -82,6 +82,12 @@ def chantiers(data, jour):
     return sorted(actifs, key=lambda e: -e["score"])
 
 
+def incertain(data):
+    """Évaluations passées dont la remise ou la tenue n'est pas confirmée sur LÉA.
+    Tant qu'elles sont là, l'avancement est une hypothèse, pas un fait."""
+    return [e for e in data["evaluations"] if e.get("a_verifier_lea") and not e.get("fait")]
+
+
 def cours_du_jour(data, jour):
     if jour.isoweekday() > 5 or en_semaine_etudes(data, jour):
         return []
@@ -97,8 +103,9 @@ def taches_du_jour(data, jour, actifs):
     les chantiers qui correspondent aux blocs de travail de la journée."""
     taches = []
 
-    # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
-    # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
+    # Les retards remontent en haut, mais jamais plus de trois : sinon ils mangent
+    # la journée. L'ordre dans donnees-session.json est l'ordre de priorité :
+    # ce qui pèse le plus est en premier. Une tâche réglée se retire du JSON.
     retards = []
     for t in data["taches_admin"]:
         if t["pour"] == "recurrent":
@@ -108,7 +115,7 @@ def taches_du_jour(data, jour, actifs):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+    taches = retards[:3] + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -159,9 +166,11 @@ def avancement(data, jour):
     """Part de la note déjà jouée, par cours."""
     out = {}
     for cle, c in data["cours"].items():
-        fait = sum(e["poids"] for e in data["evaluations"]
-                   if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour))
-        out[cle] = (c["nom"], fait)
+        joue = [e for e in data["evaluations"]
+                if e["cours"] == cle and (e.get("fait") or d(e["date"]) < jour)]
+        fait = sum(e["poids"] for e in joue)
+        flou = sum(e["poids"] for e in joue if e.get("a_verifier_lea"))
+        out[cle] = (c["nom"], fait, flou)
     return out
 
 
@@ -218,9 +227,20 @@ def texte(data, jour):
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
 
+    flous = incertain(data)
+    if flous:
+        L.append("AU STATUT INCERTAIN — À VÉRIFIER SUR LÉA")
+        for e in flous:
+            L.append("• %s — %s — %d %% — était prévu le %s"
+                     % (e["titre"], data["cours"][e["cours"]]["nom"], e["poids"], court(d(e["date"]))))
+        L.append("• TOTAL : %d %% de points dont je ne sais pas s'ils sont déposés" %
+                 sum(e["poids"] for e in flous))
+        L.append("")
+
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
-    for _, (nom, pct) in avancement(data, jour).items():
-        L.append("• %s : %d %%" % (nom, pct))
+    for _, (nom, pct, flou) in avancement(data, jour).items():
+        suffixe = "  (dont %d %% à confirmer)" % flou if flou else ""
+        L.append("• %s : %d %%%s" % (nom, pct, suffixe))
     return "\n".join(L)
 
 
@@ -362,14 +382,21 @@ def image(data, jour, sortie):
     y += 8
     bas = y + 196
     dr.rectangle([0, y, W, bas], fill="#1f2937")
-    dr.text((40, y + 18), "MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE", font=f(16, True), fill="#9ca3af")
+    titre_av = "MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE"
+    flous = incertain(data)
+    if flous:
+        titre_av += "   ·   EN GRIS : %d %% À CONFIRMER SUR LÉA" % sum(e["poids"] for e in flous)
+    dr.text((40, y + 18), titre_av, font=f(16, True), fill="#9ca3af")
     yy = y + 50
-    for cle, (nom, pct) in avancement(data, jour).items():
+    for cle, (nom, pct, flou) in avancement(data, jour).items():
         dr.text((40, yy), tronque(nom, f(16), 250), font=f(16), fill=WHITE)
         dr.rounded_rectangle([300, yy + 3, 300 + 480, yy + 17], radius=7, fill="#374151")
         if pct:
             dr.rounded_rectangle([300, yy + 3, 300 + int(480 * pct / 100), yy + 17], radius=7,
                                  fill=data["cours"][cle]["couleur"])
+        if flou:
+            dr.rounded_rectangle([300 + int(480 * (pct - flou) / 100), yy + 3,
+                                  300 + int(480 * pct / 100), yy + 17], radius=7, fill="#9ca3af")
         dr.text((W - 80, yy), "%d %%" % pct, font=f(16, True), fill=WHITE)
         yy += 28
 

@@ -8,6 +8,8 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète à partir du même JSON, en Markdown Notion. `python3 notion.py` (+ une date). Réutilise le moteur de `carte.py` : une seule logique, deux sorties. |
+| `plan-du-jour.md` | Le seul morceau écrit à la main : les callouts du plan de la journée, insérés par `notion.py` sous la priorité. À réécrire chaque matin — c'est du jugement, pas de la donnée. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -18,6 +20,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion du tableau de bord : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
@@ -39,16 +42,24 @@ Depuis que le système est piloté par `donnees-session.json`, le prompt n'a plu
 répéter l'horaire ni les échéances : tout est dans le dépôt. Version courte à utiliser :
 
 > Génère ma carte du jour.
-> 1. `pip install --quiet pillow` si nécessaire, puis `python3 carte.py --texte`
->    à la racine du dépôt. Le script lit `donnees-session.json` et sort la carte
->    d'aujourd'hui : cours, priorité, tâches avec leur étape de préparation,
->    échéances avec compteurs J-x, blocs de travail, avancement par cours.
-> 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
->    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 1. `python3 carte.py --texte` à la racine du dépôt. Le script lit
+>    `donnees-session.json` et sort la carte d'aujourd'hui : cours, priorité,
+>    tâches avec leur étape de préparation, échéances avec compteurs J-x,
+>    blocs de travail, points au statut incertain, avancement par cours.
+> 2. Réécris `plan-du-jour.md` : le plan heure par heure de la journée, en
+>    callouts Notion. C'est là que se met le jugement — quelle fenêtre ne se
+>    représentera pas, quel prof est devant moi aujourd'hui, ce qui attend.
+> 3. `python3 notion.py` et remplace le contenu de la page Notion du tableau
+>    de bord avec la sortie (`replace_content`).
+> 4. Poste la carte dans mon DM Slack, canal D0C2RFRRWKU. Titres en
+>    MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
+> 5. Mets à jour le design Canva DAHVgw0Y3QU : mêmes cadres, textes remplacés.
+>    Respecter la longueur des lignes de la veille, sinon ça déborde.
+> 6. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit.
+> 7. Si une échéance est dépassée, qu'une tâche admin est réglée ou qu'une
+>    évaluation est confirmée sur LÉA, mets à jour `donnees-session.json`
+>    et **pousse le commit** — sans ça, le travail du jour est perdu demain.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,6 +82,16 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Les textes Canva ne se replient pas tout seuls.** Chaque cadre a une hauteur fixe :
+   une ligne trop longue passe à la ligne, le cadre grandit et chevauche le bloc suivant.
+   Garder la longueur des lignes de la veille — ~45 caractères pour la liste « À faire »,
+   ~58 pour le sous-titre, ~95 pour les échéances — et vérifier la vignette après coup.
+8. **Pillow s'installe dans la mauvaise version de Python.** `pip` vise 3.13, `python3`
+   est 3.11. La bonne commande est `python3 -m pip install --break-system-packages
+   --force-reinstall pillow`. Sans ça, `ImportError: cannot import name '_imaging'`.
+9. **Ce qui n'est pas commité est perdu.** La session Claude repart d'un clone neuf
+   à chaque exécution. Les semaines 8 et 9 ont vécu dans Notion et Canva sans jamais
+   revenir dans le dépôt : il a fallu les reconstruire à la main. Pousser, chaque jour.
 
 ## Points à confirmer auprès des profs
 
@@ -81,3 +102,11 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
 - **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+
+## Le champ `a_verifier_lea`
+
+Une évaluation passée dont rien ne confirme la remise porte `"a_verifier_lea": true`.
+Elle compte dans l'avancement, mais `carte.py` et `notion.py` la signalent comme
+hypothèse : barre grise sur l'image, section « au statut incertain » dans le texte.
+Au 26 octobre, 38 % de la session est dans cet état. Une fois la remise confirmée
+sur LÉA ou par le prof, **retirer le champ** — l'avancement redevient un fait.
