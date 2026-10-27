@@ -8,6 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Génère la page Notion complète à partir du même JSON. `python3 notion.py` (aujourd'hui), `--mot fichier.md` pour insérer les encadrés écrits à la main. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -45,10 +46,19 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
 > 2. Poste ce texte tel quel dans mon DM Slack, canal D0C2RFRRWKU.
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
-> 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
+> 3. `python3 notion.py` et remplace le contenu de ma page Notion
+>    (`replace_content`, page 3df73824-e620-811e-9e6c-d07440cb6ec7).
+>    Ajoute, en `--mot`, deux ou trois encadrés sur le vrai coup à jouer aujourd'hui :
+>    quel prof est devant moi, quel détour règle deux retards, comment se découpe
+>    mon gros bloc. C'est la seule partie que le script ne peut pas écrire.
+> 4. Mets la carte Canva à jour (design DAHVgw0Y3QU) : c'est un infographique
+>    en texte, donc `read-design` avec `open_transaction`, puis des `replace_text`
+>    sur le sous-titre, les quatre tâches, la semaine et la ligne des échéances.
+> 5. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit.
+> 6. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+>    `donnees-session.json` et pousse le commit. **Pousser avant la fin de la
+>    session**, sinon le conteneur est recyclé et le travail est perdu.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,6 +81,15 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Pillow est cassé sur `python3` (3.11)** : le `PIL` de `/usr/lib/python3/dist-packages`
+   n'a pas son binaire `_imaging`, et `pip install` vise la 3.13. Générer l'image avec
+   **`python3.13 carte.py`**. Le texte, lui, sort très bien avec `python3`.
+8. **Ce qui n'est pas poussé est perdu.** Le 26 octobre, `notion.py` et les champs
+   `a_verifier_lea` ont été écrits puis jamais commités : le conteneur a été recyclé et
+   tout a dû être refait le lendemain. Pousser à la fin de chaque exécution.
+9. **La carte Canva n'est pas une image** : c'est un infographique dont les textes
+   s'éditent un à un. Ne pas y téléverser le PNG — remplacer les textes, ça reste
+   éditable et ça ne périme pas.
 
 ## Points à confirmer auprès des profs
 
