@@ -110,10 +110,18 @@ def taches_du_jour(data, jour, actifs):
             taches.append(("ADMIN", t["quoi"]))
     taches = retards[:2] + taches
 
+    # Une lecture dont la date est passée ne doit pas disparaître en silence :
+    # souvent elle conditionne toute la suite (acheter le livre avant de le lire).
+    # Elle remonte en RETARD pendant deux semaines, juste sous les retards admin.
+    lectures_retard = []
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
         if 0 <= reste <= 6:
             taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))
+        elif -14 <= reste < 0:
+            lectures_retard.append(("RETARD", "%s  (était pour le %s)" % (l["quoi"], court(d(l["pour"])))))
+    n = len(retards[:2])
+    taches = taches[:n] + lectures_retard[:1] + taches[n:]
 
     focus = set()
     for b in blocs_du_jour(data, jour):
