@@ -18,6 +18,8 @@ import datetime as dt
 BASE = os.path.dirname(os.path.abspath(__file__))
 DONNEES = os.path.join(BASE, "donnees-session.json")
 
+MAX_RETARDS = 3   # au-dela, les retards mangent la journee : le reste va dans « A regler »
+
 JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 ABREV = ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.",
          "août", "sept.", "oct.", "nov.", "déc."]
@@ -105,10 +107,14 @@ def taches_du_jour(data, jour, actifs):
             continue
         echeance = d(t["pour"])
         if echeance < jour and t.get("urgent"):
-            retards.append(("RETARD", t["quoi"]))
+            retards.append((echeance, t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+    retards.sort()
+    tetes = [("RETARD", q) for _, q in retards[:MAX_RETARDS]]
+    if len(retards) > MAX_RETARDS:
+        tetes.append(("RETARD", "+ %d autres retards — voir « À régler »" % (len(retards) - MAX_RETARDS)))
+    taches = tetes + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -153,6 +159,13 @@ def etape(e):
 
 def court(j):
     return "%d %s" % (j.day, ABREV[j.month - 1])
+
+
+def non_confirmees(data):
+    """Evaluations passees dont le depot n'est pas prouve. Tant qu'elles sont la,
+    l'avancement est une hypothese, pas un fait."""
+    return sorted((dict(e) for e in data["evaluations"] if e.get("a_verifier_lea")),
+                  key=lambda e: e["date"])
 
 
 def avancement(data, jour):
@@ -218,6 +231,14 @@ def texte(data, jour):
                                               poids, court(d(e["date"])), jx(e["reste"])))
     L.append("")
 
+    nc = non_confirmees(data)
+    if nc:
+        L.append("POINTS À CONFIRMER SUR LÉA — %d %% AU STATUT INCERTAIN" % sum(e["poids"] for e in nc))
+        for e in nc:
+            L.append("• %s — %s — %d %% — était prévu le %s" % (
+                e["titre"], data["cours"][e["cours"]]["nom"], e["poids"], court(d(e["date"]))))
+        L.append("")
+
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
     for _, (nom, pct) in avancement(data, jour).items():
         L.append("• %s : %d %%" % (nom, pct))
@@ -265,9 +286,13 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        # Une coupure franche se lit comme un bug ; les points de suspension
+        # disent que la suite existe et qu'elle est ailleurs.
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
+            txt = txt[:-1]
+        return txt.rstrip() + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)

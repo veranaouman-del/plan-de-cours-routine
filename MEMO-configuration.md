@@ -8,6 +8,8 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
+| `notion.py` | Régénère la page Notion complète à partir du JSON. `python3 notion.py` sort le Markdown Notion à passer à `replace_content`. |
+| `focus-du-jour.md` | Les deux ou trois rappels du jour que ni l'horaire ni les dates ne peuvent déduire. Réécrit chaque matin, injecté dans la page Notion. Supprimable sans rien casser. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ## Identifiants à conserver
@@ -47,8 +49,12 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    Titres en MAJUSCULES, puces, JAMAIS de tableau Markdown — Slack les supprime.
 > 3. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
-> 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit.
+> 4. Régénère la page Notion : `python3 notion.py`, puis `replace_content` sur la page
+>    « Ma session — Automne 2026 » (3df73824-e620-811e-9e6c-d07440cb6ec7). Avant ça,
+>    réécris `focus-du-jour.md` avec les deux ou trois décisions du jour.
+> 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
+>    `donnees-session.json`. **Commite et pousse avant de terminer** — le conteneur
+>    est effacé à la fin de la session, et ce qui n'est pas poussé est perdu.
 
 Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
 d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
@@ -71,11 +77,22 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Le conteneur Claude est éphémère.** Le 28 octobre, une exécution a écrit un `notion.py`
+   et enrichi le JSON sans jamais commiter : tout a disparu avec le conteneur, et seule la
+   page Notion en gardait la trace. Le travail du jour se termine par un `git push`, toujours.
+8. **« Fait » et « déposé » sont deux choses.** Une date passée prouve que l'évaluation a eu
+   lieu, pas que la remise est entrée. D'où le champ `a_verifier_lea` : il garde les points
+   au statut incertain visibles tant que LÉA ne les a pas confirmés.
+9. **Pillow est cassé dans l'image de base** (`PIL._imaging` introuvable, le paquet système
+   masque celui de pip). Pour l'image : `python3 -m venv --system-site-packages venv` puis
+   `./venv/bin/pip install pillow`. Le mode `--texte` n'en a pas besoin.
 
 ## Points à confirmer auprès des profs
 
 - **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
-  en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
+  en semaine 7 me vise. Le midterm oral (15 %) est porté au 22 octobre sans confirmation
+  qu'il a eu lieu — s'il a glissé d'une semaine, il tombe le 29. À régler de vive voix au
+  prochain cours, pas par MIO.
 - **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
   saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
