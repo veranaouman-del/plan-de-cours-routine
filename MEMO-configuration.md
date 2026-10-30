@@ -87,6 +87,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    masque celui de pip). Pour l'image : `python3 -m venv --system-site-packages venv` puis
    `./venv/bin/pip install pillow`. Le mode `--texte` n'en a pas besoin.
 
+10. **`main` est gelé au 18 septembre, et aucune branche quotidienne n'y est fusionnée.**
+    Chaque exécution de la routine reçoit une nouvelle branche `claude/...` et le dépôt
+    est cloné sur `main` : partir de `main` ferait reculer le système de six semaines.
+    Le premier geste d'une exécution est donc `git fetch origin --prune` puis
+    `git log --all --oneline | head`, et la branche du jour part du dernier commit en date,
+    pas de `main`.
+
 ## Points à confirmer auprès des profs
 
 - **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »

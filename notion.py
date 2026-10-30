@@ -165,7 +165,8 @@ def page(data, jour):
         for c in carte.cours_du_jour(data, j):
             cell.append("%s %s · %s" % (emo(data, c["cours"]), hh(c["debut"]) + " – " + hh(c["fin"]), c["local"]))
         for b in carte.blocs_du_jour(data, j):
-            ouverts = [e for e in carte.chantiers(data, j) if e["cours"] in b["focus"]]
+            ouverts = [e for e in carte.chantiers(data, j)
+                       if e["cours"] in b["focus"] and not deja_remis(data, e, j, b)]
             detail = ""
             if ouverts:
                 detail = " — %s : %s <i>(%s)</i>" % (emo(data, ouverts[0]["cours"]), ouverts[0]["titre"],
@@ -197,8 +198,8 @@ def page(data, jour):
         reste = (d(t["pour"]) - jour).days
         note = " · %s" % t["note"] if t.get("note") else ""
         if reste < 0:
-            admin.append((reste, "- [ ] 🔴 <b>%s</b> — <i>%d jours de retard</i>%s"
-                          % (t["quoi"], -reste, note)))
+            admin.append((reste, "- [ ] 🔴 <b>%s</b> — <i>%d %s de retard</i>%s"
+                          % (t["quoi"], -reste, "jour" if reste == -1 else "jours", note)))
         else:
             admin.append((reste, "- [ ] 🔵 %s — <i>pour le %s</i>%s"
                           % (t["quoi"], date_courte(d(t["pour"])), note)))
@@ -310,6 +311,18 @@ def semaines_rouges(data, jour, seuil=30):
         lignes.append(["<b>%d</b>" % num, "%s – %s" % (date_courte(debut), date_courte(fin)),
                        quoi, "<b>%d %%</b>" % total, statut])
     return lignes
+
+
+def deja_remis(data, ev, jour, bloc):
+    """Une remise du jour est derrière soi si son cours a eu lieu avant le bloc.
+
+    Sans ça, le plan de la semaine proposait de « relire » une dissertation
+    remise le matin même en classe.
+    """
+    if d(ev["date"]) != jour:
+        return False
+    return any(c["cours"] == ev["cours"] and minutes(c["fin"]) <= minutes(bloc["debut"])
+               for c in carte.cours_du_jour(data, jour))
 
 
 def hh(t):
