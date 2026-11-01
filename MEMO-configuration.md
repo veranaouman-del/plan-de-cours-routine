@@ -70,15 +70,43 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 > 4. Envoie-moi une notification push avec ma priorité du jour et tout ce qui
 >    tombe à J-3 ou moins.
 > 5. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
->    `donnees-session.json` et pousse le commit sur `claude/epic-newton-92e9ex`.
+>    `donnees-session.json` et pousse le commit. **Avant de committer, repartir de la
+>    branche `claude/*` la plus récente, pas de `main`** — voir la section suivante.
 
-Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
-d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+Le visuel Canva (design DAHVgw0Y3QU) se met à jour **le dimanche**, pas tous les jours :
+c'est le jour du bloc « plan de la semaine », et c'est la cadence que le gabarit supporte.
+Ses liens d'export expirent en quelques heures, alors que le texte Slack reste lisible pour
+toujours. Le gabarit est serré : garder le **même nombre de lignes** dans chaque bloc de
+texte, et des lignes de longueur comparable, sinon la boîte grandit et chevauche la suivante.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
 Pour une routine qui tient toute la session d'automne, coller le prompt ci-dessus dans
 Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
+
+## ⚠ Continuité du dépôt — à lire avant de committer
+
+Chaque exécution de la routine ouvre une **nouvelle branche** `claude/epic-newton-xxxxxx`
+partant de `main`, et cette branche **n'est jamais fusionnée**. Au 1er novembre il y en a
+plus de quarante, toutes à un commit de `main`, et `main` est resté à l'état du 18 septembre.
+C'est pour ça que `notion.py` a été « reconstruit » une dizaine de fois : chaque journée
+repartait d'un dépôt qui ne l'avait jamais vu.
+
+**La règle, chaque jour :**
+
+```bash
+git fetch --all --prune
+git for-each-ref --sort=-committerdate \
+    --format='%(committerdate:short) %(refname:short)' refs/remotes/origin | head -3
+git checkout -B <ma-branche-du-jour> origin/<la-branche-la-plus-recente>
+```
+
+Puis committer et pousser sur la branche du jour. Jamais repartir de `main` tant que
+`main` n'a pas été remis à niveau.
+
+**Ce qu'il y a à faire une fois, côté humain :** fusionner la branche la plus récente dans
+`main` (ou la pousser en force sur `main`) depuis l'application. Après ça, le dépôt redevient
+linéaire et la règle ci-dessus n'est plus nécessaire.
 
 ## Pièges rencontrés, à ne pas refaire
 
@@ -104,10 +132,17 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 
 ## Points à confirmer auprès des profs
 
-- **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
-  en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
-- **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
-  saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
-- **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
-  Confirmer les pondérations avec Cyndelle Gagnon.
-- **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+**Cette liste n'est plus tenue ici.** Elle vivait en double et elle a dérivé (elle datait
+encore le midterm oral d'anglais au 8 octobre alors qu'il a été reporté au 22). La liste
+à jour est le tableau `taches_admin` de `donnees-session.json` ; `carte.py` et `notion.py`
+la rendent avec le nombre de jours de retard. Au 1er novembre, les cinq lignes urgentes :
+
+- **Anglais** — carton #723 + photo du reçu, à téléverser au comptoir COOPSCO (44 j).
+- **Éthique** — faire confirmer les pondérations par Cyndelle Gagnon : le PDF reçu est une
+  version « Hiver 2026 / services sociaux » (37 j).
+- **LÉA** — cinq évaluations passées dont rien ne confirme la remise, soit **38 %** de la
+  session au statut incertain (16 j).
+- **Français** — faire confirmer par Julie Chamberland la date de la dissertation
+  intro + conclusion, et pourquoi le mardi 6 octobre saute au calendrier du groupe 00009 (5 j).
+- **Anglais** — demander par MIO si l'oral du midterm (15 %) a bien eu lieu le 22 octobre,
+  et quelle est la date du Final Speaking & Listening (30 %) selon le groupe (3 j).
