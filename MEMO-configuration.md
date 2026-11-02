@@ -9,6 +9,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
 | `notion.py` | Génère la **page Notion complète** (Notion-flavored Markdown) à partir du même JSON : aujourd'hui, à faire, 7 prochains jours, à régler, échéances, lectures, semaines rouges, semaine type, méthodes, avancement. Importe `carte.py`, donc les deux sorties ne peuvent pas se contredire. |
+| `coaching/AAAA-MM-JJ.md` | Les encadrés écrits à la main pour un jour donné, passés à `notion.py --coaching`. Conservés : ils servent d'exemples de ton et évitent de réinventer le style chaque matin. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 
 ### Comment `notion.py` s'utilise
@@ -73,8 +74,11 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 >    `donnees-session.json` et pousse le commit. **Avant de committer, repartir de la
 >    branche `claude/*` la plus récente, pas de `main`** — voir la section suivante.
 
-Le visuel Canva (design DAHVgw0Y3QU) se met à jour **le dimanche**, pas tous les jours :
-c'est le jour du bloc « plan de la semaine », et c'est la cadence que le gabarit supporte.
+Le visuel Canva (design DAHVgw0Y3QU) se met à jour **au moins le dimanche** (jour du bloc
+« plan de la semaine »). Une mise à jour **le jour même** passe très bien — c'est même plus
+juste, le design s'appelle « MA JOURNÉE » — à condition de relire la vignette après coup :
+le 2 novembre, une ligne d'en-tête trop longue est passée à trois lignes et a fait chevaucher
+le titre de la semaine. Raccourcir la ligne a suffi.
 Ses liens d'export expirent en quelques heures, alors que le texte Slack reste lisible pour
 toujours. Le gabarit est serré : garder le **même nombre de lignes** dans chaque bloc de
 texte, et des lignes de longueur comparable, sinon la boîte grandit et chevauche la suivante.
@@ -127,7 +131,11 @@ linéaire et la règle ci-dessus n'est plus nécessaire.
 8. **Les cellules de tableau Notion sont inline-only.** `<td>texte<br />suite</td>` passe ;
    un bloc (liste, titre, callout) dans une cellule, non. Et on ne mélange pas les tableaux
    `|pipe|` et les tableaux `<table>` : ici c'est `<table>`, pour garder `fit-page-width`.
-9. **`notion-tableau-de-bord.md` a été supprimé** : c'était un export figé à la semaine 4,
+9. **Pillow est cassé sous `python3` (3.11) dans le conteneur Claude.** Le `PIL` du système
+   n'a pas son `_imaging`, et `pip` ne sert que des roues `cp313`. Donc **l'image se génère
+   avec `python3.13 carte.py`**, pas `python3`. Le mode `--texte` (celui de Slack), lui,
+   n'a besoin d'aucune dépendance et marche partout : c'est la sortie à privilégier.
+10. **`notion-tableau-de-bord.md` a été supprimé** : c'était un export figé à la semaine 4,
    que `notion.py` régénère maintenant à jour pour n'importe quelle date.
 
 ## Points à confirmer auprès des profs
