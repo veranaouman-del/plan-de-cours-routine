@@ -8,7 +8,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 |---|---|
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
-| `notion.py` | Génère la **page Notion complète** (Notion-flavored Markdown) à partir du même JSON : aujourd'hui, à faire, 7 prochains jours, à régler, échéances, lectures, semaines rouges, semaine type, méthodes, avancement. Importe `carte.py`, donc les deux sorties ne peuvent pas se contredire. |
+| `notion.py` | Génère la **page Notion complète** (Notion-flavored Markdown) à partir du même JSON : aujourd'hui, à faire, 7 prochains jours, à régler, échéances, lectures, semaines rouges, semaine type, méthodes, avancement. Importe `carte.py`, donc les deux sorties ne peuvent pas se contredire. Les lectures de la semaine suivante s'accrochent au bloc « Lectures longues » du samedi (`à prendre d'avance`) : un bloc de lecture qui ignore ce qui tombe le mardi suivant ne sert à rien. |
 | `coaching/AAAA-MM-JJ.md` | Les encadrés écrits à la main pour un jour donné, passés à `notion.py --coaching`. Conservés : ils servent d'exemples de ton et évitent de réinventer le style chaque matin. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
 

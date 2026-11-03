@@ -110,9 +110,17 @@ def sept_jours(data, jour):
             if not e.get("fait") and d(e["date"]) == j:
                 cases.append("⚠️ <b>%s</b> — %s %s <i>(%s)</i>" % (
                     e["titre"], EMOJI[e["cours"]], data["cours"][e["cours"]]["nom"], poids_txt(e)))
+        # Une lecture apparait le jour ou elle est due. Mais un bloc « Lectures longues »
+        # ne sert a rien s'il ignore ce qui tombe la semaine suivante : on lui accroche
+        # donc tout ce qui est du dans les 7 jours qui le suivent.
+        bloc_lecture = any("Lectures longues" in b["titre"] for b in carte.blocs_du_jour(data, j))
         for l in data["lectures"]:
-            if d(l["pour"]) == j:
+            pour = d(l["pour"])
+            if pour == j:
                 cases.append("📖 %s" % l["quoi"])
+            elif bloc_lecture and j < pour <= j + dt.timedelta(days=7):
+                cases.append("📖 <i>à prendre d'avance :</i> %s <i>(pour le %s)</i>"
+                             % (l["quoi"], jour_court(pour)))
         if not cases:
             cases.append("<i>journée libre</i>")
         etiquette = "<b>%s</b>" % jour_court(j)
