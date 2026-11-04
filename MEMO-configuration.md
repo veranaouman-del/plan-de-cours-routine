@@ -131,10 +131,16 @@ linéaire et la règle ci-dessus n'est plus nécessaire.
 8. **Les cellules de tableau Notion sont inline-only.** `<td>texte<br />suite</td>` passe ;
    un bloc (liste, titre, callout) dans une cellule, non. Et on ne mélange pas les tableaux
    `|pipe|` et les tableaux `<table>` : ici c'est `<table>`, pour garder `fit-page-width`.
-9. **Pillow est cassé sous `python3` (3.11) dans le conteneur Claude.** Le `PIL` du système
-   n'a pas son `_imaging`, et `pip` ne sert que des roues `cp313`. Donc **l'image se génère
-   avec `python3.13 carte.py`**, pas `python3`. Le mode `--texte` (celui de Slack), lui,
+9. **Pillow est cassé au démarrage du conteneur Claude.** Le `PIL` du système (3.11) n'a
+   pas son `_imaging`. Deux remarques : `pip` tout court est celui de **python3.13**, pas
+   celui de `python3` — il installe à côté sans rien réparer ; et un `pip install pillow`
+   ordinaire répond « already satisfied » à cause du paquet système cassé. La commande qui
+   marche, vérifiée le 4 novembre :
+   `python3 -m pip install --break-system-packages --force-reinstall pillow`
+   Après ça, `python3 carte.py` sort bien l'image. Le mode `--texte` (celui de Slack), lui,
    n'a besoin d'aucune dépendance et marche partout : c'est la sortie à privilégier.
+   À noter aussi : `carte.py <sortie.png>` ne marche pas, le premier argument est **la date**.
+   Pour choisir le fichier : `python3 carte.py 2026-11-04 /chemin/carte.png`.
 10. **`notion-tableau-de-bord.md` a été supprimé** : c'était un export figé à la semaine 4,
    que `notion.py` régénère maintenant à jour pour n'importe quelle date.
 

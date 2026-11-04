@@ -126,10 +126,13 @@ def taches_du_jour(data, jour, actifs):
     # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
     liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
 
-    for e in liste[:4]:
-        taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
+    travail = [(etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"]))
+               for e in liste[:3]]
 
-    return taches[:7]
+    # Le contexte (retards, admin, lectures) ne doit JAMAIS chasser le travail du jour :
+    # une journée dont la liste ne contient que de l'administratif ne dit plus quoi étudier.
+    # On réserve donc les places du travail d'abord, le contexte prend ce qui reste.
+    return (taches[:max(2, 8 - len(travail))] + travail)[:8]
 
 
 def etape(e):
