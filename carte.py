@@ -100,17 +100,24 @@ def taches_du_jour(data, jour, actifs):
     # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
     # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
     retards = []
+    admin = []
     for t in data["taches_admin"]:
         if t["pour"] == "recurrent":
             continue
         echeance = d(t["pour"])
         if echeance < jour and t.get("urgent"):
-            retards.append(("RETARD", t["quoi"]))
+            retards.append((echeance, ("RETARD", t["quoi"])))
         elif 0 <= (echeance - jour).days <= 3:
-            taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+            admin.append((echeance, ("ADMIN", t["quoi"])))
+    # Le plus en retard d'abord, puis l'echeance admin la plus proche : l'ordre du
+    # fichier JSON ne doit pas decider ce qui survit a la troncature plus bas.
+    retards.sort(key=lambda x: x[0])
+    admin.sort(key=lambda x: x[0])
+    taches = [t for _, t in retards[:2]] + [t for _, t in admin]
 
-    for l in data["lectures"]:
+    # Lectures triees par date, pour la meme raison : le 5 novembre, Nussbaum (pour
+    # le lendemain) tombait de la carte au profit d'une lecture due cinq jours plus tard.
+    for l in sorted(data["lectures"], key=lambda x: x["pour"]):
         reste = (d(l["pour"]) - jour).days
         if 0 <= reste <= 6:
             taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))

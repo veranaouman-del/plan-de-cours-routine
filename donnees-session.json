@@ -68,7 +68,7 @@
     {"cours": "litt",    "titre": "Test de lecture — La vie devant soi",  "date": "2026-09-08", "poids": 5,  "type": "test",   "fait": true},
     {"cours": "litt",    "titre": "Dissertation — développement",         "date": "2026-09-22", "poids": 20, "type": "redaction", "fait": true,  "prep_jours": 10},
     {"cours": "litt",    "titre": "Test sur les procédés d'écriture",     "date": "2026-10-27", "poids": 10, "type": "test",   "fait": true,  "prep_jours": 21},
-    {"cours": "litt",    "titre": "Dissertation — intro + conclusion",    "date": "2026-11-03", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 14},
+    {"cours": "litt",    "titre": "Dissertation — intro + conclusion",    "date": "2026-11-03", "poids": 20, "type": "redaction", "fait": true, "prep_jours": 14, "a_verifier_lea": true, "_note": "Redigee en classe le 3 novembre. Rien ne confirme encore le depot de la note : la ligne reste a confirmer sur LEA."},
     {"cours": "litt",    "titre": "Dissertation complète (épreuve terminale)", "date": "2026-12-08", "poids": 30, "type": "redaction", "fait": false, "prep_jours": 28},
     {"cours": "litt",    "titre": "Cercles de discussion",                "date": "2026-12-15", "poids": 10, "type": "oral",   "fait": false, "prep_jours": 10},
 
@@ -102,7 +102,7 @@
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3. Téléverser la photo AU COMPTOIR, pas le soir."},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
-    {"quoi": "LÉA : vérifier les 5 évaluations non confirmées (TP2 ORM, TP3, TP1 VueJS, TP2 Vue Router, oral d'anglais)", "pour": "2026-10-16", "urgent": true, "note": "38 % de la session au statut incertain. MIO au prof le soir même pour chaque ligne non déposée."},
+    {"quoi": "LÉA : vérifier les 6 évaluations non confirmées (TP2 ORM, TP3, TP1 VueJS, TP2 Vue Router, oral d'anglais, dissertation du 3 nov.)", "pour": "2026-10-16", "urgent": true, "note": "58 % de la session au statut incertain. MIO au prof le soir même pour chaque ligne non déposée."},
     {"quoi": "Prog. Web : relever sur LÉA les dates officielles des TP3 à TP5 et la répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true, "note": "Les 4 % par TP sont une hypothèse."},
     {"quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)", "pour": "2026-10-27", "urgent": true, "note": "Livre des quatre lectures de novembre, la première le 10. Même comptoir que le carton #723."},
     {"quoi": "Français : vérifier sur LÉA que la dissertation du 3 novembre (20 %) est bien consignée, et poser la question du mardi 6 octobre à Julie Chamberland", "pour": "2026-11-04", "urgent": true, "note": "La question de date n'a plus d'objet : l'épreuve a eu lieu hier. Reste le dépôt de la note et le trou au calendrier du groupe 00009."},

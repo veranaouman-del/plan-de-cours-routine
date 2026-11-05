@@ -141,6 +141,12 @@ linéaire et la règle ci-dessus n'est plus nécessaire.
    n'a besoin d'aucune dépendance et marche partout : c'est la sortie à privilégier.
    À noter aussi : `carte.py <sortie.png>` ne marche pas, le premier argument est **la date**.
    Pour choisir le fichier : `python3 carte.py 2026-11-04 /chemin/carte.png`.
+11. **L'ordre du JSON ne doit pas décider ce qui survit à la troncature.** La carte ne
+   garde que huit lignes dans « à faire » ; les lectures et les tâches admin étaient
+   prises dans l'ordre du fichier. Le 5 novembre, Nussbaum — à lire pour le lendemain —
+   tombait de la carte au profit d'une lecture due cinq jours plus tard. `carte.py` trie
+   désormais les retards, les tâches admin et les lectures par date avant de couper.
+
 10. **`notion-tableau-de-bord.md` a été supprimé** : c'était un export figé à la semaine 4,
    que `notion.py` régénère maintenant à jour pour n'importe quelle date.
 
