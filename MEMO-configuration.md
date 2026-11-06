@@ -147,6 +147,17 @@ linéaire et la règle ci-dessus n'est plus nécessaire.
    tombait de la carte au profit d'une lecture due cinq jours plus tard. `carte.py` trie
    désormais les retards, les tâches admin et les lectures par date avant de couper.
 
+12. **Canva : deux pièges du jour, le 6 novembre.** (a) Dans un même appel, les
+   `find_and_replace_text` s'appliquent **en chaîne** : le texte produit par une
+   opération peut être réattrapé par la suivante. En décalant la liste des 7 jours
+   d'un cran (Jeudi→Vendredi→Samedi…), la ligne « Lundi 9 » créée à l'étape 5 a été
+   réécrite par l'étape 6, et « Mardi 10 » s'est retrouvé en double. Pour décaler une
+   liste, faire **un seul `replace_text`** avec le bloc complet, ou ordonner les
+   remplacements de la fin vers le début. (b) `replace_text` **réinitialise le
+   formatage** du bloc : le texte des 7 jours est repassé de `center`/15 px à
+   `start`/16 px. Le remettre ensuite avec `format_text`
+   (`text_align`, `font_size`, `line_height`), et revérifier la vignette.
+
 10. **`notion-tableau-de-bord.md` a été supprimé** : c'était un export figé à la semaine 4,
    que `notion.py` régénère maintenant à jour pour n'importe quelle date.
 
