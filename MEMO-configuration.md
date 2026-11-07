@@ -158,6 +158,16 @@ linéaire et la règle ci-dessus n'est plus nécessaire.
    `start`/16 px. Le remettre ensuite avec `format_text`
    (`text_align`, `font_size`, `line_height`), et revérifier la vignette.
 
+13. **Canva : `format_text` ne restaure pas la police.** Le 7 novembre, les
+   `replace_text` du sous-titre et de la liste « à faire » ont fait passer ces deux
+   blocs de la police `YAFdJs2qTWQ` à `YACgEZ1cb1Q`. `format_text` sait remettre la
+   taille, l'alignement et l'interligne, mais **pas** le `fontRef` : il n'y a pas de
+   champ pour ça. Le rendu reste cohérent (c'est la police des autres blocs), donc
+   on ne se bat pas avec — mais il faut le savoir avant de croire à un bug.
+   À noter aussi : `font_size` n'accepte **que des entiers**. Les blocs du gabarit
+   sont en 26,6667 px ; les repasser en 27 est sans effet visible, mais un
+   `font_size: 26.6667` fait échouer tout l'appel.
+
 10. **`notion-tableau-de-bord.md` a été supprimé** : c'était un export figé à la semaine 4,
    que `notion.py` régénère maintenant à jour pour n'importe quelle date.
 
