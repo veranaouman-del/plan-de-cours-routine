@@ -187,3 +187,15 @@ la rendent avec le nombre de jours de retard. Au 1er novembre, les cinq lignes u
   intro + conclusion, et pourquoi le mardi 6 octobre saute au calendrier du groupe 00009 (5 j).
 - **Anglais** — demander par MIO si l'oral du midterm (15 %) a bien eu lieu le 22 octobre,
   et quelle est la date du Final Speaking & Listening (30 %) selon le groupe (3 j).
+14. **`python3` n'a pas Pillow, `python3.13` oui.** Le 8 novembre, `carte.py` (image) est
+    tombé sur `ImportError: cannot import name '_imaging'` : le `python3` du conteneur est
+    un 3.11 dont le `PIL` de `/usr/lib/python3/dist-packages` est cassé (pas de binaire
+    `_imaging`), et il masque tout `pip install pillow` — qui, lui, installe pour **3.13**.
+    Ne pas s'acharner sur pip : lancer l'image avec **`python3.13 carte.py`**. Le mode
+    `--texte` et `notion.py`, eux, n'ont besoin de rien et marchent avec `python3`.
+15. **Le dépôt pousse une branche neuve par jour, et `main` ne bouge jamais.** Au 8 novembre,
+    `main` était encore au 18 septembre : une session qui part de `main` repart donc du
+    squelette de septembre et **écrase sept semaines de travail** (dont `notion.py`, qui
+    n'existe pas sur `main`). Premier réflexe de chaque routine : `git fetch --all`, repérer
+    la branche `claude/...` au commit le plus récent, et bâtir dessus
+    (`git checkout -B <ma-branche> origin/<la-plus-recente>`).
