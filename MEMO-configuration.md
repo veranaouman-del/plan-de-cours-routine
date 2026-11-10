@@ -91,6 +91,18 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 10. **Les sessions Claude ne gardent rien.** Un conteneur est recyclé à la fin. Tout ce qui
    doit survivre — `notion.py`, un nouveau champ du JSON, une tâche réglée — doit être
    committé et poussé le jour même, sinon la session suivante repart de l'avant-veille.
+11. **Notion décode les entités HTML.** `notion.py` écrit `&amp;` mais la page stocke `&`.
+   Un `old_str` de `update_content` copié depuis la sortie du script ne matchera donc pas
+   sur une ligne contenant `&` (ex. « Final Speaking & Listening »). Toujours copier le
+   `old_str` depuis le `fetch` de la page, jamais depuis la sortie du générateur.
+12. **`update_content` ne remplace que le texte visé.** Si l'`old_str` est le corps d'un
+   `<callout>`, l'icône et la couleur du callout restent celles de la veille. Les changer
+   demande une opération séparée sur `<callout icon="X" color="Y">`.
+13. **Le dépôt n'a pas de branche de suivi unique.** Chaque jour pousse une branche
+   `claude/...` neuve, et `main` est resté au 18 septembre. Une nouvelle session part donc
+   d'un état vieux de plusieurs semaines : **commencer par `git fetch --all` puis repartir
+   de la branche au commit le plus récent** (`git for-each-ref --sort=-committerdate
+   refs/remotes/origin | head -1`), sinon `notion.py` et les données à jour sont invisibles.
 
 ## Points à confirmer auprès des profs
 
