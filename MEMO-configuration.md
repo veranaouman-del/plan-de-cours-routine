@@ -18,6 +18,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
@@ -69,7 +70,18 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **`python3` ne sait plus ouvrir Pillow dans le conteneur Claude.** Les binaires
+   de PIL sont compilés pour CPython 3.12, alors que `python3` pointe sur 3.11 :
+   `carte.py` plante sur `ImportError: cannot import name '_imaging'`. Réinstaller
+   Pillow n'y change rien. **Lancer `python3.12 carte.py`**, pas `python3`.
+7. **Le conteneur repart du dépôt à chaque session, et le dépôt était en retard.**
+   Le 11 novembre, `donnees-session.json` était resté dans son état du 7 : ni les
+   six lignes `a_verifier_lea`, ni les tâches admin accumulées, ni la date corrigée
+   de l'oral d'anglais (22 oct., pas le 8). Les runs précédents avaient fait le
+   travail dans Canva et Notion sans jamais le committer — donc chaque matin
+   repartait d'un état faux. **Finir chaque run par un commit + push**, sinon le
+   travail de la veille est perdu.
+8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs
