@@ -69,8 +69,30 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **`pip install pillow` installe dans le mauvais Python.** Dans l'environnement Claude,
+   `python3` est la 3.11 (`/usr/local/bin/python3`) mais `pip` vise la 3.13. Il faut écrire
+   `python3 -m pip install --break-system-packages pillow`, pas `pip install pillow`,
+   sinon `carte.py` échoue sur `ImportError: cannot import name '_imaging'`.
+7. **Le texte Canva ne doit pas dépasser ~44 caractères par ligne** dans la boîte
+   « À FAIRE AUJOURD'HUI » (corps 27 px, largeur 704 px). Au-delà, la ligne se replie,
+   la boîte grandit vers le bas et recouvre les deux gros chiffres. Même règle pour le
+   sous-titre : ~52 caractères maximum. Toujours relire la vignette avant de committer.
+8. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+
+## Ordre de la carte du jour — ne pas le casser
+
+`taches_du_jour()` suit un ordre voulu, pas l'ordre des données :
+
+1. ce qui se remet **aujourd'hui ou demain**, avant tout le reste ;
+2. les retards de moins de 15 jours (2 maximum) et les démarches à 3 jours ;
+3. les lectures de la semaine ;
+4. le travail de fond, selon le thème du bloc du jour ;
+5. en pied de carte, tagué `A REGLER`, ce qui dort depuis plus de deux semaines (3 maximum).
+
+La règle : **un retard qui traîne ne doit jamais voler la place d'une remise.** Avant le
+12 novembre, deux tâches de septembre occupaient le haut de la carte tous les jours et
+reléguaient une dissertation de 20 % due le lendemain hors de la liste.
 
 ## Points à confirmer auprès des profs
 
