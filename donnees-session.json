@@ -16,11 +16,11 @@
   },
 
   "cours": {
-    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "couleur": "#2563eb", "difficulte": 2},
-    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "couleur": "#0891b2", "difficulte": 2},
-    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "couleur": "#e63946", "difficulte": 4},
-    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","couleur": "#7c3aed", "difficulte": 3},
-    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "couleur": "#f4a261", "difficulte": 4}
+    "devlog":  {"nom": "Développement de logiciels", "court": "Dév. logiciels", "code": "420-325-GR", "prof": "Antoine Grenier",     "emoji": "💻", "couleur": "#2563eb", "difficulte": 2},
+    "web":     {"nom": "Programmation Web I", "court": "Prog. Web I", "code": "420-346-GR", "prof": "David Lacasse",       "emoji": "🌐", "couleur": "#0891b2", "difficulte": 2},
+    "litt":    {"nom": "Littérature et imaginaire", "court": "Littérature", "code": "601-102-MQ", "prof": "Julie Chamberland",   "emoji": "📕", "couleur": "#e63946", "difficulte": 4},
+    "anglais": {"nom": "Anglais propre au programme", "court": "Anglais", "code": "604-CT0-GR", "prof": "Aleksandra Serebrenik","emoji": "🗣️", "couleur": "#7c3aed", "difficulte": 3},
+    "philo":   {"nom": "Éthique et politique", "court": "Éthique", "code": "340-CSA-GR", "prof": "Cyndelle Gagnon",     "emoji": "⚖️", "couleur": "#f4a261", "difficulte": 4}
   },
   "_difficulte": "1 = facile pour moi, 5 = tres difficile. Pilote la repartition du temps. A ajuster apres les premiers resultats.",
 
@@ -58,7 +58,7 @@
     {"cours": "web",     "titre": "Remise TP1 — VueJS",                   "date": "2026-09-25", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7, "poids_approx": true, "a_verifier_lea": true},
     {"cours": "web",     "titre": "Remise TP2 — Vue Router",              "date": "2026-10-09", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7, "poids_approx": true, "a_verifier_lea": true},
     {"cours": "web",     "titre": "Évaluation #1",                        "date": "2026-10-09", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
-    {"cours": "web",     "titre": "Remise TP3 — WebAPI",                  "date": "2026-11-13", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
+    {"cours": "web",     "titre": "Remise TP3 — WebAPI",                  "date": "2026-11-13", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true, "a_verifier_lea": true, "a_confirmer": "Remise du vendredi 13 novembre. Rien ne confirme le depot : verifier sur LEA."},
     {"cours": "web",     "titre": "Évaluation #2",                        "date": "2026-11-20", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
     {"cours": "web",     "titre": "Remise TP4 — EF Core",                 "date": "2026-11-27", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
     {"cours": "web",     "titre": "Remise TP5 — fetch + API",             "date": "2026-12-11", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
@@ -81,7 +81,7 @@
     {"cours": "philo",   "titre": "Test utilitarisme + déontologisme",    "date": "2026-09-25", "poids": 10, "type": "test",   "fait": false, "prep_jours": 10},
     {"cours": "philo",   "titre": "Examen sur les théories éthiques",     "date": "2026-10-02", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
     {"cours": "philo",   "titre": "Plan de dissertation détaillé (en classe)", "date": "2026-11-06", "poids": 0, "type": "atelier", "fait": false, "prep_jours": 7},
-    {"cours": "philo",   "titre": "Dissertation philosophique (900 mots)","date": "2026-11-13", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 21},
+    {"cours": "philo",   "titre": "Dissertation philosophique (900 mots)","date": "2026-11-13", "poids": 20, "type": "redaction", "fait": false, "prep_jours": 21, "a_verifier_lea": true, "a_confirmer": "Ecrite en classe le vendredi 13 novembre. Relever la note et confirmer qu'elle est consignee."},
     {"cours": "philo",   "titre": "Test Nussbaum / Phillips",             "date": "2026-12-04", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 10},
     {"cours": "philo",   "titre": "Épreuve finale — entrevue 20 min",     "date": "2026-12-11", "poids": 40, "type": "oral",   "fait": false, "prep_jours": 28, "a_confirmer": "Semaine 15 OU semaine d'examens, sur rendez-vous Microsoft Bookings. S'inscrire des l'ouverture."}
   ],
@@ -100,18 +100,28 @@
     {"cours": "philo","quoi": "Extrait « Espaces publics, vies privées » d'Anne Phillips", "pour": "2026-11-27"}
   ],
 
+  "methodes": {
+    "litt":     "Annoter PENDANT la lecture, jamais après. Un carnet de citations classées par thème — c'est lui qui sauve quand le sujet tombe. Garder 10 minutes de relecture linguistique en fin de rédaction : la langue vaut 25 % de chaque dissertation.",
+    "philo":    "Droit aux notes de cours à TOUTES les évaluations : la vraie préparation, c'est de construire de bonnes notes, pas de mémoriser. Un tableau par penseur — thèse, critère du juste, objection, exemple. Lire les extraits AVANT le cours du vendredi. Chaque faute de français retranche 0,5 % de la note globale, jusqu'à 10 %.",
+    "anglais":  "Tout se joue en classe, rien ne se rattrape. Remplir le journal Odyssey le jour même (5 % garantis). Les oraux valent 45 % du cours : ils se préparent À VOIX HAUTE. S'enregistrer deux minutes au téléphone et se réécouter.",
+    "devlog":   "Le code se retient par les doigts. Refaire les exercices dirigés sans la correction, puis comparer. S'entraîner à écrire du code SUR PAPIER, sans autocomplétion — c'est ce qui est demandé à l'examen.",
+    "web":      "Chaque TP s'appuie sur le précédent (VueJS → Router → WebAPI → EF Core → fetch) : un TP bâclé se paie deux fois. Après chaque remise, noter en trois lignes ce qui a bloqué — c'est exactement ce qui tombera aux évaluations."
+  },
+
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "Téléverser la photo AU COMPTOIR, pas le soir. Même sortie que la reprographie COOPSCO."},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon", "pour": "2026-09-25", "urgent": true, "note": "Le PDF reçu est une version Hiver 2026 / services sociaux."},
-    {"quoi": "LÉA : vérifier les 6 évaluations passées non confirmées", "pour": "2026-10-16", "urgent": true, "note": "58 % de la session au statut incertain. MIO au prof le soir même pour chaque ligne non déposée."},
+    {"quoi": "LÉA : vérifier les 8 évaluations passées non confirmées", "pour": "2026-10-16", "urgent": true, "note": "82 % de points au statut incertain, dont les deux remises du 13 novembre. MIO au prof le soir même pour chaque ligne non déposée."},
     {"quoi": "Prog. Web : dates officielles des TP3 à TP5 et répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true, "note": "Les 4 % par TP sont une hypothèse, pas une donnée du plan de cours."},
-    {"quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)", "pour": "2026-10-27", "urgent": true, "note": "Support des quatre lectures de novembre. Comptoir fermé la fin de semaine."},
+    {"quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)", "pour": "2026-10-27", "urgent": true, "note": "Support des quatre lectures de novembre. COOPSCO est fermé la fin de semaine : si ce n'est pas fait, le lundi 16 au matin est la dernière fenêtre avant le cours du mardi."},
     {"quoi": "Anglais : MIO — l'oral du 22 oct. a-t-il eu lieu ? notes des 2 midterms ?", "pour": "2026-10-30", "urgent": true},
     {"quoi": "LÉA : relever mes notes de mi-session et réajuster les difficultés", "pour": "2026-11-02", "urgent": true, "note": "Toute la répartition du temps tourne encore sur mes estimations d'août."},
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-06", "urgent": true, "note": "Plus grosse note de la session. Les plages se réservent : celles qui restent la veille ne sont pas celles d'aujourd'hui."},
-    {"quoi": "Dév. logiciels : faire confirmer la date du Contrôle 2 a A. Grenier", "pour": "2026-11-12", "urgent": true, "note": "Daté du vendredi 13, or aucun cours ce jour-là. Reste le lundi 16."},
+    {"quoi": "Dév. logiciels : faire confirmer la date du Contrôle 2 à A. Grenier", "pour": "2026-11-12", "urgent": true, "note": "Daté du vendredi 13, or aucun cours ce jour-là. Reste le lundi 16."},
     {"quoi": "Anglais : Final Speaking & Listening (30 %) — le 26 nov. ou le 3 déc. ?", "pour": "2026-11-12", "urgent": true, "note": "30 % du cours. La réponse décide de trois semaines de préparation."},
     {"quoi": "Ouvrir le plan de révision des 4 finaux (184 % du 7 au 15 déc.)", "pour": "2026-11-16", "urgent": false, "note": "Règle la plus importante du plan de session : rien ne s'apprend en semaine 15."},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
-  ]
+  ],
+
+  "_maj": "2026-11-14"
 }

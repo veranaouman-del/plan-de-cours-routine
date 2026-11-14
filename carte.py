@@ -93,43 +93,60 @@ def blocs_du_jour(data, jour):
 
 
 def taches_du_jour(data, jour, actifs):
-    """Construit la liste de tâches : admin urgent, lectures qui arrivent, puis
-    les chantiers qui correspondent aux blocs de travail de la journée."""
-    taches = []
+    """Construit la liste de tâches du jour, dans l'ordre où elle doit être lue.
 
-    # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
-    # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
-    retards = []
-    for t in data["taches_admin"]:
-        if t["pour"] == "recurrent":
-            continue
-        echeance = d(t["pour"])
-        if echeance < jour and t.get("urgent"):
-            retards.append(("RETARD", t["quoi"]))
-        elif 0 <= (echeance - jour).days <= 3:
-            taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
-
-    for l in data["lectures"]:
-        reste = (d(l["pour"]) - jour).days
-        if 0 <= reste <= 6:
-            taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))
-
+    L'ordre est la seule chose qui compte sur cette carte : ce qui se remet
+    aujourd'hui ou demain passe devant tout le reste, y compris devant le thème
+    du bloc de travail et devant les retards administratifs. Un retard qui
+    traîne depuis des semaines ne doit jamais voler la place d'une remise.
+    """
     focus = set()
     for b in blocs_du_jour(data, jour):
         focus.update(b["focus"])
     if not focus:
         focus = {"rattrapage"}
 
-    prioritaires = [e for e in actifs if e["cours"] in focus]
-    autres = [e for e in actifs if e["cours"] not in focus]
-    # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
-    liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
+    # 1. Ce qui tombe aujourd'hui ou demain. Rien ne passe devant.
+    imminents = [e for e in actifs if e["reste"] <= 1]
+    suite = [e for e in actifs if e["reste"] > 1]
+    if "rattrapage" not in focus:
+        suite = ([e for e in suite if e["cours"] in focus]
+                 + [e for e in suite if e["cours"] not in focus])
 
-    for e in liste[:4]:
-        taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
+    taches = [(etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"]))
+              for e in imminents]
 
-    return taches[:7]
+    # 2. Les retards frais et les démarches à faire dans les trois jours.
+    retards, vieux = [], []
+    for t in data["taches_admin"]:
+        if t["pour"] == "recurrent":
+            continue
+        echeance = d(t["pour"])
+        retard_jours = (jour - echeance).days
+        if retard_jours > 0 and t.get("urgent"):
+            (retards if retard_jours <= 14 else vieux).append(
+                (retard_jours, t["quoi"]))
+        elif 0 <= (echeance - jour).days <= 3:
+            taches.append(("ADMIN", t["quoi"]))
+    retards.sort(key=lambda r: -r[0])
+    taches += [("RETARD", q) for _, q in retards[:2]]
+
+    # 3. Les lectures de la semaine.
+    for l in data["lectures"]:
+        reste = (d(l["pour"]) - jour).days
+        if 0 <= reste <= 6:
+            taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))
+
+    # 4. Le travail de fond du jour, selon le bloc.
+    taches += [(etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"]))
+               for e in suite[:3]]
+
+    # 5. En pied de carte : ce qui dort depuis plus de deux semaines.
+    vieux.sort(key=lambda v: -v[0])
+    taches += [("A REGLER", "%s  (en attente depuis %d jours)" % (q, j))
+               for j, q in vieux[:3]]
+
+    return taches[:11]
 
 
 def etape(e):
@@ -219,9 +236,27 @@ def texte(data, jour):
     L.append("")
 
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
-    for _, (nom, pct) in avancement(data, jour).items():
-        L.append("• %s : %d %%" % (nom, pct))
+    incertain = incertitude(data, jour)
+    for cle, (nom, pct) in avancement(data, jour).items():
+        flou = incertain.get(cle, 0)
+        suffixe = "  (dont %d %% à confirmer)" % flou if flou else ""
+        L.append("• %s : %d %%%s" % (nom, pct, suffixe))
+    total_flou = sum(incertain.values())
+    if total_flou:
+        L.append("")
+        L.append("• %d %% de points restent au statut incertain : à vérifier sur LÉA." % total_flou)
     return "\n".join(L)
+
+
+def incertitude(data, jour):
+    """Points deja joues mais dont rien ne confirme le depot ou la tenue."""
+    out = {}
+    for ev in data["evaluations"]:
+        if not ev.get("a_verifier_lea") or ev.get("fait"):
+            continue
+        if d(ev["date"]) < jour:
+            out[ev["cours"]] = out.get(ev["cours"], 0) + ev["poids"]
+    return out
 
 
 def chantiers_tous(data, jour):
@@ -265,9 +300,11 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
+            txt = txt[:-1]
+        return txt.rstrip(" ,;(—-") + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
