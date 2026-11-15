@@ -160,6 +160,20 @@ def page(data, jour, focus=""):
              C.jx(p["reste"]), C.etape(p).lower()))
         w("")
 
+    rev = C.revision_du_jour(data, jour)
+    if rev:
+        rot = data["rotation_revisions"]
+        reste_j = (C.d(rot["actif_au"]) - jour).days
+        w('<callout icon="\U0001F6A9" color="gray_bg">')
+        w("<b>Révision des finaux — le passage du jour</b><br />"
+          "%s<br /><br />"
+          "Chaque bloc de la semaine type porte désormais un final attitré, pour que "
+          "chacun reçoive <b>trois passages espacés</b> avant décembre. Il reste "
+          "<b>%d jours</b> avant le dernier examen du 11 décembre, et rien ne s'apprend "
+          "en semaine 15." % (rev, reste_j))
+        w("</callout>")
+        w("")
+
     if focus.strip():
         w(focus.strip())
         w("")

@@ -11,28 +11,34 @@ Semaine d'études et d'encadrement : **12 au 16 octobre**
 
 ## 1. Où tu en es
 
-Au 18 septembre (semaine 4 sur 15), **4 % de ta session est joué**. Rien n'est perdu,
-rien n'est gagné : tout se décide entre maintenant et le 11 décembre.
+Au 15 novembre (fin de la semaine 11 sur 15), **environ 47 % de ta session est jouée**.
+Tu es exactement à la bascule : à partir de maintenant, plus aucune matière neuve ne vaut
+autant que la révision de ce qui est déjà vu. **Les 53 % qui restent se jouent en quatre
+semaines**, et la moitié tombe entre le 8 et le 11 décembre.
 
-| Cours | Déjà évalué | Reste à jouer | Difficulté retenue |
-|---|---|---|---|
-| Développement de logiciels | 10 % | 90 % | ●●○○○ |
-| Programmation Web I | 0 % | 100 % | ●●○○○ |
-| Littérature et imaginaire | 10 % | 90 % | ●●●●○ |
-| Anglais propre au programme | 0 % | 100 % | ●●●○○ |
-| Éthique et politique | 0 % | 100 % | ●●●●○ |
+| Cours | Déjà joué | dont à confirmer | Reste à jouer | Difficulté retenue |
+|---|---|---|---|---|
+| Littérature et imaginaire | 60 % | 20 % | 40 % | ●●●●○ |
+| Éthique et politique | 55 % | 20 % | 45 % | ●●●●○ |
+| Développement de logiciels | 50 % | 15 % | 50 % | ●●○○○ |
+| Programmation Web I | 37 % | 12 % | **63 %** | ●●○○○ |
+| Anglais propre au programme | 35 % | 15 % | **65 %** | ●●●○○ |
 
-**Le niveau de difficulté est une hypothèse de départ, pas un verdict.** Je l'ai fixé
-ainsi parce que tu es en Techniques de l'informatique : les deux cours de programmation
-jouent sur ton terrain, tandis que le français et la philosophie te demandent 90 % et
-100 % de ta note en rédaction et en oral, avec 25 % des points de français sur la langue
-seule. C'est ce réglage qui décide de la répartition de ton temps dans la semaine type
-plus bas. **Si ce n'est pas ton ressenti, change le champ `difficulte` dans
-`donnees-session.json` et dis-le moi** — je réalloue les blocs en conséquence.
+⚠️ **La colonne « à confirmer » est le vrai problème de ce tableau.** 82 % de points sont
+au statut incertain : huit évaluations passées dont rien ne confirme qu'elles ont été
+déposées ni même tenues. Tant qu'elles ne sont pas vérifiées sur LÉA, ton avancement est
+une hypothèse, pas un fait — et la répartition du temps ci-dessous tourne encore sur les
+estimations de difficulté faites en août.
+
+**Les deux cours où il reste le plus à jouer sont l'anglais et la Prog. Web** — et ce
+n'est pas ta difficulté la plus haute. C'est un renseignement utile : en fin de session,
+le risque n'est plus seulement la matière dure, c'est la matière dont le poids est resté
+devant toi. L'anglais concentre 60 % de sa note sur ses deux finaux ; la Prog. Web, 55 %
+sur l'Évaluation #2 et son final.
 
 ---
 
-## 2. Tout ce qui est évalué, du 18 septembre au 15 décembre
+## 2. Tout ce qui est évalué, du 24 août au 15 décembre
 
 ### Développement de logiciels — 420-325-GR · Antoine Grenier · A307
 Lundi 10 h 45 – 12 h 30 · Mercredi 8 h – 10 h 40
@@ -144,16 +150,16 @@ tire 2 au hasard. Inscris-toi dès l'ouverture des plages : les bonnes disparais
 
 ## 3. Les quatre semaines rouges
 
-Quatre semaines concentrent l'essentiel du risque. Elles sont connues **aujourd'hui** :
-c'est précisément ce qui permet de ne pas les subir.
+Quatre semaines concentraient l'essentiel du risque. **Trois sont derrière toi.**
+Il n'en reste qu'une — et c'est celle qui compte le plus.
 
-### 🔴 Semaine 5 · 21–25 septembre — quatre échéances
+### ✅ Semaine 5 · 21–25 septembre — passée
 Dissertation de français **mardi (20 %)**, TP2 Dév. logiciels **(10 %)**, remise TP1
 VueJS, test de philo **vendredi (10 %)**.
 → Le TP2 et le TP1 VueJS doivent être **finis le dimanche 20 au soir**. La semaine
 entière appartient au français et à la philo.
 
-### 🔴 Semaine 7 · 5–9 octobre — la pire de la session
+### ✅ Semaine 7 · 5–9 octobre — passée, c'était la pire
 **65 % de poids en quatre jours** : examen intra Dév. logiciels **mercredi 7 (25 %)**,
 midterm oral d'anglais **jeudi 8 (15 %)**, Évaluation #1 Prog. Web **vendredi 9 (25 %)**
 avec la remise du TP2 Vue Router le même jour.
@@ -163,13 +169,14 @@ termine pendant la semaine 6, pas la semaine 7.
 → Bonne nouvelle : la semaine d'études du 12 au 16 octobre suit immédiatement. Tu peux
 te vider complètement, tu récupères juste après.
 
-### 🔴 Semaine 11 · 9–13 novembre
-Contrôle 2 Dév. logiciels **(5 %)**, remise TP3 WebAPI, dissertation de philo
-**vendredi 13 (20 %)** — 900 mots rédigés en classe.
-→ Le plan de dissertation du 6 novembre est ta répétition générale. Prends-la au sérieux :
-c'est la seule que tu auras.
+### 🟠 Semaine 11 · 9–13 novembre — passée, sauf le Contrôle 2
+Remise TP3 WebAPI et dissertation de philo **vendredi 13 (20 %)** : faits.
+→ Mais le **Contrôle 2 (5 %)** était daté du vendredi 13, or il n'y a **pas de cours de
+Dév. logiciels ce jour-là**. Il retombe donc sur le **lundi 16 à 10 h 45**, et la question
+est partie au prof. Sois prêt lundi dans tous les cas : c'est 5 %, et la préparation
+tient en une relecture.
 
-### 🔴 Semaine 15 · 7–11 décembre — la finale
+### 🔴 Semaine 15 · 7–11 décembre — la seule qui reste, et la plus lourde
 Dissertation terminale de français **mardi 8 (30 %)**, examen final Dév. logiciels
 **mercredi 9 (35 %)**, final Reading & Writing d'anglais **jeudi 10 (30 %)**, examen final
 Prog. Web **vendredi 11 (35 %)** + remise du TP5, puis l'**entrevue de philo (40 %)**.
@@ -212,68 +219,109 @@ en philo).
 
 | Sem. | Dates | Priorité absolue | En arrière-plan |
 |---|---|---|---|
-| 4 | 14–18 sept. | Finir *La vie devant soi* p. 176-223 et faire **un** plan de dissertation type | Régler le carton #723 · commencer le TP2 |
-| **5** | 21–25 sept. | 🔴 **Dissertation de français, mardi 22** | Test de philo vendredi · finir TP2 + TP1 VueJS |
-| 6 | 28 sept.–2 oct. | 🔴 **Examen de philo, vendredi 2** (25 %) | Midterm écrit d'anglais jeudi 1er · finir TP2 Vue Router |
-| **7** | 5–9 oct. | 🔴 **Trois examens. Aucune matière neuve.** | Uniquement repasser ce qui est déjà su |
-| — | 12–16 oct. | 😮‍💨 Souffler, puis prendre de l'avance sur *Marie-Claire* | Acheter *Marie-Claire* · rattraper ce qui traîne |
-| 8 | 19–23 oct. | TP3 Dév. logiciels | Procédés d'écriture : 20 min par jour |
-| 9 | 26–30 oct. | **Test des procédés, mardi 27** + le plan tournant (présence obligatoire) | Lire Rawls pour le 30 |
-| 10 | 2–6 nov. | 🔴 **Dissertation intro + conclusion, mardi 3** | Lire Nussbaum · plan de philo vendredi 6 |
-| **11** | 9–13 nov. | 🔴 **Dissertation de philo, vendredi 13** (900 mots) | Contrôle 2 · remise TP3 WebAPI |
-| 12 | 16–20 nov. | **Évaluation #2 Prog. Web** (20 %) + TP4 | Odyssey journal jeudi 19 · **début des révisions de finaux** |
+| ✅ 4 | 14–18 sept. | Finir *La vie devant soi* p. 176-223 et faire **un** plan de dissertation type | Régler le carton #723 · commencer le TP2 |
+| ✅ 5 | 21–25 sept. | 🔴 **Dissertation de français, mardi 22** | Test de philo vendredi · finir TP2 + TP1 VueJS |
+| ✅ 6 | 28 sept.–2 oct. | 🔴 **Examen de philo, vendredi 2** (25 %) | Midterm écrit d'anglais jeudi 1er · finir TP2 Vue Router |
+| ✅ 7 | 5–9 oct. | 🔴 **Trois examens. Aucune matière neuve.** | Uniquement repasser ce qui est déjà su |
+| ✅ — | 12–16 oct. | 😮‍💨 Souffler, puis prendre de l'avance sur *Marie-Claire* | Acheter *Marie-Claire* · rattraper ce qui traîne |
+| ✅ 8 | 19–23 oct. | TP3 Dév. logiciels | Procédés d'écriture : 20 min par jour |
+| ✅ 9 | 26–30 oct. | **Test des procédés, mardi 27** + le plan tournant (présence obligatoire) | Lire Rawls pour le 30 |
+| ✅ 10 | 2–6 nov. | 🔴 **Dissertation intro + conclusion, mardi 3** | Lire Nussbaum · plan de philo vendredi 6 |
+| ✅ 11 | 9–13 nov. | 🔴 **Dissertation de philo, vendredi 13** (900 mots) | Contrôle 2 · remise TP3 WebAPI |
+| **➡️ 12** | **16–20 nov.** | **Évaluation #2 Prog. Web** (20 %) + TP4 | Odyssey journal jeudi 19 · **début des révisions de finaux** |
 | 13 | 23–27 nov. | **Final oral d'anglais** (30 %) | Remise TP4 EF Core · lectures *Marie-Claire* |
 | 14 | 30 nov.–4 déc. | Fiches de révision des quatre finaux | Test de philo vendredi 4 · s'inscrire à l'entrevue |
 | **15** | 7–11 déc. | 🔴 **Quatre finaux en quatre jours** | Uniquement repasser · TP5 déjà rendu |
 | — | 15 déc. | Cercles de discussion de français (10 %) | *Oscar et la dame rose* lu d'avance |
 
+### ➡️ Le dernier droit : 16 novembre → 11 décembre
+
+C'est la règle annoncée depuis septembre, et elle commence maintenant : **les révisions de
+finaux démarrent trois semaines avant, pas la semaine d'avant.** Plutôt que de bloquer des
+journées entières de révision — qui ne tiennent jamais — chaque bloc de ta semaine type
+reçoit un final attitré. Tu ne changes pas ton horaire : tu changes ce que tu mets dedans.
+
+| Bloc de la semaine type | Ce qu'il porte désormais |
+|---|---|
+| Lundi 16 h 30 – 18 h | **Final Prog. Web** — refaire un TP sans la correction |
+| Mardi 13 h 30 – 16 h 30 | **Dissertation terminale de français** — un paragraphe modèle, chronométré |
+| Mercredi 11 h 15 – 16 h | **Final Dév. logiciels** — du code sur papier, sans autocomplétion |
+| Jeudi 12 h 30 – 15 h 30 | **Finaux d'anglais** — à voix haute, chronométré |
+| Vendredi 11 h 45 – 12 h 45 | **Entrevue de philo (40 %)** — une réponse construite, dite à voix haute |
+| Samedi 9 h – 12 h | Lectures : *Marie-Claire* + les textes de philo, en annotant |
+| Dimanche 16 h – 18 h | Bilan : ce qui a bougé, ce qui glisse, plan de la semaine |
+
+Résultat : **chaque final reçoit trois passages espacés** avant décembre, et aucune journée
+n'est sacrifiée. La carte du jour affiche ce passage sous le bandeau
+*Révision des finaux*, pour que tu n'aies jamais à te demander ce que tu révises
+aujourd'hui.
+
+Les trois semaines ne sont pas interchangeables :
+
+- **Semaine 12 (16–20 nov.)** — la dernière semaine chargée avant les finaux :
+  Évaluation #2 Prog. Web (20 %) et TP4 MVVM (10 %) le vendredi 20, journal Odyssey le
+  jeudi 19. La révision passe au second plan jusqu'au 20 au soir.
+- **Semaine 13 (23–27 nov.)** — **final oral d'anglais (30 %) le 26.** C'est le premier
+  vrai final, et il arrive deux semaines avant les autres. Ne le laisse pas se faire
+  écraser par la remise du TP4 EF Core le 27.
+- **Semaine 14 (30 nov.–4 déc.)** — la dernière semaine utile. Test de philo le 4 (5 %),
+  et surtout : tout ce qui n'est pas prêt le 4 décembre au soir ne le sera pas.
+
 ---
 
 ## 6. Les grosses pièces, découpées
 
-Le principe est toujours le même : **trois passages espacés, jamais un bloc unique.**
+Le principe ne change pas : **trois passages espacés, jamais un bloc unique.**
 La carte du jour affiche à quel passage tu en es (`NOTES` → `FICHES` → `TEST BLANC` → `RELIRE`).
+Les pièces de septembre et d'octobre sont derrière ; voici les six qui restent, dans
+l'ordre où elles arrivent.
 
-### Dissertation de français du 22 septembre (20 %) — il te reste 4 jours
-| Jour | Tâche |
-|---|---|
-| ven. 18 | Finir p. 176-223 en **annotant** (le plan de cours l'exige explicitement) |
-| sam. 19 | Relever 8 à 10 citations classées par thème : Madame Rosa, la vieillesse, l'amour, la dignité |
-| dim. 20 | **Un plan complet en 40 minutes, chronométré**, sur un sujet inventé |
-| lun. 21 | Relire la méthode : structure du paragraphe, insertion des citations, marqueurs de relation |
-| mar. 22 | Tu écris. Réserve **10 minutes à la fin pour la langue** — c'est 25 % des points |
-
-### Examen intra de Dév. logiciels du 7 octobre (25 %)
+### Évaluation #2 de Prog. Web, vendredi 20 novembre (20 %) + TP4 MVVM le même jour
+Deux échéances le même vendredi, dans deux cours différents. C'est la dernière collision
+de la session.
 | Quand | Tâche |
 |---|---|
-| dès le 23 sept. | Reprendre les exercices dirigés de chaque semaine, sans regarder la correction |
-| 30 sept. | Fiche unique : collections, structure des objets, ORM |
-| 4 oct. | **Examen blanc chronométré** sur les cas pratiques |
-| 5–6 oct. | Relecture seulement. Rien de neuf. |
+| dim. 15 | Trier : qu'est-ce qui manque au TP4, qu'est-ce qui manque à l'éval ? |
+| lun. 16 – mar. 17 | **Finir le TP4 MVVM.** Un TP fini tôt libère la fin de semaine pour l'éval |
+| mer. 18 | Bloc programmation entier sur l'Évaluation #2 : refaire les TP1 à TP3 sans la correction |
+| jeu. 19 | Remettre le journal Odyssey (5 % garantis, ne les laisse pas filer) |
+| ven. 20 | Les deux remises. Rien de neuf ce jour-là |
 
-### Examen de philo du 2 octobre (25 %)
-Le test du 25 septembre est ta répétition générale : même matière, même format, dix fois
-moins de risque. Traite-le comme tel.
-Kant (impératif catégorique, universalisation) · Bentham et Mill (calcul du bonheur,
-distinction entre plaisirs) · Aristote (vertu, juste milieu) · Tronto (éthique du Care).
-**Tu as droit à tes notes de cours.** Donc la vraie préparation, c'est de *construire de
-bonnes notes* : un tableau à quatre colonnes — thèse, critère du bien, objection classique,
-exemple concret — que tu peux consulter en trente secondes le jour de l'examen.
+### Final oral d'anglais, jeudi 26 novembre (30 %)
+Le premier des finaux, et il arrive **deux semaines avant les autres** — c'est facile de
+l'oublier. 30 % du cours dans une évaluation qui ne se prépare pas par écrit.
+À partir du 21 novembre : **dix minutes à voix haute par jour**, chronométrées. Enregistre-toi
+une fois et réécoute — c'est désagréable, et c'est le seul moyen d'entendre ce que le
+correcteur entendra.
 
-### Dissertation de philo du 13 novembre (20 %)
-900 mots rédigés en classe : problématisation, thèse, arguments, objection, réfutation,
-et **deux théories du cours**. À partir du 23 octobre, écris une objection + réfutation par
-semaine sur un sujet différent. Cinq répétitions avant le jour J.
+### Dissertation terminale de français, mardi 8 décembre (30 %)
+L'épreuve la plus lourde du cours, et tu as déjà écrit deux dissertations cette session :
+tu connais le format. Ce qui reste à travailler, c'est la **matière** — *Marie-Claire*, lu
+et annoté (p. 54-96 pour le 17 nov., 97-145 pour le 24, 146-197 pour le 1er déc.).
+Un paragraphe modèle chronométré chaque mardi, du 17 novembre au 1er décembre : trois
+répétitions. Et toujours **10 minutes de relecture linguistique** à la fin — la langue vaut
+25 % des points.
 
-### Les quatre finaux de décembre — début des révisions : 16 novembre
-Trois semaines, un final par bloc de la semaine type :
-mercredi → Dév. logiciels et Prog. Web · mardi → français · jeudi → anglais ·
-vendredi + samedi → philo. Chaque final a ainsi **trois passages** avant décembre.
+### Final de Dév. logiciels, mercredi 9 décembre (35 %)
+La plus grosse note du cours. Trois passages, les mercredis 18 et 25 novembre et 2 décembre :
+reprendre les exercices dirigés sans la correction, puis une fiche unique (collections,
+objets, ORM, MVVM), puis un **examen blanc chronométré le 2 décembre**. Du code **sur
+papier**, sans autocomplétion : c'est ce qui sera demandé.
 
-### Entrevue finale de philo (40 %) — la plus grosse note de ta session
-Dès que les 4 questions sont annoncées : une réponse construite par semaine, **dite à voix
-haute et chronométrée**, pas seulement écrite. Une entrevue de 20 minutes ne se prépare
-pas en lisant.
+### Final de Prog. Web, vendredi 11 décembre (35 %) + remise du TP5
+Même logique, les lundis. Le TP5 (fetch + API) se termine **avant** la semaine 15 — il ne
+doit pas te manger la semaine des finaux. Après chaque TP remis, note en trois lignes ce
+qui a bloqué : c'est exactement ce qui retombe à l'examen.
+
+### Entrevue finale de philo, vendredi 11 décembre (40 %) — la plus grosse note de la session
+Elle commence par une inscription, pas par une révision : **les plages Microsoft Bookings
+partent dans l'ordre d'arrivée**, et c'est la seule tâche de ce plan qui peut être perdue
+sans que tu aies rien fait de mal. Inscris-toi cette semaine.
+Ensuite : dès que les 4 questions sont annoncées, une réponse construite par semaine,
+**dite à voix haute et chronométrée**. Tu as droit à tes notes — donc la préparation
+réelle, c'est de construire des notes consultables en trente secondes : un tableau par
+penseur (thèse, critère du juste, objection, exemple). Une entrevue de 20 minutes ne se
+prépare pas en lisant.
 
 ---
 
@@ -336,16 +384,26 @@ Tu vas prendre du retard. C'est prévu, ce n'est pas un échec, et il y a de la 
 
 ## 9. À confirmer — les vraies zones d'ombre
 
-Ce plan est bâti sur les plans de cours que tu as fournis. Cinq points ne peuvent pas être
-tranchés à partir d'eux seuls, et deux sont urgents.
+C'est devenu le point faible du système. Onze questions sont ouvertes, certaines depuis
+deux mois, et **elles ne sont pas décoratives** : tant qu'elles tiennent, 82 % de points
+restent au statut incertain et trois semaines de préparation reposent sur des hypothèses.
 
 | Urgence | Quoi | Auprès de qui |
 |---|---|---|
-| 🔴 **En retard** | Carton #723 + photo du reçu (échéance semaine 3) | Aleksandra Serebrenik |
-| 🔴 **Cette semaine** | Pondérations et dates d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux* | Cyndelle Gagnon |
-| 🟠 D'ici le 24 sept. | Date réelle du midterm oral d'anglais (8 octobre ?) — la case du plan porte aussi *Thursday group: READING WEEK* | Aleksandra Serebrenik |
-| 🟠 D'ici fin sept. | Pourquoi le mardi 6 octobre saute au calendrier du groupe 00009 | Julie Chamberland |
-| 🟡 Sur LÉA | Dates officielles de remise des TP de Prog. Web et répartition exacte des 20 % | David Lacasse / LÉA |
+| 🔴 **Aujourd'hui, en ligne** | **S'inscrire à l'entrevue finale de philo (40 %)** sur Microsoft Bookings — 9 jours de retard. Les plages partent dans l'ordre d'arrivée : celles qui resteront le 10 décembre ne sont pas celles d'aujourd'hui | Microsoft Bookings |
+| 🔴 **Lundi** | **Les 8 évaluations passées non confirmées** sur LÉA — dont les deux remises du 13 novembre. Un MIO au prof le soir même pour chaque ligne non déposée | LÉA / les cinq profs |
+| 🔴 **Lundi** | **Date du final oral d'anglais (30 %)** : le 26 novembre ou le 3 décembre ? La réponse décide de trois semaines de préparation | Aleksandra Serebrenik |
+| 🔴 **Lundi** | **Date du Contrôle 2** (5 %) : daté du vendredi 13, or aucun cours ce jour-là. Reste le lundi 16 | Antoine Grenier |
+| 🔴 **Lundi matin** | **Acheter *Marie-Claire*** en reprographie (COOPSCO, doc. 808) — support des quatre lectures de novembre. COOPSCO est fermé la fin de semaine : lundi matin est la dernière fenêtre avant le cours de mardi | COOPSCO |
+| 🔴 Depuis 51 jours | Pondérations d'Éthique — le PDF reçu est une version *Hiver 2026 / services sociaux*. Il reste 45 % du cours à jouer | Cyndelle Gagnon |
+| 🔴 Depuis 58 jours | Carton #723 + photo du reçu, à téléverser **au comptoir** | Aleksandra Serebrenik |
+| 🟠 Cette semaine | Notes de mi-session sur LÉA — toute la répartition du temps tourne encore sur les estimations d'août | LÉA |
+| 🟠 Cette semaine | Dates officielles des TP3 à TP5 de Prog. Web et répartition exacte des 20 % — les 4 % par TP sont une hypothèse | David Lacasse / LÉA |
+| 🟡 D'ici le 27 nov. | Se procurer *Oscar et la dame rose* (cercles de discussion du 15 déc.) | COOPSCO |
+
+> **Deux de ces lignes se règlent en ligne, un dimanche** : l'inscription Bookings et la
+> consultation de LÉA. Les autres attendent lundi — MIO, reprographie et comptoir ne
+> répondent pas la fin de semaine.
 
 ---
 

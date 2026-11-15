@@ -45,6 +45,21 @@
   ],
   "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable.",
 
+  "rotation_revisions": {
+    "_commentaire": "Du 15 novembre au 11 decembre : chaque bloc de la semaine type porte un final attitre. Chaque final recoit ainsi trois passages espaces avant decembre, sans jamais bloquer une journee entiere. C'est la mise en oeuvre de la regle 'rien ne s'apprend en semaine 15'.",
+    "actif_du": "2026-11-15",
+    "actif_au": "2026-12-11",
+    "par_jour": {
+      "1": "Final Prog. Web (35 %) — refaire un TP sans la correction",
+      "2": "Dissertation terminale de français (30 %) — un paragraphe modèle, chronométré",
+      "3": "Final Dév. logiciels (35 %) — du code sur papier, sans autocomplétion",
+      "4": "Finaux d'anglais (30 % + 30 %) — à voix haute, chronométré",
+      "5": "Entrevue de philo (40 %) — une réponse construite, dite à voix haute",
+      "6": "Lectures : Marie-Claire + les textes de philo, en annotant",
+      "7": "Bilan : ce qui a bougé, ce qui glisse, plan de la semaine"
+    }
+  },
+
   "evaluations": [
     {"cours": "devlog",  "titre": "TP1",                                  "date": "2026-09-04", "poids": 5,  "type": "tp",     "fait": true},
     {"cours": "devlog",  "titre": "Contrôle 1",                           "date": "2026-09-16", "poids": 5,  "type": "test",   "fait": true},
@@ -119,7 +134,6 @@
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-06", "urgent": true, "note": "Plus grosse note de la session. Les plages se réservent : celles qui restent la veille ne sont pas celles d'aujourd'hui."},
     {"quoi": "Dév. logiciels : faire confirmer la date du Contrôle 2 à A. Grenier", "pour": "2026-11-12", "urgent": true, "note": "Daté du vendredi 13, or aucun cours ce jour-là. Reste le lundi 16."},
     {"quoi": "Anglais : Final Speaking & Listening (30 %) — le 26 nov. ou le 3 déc. ?", "pour": "2026-11-12", "urgent": true, "note": "30 % du cours. La réponse décide de trois semaines de préparation."},
-    {"quoi": "Ouvrir le plan de révision des 4 finaux (184 % du 7 au 15 déc.)", "pour": "2026-11-16", "urgent": false, "note": "Règle la plus importante du plan de session : rien ne s'apprend en semaine 15."},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
   ],
 

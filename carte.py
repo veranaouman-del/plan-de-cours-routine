@@ -82,6 +82,17 @@ def chantiers(data, jour):
     return sorted(actifs, key=lambda e: -e["score"])
 
 
+def revision_du_jour(data, jour):
+    """Pendant la fenetre des finaux, chaque bloc de la semaine type porte un final
+    attitre. C'est ce qui garantit trois passages par final sans bloquer une journee."""
+    rot = data.get("rotation_revisions")
+    if not rot:
+        return None
+    if not (d(rot["actif_du"]) <= jour <= d(rot["actif_au"])):
+        return None
+    return rot["par_jour"].get(str(jour.isoweekday()))
+
+
 def cours_du_jour(data, jour):
     if jour.isoweekday() > 5 or en_semaine_etudes(data, jour):
         return []
@@ -211,6 +222,12 @@ def texte(data, jour):
         L.append("PRIORITÉ DU JOUR")
         L.append("• %s — %s (%d %%), %s" % (data["cours"][p["cours"]]["nom"], p["titre"],
                                             p["poids"], jx(p["reste"])))
+        L.append("")
+
+    rev = revision_du_jour(data, jour)
+    if rev:
+        L.append("RÉVISION DES FINAUX — LE PASSAGE DU JOUR")
+        L.append("• %s" % rev)
         L.append("")
 
     L.append("À FAIRE AUJOURD'HUI")
@@ -356,6 +373,14 @@ def image(data, jour, sortie):
         if p["poids"]:
             dr.text((W - 146, y + 34), "%d %%" % p["poids"], font=f(36, True), fill="#1f2937")
         y += 128
+
+    # révision des finaux
+    rev = revision_du_jour(data, jour)
+    if rev:
+        dr.rounded_rectangle([40, y, W - 40, y + 74], radius=12, fill="#1f2937")
+        dr.text((66, y + 13), "RÉVISION DES FINAUX — LE PASSAGE DU JOUR", font=f(15, True), fill="#9ca3af")
+        dr.text((66, y + 39), tronque(rev, f(19, True), W - 160), font=f(19, True), fill="#ffffff")
+        y += 100
 
     # à faire
     y = section("À FAIRE AUJOURD'HUI", y)

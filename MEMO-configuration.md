@@ -128,3 +128,20 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
 - **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
+
+12. **⚠️ LA BRANCHE `main` EST RESTÉE AU 18 SEPTEMBRE — c'est la cause du piège 10.**
+   Chaque session quotidienne crée une branche neuve (`claude/epic-newton-XXXX`) *à partir
+   de `main`*, et aucune n'est jamais fusionnée. Résultat : chaque matin, la session repart
+   des données de septembre et doit « reconstruire » `notion.py`, les tâches réglées et les
+   dates recalées — d'où les douzaines de commits « notion.py reconstruit » dans
+   l'historique. Le travail n'est pas perdu, il est **éparpillé sur ~60 branches**.
+
+   **Premier réflexe de chaque session, avant toute chose :**
+   ```bash
+   git fetch --all
+   git log --all --format='%h %ad %s' --date=short | sort -k2 | tail -5   # la plus récente
+   git reset --hard <ce commit>                                           # repartir de là
+   ```
+   **Le correctif durable** : fusionner la branche du jour dans `main` à la fin de chaque
+   session. Tant que ce n'est pas fait, le piège se répète tous les jours. Cela demande
+   l'autorisation de pousser sur `main`, que les sessions n'ont pas par défaut.
