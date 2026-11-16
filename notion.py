@@ -178,6 +178,33 @@ def page(data, jour, focus=""):
         w(focus.strip())
         w("")
 
+    # ------------------------------------------------- plan de révision des finaux
+    # Cette section est generee, pas ecrite a la main : sinon replace_content
+    # l'efface a la premiere regeneration de la page.
+    rot = data.get("rotation_revisions")
+    if rot and C.d(rot["actif_du"]) <= jour <= C.d(rot["actif_au"]):
+        w("---")
+        w("")
+        w("## 🚩 Mon plan de révision des finaux — %s → %s"
+          % (courte(C.d(rot["actif_du"])), courte(C.d(rot["actif_au"]))))
+        w("")
+        w("> Chaque bloc de ma semaine type porte un final attitré. Trois passages "
+          "espacés par final, et aucune journée bloquée.")
+        w("")
+        lignes = []
+        for b in sorted(data["blocs_travail"], key=lambda x: (x["jour"], x["debut"])):
+            porte = rot["par_jour"].get(str(b["jour"]))
+            if not porte:
+                continue
+            quand = "%s %s – %s" % (C.JOURS[b["jour"] - 1].capitalize(),
+                                    heure(b["debut"]), heure(b["fin"]))
+            if b["jour"] == jour.isoweekday():
+                quand = "<b>%s</b> ← <i>aujourd'hui</i>" % quand
+                porte = "<b>%s</b>" % porte
+            lignes.append([quand, porte])
+        w(table(["Bloc de la semaine type", "Ce qu'il porte désormais"], lignes))
+        w("")
+
     # ---------------------------------------------------------------- à confirmer
     incertain = a_confirmer(data, jour)
     if incertain:
@@ -312,10 +339,18 @@ def page(data, jour, focus=""):
     for s in semaines_rouges(data, jour):
         quoi = " · ".join("%s %s %s" % (emoji(data, e["cours"]), e["titre"], poids_txt(e))
                           for e in s["evals"])
+        if s["passee"]:
+            statut = "✅ passée"
+        elif s["debut"] <= jour <= s["fin"]:
+            # la semaine rouge a commence : c'est celle qui se joue maintenant
+            statut = "🔥 <b>en cours</b>"
+        elif (s["debut"] - jour).days <= 7:
+            statut = "⏳ la semaine prochaine"
+        else:
+            statut = "⏳ à venir"
         lignes.append(["<b>%d</b>" % s["num"],
                        "%s – %s" % (courte(s["debut"]), courte(s["fin"])),
-                       quoi, "<b>%d %%</b>" % s["poids"],
-                       "✅ passée" if s["passee"] else "⏳ à venir"])
+                       quoi, "<b>%d %%</b>" % s["poids"], statut])
     w(table(["Semaine", "Dates", "Ce qui tombe", "Poids total", "Statut"], lignes))
     w("")
 
