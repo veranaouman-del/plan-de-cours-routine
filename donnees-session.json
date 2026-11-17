@@ -43,7 +43,7 @@
     {"jour": 6, "debut": "09:00", "fin": "12:00", "titre": "Lectures longues (roman, textes de philo)", "focus": ["litt", "philo"]},
     {"jour": 7, "debut": "16:00", "fin": "18:00", "titre": "RATTRAPAGE + plan de la semaine", "focus": ["rattrapage"]}
   ],
-  "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable.",
+  "_blocs": "Vendredi soir et samedi apres-midi/dimanche matin sont volontairement vides. Ne pas les remplir : c'est ce qui rend le reste tenable. ATTENTION : le bloc du jeudi (12 h 30) arrive APRES le cours d'anglais (8 h 55 - 11 h 35). Une remise d'anglais datee d'un jeudi doit donc etre prete le mercredi soir : le bloc du jeudi ne peut pas la preparer.",
 
   "rotation_revisions": {
     "_commentaire": "Du 15 novembre au 11 decembre : chaque bloc de la semaine type porte un final attitre. Chaque final recoit ainsi trois passages espaces avant decembre, sans jamais bloquer une journee entiere. C'est la mise en oeuvre de la regle 'rien ne s'apprend en semaine 15'.",
@@ -66,7 +66,7 @@
     {"cours": "devlog",  "titre": "TP2 (ORM)",                            "date": "2026-09-25", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 7, "a_verifier_lea": true},
     {"cours": "devlog",  "titre": "Examen intra",                         "date": "2026-10-07", "poids": 25, "type": "examen", "fait": false, "prep_jours": 14},
     {"cours": "devlog",  "titre": "TP3",                                  "date": "2026-10-23", "poids": 5,  "type": "tp",     "fait": false, "prep_jours": 5, "a_verifier_lea": true},
-    {"cours": "devlog",  "titre": "Contrôle 2",                           "date": "2026-11-16", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 5, "a_confirmer": "Le plan le datait du vendredi 13, or il n'y a pas de cours de Dév. logiciels le vendredi. Le mercredi 11 est passé : reste le lundi 16. À faire trancher par MIO à A. Grenier."},
+    {"cours": "devlog",  "titre": "Contrôle 2",                           "date": "2026-11-16", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 5, "a_verifier_lea": true, "a_confirmer": "Le plan le datait du vendredi 13 (aucun cours ce jour-là) ; restait le cours du lundi 16, maintenant passé. A-t-il eu lieu ? La note est-elle consignée ? MIO à A. Grenier."},
     {"cours": "devlog",  "titre": "TP4 (MVVM)",                           "date": "2026-11-20", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 10},
     {"cours": "devlog",  "titre": "Examen final",                         "date": "2026-12-09", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
 
@@ -126,16 +126,16 @@
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "Téléverser la photo AU COMPTOIR, pas le soir. Même sortie que la reprographie COOPSCO."},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon", "pour": "2026-09-25", "urgent": true, "note": "Le PDF reçu est une version Hiver 2026 / services sociaux."},
-    {"quoi": "LÉA : vérifier les 8 évaluations passées non confirmées", "pour": "2026-10-16", "urgent": true, "note": "82 % de points au statut incertain, dont les deux remises du 13 novembre. MIO au prof le soir même pour chaque ligne non déposée."},
+    {"quoi": "LÉA : vérifier les 9 évaluations passées non confirmées", "pour": "2026-10-16", "urgent": true, "note": "87 % de points au statut incertain, dont les deux remises du 13 novembre et le Contrôle 2 du 16. MIO au prof le soir même pour chaque ligne non déposée."},
     {"quoi": "Prog. Web : dates officielles des TP3 à TP5 et répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true, "note": "Les 4 % par TP sont une hypothèse, pas une donnée du plan de cours."},
-    {"quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)", "pour": "2026-10-27", "urgent": true, "note": "Support des quatre lectures de novembre. COOPSCO est fermé la fin de semaine : si ce n'est pas fait, le lundi 16 au matin est la dernière fenêtre avant le cours du mardi."},
+    {"quoi": "Acheter Marie-Claire en reprographie (COOPSCO, doc. 808)", "pour": "2026-10-27", "urgent": true, "note": "Support des quatre lectures de novembre. Les p. 54-96 étaient à lire pour le cours du 17 : cette fenêtre est perdue. Prochaine échéance ferme : p. 97-145 pour le mardi 24. COOPSCO est fermé la fin de semaine — y passer mercredi 18 entre les cours."},
     {"quoi": "Anglais : MIO — l'oral du 22 oct. a-t-il eu lieu ? notes des 2 midterms ?", "pour": "2026-10-30", "urgent": true},
     {"quoi": "LÉA : relever mes notes de mi-session et réajuster les difficultés", "pour": "2026-11-02", "urgent": true, "note": "Toute la répartition du temps tourne encore sur mes estimations d'août."},
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-06", "urgent": true, "note": "Plus grosse note de la session. Les plages se réservent : celles qui restent la veille ne sont pas celles d'aujourd'hui."},
-    {"quoi": "Dév. logiciels : faire confirmer la date du Contrôle 2 à A. Grenier", "pour": "2026-11-12", "urgent": true, "note": "Daté du vendredi 13, or aucun cours ce jour-là. Reste le lundi 16."},
+    {"quoi": "Dév. logiciels : le Contrôle 2 a-t-il eu lieu le 16 ? relever la note", "pour": "2026-11-12", "urgent": true, "note": "Jamais confirmé, et les deux dates possibles sont passées. Si rien n'est consigné sur LÉA, MIO à A. Grenier : 5 % ne se perdent pas sur un malentendu de calendrier."},
     {"quoi": "Anglais : Final Speaking & Listening (30 %) — le 26 nov. ou le 3 déc. ?", "pour": "2026-11-12", "urgent": true, "note": "30 % du cours. La réponse décide de trois semaines de préparation."},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
   ],
 
-  "_maj": "2026-11-14"
+  "_maj": "2026-11-17"
 }
