@@ -18,6 +18,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 
 ## Mon horaire — Automne 2026
 
@@ -69,7 +70,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    18 septembre en clair. Maintenant tout vient de `donnees-session.json` : une échéance
    qui bouge se change à un seul endroit.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
-6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
+6. **`notion.py` n'a jamais été commité.** Le pied de page Notion annonçait une génération
+   automatique par un script de ce nom : il n'existe dans aucun commit et a disparu avec le
+   conteneur de la session qui l'avait écrit. La page Notion se met donc à jour à la main,
+   et elle contient de l'état absent du JSON (les 9 évaluations à vérifier sur LÉA, plusieurs
+   tâches à régler). **Tout script utile doit être commité le jour même : les conteneurs sont
+   recyclés.**
+7. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
 
 ## Points à confirmer auprès des profs

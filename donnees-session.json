@@ -102,10 +102,8 @@
 
   "taches_admin": [
     {"quoi": "Anglais : acheter le carton #723 et téléverser la photo du reçu", "pour": "2026-09-18", "urgent": true, "note": "En retard depuis la semaine 3."},
-    {"quoi": "Anglais : confirmer par MIO la date du midterm oral (8 oct ?)",   "pour": "2026-09-24", "urgent": true},
-    {"quoi": "Français : demander à Julie Chamberland pourquoi le mardi 6 octobre saute au calendrier", "pour": "2026-09-29", "urgent": false},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon (le PDF reçu est une version Hiver 2026)", "pour": "2026-09-25", "urgent": true},
-    {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": false},
+    {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-20", "urgent": true},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false}
   ]
 }

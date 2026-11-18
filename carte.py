@@ -126,6 +126,11 @@ def taches_du_jour(data, jour, actifs):
     # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
     liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
 
+    # Ce qui tombe aujourd'hui ou demain passe devant, quel que soit le bloc du jour.
+    # Sans cela, une remise a J-1 dans une matiere hors focus disparait de la carte :
+    # c'est arrive au journal Odyssey le 18 novembre, masque par le bloc de programmation.
+    liste = [e for e in liste if e["reste"] <= 1] + [e for e in liste if e["reste"] > 1]
+
     for e in liste[:4]:
         taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
 
