@@ -93,23 +93,38 @@ def blocs_du_jour(data, jour):
 
 
 def taches_du_jour(data, jour, actifs):
-    """Construit la liste de tâches : admin urgent, lectures qui arrivent, puis
+    """Construit la liste de tâches du jour, dans l'ordre où elle doit être lue :
+    ce qui tombe aujourd'hui ou demain, les retards, l'admin, les lectures, puis
     les chantiers qui correspondent aux blocs de travail de la journée."""
     taches = []
 
-    # Les retards remontent en haut, mais jamais plus de deux : sinon ils mangent
-    # la journée. Une fois la tâche réglée, la retirer de donnees-session.json.
-    retards = []
+    # 1. Ce qui tombe aujourd'hui ou demain passe devant tout, meme si ce n'est pas
+    # la matiere du bloc de travail du jour. Sinon la veille d'une double echeance,
+    # le bloc thematique cache les deux evaluations qui tombent le lendemain.
+    imminents = [e for e in actifs if e["reste"] <= 1]
+    for e in imminents:
+        poids = " (%d %%)" % e["poids"] if e["poids"] else ""
+        taches.append((etape(e), "%s — %s%s" % (data["cours"][e["cours"]]["nom"], e["titre"], poids)))
+
+    # 2. Les retards remontent, mais jamais plus de deux : sinon ils mangent la
+    # journee. Une tache reglee prend "statut": "regle" dans donnees-session.json.
+    retards, admin = [], []
     for t in data["taches_admin"]:
-        if t["pour"] == "recurrent":
+        if t["pour"] == "recurrent" or t.get("statut") in ("regle", "obsolete"):
             continue
         echeance = d(t["pour"])
         if echeance < jour and t.get("urgent"):
             retards.append(("RETARD", t["quoi"]))
         elif 0 <= (echeance - jour).days <= 3:
-            taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+            admin.append(("ADMIN", t["quoi"]))
+    taches += retards[:2] + admin
 
+    # Une lecture dont la date est passee ne disparait pas : elle alimente une
+    # evaluation plus loin dans la session. On montre la plus recente des lectures
+    # manquees — c'est celle qui pese encore ; les plus vieilles sont deja perdues.
+    en_retard = [l for l in data["lectures"] if (d(l["pour"]) - jour).days < 0 and not l.get("fait")]
+    for l in sorted(en_retard, key=lambda l: l["pour"], reverse=True)[:1]:
+        taches.append(("RETARD", "%s  (était pour le %s)" % (l["quoi"], court(d(l["pour"])))))
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
         if 0 <= reste <= 6:
@@ -121,15 +136,16 @@ def taches_du_jour(data, jour, actifs):
     if not focus:
         focus = {"rattrapage"}
 
-    prioritaires = [e for e in actifs if e["cours"] in focus]
-    autres = [e for e in actifs if e["cours"] not in focus]
+    restants = [e for e in actifs if e not in imminents]
+    prioritaires = [e for e in restants if e["cours"] in focus]
+    autres = [e for e in restants if e["cours"] not in focus]
     # un jour de rattrapage (ou de week-end) attaque ce qui presse le plus, peu importe le cours
-    liste = (prioritaires + autres) if "rattrapage" not in focus else actifs
+    liste = (prioritaires + autres) if "rattrapage" not in focus else restants
 
     for e in liste[:4]:
         taches.append((etape(e), "%s — %s" % (data["cours"][e["cours"]]["nom"], e["titre"])))
 
-    return taches[:7]
+    return taches[:8]
 
 
 def etape(e):
@@ -265,9 +281,13 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        # on coupe en laissant la place aux points de suspension : un libelle
+        # tronque net se lit comme une erreur, pas comme une coupure.
+        while dr.textlength(txt + "…", font=font) > largeur and len(txt) > 4:
             txt = txt[:-2]
-        return txt
+        return txt.rstrip() + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)

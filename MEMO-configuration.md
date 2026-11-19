@@ -9,6 +9,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 | `donnees-session.json` | **Source de vérité unique** : horaire, blocs de travail, toutes les évaluations, lectures, tâches admin. C'est le seul fichier à modifier au quotidien. |
 | `carte.py` | Génère la carte du jour à partir du JSON. `python3 carte.py` (image), `--texte` (Slack), + une date en argument pour n'importe quel jour. |
 | `PLAN-DE-SESSION.md` | Le plan complet de la session : semaines rouges, semaine type, découpage des gros travaux, méthodes par cours, rattrapage. |
+| Page Notion | Le tableau de bord quotidien, mis à jour à la main chaque matin par la routine (le script `notion.py` n'a jamais été commité et a été perdu avec son conteneur). |
 
 ## Identifiants à conserver
 
@@ -18,6 +19,7 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
 - Canal #tous-daniel-30 : C0C3KUYLC9W
 - Canal #omnivox : C0C2M49TG0M (créé mais non rejoint)
+- Page Notion « 🎓 Ma session — Automne 2026 » : `3df73824-e620-811e-9e6c-d07440cb6ec7`
 
 ## Mon horaire — Automne 2026
 
@@ -39,7 +41,7 @@ Depuis que le système est piloté par `donnees-session.json`, le prompt n'a plu
 répéter l'horaire ni les échéances : tout est dans le dépôt. Version courte à utiliser :
 
 > Génère ma carte du jour.
-> 1. `pip install --quiet pillow` si nécessaire, puis `python3 carte.py --texte`
+> 1. `python3 carte.py --texte`
 >    à la racine du dépôt. Le script lit `donnees-session.json` et sort la carte
 >    d'aujourd'hui : cours, priorité, tâches avec leur étape de préparation,
 >    échéances avec compteurs J-x, blocs de travail, avancement par cours.
@@ -50,8 +52,12 @@ répéter l'horaire ni les échéances : tout est dans le dépôt. Version court
 > 4. Si une échéance est dépassée ou qu'une tâche admin est réglée, mets à jour
 >    `donnees-session.json` et pousse le commit.
 
-Le visuel Canva (design DAHVgw0Y3QU) se met à jour à part, pas tous les jours : ses liens
-d'export expirent en quelques heures, alors que le texte Slack reste lisible pour toujours.
+> 5. Mets à jour le design Canva DAHVgw0Y3QU et la page Notion avec la même journée.
+>    Pour Canva : garder le **même nombre de lignes** dans chaque bloc de texte, sinon
+>    le bloc grandit et chevauche les tuiles du bas (max ~44 caractères par puce).
+
+Le visuel Canva (design DAHVgw0Y3QU) garde ses liens d'export quelques heures seulement,
+alors que le texte Slack et la page Notion restent lisibles pour toujours.
 
 ⚠ **Les routines se configurent dans l'application Claude, pas depuis une session.**
 Une session peut créer un `cron`, mais il meurt avec elle et expire après 7 jours.
@@ -71,6 +77,20 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **`python3` ne sait plus faire l'image.** Dans le conteneur, `python3` est en 3.11
+   alors que le Pillow du système est compilé pour 3.12 : `from PIL import Image` échoue
+   sur `_imaging`. Réinstaller Pillow n'y change rien. Utiliser **`python3.13 carte.py`**
+   pour l'image ; le mode `--texte` marche avec n'importe quel Python.
+8. **La page Notion dérivait du JSON.** Les corrections faites directement dans Notion
+   (dates du Contrôle 2 et de l'oral d'anglais, liste « À régler », 9 évaluations non
+   confirmées) n'étaient pas redescendues dans `donnees-session.json`. Remises d'aplomb
+   le 19 novembre. Désormais : **toute correction va d'abord dans le JSON**, la page
+   Notion vient après.
+9. **Une tâche réglée ne s'efface pas, elle se marque.** `"statut": "regle"` quand c'est
+   fait, `"statut": "obsolete"` quand la date est passée et que ça n'a plus d'objet.
+   Les deux disparaissent de la carte sans perdre la trace.
+10. **Les évaluations passées non confirmées portent `"a_verifier_lea": true`.** Elles
+    comptent dans l'avancement mais celui-ci reste une hypothèse tant qu'elles sont là.
 
 ## Points à confirmer auprès des profs
 
