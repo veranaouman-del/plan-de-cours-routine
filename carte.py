@@ -105,10 +105,11 @@ def taches_du_jour(data, jour, actifs):
             continue
         echeance = d(t["pour"])
         if echeance < jour and t.get("urgent"):
-            retards.append(("RETARD", t["quoi"]))
+            retards.append((t.get("priorite", 0), ("RETARD", t["quoi"])))
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
-    taches = retards[:2] + taches
+    retards.sort(key=lambda r: -r[0])
+    taches = [r[1] for r in retards[:2]] + taches
 
     for l in data["lectures"]:
         reste = (d(l["pour"]) - jour).days
@@ -153,6 +154,12 @@ def etape(e):
 
 def court(j):
     return "%d %s" % (j.day, ABREV[j.month - 1])
+
+
+def incertain(data):
+    """Evaluations passees dont le depot n'est pas confirme sur LEA."""
+    lignes = [e for e in data["evaluations"] if e.get("a_verifier_lea")]
+    return lignes, sum(e["poids"] for e in lignes)
 
 
 def avancement(data, jour):
@@ -221,6 +228,12 @@ def texte(data, jour):
     L.append("MON AVANCEMENT — PART DE LA NOTE DÉJÀ JOUÉE")
     for _, (nom, pct) in avancement(data, jour).items():
         L.append("• %s : %d %%" % (nom, pct))
+    lignes, pts = incertain(data)
+    if lignes:
+        L.append("")
+        L.append("⚠ %d évaluations passées non confirmées sur LÉA — %d %% de points au flou."
+                 % (len(lignes), pts))
+        L.append("  Tant qu'elles sont là, cet avancement est une hypothèse, pas un fait.")
     return "\n".join(L)
 
 
