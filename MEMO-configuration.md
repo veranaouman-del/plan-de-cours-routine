@@ -12,7 +12,9 @@ Tout ce qu'il faut pour reconstruire le système si la session Claude est perdue
 
 ## Identifiants à conserver
 
-- Design Canva du tableau de bord : **DAHVgw0Y3QU**
+- Design Canva du tableau de bord : **DAHVgw0Y3QU** (une page, 800 × 2000)
+  - édition : https://www.canva.com/d/pwsXJQ5M_1sYEcR · lecture : https://www.canva.com/d/Qsn33CCShz4qcOF
+- Page Notion « Ma session — Automne 2026 » : **3df73824-e620-811e-9e6c-d07440cb6ec7**
 - Doc Canva du plan de session : **DAHVg0-l5S0**
 - Canal Slack, message direct avec moi-même : **D0C2RFRRWKU**
 - Mon identifiant Slack : **U0C2LN4A7SR** (workspace daniel30)
@@ -71,13 +73,28 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
 5. **Les liens d'export Canva expirent** (~16 à 24 h). Le texte, lui, reste lisible pour toujours.
 6. **Le téléchargement de fichiers vers Slack est bloqué** par la politique réseau de
    l'environnement Claude. L'image doit être glissée à la main, ou passer par un lien.
+7. **Pillow n'existe que pour `python3.13`** dans le conteneur, alors que `python3` est
+   un 3.11 dont le `PIL` système est cassé (`ImportError: cannot import name _imaging`).
+   Pour l'image : `python3.13 carte.py`. Le mode `--texte` marche avec n'importe lequel.
+8. **Le dépôt prend du retard sur Notion.** La page Notion se met à jour tous les jours,
+   `donnees-session.json` non — et c'est lui que lit la carte. Avant de générer la carte,
+   relire la page Notion et reporter dans le JSON ce qui a bougé : sinon la carte annonce
+   des échéances déjà passées et rate les vraies. Réconcilié le 20 novembre.
+9. **Les évaluations passées dont le dépôt n'est pas confirmé** portent `a_verifier_lea`.
+   C'est ce qui distingue « joué » de « supposé joué » dans l'avancement.
 
 ## Points à confirmer auprès des profs
 
-- **Anglais** : je suis dans le groupe du jeudi. La note « Thursday group: READING WEEK »
-  en semaine 7 me vise — mon midterm oral du 8 octobre est à confirmer par MIO.
-- **Français** : mon groupe 00009 ne se réunit que le mardi. La colonne du mardi du plan de cours
-  saute le 6 octobre sans explication. À vérifier avec Julie Chamberland.
+État au 20 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
+triée par `priorite` ; celle-ci n'en est que le résumé.
+
+- **Éthique** : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %). Ouvert
+  depuis le 6 novembre. Plus grosse note de la session, et les plages partent dans l'ordre.
+- **Anglais** : le Final Speaking & Listening (30 %) tombe-t-il le 26 novembre ou le
+  3 décembre ? Question posée le 12 novembre, toujours sans réponse.
+- **LÉA** : neuf évaluations passées, 87 % de points, dont rien ne confirme le dépôt.
+  Dont le Contrôle 2, qui n'a peut-être jamais eu lieu.
+- **Prog. Web** : les 4 % par TP sont une hypothèse. Demander la répartition réelle des 20 %.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
 - **Anglais** : carton #723 et photo du reçu à téléverser — échéance semaine 3, dépassée.
