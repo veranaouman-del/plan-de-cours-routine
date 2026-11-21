@@ -52,14 +52,14 @@
     {"cours": "devlog",  "titre": "Examen intra",                         "date": "2026-10-07", "poids": 25, "type": "examen", "fait": true,  "prep_jours": 14},
     {"cours": "devlog",  "titre": "TP3",                                  "date": "2026-10-23", "poids": 5,  "type": "tp",     "fait": false, "prep_jours": 5,  "a_verifier_lea": true},
     {"cours": "devlog",  "titre": "Contrôle 2",                           "date": "2026-11-16", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 5,  "a_verifier_lea": true, "a_confirmer": "Le plan le datait du vendredi 13, un jour sans cours de Dev. logiciels. Le creneau de rechange du lundi 16 est passe. A-t-il eu lieu ?"},
-    {"cours": "devlog",  "titre": "TP4 (MVVM)",                           "date": "2026-11-20", "poids": 10, "type": "tp",     "fait": false, "prep_jours": 10},
+    {"cours": "devlog",  "titre": "TP4 (MVVM)",                           "date": "2026-11-20", "poids": 10, "type": "tp",     "fait": true,  "prep_jours": 10, "a_verifier_lea": true, "a_confirmer": "Depot du 20 novembre sur LEA. Chez Grenier un retard vaut zero : verifier la trace du depot."},
     {"cours": "devlog",  "titre": "Examen final",                         "date": "2026-12-09", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
 
     {"cours": "web",     "titre": "Remise TP1 — VueJS",                   "date": "2026-09-25", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7,  "poids_approx": true, "a_verifier_lea": true},
     {"cours": "web",     "titre": "Remise TP2 — Vue Router",              "date": "2026-10-09", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 7,  "poids_approx": true, "a_verifier_lea": true},
     {"cours": "web",     "titre": "Évaluation #1",                        "date": "2026-10-09", "poids": 25, "type": "examen", "fait": true,  "prep_jours": 14},
     {"cours": "web",     "titre": "Remise TP3 — WebAPI",                  "date": "2026-11-13", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true, "a_verifier_lea": true},
-    {"cours": "web",     "titre": "Évaluation #2",                        "date": "2026-11-20", "poids": 20, "type": "examen", "fait": false, "prep_jours": 12},
+    {"cours": "web",     "titre": "Évaluation #2",                        "date": "2026-11-20", "poids": 20, "type": "examen", "fait": true,  "prep_jours": 12, "a_confirmer": "Tenue en classe le 20 novembre. Relever la note des sa parution."},
     {"cours": "web",     "titre": "Remise TP4 — EF Core",                 "date": "2026-11-27", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
     {"cours": "web",     "titre": "Remise TP5 — fetch + API",             "date": "2026-12-11", "poids": 4,  "type": "tp",     "fait": false, "prep_jours": 10, "poids_approx": true},
     {"cours": "web",     "titre": "Examen final",                         "date": "2026-12-11", "poids": 35, "type": "examen", "fait": false, "prep_jours": 21},
@@ -102,9 +102,10 @@
 
   "taches_admin": [
     {"quoi": "Éthique : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %)", "pour": "2026-11-06", "urgent": true, "priorite": 10, "note": "Plus grosse note de la session, et la seule qui peut se perdre sans aucune faute : les plages se reservent dans l'ordre d'arrivee."},
-    {"quoi": "COOPSCO : Marie-Claire (doc. 808) + carton #723 d'anglais, photo du reçu au comptoir", "pour": "2026-10-27", "urgent": true, "priorite": 9, "note": "Un arret, deux retards regles. COOPSCO ferme la fin de semaine : derniere fenetre avant la lecture du mardi 24."},
+    {"quoi": "COOPSCO : Marie-Claire (doc. 808) + carton #723 d'anglais, photo du reçu au comptoir", "pour": "2026-10-27", "urgent": true, "priorite": 9, "note": "Un arret, deux retards regles. COOPSCO ferme la fin de semaine : si ce n'est pas fait, il reste le lundi 23 avant 10 h 45 — a un jour de la lecture du mardi."},
     {"quoi": "LÉA : vérifier les 9 évaluations passées non confirmées (87 % de points)", "pour": "2026-10-16", "urgent": true, "priorite": 8, "note": "Dix minutes, une seule ouverture de navigateur. MIO au prof le soir meme pour chaque ligne non deposee."},
     {"quoi": "Anglais : MIO — Final Speaking & Listening (30 %), le 26 nov. ou le 3 déc. ?", "pour": "2026-11-12", "urgent": true, "priorite": 8, "note": "La reponse decide de trois semaines de preparation."},
+    {"quoi": "Dév. logiciels : confirmer le dépôt du TP4 (MVVM, 10 %) sur LÉA", "pour": "2026-11-21", "urgent": true, "priorite": 9, "note": "Depose le 20 novembre. Chez Grenier un travail en retard vaut zero : une capture de la trace de depot vaut 10 %."},
     {"quoi": "Anglais : confirmer que le journal Odyssey (5 %) est bien déposé sur LÉA", "pour": "2026-11-20", "urgent": true, "priorite": 7, "note": "Remis en classe le 19 novembre. Verifier la trace."},
     {"quoi": "Dév. logiciels : le Contrôle 2 a-t-il eu lieu le 16 ? relever la note", "pour": "2026-11-12", "urgent": true, "priorite": 6, "note": "Jamais confirme, et les deux dates possibles sont passees. 5 % ne se perdent pas sur un malentendu de calendrier."},
     {"quoi": "LÉA : relever mes notes de mi-session et réajuster les difficultés", "pour": "2026-11-02", "urgent": true, "priorite": 5, "note": "Toute la repartition du temps tourne encore sur mes estimations d'aout."},

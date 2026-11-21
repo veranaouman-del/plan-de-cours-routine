@@ -82,6 +82,17 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    des échéances déjà passées et rate les vraies. Réconcilié le 20 novembre.
 9. **Les évaluations passées dont le dépôt n'est pas confirmé** portent `a_verifier_lea`.
    C'est ce qui distingue « joué » de « supposé joué » dans l'avancement.
+10. **Chaque exécution de la routine part d'une branche neuve, clonée depuis `main`**, qui
+   est resté à l'état de septembre. Le dépôt livré à la session a donc toujours deux mois
+   de retard sur le travail de la veille. **Premier geste de chaque routine :**
+   `git fetch origin --prune`, puis repérer la branche au commit le plus récent
+   (`for b in $(git branch -r | grep -v HEAD); do echo "$(git log -1 --format=%cI $b) $b"; done | sort -r | head -3`)
+   et `git merge --ff-only` dessus. Sans ça, la carte du jour régresse d'un mois.
+11. **Le visuel Canva se met à jour tous les jours**, contrairement à ce qui était écrit ici
+   avant : design `DAHVgw0Y3QU`, une seule page, neuf blocs de texte. `read-design` avec
+   `open_transaction: true` donne les `locator_id`, puis `replace_text` sur chacun, puis
+   `commit`. Les textes de remplacement doivent faire **le même nombre de lignes** que
+   ceux qu'ils remplacent : les blocs ne se redimensionnent pas.
 
 ## Points à confirmer auprès des profs
 
