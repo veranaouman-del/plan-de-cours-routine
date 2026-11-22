@@ -93,6 +93,14 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    `open_transaction: true` donne les `locator_id`, puis `replace_text` sur chacun, puis
    `commit`. Les textes de remplacement doivent faire **le même nombre de lignes** que
    ceux qu'ils remplacent : les blocs ne se redimensionnent pas.
+12. **Dans le bloc « À FAIRE AUJOURD'HUI » du Canva, chaque puce doit tenir sur une seule
+   ligne : ~50 caractères maximum.** À 27 px, une puce plus longue passe à la ligne, le bloc
+   grandit vers le bas (172 px → 313 px le 22 novembre) et vient **recouvrir les deux grands
+   chiffres « 55 % » et « 97 % »**. Le `document` renvoyé par `edit-design` donne la
+   `height` du bloc : si elle a bougé, raccourcir et rejouer avant de `commit`.
+13. **`pip` vise python3.13, `python3` est un 3.11.** `pip install pillow` installe donc des
+   roues `cp313` invisibles depuis `python3`, et l'erreur reste la même après réinstallation.
+   Le plus simple reste `python3.13 carte.py` (piège 7).
 
 ## Points à confirmer auprès des profs
 
