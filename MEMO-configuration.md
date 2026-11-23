@@ -102,6 +102,15 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    roues `cp313` invisibles depuis `python3`, et l'erreur reste la même après réinstallation.
    Le plus simple reste `python3.13 carte.py` (piège 7).
 
+14. **Le compte des lignes `a_verifier_lea` se calcule, il ne se recopie pas.** Le libellé
+   de la tâche LÉA annonçait « 9 évaluations, 87 % » alors que le JSON en portait dix,
+   pour 97 %. Avant de publier, recompter depuis le fichier plutôt que de reprendre le
+   chiffre de la veille. Corrigé le 23 novembre.
+15. **La vraie correction du piège 10 est en amont :** tant que `main` reste à septembre,
+   chaque routine repart deux mois en arrière et doit retrouver la bonne branche à la main.
+   Fusionner la branche du jour dans `main` en fin de session ferait démarrer la suivante
+   à jour. À faire valider : une session ne pousse pas sur `main` sans autorisation.
+
 ## Points à confirmer auprès des profs
 
 État au 20 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
