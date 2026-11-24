@@ -85,7 +85,7 @@
     {"cours": "philo",   "titre": "Test Nussbaum / Phillips",             "date": "2026-12-04", "poids": 5,  "type": "test",   "fait": false, "prep_jours": 10},
     {"cours": "philo",   "titre": "Épreuve finale — entrevue 20 min",     "date": "2026-12-11", "poids": 40, "type": "oral",   "fait": false, "prep_jours": 28, "a_confirmer": "Semaine 15 OU semaine d'examens, sur rendez-vous Microsoft Bookings. S'inscrire des l'ouverture."}
   ],
-  "_evaluations": "a_verifier_lea : l'echeance est passee mais rien ne confirme le depot ni la tenue. Neuf lignes, 87 % de points au statut incertain : tant qu'elles sont la, l'avancement est une hypothese, pas un fait. Une session de LEA les regle d'un coup. Les dates du plan Ethique sont calees sur les semaines de session. Etre pret une semaine trop tot ne coute rien ; l'inverse, oui.",
+  "_evaluations": "a_verifier_lea : l'echeance est passee mais rien ne confirme le depot ni la tenue. Dix lignes, 97 % de points au statut incertain : tant qu'elles sont la, l'avancement est une hypothese, pas un fait. Une session de LEA les regle d'un coup. Les dates du plan Ethique sont calees sur les semaines de session. Etre pret une semaine trop tot ne coute rien ; l'inverse, oui.",
 
   "lectures": [
     {"cours": "litt", "quoi": "La vie devant soi p. 176-223",      "pour": "2026-09-22"},
@@ -102,9 +102,9 @@
 
   "taches_admin": [
     {"quoi": "Éthique : obtenir le lien Microsoft Bookings, puis réserver la plage de l'entrevue finale (40 %)", "pour": "2026-11-21", "urgent": true, "priorite": 10, "note": "LE LIEN EST INTROUVABLE : le plan de cours dit de s'inscrire sur Bookings mais ne donne aucune URL, et elle n'est nulle part dans les cinq plans ni dans l'horaire Omnivox. Etape 1 : chercher dans LEA (Documents et Communiques du cours) et dans Teams. Etape 2, si rien : MIO a Cyndelle Gagnon pour demander le lien, en joignant la question des ponderations. Tant que le lien manque, la reservation est bloquee -- ce n'est pas un retard de ma part. Le plan de cours ne fixe aucune date d'inscription : la date de 2026-11-06 utilisee avant etait une deduction, pas une donnee."},
-    {"quoi": "COOPSCO : Marie-Claire (doc. 808) + carton #723 d'anglais, photo du reçu au comptoir", "pour": "2026-10-27", "urgent": true, "priorite": 9, "note": "Un arret, deux retards regles. COOPSCO ferme la fin de semaine : si ce n'est pas fait, il reste le lundi 23 avant 10 h 45 — a un jour de la lecture du mardi."},
+    {"quoi": "COOPSCO : Marie-Claire (doc. 808) + carton #723 d'anglais, photo du reçu au comptoir", "pour": "2026-10-27", "urgent": true, "priorite": 9, "note": "Un arret, deux retards regles. COOPSCO ferme la fin de semaine. Prochaine fenetre : le midi du mardi 24, entre le cours de francais et le gros bloc. Marie-Claire p. 146-197 est a lire pour le 1er decembre."},
     {"quoi": "LÉA : vérifier les 10 évaluations passées non confirmées (97 % de points)", "pour": "2026-10-16", "urgent": true, "priorite": 8, "note": "Dix minutes, une seule ouverture de navigateur. MIO au prof le soir meme pour chaque ligne non deposee."},
-    {"quoi": "Anglais : MIO — Final Speaking & Listening (30 %), le 26 nov. ou le 3 déc. ?", "pour": "2026-11-12", "urgent": true, "priorite": 8, "note": "La reponse decide de trois semaines de preparation."},
+    {"quoi": "Anglais : MIO — Final Speaking & Listening (30 %), le 26 nov. ou le 3 déc. ?", "pour": "2026-11-12", "urgent": true, "priorite": 8, "note": "La reponse decide de trois semaines de preparation. A J-2, c'est le dernier jour ou elle change encore quelque chose : une reponse de mercredi soir arrive trop tard."},
     {"quoi": "Dév. logiciels : confirmer le dépôt du TP4 (MVVM, 10 %) sur LÉA", "pour": "2026-11-21", "urgent": true, "priorite": 9, "note": "Depose le 20 novembre. Chez Grenier un travail en retard vaut zero : une capture de la trace de depot vaut 10 %."},
     {"quoi": "Anglais : confirmer que le journal Odyssey (5 %) est bien déposé sur LÉA", "pour": "2026-11-20", "urgent": true, "priorite": 7, "note": "Remis en classe le 19 novembre. Verifier la trace."},
     {"quoi": "Dév. logiciels : le Contrôle 2 a-t-il eu lieu le 16 ? relever la note", "pour": "2026-11-12", "urgent": true, "priorite": 6, "note": "Jamais confirme, et les deux dates possibles sont passees. 5 % ne se perdent pas sur un malentendu de calendrier."},
@@ -112,6 +112,7 @@
     {"quoi": "Prog. Web : dates officielles des TP3 à TP5 et répartition exacte des 20 %", "pour": "2026-10-16", "urgent": true, "priorite": 5, "note": "Les 4 % par TP sont une hypothese, pas une donnee du plan de cours."},
     {"quoi": "Anglais : MIO — l'oral du 22 oct. a-t-il eu lieu ? notes des 2 midterms ?", "pour": "2026-10-30", "urgent": true, "priorite": 5},
     {"quoi": "Éthique : faire confirmer les pondérations par Cyndelle Gagnon", "pour": "2026-09-25", "urgent": true, "priorite": 4, "note": "Le PDF recu est une version Hiver 2026 / services sociaux. A poser dans le MEME MIO que la demande du lien Bookings : un seul message, deux reponses."},
+    {"quoi": "Littérature : se procurer Oscar et la dame rose pour les cercles du 15 décembre (10 %)", "pour": "2026-12-01", "urgent": false, "priorite": 3},
     {"quoi": "Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir", "pour": "recurrent", "urgent": false, "priorite": 1}
   ],
   "_taches_admin": "priorite : 10 = ce qui coute le plus cher a oublier. Les retards sont tries par la, pas par date : la carte du jour n'en montre que les deux premiers pour ne pas manger la journee. Retirer la ligne des qu'elle est reglee."
