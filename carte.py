@@ -109,12 +109,26 @@ def taches_du_jour(data, jour, actifs):
         elif 0 <= (echeance - jour).days <= 3:
             taches.append(("ADMIN", t["quoi"]))
     retards.sort(key=lambda r: -r[0])
-    taches = [r[1] for r in retards[:2]] + taches
+    retards = [r[1] for r in retards[:2]]
+    taches = retards + taches
 
+    # Une lecture dont la date est passée disparaissait de la carte sans rien dire.
+    # C'est le pire moment pour la perdre de vue : la dissertation terminale (30 %)
+    # porte sur le roman. On la garde visible une semaine — au-delà, on considère
+    # que la page est tournée — et on la distingue d'une lecture à venir.
+    rattraper = []
     for l in data["lectures"]:
+        if l.get("fait"):
+            continue
         reste = (d(l["pour"]) - jour).days
-        if 0 <= reste <= 6:
+        if -7 <= reste < 0:
+            rattraper.append(("RATTRAPER",
+                              "%s  (était pour le %s)" % (l["quoi"], court(d(l["pour"])))))
+        elif 0 <= reste <= 6:
             taches.append(("LECTURE", "%s  (pour le %s)" % (l["quoi"], court(d(l["pour"])))))
+    # les retards administratifs passent devant : une inscription manquee coute
+    # plus cher qu'une lecture a reprendre, et elle se regle en deux minutes.
+    taches = taches[:len(retards)] + rattraper[:2] + taches[len(retards):]
 
     focus = set()
     for b in blocs_du_jour(data, jour):
@@ -278,9 +292,13 @@ def image(data, jour, sortie):
     dr = ImageDraw.Draw(img)
 
     def tronque(txt, font, largeur):
-        while dr.textlength(txt, font=font) > largeur and len(txt) > 4:
-            txt = txt[:-2]
-        return txt
+        # Couper en plein milieu d'un mot, sans rien marquer, donne l'impression
+        # d'une carte cassée plutôt que d'une ligne trop longue.
+        if dr.textlength(txt, font=font) <= largeur:
+            return txt
+        while len(txt) > 4 and dr.textlength(txt + "…", font=font) > largeur:
+            txt = txt[:-1]
+        return txt.rstrip(" ,;:-—(«") + "…"
 
     sem = semaine_de(data, jour)
     actifs = chantiers(data, jour)
@@ -336,7 +354,7 @@ def image(data, jour, sortie):
     # à faire
     y = section("À FAIRE AUJOURD'HUI", y)
     for tag, t in taches_du_jour(data, jour, actifs):
-        couleur = RED if tag in ("RETARD", "REMISE") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
+        couleur = RED if tag in ("RETARD", "REMISE", "RATTRAPER") else (ORANGE if tag in ("FINIR", "TEST BLANC", "ADMIN") else GREY)
         dr.rounded_rectangle([44, y + 2, 66, y + 24], radius=5, outline=GREY, width=2)
         dr.rounded_rectangle([80, y, 80 + 110, y + 26], radius=6, fill=couleur)
         dr.text((88, y + 4), tronque(tag, f(14, True), 96), font=f(14, True), fill=WHITE)

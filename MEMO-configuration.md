@@ -111,6 +111,13 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    Fusionner la branche du jour dans `main` en fin de session ferait démarrer la suivante
    à jour. À faire valider : une session ne pousse pas sur `main` sans autorisation.
 
+16. **Une lecture en retard disparaissait de la carte sans rien dire.** `carte.py` ne
+   montrait que les lectures à venir (0 à 6 jours) : passé la date, la ligne s'évaporait.
+   Corrigé le 25 novembre — une lecture dont la date est passée reste visible **une
+   semaine**, sous l'étiquette `RATTRAPER`, et passe après les retards administratifs.
+   Au-delà d'une semaine on considère la page tournée. Un champ `fait: true` sur une
+   lecture la retire tout de suite.
+
 ## Points à confirmer auprès des profs
 
 État au 20 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
@@ -120,8 +127,9 @@ triée par `priorite` ; celle-ci n'en est que le résumé.
   depuis le 6 novembre. Plus grosse note de la session, et les plages partent dans l'ordre.
 - **Anglais** : le Final Speaking & Listening (30 %) tombe-t-il le 26 novembre ou le
   3 décembre ? Question posée le 12 novembre, toujours sans réponse.
-- **LÉA** : neuf évaluations passées, 87 % de points, dont rien ne confirme le dépôt.
-  Dont le Contrôle 2, qui n'a peut-être jamais eu lieu.
+- **LÉA** : dix évaluations passées, 97 % de points, dont rien ne confirme le dépôt.
+  Dont le Contrôle 2, qui n'a peut-être jamais eu lieu. (Recompté depuis le JSON
+  le 25 novembre : ce résumé disait encore « neuf, 87 % » — c'est le piège 14.)
 - **Prog. Web** : les 4 % par TP sont une hypothèse. Demander la répartition réelle des 20 %.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.

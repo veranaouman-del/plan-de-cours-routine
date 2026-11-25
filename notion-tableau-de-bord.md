@@ -1,22 +1,22 @@
-> 420.B0 Techniques de l'informatique - Cegep de Granby · lundi 24 août → vendredi 11 décembre<br /><b>Semaine 13 sur 15 — jour 2</b>
+> 420.B0 Techniques de l'informatique - Cegep de Granby · lundi 24 août → vendredi 11 décembre<br /><b>Semaine 13 sur 15 — jour 3</b>
 
 ---
 
-## 📍 Aujourd'hui — mardi 24 novembre
+## 📍 Aujourd'hui — mercredi 25 novembre
 
-- 📕 <b>08 h 55 – 12 h 30</b> · Littérature et imaginaire — A208 · <i>Marie-Claire</i> p. 97-145 à avoir lu
-- 🏃 <b>12 h 30 – 13 h 30</b> · la fenêtre du midi — <b>COOPSCO</b>, si ce n'est pas encore fait
-- 📕⚖️ <b>13 h 30 – 16 h 30</b> · GROS BLOC — <b>dissertation terminale (30 %)</b> : un paragraphe modèle, chronométré
-- 🗣️ <b>Ce soir, 30 min</b> · <b>3ᵉ passage du final oral (30 %)</b> — à voix haute, enregistré
+- 💻 <b>08 h 00 – 10 h 40</b> · Développement de logiciels — A307
+- 🏃 <b>dès 10 h 40</b> · la fenêtre COOPSCO — <i>Marie-Claire</i> (doc. 808) + carton #723, <b>un arrêt, deux retards</b>
+- 🗣️🌐 <b>11 h 15 – 16 h 00</b> · GROS BLOC — <b>dernière répétition du final oral (30 %)</b>, puis <b>TP4 EF Core bouclé</b>
+- 📖 <b>Ce soir</b> · rattraper <i>Marie-Claire</i> p. 97-145 — la dissertation terminale du 8 décembre porte dessus
 
-> 🔥 <b>Priorité du jour :</b> 🗣️ <b>le final oral d'anglais (30 %), à J-2.</b> Sa date n'est toujours pas confirmée — <b>on se prépare pour jeudi</b>. Être prêt une semaine trop tôt ne coûte rien ; l'inverse coûte 30 %.
+> 🔥 <b>Priorité du jour :</b> 🗣️ <b>le final oral d'anglais (30 %), DEMAIN.</b> Sa date n'est toujours pas confirmée — <b>on se présente jeudi 8 h 55 à A311 en étant prêt</b>. Être prêt une semaine trop tôt ne coûte rien ; l'inverse coûte 30 %.
 
 <callout icon="📨" color="red_bg">
-<b>Deux MIO, trois minutes, et c'est la dernière journée où la réponse change encore quelque chose.</b><br /><br />À J-2, une réponse qui arrive mercredi soir n'a plus d'effet sur la préparation. Aujourd'hui, oui.<br /><br />1️⃣ <b>A. Serebrenik</b> — le final oral, <b>le 26 ou le 3 décembre ?</b> Question posée le 12 novembre, <b>douze jours sans réponse</b>.<br />2️⃣ <b>C. Gagnon</b> — le lien Bookings <b>et</b> les pondérations, <b>dans un seul message</b>.<br /><br />Les deux partent du téléphone, entre deux cours. La COOP, elle, demande d'y passer : <i>Marie-Claire</i> (doc. 808) et le carton #723, au même comptoir.
+<b>Il ne reste qu'un MIO qui change encore quelque chose : celui de C. Gagnon.</b><br /><br />Pour l'oral, c'est joué. À J-1, une réponse d'<b>A. Serebrenik</b> n'a plus d'effet sur la préparation — <b>treize jours sans réponse</b>, et on se présente jeudi en étant prêt. La question ne sert plus qu'à savoir s'il faudra aussi tenir le 3 décembre.<br /><br />Celui de <b>C. Gagnon</b>, lui, débloque <b>40 %</b> : le lien Bookings <b>et</b> les pondérations, dans un seul message. Il part du téléphone, entre deux cours.<br /><br />La COOP, elle, demande d'y passer : <i>Marie-Claire</i> (doc. 808) et le carton #723, au même comptoir — <b>dès 10 h 40</b>, à la sortie du cours.
 </callout>
 
 <callout icon="🔥" color="orange_bg">
-<b>Le lien Microsoft Bookings de l'entrevue finale (40 %) reste introuvable — troisième jour.</b><br /><br />Le plan de cours impose l'inscription mais ne donne <b>aucune URL</b> : ni là, ni dans les quatre autres plans, ni dans l'horaire Omnivox. <b>Ce n'est pas un retard, c'est un blocage.</b><br /><br />C'est la plus grosse note de la session, et les plages se réservent dans l'ordre d'arrivée. <b>Il reste dix-sept jours</b> — celles qui resteront en décembre ne sont pas celles d'aujourd'hui.
+<b>Le lien Microsoft Bookings de l'entrevue finale (40 %) reste introuvable — quatrième jour.</b><br /><br />Le plan de cours impose l'inscription mais ne donne <b>aucune URL</b> : ni là, ni dans les quatre autres plans, ni dans l'horaire Omnivox. <b>Ce n'est pas un retard, c'est un blocage.</b><br /><br />C'est la plus grosse note de la session, et les plages se réservent dans l'ordre d'arrivée. <b>Il reste seize jours</b> — celles qui resteront en décembre ne sont pas celles d'aujourd'hui.
 </callout>
 
 <callout icon="🔍" color="gray_bg">
@@ -27,16 +27,16 @@
 
 ## ✅ À faire aujourd'hui
 
-- [ ] 🔴 <b>DE 8 H 55 À 12 H 30</b> — 📕 cours de français · <i>Marie-Claire</i> p. 97-145 <b>à avoir lu</b>
-- [ ] 🔴 <b>ENTRE DEUX COURS, DU TÉLÉPHONE</b> — 🗣️ <b>MIO de relance à A. Serebrenik</b> : l'oral, <b>26 nov. ou 3 déc. ?</b> <i>(12 jours sans réponse)</i>
-- [ ] 🔴 <b>ENTRE DEUX COURS, DU TÉLÉPHONE</b> — ⚖️ <b>MIO à C. Gagnon</b> : le lien Bookings <b>+</b> les pondérations, <b>un seul message</b>
-- [ ] 🟠 <b>12 H 30</b> — 📖 <b>COOPSCO</b> : <i>Marie-Claire</i> (doc. 808) + carton #723 + photo du reçu — <b>un arrêt, deux retards</b>
-- [ ] 🔴 <b>13 h 30 – 16 h 30</b> — 📕 <b>dissertation terminale (30 %)</b> : un paragraphe modèle complet, <b>chronométré 40 min</b>
-- [ ] 🟠 <b>13 h 30 – 16 h 30</b> — ⚖️ une réponse d'entrevue construite, <b>dite à voix haute</b>
-- [ ] 🔴 <b>CE SOIR, 30 MIN</b> — 🗣️ <b>3ᵉ passage du final oral (30 %)</b>, chronométré, enregistré, réécouté
+- [ ] 🔴 <b>DÈS 10 H 40</b> — 📖 <b>COOPSCO</b> : <i>Marie-Claire</i> (doc. 808) + carton #723 + photo du reçu — <b>un arrêt, deux retards</b>
+- [ ] 🔴 <b>ENTRE DEUX COURS, DU TÉLÉPHONE</b> — ⚖️ <b>MIO à C. Gagnon</b> : le lien Bookings <b>+</b> les pondérations, <b>un seul message</b> — <b>40 %</b> bloqués
+- [ ] 🔴 <b>11 h 15 – 16 h 00</b> — 🗣️ <b>dernière répétition du final oral (30 %)</b> : chronométrée, enregistrée, réécoutée
+- [ ] 🔴 <b>11 h 15 – 16 h 00</b> — 🌐 <b>TP4 EF Core bouclé</b> — la remise est vendredi 13 h 30, pas jeudi soir
 - [ ] 🟠 <b>10 MIN, N'IMPORTE QUAND</b> — 🔍 LÉA : les 10 lignes non confirmées (<b>97 %</b>) et la trace de dépôt du TP4
+- [ ] 🟠 <b>CE SOIR</b> — 📖 rattraper <i>Marie-Claire</i> p. 97-145 <i>(était pour hier)</i>
+- [ ] 🔵 <b>AVANT VENDREDI</b> — ⚖️ l'extrait d'Anne Phillips : il porte le test du 4 déc. <i>et</i> l'entrevue finale
+- [ ] 🔁 <b>CE SOIR</b> — 🗣️ les Communiqués MIO/LÉA du mercredi
 
-> ⚠️ Le gros bloc porte le français ; l'oral se joue <b>ce soir</b>, et la dernière répétition est demain midi. Deux choses à 30 % dans la même semaine : on les sépare, on ne les empile pas.
+> ⚠️ Le gros bloc porte deux choses, et dans cet ordre : <b>l'oral de demain (30 %)</b>, puis le TP4 (4 %). Si le temps manque, c'est le TP4 qui glisse à demain — pas l'inverse.
 
 ---
 
@@ -53,18 +53,10 @@ Ce que je fais
 </tr>
 <tr>
 <td>
-<b>mar. 24 nov.</b> ← <i>aujourd'hui</i>
+<b>mer. 25 nov.</b> ← <i>aujourd'hui</i>
 </td>
 <td>
-📕 08 h 55 – 12 h 30 · A208 — <i>Marie-Claire</i> p. 97-145<br />🏃 12 h 30 — COOPSCO · 📨 les 2 MIO du téléphone<br /><b>13 h 30 – 16 h 30</b> GROS BLOC — 📕 <b>dissertation terminale (30 %)</b><br />🗣️ <b>ce soir</b> — 3ᵉ passage de l'oral
-</td>
-</tr>
-<tr>
-<td>
-<b>mer. 25 nov.</b>
-</td>
-<td>
-💻 08 h 00 – 10 h 40 · A307<br /><b>11 h 15 – 16 h 00</b> GROS BLOC — 🗣️ <b>dernière répétition de l'oral (30 %)</b>, puis 🌐 <b>TP4 EF Core bouclé</b>
+💻 08 h 00 – 10 h 40 · A307<br />🏃 dès 10 h 40 — COOPSCO · 📨 le MIO à C. Gagnon<br /><b>11 h 15 – 16 h 00</b> GROS BLOC — 🗣️ <b>dernière répétition de l'oral (30 %)</b>, puis 🌐 <b>TP4 EF Core bouclé</b>
 </td>
 </tr>
 <tr>
@@ -107,11 +99,19 @@ Ce que je fais
 💻 10 h 45 · A307 — 🌐 13 h 30 · A307<br /><b>16 h 30 – 18 h 00</b> — ouverture de la <b>semaine 14</b>, la dernière avant les finaux
 </td>
 </tr>
+<tr>
+<td>
+<b>mar. 1ᵉʳ déc.</b>
+</td>
+<td>
+📕 08 h 55 – 12 h 30 · A208 — <i>Marie-Claire</i> p. 146-197 à avoir lu<br /><b>13 h 30 – 16 h 30</b> GROS BLOC — 📕 <b>dissertation terminale (30 %)</b>, à <b>J-7</b>
+</td>
+</tr>
 </table>
 
 ---
 
-## 🚩 Mon plan de révision des finaux — il reste 17 jours
+## 🚩 Mon plan de révision des finaux — il reste 16 jours
 
 > Chaque bloc de ma semaine type porte un final attitré. Trois passages espacés par final, et aucune journée bloquée. <b>184 % des points tombent entre le 8 et le 15 décembre</b>, et rien ne s'apprend en semaine 15.
 
@@ -134,7 +134,7 @@ Final Prog. Web (35 %) — refaire un TP sans la correction
 </tr>
 <tr>
 <td>
-<b>Mardi 13 h 30 – 16 h 30</b> ← <i>aujourd'hui</i>
+Mardi 13 h 30 – 16 h 30
 </td>
 <td>
 Dissertation terminale de français (30 %) — un paragraphe modèle, chronométré
@@ -142,7 +142,7 @@ Dissertation terminale de français (30 %) — un paragraphe modèle, chronomét
 </tr>
 <tr>
 <td>
-Mercredi 11 h 15 – 16 h 00
+<b>Mercredi 11 h 15 – 16 h 00</b> ← <i>aujourd'hui</i>
 </td>
 <td>
 Final Dév. logiciels (35 %) — du code sur papier, sans autocomplétion<br /><i>cette semaine : détourné sur l'oral (30 %) + le TP4</i>
@@ -353,14 +353,14 @@ ven. 25 sept.
 
 ## 📌 À régler
 
-- [ ] 🔴 <b>Éthique : obtenir le lien Microsoft Bookings, puis réserver l'entrevue finale (40 %)</b> — <b>bloqué : le lien n'est dans aucun document reçu.</b> MIO à Cyndelle Gagnon <b>aujourd'hui</b>. Plus grosse note de la session, <b>17 jours</b>.
-- [ ] 🔴 <b>Anglais : MIO — Final Speaking &amp; Listening (30 %), le 26 nov. ou le 3 déc. ?</b> — <i>12 jours sans réponse</i> · <b>Dernier jour utile : à J-2, une réponse de mercredi soir ne change plus rien.</b>
+- [ ] 🔴 <b>Éthique : obtenir le lien Microsoft Bookings, puis réserver l'entrevue finale (40 %)</b> — <b>bloqué : le lien n'est dans aucun document reçu.</b> MIO à Cyndelle Gagnon <b>aujourd'hui</b>. Plus grosse note de la session, <b>16 jours</b>.
+- [ ] 🔵 <b>Anglais : MIO — Final Speaking &amp; Listening (30 %), le 26 nov. ou le 3 déc. ?</b> — <i>13 jours sans réponse</i> · <b>La fenêtre utile est passée : on se présente jeudi, prêt. La réponse ne sert plus qu'à savoir s'il faut aussi tenir le 3 décembre.</b>
 - [ ] 🟠 <b>COOPSCO : </b><i><b>Marie-Claire</b></i><b> (doc. 808) + carton #723 d'anglais, photo du reçu</b> — <b>ce midi</b>. <i>Marie-Claire</i> p. 146-197 est à lire pour le 1ᵉʳ décembre.
 - [ ] 🔴 <b>Dév. logiciels : confirmer le dépôt du TP4 (MVVM, 10 %) sur LÉA</b> — Chez Grenier, un travail en retard vaut zéro : une capture de la trace de dépôt vaut 10 %.
 - [ ] 🔴 <b>LÉA : vérifier les 10 évaluations passées non confirmées</b> — 97 % de points au statut incertain. MIO au prof le jour même pour chaque ligne non déposée.
 - [ ] 🔴 <b>Anglais : confirmer que le journal Odyssey (5 %) est bien déposé sur LÉA</b> — remis en classe le 19, vérifier la trace.
 - [ ] 🔴 <b>Dév. logiciels : le Contrôle 2 a-t-il eu lieu le 16 ? relever la note</b> — Jamais confirmé, et les deux dates possibles sont passées.
-- [ ] 🟠 <b>LÉA : relever mes notes de mi-session et réajuster les difficultés</b> — Toute la répartition du temps tourne encore sur mes estimations d'août. <b>À 17 jours du dernier final, c'est la dernière fenêtre utile.</b>
+- [ ] 🟠 <b>LÉA : relever mes notes de mi-session et réajuster les difficultés</b> — Toute la répartition du temps tourne encore sur mes estimations d'août. <b>À 16 jours du dernier final, c'est la dernière fenêtre utile.</b>
 - [ ] 🟠 <b>Prog. Web : dates officielles des TP3 à TP5 et répartition exacte des 20 %</b> — Les 4 % par TP sont une hypothèse, pas une donnée du plan de cours.
 - [ ] 🟠 <b>Anglais : MIO — l'oral du 22 oct. a-t-il eu lieu ? notes des 2 midterms ?</b>
 - [ ] 🟡 <b>Éthique : faire confirmer les pondérations</b> — Le PDF reçu est une version Hiver 2026 / services sociaux. <b>À joindre au même MIO que la demande du lien Bookings.</b>
@@ -409,7 +409,7 @@ Final Speaking &amp; Listening ⚠️
 <b>30 %</b>
 </td>
 <td>
-<b>J-2</b>
+<b>DEMAIN</b>
 </td>
 </tr>
 <tr>
@@ -429,7 +429,7 @@ Remise TP4 — EF Core
 4 % <i>(estimé)</i>
 </td>
 <td>
-<b>J-3</b>
+<b>J-2</b>
 </td>
 </tr>
 <tr>
@@ -449,7 +449,7 @@ Test Nussbaum / Phillips
 5 %
 </td>
 <td>
-J-10
+J-9
 </td>
 </tr>
 <tr>
@@ -469,7 +469,7 @@ Dissertation complète (épreuve terminale)
 <b>30 %</b>
 </td>
 <td>
-J-14
+J-13
 </td>
 </tr>
 <tr>
@@ -489,7 +489,7 @@ Examen final
 <b>35 %</b>
 </td>
 <td>
-J-15
+J-14
 </td>
 </tr>
 <tr>
@@ -509,7 +509,7 @@ Final Reading &amp; Writing
 <b>30 %</b>
 </td>
 <td>
-J-16
+J-15
 </td>
 </tr>
 <tr>
@@ -529,7 +529,7 @@ ven. 11 déc.
 <b>40 %</b>
 </td>
 <td>
-J-17
+J-16
 </td>
 </tr>
 <tr>
@@ -549,7 +549,7 @@ Examen final
 <b>35 %</b>
 </td>
 <td>
-J-17
+J-16
 </td>
 </tr>
 <tr>
@@ -569,7 +569,7 @@ Remise TP5 — fetch + API
 4 % <i>(estimé)</i>
 </td>
 <td>
-J-17
+J-16
 </td>
 </tr>
 <tr>
@@ -589,7 +589,7 @@ Cercles de discussion
 10 %
 </td>
 <td>
-J-21
+J-20
 </td>
 </tr>
 </table>
@@ -614,13 +614,13 @@ Cours
 </tr>
 <tr>
 <td>
-<b>mar. 24 nov.</b> — <i>aujourd'hui</i>
+<b>mar. 24 nov.</b> — <i>en retard</i>
 </td>
 <td>
 📕 Littérature et imaginaire
 </td>
 <td>
-<i><b>Marie-Claire</b></i><b> p. 97-145</b> — pour le cours de ce matin
+<i><b>Marie-Claire</b></i><b> p. 97-145</b> — <b>à rattraper</b> : le cours est passé, la dissertation terminale non
 </td>
 </tr>
 <tr>
@@ -764,7 +764,7 @@ Statut
 <b>34 %</b>
 </td>
 <td>
-🔥 <b>en cours — jour 2</b>
+🔥 <b>en cours — jour 3</b>
 </td>
 </tr>
 <tr>
@@ -781,7 +781,7 @@ Statut
 <b>184 %</b>
 </td>
 <td>
-⏳ dans 13 jours
+⏳ dans 12 jours
 </td>
 </tr>
 </table>
@@ -815,7 +815,7 @@ Lundi 16 h 30 – 18 h 00
 </tr>
 <tr>
 <td>
-<b>Mardi 13 h 30 – 16 h 30</b> ← <i>aujourd'hui</i>
+Mardi 13 h 30 – 16 h 30
 </td>
 <td>
 <b>3 h</b>
@@ -826,7 +826,7 @@ Lundi 16 h 30 – 18 h 00
 </tr>
 <tr>
 <td>
-<b>Mercredi 11 h 15 – 16 h 00</b>
+<b>Mercredi 11 h 15 – 16 h 00</b> ← <i>aujourd'hui</i>
 </td>
 <td>
 <b>4 h 45</b>
@@ -978,6 +978,6 @@ Part de la note déjà jouée
 </tr>
 </table>
 
-> <b>55 %</b> de la session est joué en moyenne — <b>inchangé depuis hier</b> : la semaine 13 ne fait rien tomber avant jeudi. Il reste <b>223 %</b> de points à jouer, dont <b>184 %</b> entre le 8 et le 15 décembre. Et <b>97 %</b> restent au statut incertain tant que les dix lignes ci-dessus ne sont pas confirmées.
+> <b>55 %</b> de la session est joué en moyenne — <b>inchangé depuis hier</b>, et pour la dernière fois : <b>demain, 30 % tombent</b>. Il reste <b>223 %</b> de points à jouer, dont <b>184 %</b> entre le 8 et le 15 décembre. Et <b>97 %</b> restent au statut incertain tant que les dix lignes ci-dessus ne sont pas confirmées.
 
-<i>Mis à jour le mardi 24 novembre · source : </i><i><code>donnees-session.json</code></i><i>, commité sur la branche </i><i><code>claude/epic-newton-01ysrt</code></i>
+<i>Mis à jour le mercredi 25 novembre · source : </i><i><code>donnees-session.json</code></i><i>, commité sur la branche </i><i><code>claude/epic-newton-e9mm6y</code></i>
