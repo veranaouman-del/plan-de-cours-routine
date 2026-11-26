@@ -118,6 +118,18 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    Au-delà d'une semaine on considère la page tournée. Un champ `fait: true` sur une
    lecture la retire tout de suite.
 
+17. **Notion ne stocke pas l'entité `&amp;`, il stocke `&`.** Le miroir local
+   `notion-tableau-de-bord.md` portait `FINAL SPEAKING &amp; LISTENING` alors que la page
+   contient `&` : la paire `update_content` correspondante n'a trouvé aucune cible et la
+   ligne du jour est restée sur la veille. Corrigé le 26 novembre — les 7 occurrences du
+   fichier sont passées à `&`. **Écrire `&` tel quel dans le miroir**, jamais l'entité.
+
+18. **Générer les paires `update_content` plutôt que les écrire à la main.** Le script
+   `paires.py` (dans le scratchpad, à recréer au besoin) compare `git show HEAD:fichier` au
+   fichier modifié, fusionne les blocs proches et vérifie que chaque `old_str` est unique
+   **dans l'état courant**, pas dans l'état initial — sinon un remplacement précédent peut
+   rendre le suivant ambigu. 60 lignes changées se ramènent ainsi à ~24 paires sûres.
+
 ## Points à confirmer auprès des profs
 
 État au 20 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,

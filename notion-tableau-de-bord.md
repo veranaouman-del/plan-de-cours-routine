@@ -1,22 +1,22 @@
-> 420.B0 Techniques de l'informatique - Cegep de Granby · lundi 24 août → vendredi 11 décembre<br /><b>Semaine 13 sur 15 — jour 3</b>
+> 420.B0 Techniques de l'informatique - Cegep de Granby · lundi 24 août → vendredi 11 décembre<br /><b>Semaine 13 sur 15 — jour 4</b>
 
 ---
 
-## 📍 Aujourd'hui — mercredi 25 novembre
+## 📍 Aujourd'hui — jeudi 26 novembre
 
-- 💻 <b>08 h 00 – 10 h 40</b> · Développement de logiciels — A307
-- 🏃 <b>dès 10 h 40</b> · la fenêtre COOPSCO — <i>Marie-Claire</i> (doc. 808) + carton #723, <b>un arrêt, deux retards</b>
-- 🗣️🌐 <b>11 h 15 – 16 h 00</b> · GROS BLOC — <b>dernière répétition du final oral (30 %)</b>, puis <b>TP4 EF Core bouclé</b>
-- 📖 <b>Ce soir</b> · rattraper <i>Marie-Claire</i> p. 97-145 — la dissertation terminale du 8 décembre porte dessus
+- 🗣️ <b>08 h 55 – 11 h 35</b> · Anglais propre au programme — A311 — ⚠️ <b>FINAL SPEAKING & LISTENING, 30 %</b>
+- ⏱️ <b>12 h 30 – 15 h 30</b> · GROS BLOC — <b>détourné sur demain</b> : 🌐 TP4 EF Core <b>déposé</b>, puis ⚖️ l'extrait d'Anne Phillips <b>annoté</b>
+- 📞 <b>Entre deux</b> · ⚖️ le MIO à C. Gagnon — le lien Bookings <b>et</b> les pondérations, <b>40 %</b> bloqués
+- 📖 <b>Ce soir</b> · <i>Marie-Claire</i> p. 97-145 — en retard depuis mardi, et la dissertation terminale du 8 décembre porte dessus
 
-> 🔥 <b>Priorité du jour :</b> 🗣️ <b>le final oral d'anglais (30 %), DEMAIN.</b> Sa date n'est toujours pas confirmée — <b>on se présente jeudi 8 h 55 à A311 en étant prêt</b>. Être prêt une semaine trop tôt ne coûte rien ; l'inverse coûte 30 %.
+> 🔥 <b>Priorité du jour :</b> 🗣️ <b>le final oral d'anglais (30 %), CE MATIN, 8 h 55 à A311.</b> Avant d'entrer : <b>deux minutes à voix haute, enregistrées, réécoutées</b>. Rien d'autre — on ne révise pas un oral le matin même, on s'échauffe.
 
 <callout icon="📨" color="red_bg">
-<b>Il ne reste qu'un MIO qui change encore quelque chose : celui de C. Gagnon.</b><br /><br />Pour l'oral, c'est joué. À J-1, une réponse d'<b>A. Serebrenik</b> n'a plus d'effet sur la préparation — <b>treize jours sans réponse</b>, et on se présente jeudi en étant prêt. La question ne sert plus qu'à savoir s'il faudra aussi tenir le 3 décembre.<br /><br />Celui de <b>C. Gagnon</b>, lui, débloque <b>40 %</b> : le lien Bookings <b>et</b> les pondérations, dans un seul message. Il part du téléphone, entre deux cours.<br /><br />La COOP, elle, demande d'y passer : <i>Marie-Claire</i> (doc. 808) et le carton #723, au même comptoir — <b>dès 10 h 40</b>, à la sortie du cours.
+<b>La question posée à A. Serebrenik trouve sa réponse ce matin, en salle.</b><br /><br />Quatorze jours sans réponse, et c'est la porte de A311 qui tranchera. <b>En sortant, noter laquelle :</b> l'oral était-il bien aujourd'hui, ou faut-il aussi tenir le 3 décembre ? C'est la seule chose qui change le plan de la semaine 14.<br /><br />Il ne reste alors <b>qu'un seul MIO qui débloque encore quelque chose</b> : celui de <b>C. Gagnon</b>. Le lien Bookings <b>et</b> les pondérations, dans un seul message, depuis le téléphone. <b>40 %</b> en dépendent.
 </callout>
 
 <callout icon="🔥" color="orange_bg">
-<b>Le lien Microsoft Bookings de l'entrevue finale (40 %) reste introuvable — quatrième jour.</b><br /><br />Le plan de cours impose l'inscription mais ne donne <b>aucune URL</b> : ni là, ni dans les quatre autres plans, ni dans l'horaire Omnivox. <b>Ce n'est pas un retard, c'est un blocage.</b><br /><br />C'est la plus grosse note de la session, et les plages se réservent dans l'ordre d'arrivée. <b>Il reste seize jours</b> — celles qui resteront en décembre ne sont pas celles d'aujourd'hui.
+<b>Le lien Microsoft Bookings de l'entrevue finale (40 %) reste introuvable — cinquième jour.</b><br /><br />Le plan de cours impose l'inscription mais ne donne <b>aucune URL</b> : ni là, ni dans les quatre autres plans, ni dans l'horaire Omnivox. <b>Ce n'est pas un retard, c'est un blocage.</b><br /><br />C'est la plus grosse note de la session, et les plages se réservent dans l'ordre d'arrivée. <b>Il reste quinze jours</b> — celles qui resteront en décembre ne sont pas celles d'aujourd'hui.
 </callout>
 
 <callout icon="🔍" color="gray_bg">
@@ -27,16 +27,16 @@
 
 ## ✅ À faire aujourd'hui
 
-- [ ] 🔴 <b>DÈS 10 H 40</b> — 📖 <b>COOPSCO</b> : <i>Marie-Claire</i> (doc. 808) + carton #723 + photo du reçu — <b>un arrêt, deux retards</b>
-- [ ] 🔴 <b>ENTRE DEUX COURS, DU TÉLÉPHONE</b> — ⚖️ <b>MIO à C. Gagnon</b> : le lien Bookings <b>+</b> les pondérations, <b>un seul message</b> — <b>40 %</b> bloqués
-- [ ] 🔴 <b>11 h 15 – 16 h 00</b> — 🗣️ <b>dernière répétition du final oral (30 %)</b> : chronométrée, enregistrée, réécoutée
-- [ ] 🔴 <b>11 h 15 – 16 h 00</b> — 🌐 <b>TP4 EF Core bouclé</b> — la remise est vendredi 13 h 30, pas jeudi soir
-- [ ] 🟠 <b>10 MIN, N'IMPORTE QUAND</b> — 🔍 LÉA : les 10 lignes non confirmées (<b>97 %</b>) et la trace de dépôt du TP4
-- [ ] 🟠 <b>CE SOIR</b> — 📖 rattraper <i>Marie-Claire</i> p. 97-145 <i>(était pour hier)</i>
-- [ ] 🔵 <b>AVANT VENDREDI</b> — ⚖️ l'extrait d'Anne Phillips : il porte le test du 4 déc. <i>et</i> l'entrevue finale
-- [ ] 🔁 <b>CE SOIR</b> — 🗣️ les Communiqués MIO/LÉA du mercredi
+- [ ] 🔴 <b>08 h 55 · A311</b> — 🗣️ <b>FINAL SPEAKING & LISTENING (30 %)</b> : deux minutes à voix haute avant d'entrer, enregistrées, réécoutées
+- [ ] 🔴 <b>EN SORTANT DE CLASSE</b> — 🗣️ <b>noter la réponse</b> : l'oral était-il bien aujourd'hui, ou faut-il aussi tenir le 3 décembre ?
+- [ ] 🔴 <b>12 h 30 – 14 h 00</b> — 🌐 <b>TP4 EF Core fini ET déposé aujourd'hui</b> — la remise est demain 13 h 30 ; déposer la veille enlève tout le risque
+- [ ] 🔴 <b>14 h 00 – 15 h 00</b> — ⚖️ <b>l'extrait d'Anne Phillips, annoté</b> — le cours de philo est <b>demain 8 h 55</b>, et ce texte porte aussi le test du 4 déc. <i>et</i> l'entrevue finale
+- [ ] 🔴 <b>ENTRE DEUX, DU TÉLÉPHONE</b> — ⚖️ <b>MIO à C. Gagnon</b> : le lien Bookings <b>+</b> les pondérations, <b>un seul message</b> — <b>40 %</b> bloqués, <b>5ᵉ jour</b>
+- [ ] 🟠 <b>15 h 00 – 15 h 30</b> — 🔍 LÉA : les 10 lignes non confirmées (<b>97 %</b>) et la trace de dépôt du TP4
+- [ ] 🟠 <b>CE SOIR</b> — 📖 <i>Marie-Claire</i> p. 97-145 <i>(en retard depuis mardi)</i>
+- [ ] 🟠 <b>SI LA COOP N'EST PAS FAITE</b> — 📖 <i>Marie-Claire</i> (doc. 808) + carton #723 + photo du reçu — <b>un arrêt, deux retards</b>
 
-> ⚠️ Le gros bloc porte deux choses, et dans cet ordre : <b>l'oral de demain (30 %)</b>, puis le TP4 (4 %). Si le temps manque, c'est le TP4 qui glisse à demain — pas l'inverse.
+> ⚠️ Le bloc du jeudi est normalement celui de l'anglais. <b>Aujourd'hui il bascule</b> : l'oral est derrière, le prochain final d'anglais est le 10 décembre (J-14), tandis que <b>le TP4 et l'extrait de Phillips tombent tous les deux demain</b>. Si le temps manque, c'est Phillips qui glisse au soir — pas le TP4.
 
 ---
 
@@ -53,18 +53,10 @@ Ce que je fais
 </tr>
 <tr>
 <td>
-<b>mer. 25 nov.</b> ← <i>aujourd'hui</i>
+<b>jeu. 26 nov.</b> ← <i>aujourd'hui</i>
 </td>
 <td>
-💻 08 h 00 – 10 h 40 · A307<br />🏃 dès 10 h 40 — COOPSCO · 📨 le MIO à C. Gagnon<br /><b>11 h 15 – 16 h 00</b> GROS BLOC — 🗣️ <b>dernière répétition de l'oral (30 %)</b>, puis 🌐 <b>TP4 EF Core bouclé</b>
-</td>
-</tr>
-<tr>
-<td>
-<b>jeu. 26 nov.</b>
-</td>
-<td>
-🗣️ 08 h 55 – 11 h 35 · A311 — ⚠️ <b>FINAL SPEAKING &amp; LISTENING, 30 %</b> <i>(si la date est confirmée)</i><br /><b>12 h 30 – 15 h 30</b> GROS BLOC — 🗣️ bascule sur le Final Reading &amp; Writing du 10 décembre
+🗣️ 08 h 55 – 11 h 35 · A311 — ⚠️ <b>FINAL SPEAKING & LISTENING, 30 %</b><br /><b>12 h 30 – 15 h 30</b> GROS BLOC — 🌐 <b>TP4 EF Core déposé</b>, puis ⚖️ <b>Phillips annoté</b>
 </td>
 </tr>
 <tr>
@@ -88,7 +80,7 @@ Ce que je fais
 <b>dim. 29 nov.</b>
 </td>
 <td>
-<b>16 h 00 – 18 h 00</b> RATTRAPAGE — bilan de la semaine 13 et plan de la <b>semaine 14</b>
+<b>16 h 00 – 18 h 00</b> RATTRAPAGE — bilan de la semaine 13 et plan de la <b>semaine 14, la dernière avant les finaux</b>
 </td>
 </tr>
 <tr>
@@ -96,7 +88,7 @@ Ce que je fais
 <b>lun. 30 nov.</b>
 </td>
 <td>
-💻 10 h 45 · A307 — 🌐 13 h 30 · A307<br /><b>16 h 30 – 18 h 00</b> — ouverture de la <b>semaine 14</b>, la dernière avant les finaux
+💻 10 h 45 · A307 — 🌐 13 h 30 · A307<br /><b>16 h 30 – 18 h 00</b> — 🌐 final de Prog. Web : refaire un TP <b>sans la correction</b>
 </td>
 </tr>
 <tr>
@@ -107,11 +99,19 @@ Ce que je fais
 📕 08 h 55 – 12 h 30 · A208 — <i>Marie-Claire</i> p. 146-197 à avoir lu<br /><b>13 h 30 – 16 h 30</b> GROS BLOC — 📕 <b>dissertation terminale (30 %)</b>, à <b>J-7</b>
 </td>
 </tr>
+<tr>
+<td>
+<b>mer. 2 déc.</b>
+</td>
+<td>
+💻 08 h 00 – 10 h 40 · A307<br /><b>11 h 15 – 16 h 00</b> GROS BLOC — 💻 <b>final de Dév. logiciels (35 %)</b> : du code <b>sur papier</b>, sans autocomplétion
+</td>
+</tr>
 </table>
 
 ---
 
-## 🚩 Mon plan de révision des finaux — il reste 16 jours
+## 🚩 Mon plan de révision des finaux — il reste 15 jours
 
 > Chaque bloc de ma semaine type porte un final attitré. Trois passages espacés par final, et aucune journée bloquée. <b>184 % des points tombent entre le 8 et le 15 décembre</b>, et rien ne s'apprend en semaine 15.
 
@@ -142,18 +142,18 @@ Dissertation terminale de français (30 %) — un paragraphe modèle, chronomét
 </tr>
 <tr>
 <td>
-<b>Mercredi 11 h 15 – 16 h 00</b> ← <i>aujourd'hui</i>
+Mercredi 11 h 15 – 16 h 00
 </td>
 <td>
-Final Dév. logiciels (35 %) — du code sur papier, sans autocomplétion<br /><i>cette semaine : détourné sur l'oral (30 %) + le TP4</i>
+Final Dév. logiciels (35 %) — du code sur papier, sans autocomplétion
 </td>
 </tr>
 <tr>
 <td>
-Jeudi 12 h 30 – 15 h 30
+<b>Jeudi 12 h 30 – 15 h 30</b> ← <i>aujourd'hui</i>
 </td>
 <td>
-Finaux d'anglais (30 % + 30 %) — à voix haute, chronométré
+Final Reading & Writing (30 %) — à voix haute, chronométré<br /><i>cette semaine : détourné sur le TP4 et l'extrait de Phillips, tous deux pour demain</i>
 </td>
 </tr>
 <tr>
@@ -289,7 +289,7 @@ ven. 23 oct.
 </tr>
 <tr>
 <td>
-Midterm Speaking &amp; Listening
+Midterm Speaking & Listening
 </td>
 <td>
 🗣️ Anglais propre au programme
@@ -353,8 +353,8 @@ ven. 25 sept.
 
 ## 📌 À régler
 
-- [ ] 🔴 <b>Éthique : obtenir le lien Microsoft Bookings, puis réserver l'entrevue finale (40 %)</b> — <b>bloqué : le lien n'est dans aucun document reçu.</b> MIO à Cyndelle Gagnon <b>aujourd'hui</b>. Plus grosse note de la session, <b>16 jours</b>.
-- [ ] 🔵 <b>Anglais : MIO — Final Speaking &amp; Listening (30 %), le 26 nov. ou le 3 déc. ?</b> — <i>13 jours sans réponse</i> · <b>La fenêtre utile est passée : on se présente jeudi, prêt. La réponse ne sert plus qu'à savoir s'il faut aussi tenir le 3 décembre.</b>
+- [ ] 🔴 <b>Éthique : obtenir le lien Microsoft Bookings, puis réserver l'entrevue finale (40 %)</b> — <b>bloqué : le lien n'est dans aucun document reçu.</b> MIO à Cyndelle Gagnon <b>aujourd'hui</b>. Plus grosse note de la session, <b>15 jours</b>, <b>5ᵉ jour de blocage</b>.
+- [ ] 🔵 <b>Anglais : la question du 26 nov. ou 3 déc. se tranche ce matin, en salle</b> — <i>14 jours sans réponse</i> · <b>En sortant de A311, noter laquelle : c'est la seule inconnue du plan de la semaine 14.</b>
 - [ ] 🟠 <b>COOPSCO : </b><i><b>Marie-Claire</b></i><b> (doc. 808) + carton #723 d'anglais, photo du reçu</b> — <b>ce midi</b>. <i>Marie-Claire</i> p. 146-197 est à lire pour le 1ᵉʳ décembre.
 - [ ] 🔴 <b>Dév. logiciels : confirmer le dépôt du TP4 (MVVM, 10 %) sur LÉA</b> — Chez Grenier, un travail en retard vaut zéro : une capture de la trace de dépôt vaut 10 %.
 - [ ] 🔴 <b>LÉA : vérifier les 10 évaluations passées non confirmées</b> — 97 % de points au statut incertain. MIO au prof le jour même pour chaque ligne non déposée.
@@ -403,13 +403,13 @@ jeu. 26 nov.
 🗣️ Anglais propre au programme
 </td>
 <td>
-Final Speaking &amp; Listening ⚠️
+Final Speaking & Listening ⚠️
 </td>
 <td>
 <b>30 %</b>
 </td>
 <td>
-<b>DEMAIN</b>
+<b>AUJOURD'HUI</b>
 </td>
 </tr>
 <tr>
@@ -429,7 +429,7 @@ Remise TP4 — EF Core
 4 % <i>(estimé)</i>
 </td>
 <td>
-<b>J-2</b>
+<b>DEMAIN</b>
 </td>
 </tr>
 <tr>
@@ -449,12 +449,12 @@ Test Nussbaum / Phillips
 5 %
 </td>
 <td>
-J-9
+J-8
 </td>
 </tr>
 <tr>
 <td>
-🔵
+🟠
 </td>
 <td>
 mar. 8 déc.
@@ -469,7 +469,7 @@ Dissertation complète (épreuve terminale)
 <b>30 %</b>
 </td>
 <td>
-J-13
+J-12
 </td>
 </tr>
 <tr>
@@ -489,7 +489,7 @@ Examen final
 <b>35 %</b>
 </td>
 <td>
-J-14
+J-13
 </td>
 </tr>
 <tr>
@@ -503,13 +503,13 @@ jeu. 10 déc.
 🗣️ Anglais propre au programme
 </td>
 <td>
-Final Reading &amp; Writing
+Final Reading & Writing
 </td>
 <td>
 <b>30 %</b>
 </td>
 <td>
-J-15
+J-14
 </td>
 </tr>
 <tr>
@@ -529,7 +529,7 @@ ven. 11 déc.
 <b>40 %</b>
 </td>
 <td>
-J-16
+J-15
 </td>
 </tr>
 <tr>
@@ -549,7 +549,7 @@ Examen final
 <b>35 %</b>
 </td>
 <td>
-J-16
+J-15
 </td>
 </tr>
 <tr>
@@ -569,7 +569,7 @@ Remise TP5 — fetch + API
 4 % <i>(estimé)</i>
 </td>
 <td>
-J-16
+J-15
 </td>
 </tr>
 <tr>
@@ -589,7 +589,7 @@ Cercles de discussion
 10 %
 </td>
 <td>
-J-20
+J-19
 </td>
 </tr>
 </table>
@@ -614,24 +614,24 @@ Cours
 </tr>
 <tr>
 <td>
+<b>ven. 27 nov.</b> — <i>demain</i>
+</td>
+<td>
+⚖️ Éthique et politique
+</td>
+<td>
+<b>Extrait « Espaces publics, vies privées » d'Anne Phillips</b> — porte le cours de demain, le test du 4 déc. <i>et</i> l'entrevue finale
+</td>
+</tr>
+<tr>
+<td>
 <b>mar. 24 nov.</b> — <i>en retard</i>
 </td>
 <td>
 📕 Littérature et imaginaire
 </td>
 <td>
-<i><b>Marie-Claire</b></i><b> p. 97-145</b> — <b>à rattraper</b> : le cours est passé, la dissertation terminale non
-</td>
-</tr>
-<tr>
-<td>
-<b>ven. 27 nov.</b>
-</td>
-<td>
-⚖️ Éthique et politique
-</td>
-<td>
-Extrait « Espaces publics, vies privées » d'Anne Phillips — porte le test du 4 déc. <i>et</i> l'entrevue finale
+<i><b>Marie-Claire</b></i><b> p. 97-145</b> — <b>à rattraper ce soir</b> : le cours est passé, la dissertation terminale non
 </td>
 </tr>
 <tr>
@@ -707,7 +707,7 @@ Statut
 28 sept. – 4 oct.
 </td>
 <td>
-⚖️ Examen sur les théories éthiques <b>25 %</b> · 🗣️ Midterm Reading &amp; Writing <b>20 %</b>
+⚖️ Examen sur les théories éthiques <b>25 %</b> · 🗣️ Midterm Reading & Writing <b>20 %</b>
 </td>
 <td>
 <b>45 %</b>
@@ -758,13 +758,13 @@ Statut
 23 – 29 nov.
 </td>
 <td>
-🗣️ Final Speaking &amp; Listening <b>30 %</b> · 🌐 Remise TP4 — EF Core 4 %
+🗣️ Final Speaking & Listening <b>30 %</b> · 🌐 Remise TP4 — EF Core 4 %
 </td>
 <td>
 <b>34 %</b>
 </td>
 <td>
-🔥 <b>en cours — jour 3</b>
+🔥 <b>en cours — jour 4</b>
 </td>
 </tr>
 <tr>
@@ -775,13 +775,13 @@ Statut
 7 – 20 déc.
 </td>
 <td>
-⚖️ Entrevue finale <b>40 %</b> · 💻 Examen final <b>35 %</b> · 🌐 Examen final <b>35 %</b> · 📕 Dissertation complète <b>30 %</b> · 🗣️ Final Reading &amp; Writing <b>30 %</b> · 📕 Cercles 10 % · 🌐 TP5 4 %
+⚖️ Entrevue finale <b>40 %</b> · 💻 Examen final <b>35 %</b> · 🌐 Examen final <b>35 %</b> · 📕 Dissertation complète <b>30 %</b> · 🗣️ Final Reading & Writing <b>30 %</b> · 📕 Cercles 10 % · 🌐 TP5 4 %
 </td>
 <td>
 <b>184 %</b>
 </td>
 <td>
-⏳ dans 12 jours
+⏳ dans 11 jours
 </td>
 </tr>
 </table>
@@ -826,7 +826,7 @@ Mardi 13 h 30 – 16 h 30
 </tr>
 <tr>
 <td>
-<b>Mercredi 11 h 15 – 16 h 00</b> ← <i>aujourd'hui</i>
+Mercredi 11 h 15 – 16 h 00
 </td>
 <td>
 <b>4 h 45</b>
@@ -837,7 +837,7 @@ Mardi 13 h 30 – 16 h 30
 </tr>
 <tr>
 <td>
-<b>Jeudi 12 h 30 – 15 h 30</b>
+<b>Jeudi 12 h 30 – 15 h 30</b> ← <i>aujourd'hui</i>
 </td>
 <td>
 <b>3 h</b>
@@ -978,6 +978,6 @@ Part de la note déjà jouée
 </tr>
 </table>
 
-> <b>55 %</b> de la session est joué en moyenne — <b>inchangé depuis hier</b>, et pour la dernière fois : <b>demain, 30 % tombent</b>. Il reste <b>223 %</b> de points à jouer, dont <b>184 %</b> entre le 8 et le 15 décembre. Et <b>97 %</b> restent au statut incertain tant que les dix lignes ci-dessus ne sont pas confirmées.
+> <b>55 %</b> de la session est joué en moyenne — et c'est vrai pour la dernière fois ce matin : <b>à 11 h 35, 30 % de plus sont tombés</b> et l'anglais passe de <b>40 %</b> à <b>70 %</b>. Il reste <b>223 %</b> de points à jouer, dont <b>184 %</b> entre le 8 et le 15 décembre. Et <b>97 %</b> restent au statut incertain tant que les dix lignes ci-dessus ne sont pas confirmées.
 
-<i>Mis à jour le mercredi 25 novembre · source : </i><i><code>donnees-session.json</code></i><i>, commité sur la branche </i><i><code>claude/epic-newton-e9mm6y</code></i>
+<i>Mis à jour le jeudi 26 novembre · source : </i><i><code>donnees-session.json</code></i><i>, commité sur la branche </i><i><code>claude/epic-newton-udf420</code></i>
