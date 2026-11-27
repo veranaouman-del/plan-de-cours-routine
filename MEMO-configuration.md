@@ -130,18 +130,35 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    **dans l'état courant**, pas dans l'état initial — sinon un remplacement précédent peut
    rendre le suivant ambigu. 60 lignes changées se ramènent ainsi à ~24 paires sûres.
 
+19. **Une évaluation passée avec `fait: false` disparaît de toutes les vues.** Le final
+   oral d'anglais (30 %) est daté du 26 novembre : le 27 au matin, il était sorti des
+   chantiers (date passée), sorti des échéances à venir, et compté comme joué dans
+   l'avancement — alors que rien ne confirmait qu'il avait eu lieu. **Le jour où une
+   évaluation non confirmée passe sa date, lui poser `a_verifier_lea: true`**, sinon la
+   plus grosse ligne de la semaine s'évapore en silence. Fait le 27 novembre.
+
+20. **La « priorité du jour » de `carte.py` ne regarde que les évaluations.** Un blocage
+   administratif ne peut pas la prendre, même quand c'est lui qui compte : le 27 novembre
+   la carte annonçait la remise du TP4 (4 %) alors que la vraie affaire du jour était
+   d'attraper C. Gagnon en personne pour débloquer l'entrevue à 40 %. **Quand la journée a
+   une fenêtre qui ne se représente pas** — un prof présent, un comptoir qui ferme — la
+   nommer en tête du message Slack et du visuel, au-dessus de la carte générée.
+
 ## Points à confirmer auprès des profs
 
-État au 20 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
+État au 27 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
 triée par `priorite` ; celle-ci n'en est que le résumé.
 
-- **Éthique** : s'inscrire sur Microsoft Bookings pour l'entrevue finale (40 %). Ouvert
-  depuis le 6 novembre. Plus grosse note de la session, et les plages partent dans l'ordre.
-- **Anglais** : le Final Speaking & Listening (30 %) tombe-t-il le 26 novembre ou le
-  3 décembre ? Question posée le 12 novembre, toujours sans réponse.
-- **LÉA** : dix évaluations passées, 97 % de points, dont rien ne confirme le dépôt.
+- **Éthique** : le lien Microsoft Bookings de l'entrevue finale (40 %) reste **introuvable**
+  — il n'est dans aucun des cinq plans ni dans Omnivox. Ce n'est pas un retard, c'est un
+  blocage, et il dure depuis le 21 novembre. À demander **de vive voix** : la prof est en
+  salle les vendredis de 8 h 55 à 11 h 35, E204.
+- **Anglais** : le Final Speaking & Listening (30 %) a-t-il eu lieu le 26 novembre, ou
+  tombe-t-il le 3 décembre ? Question posée le 12 novembre, sans réponse depuis 15 jours.
+  **Une ouverture de LÉA tranche** — c'est la seule inconnue du plan de la semaine 14.
+- **LÉA** : onze évaluations passées, 127 % de points, dont rien ne confirme le dépôt.
   Dont le Contrôle 2, qui n'a peut-être jamais eu lieu. (Recompté depuis le JSON
-  le 25 novembre : ce résumé disait encore « neuf, 87 % » — c'est le piège 14.)
+  le 27 novembre : le final oral d'anglais a rejoint les dix autres — piège 14 et 19.)
 - **Prog. Web** : les 4 % par TP sont une hypothèse. Demander la répartition réelle des 20 %.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
