@@ -1,41 +1,41 @@
-> 420.B0 Techniques de l'informatique - Cegep de Granby · lundi 24 août → vendredi 11 décembre<br /><b>Semaine 13 sur 15 — jour 5</b>
+> 420.B0 Techniques de l'informatique - Cegep de Granby · lundi 24 août → vendredi 11 décembre<br /><b>Semaine 13 sur 15 — la fin de semaine</b>
 
 ---
 
-## 📍 Aujourd'hui — vendredi 27 novembre
+## 📍 Aujourd'hui — samedi 28 novembre
 
-- ⚖️ <b>08 h 55 – 11 h 35</b> · Éthique et politique — E204 — <b>la prof est devant moi pendant 2 h 40</b>
-- ⏱️ <b>11 h 45 – 12 h 45</b> · Philo à chaud — une réponse d'entrevue, dite <b>à voix haute</b>
-- 🛒 <b>11 h 35 – 13 h 30</b> · COOPSCO — <b>la dernière fenêtre avant la fin de semaine</b>
-- 🌐 <b>13 h 30 – 16 h 10</b> · Programmation Web I — A307 — <b>remise du TP4 EF Core</b>
+- 💤 <b>Aucun cours</b> — la première des trois journées de fond qui restent avant les finaux
+- 📖 <b>09 h 00 – 12 h 00</b> · Lectures longues — <i>Marie-Claire</i> p. 146-197 pour mardi, <b>en annotant</b>
+- 💻 <b>Dix minutes, n'importe quand</b> · LÉA et un MIO — <b>les deux seuls gestes qui débloquent la semaine 14</b>
+- 🌙 <b>Après-midi et soirée</b> · volontairement vides — <b>c'est ce qui rend les treize prochains jours tenables</b>
 
-> 🔥 <b>Priorité du jour :</b> ⚖️ <b>obtenir le lien Bookings de la bouche de Cyndelle Gagnon, à 11 h 35, en sortant de E204.</b> Six jours que <b>40 %</b> sont bloqués sur une URL introuvable et qu'un MIO reste sans réponse. Aujourd'hui elle est <b>physiquement là</b>. Une minute en personne vaut mieux qu'un 7ᵉ jour d'attente.
+> 🔥 <b>Priorité du jour :</b> 💻 <b>ouvrir LÉA, puis envoyer un MIO. Dix minutes en tout.</b> LÉA tranche les <b>131 %</b> de points au statut incertain <i>et</i> la question qui décide du plan de la semaine 14 ; le MIO relance le lien Bookings (<b>40 %</b>) avant que la prochaine fenêtre en personne — vendredi 4 décembre — n'arrive trop tard. <b>Le reste de la journée appartient au bloc de lecture.</b>
 
 <callout icon="🔥" color="red_bg">
-<b>Le lien Microsoft Bookings de l'entrevue finale (40 %) — sixième jour de blocage, et la seule occasion de le débloquer en personne.</b><br /><br />Le plan de cours impose l'inscription mais ne donne <b>aucune URL</b> : ni là, ni dans les quatre autres plans, ni dans l'horaire Omnivox. Le MIO est parti, la réponse n'est pas venue. <b>Ce n'est pas un retard, c'est un blocage</b> — et un blocage ne se résout pas en attendant.<br /><br /><b>Ce matin, le canal change : elle est en salle, de 8 h 55 à 11 h 35.</b> Poser la question de vive voix à la fin du cours, avec les pondérations dans la même phrase. Repartir avec l'URL, ou avec une date d'entrevue écrite à la main — l'une ou l'autre ferme le dossier.<br /><br />C'est la plus grosse note de la session et les plages se réservent dans l'ordre d'arrivée. <b>Il reste quatorze jours.</b> Celles qui resteront le 10 décembre ne sont pas celles d'aujourd'hui.
+<b>Le lien Microsoft Bookings de l'entrevue finale (40 %) — septième jour, et la fenêtre en personne vient de passer.</b><br /><br />Hier la prof était en salle de 8 h 55 à 11 h 35. <b>Si la question lui a été posée, noter aujourd'hui l'URL ou la date obtenue et fermer le dossier</b> — ce serait la meilleure nouvelle de la semaine.<br /><br /><b>Sinon, il n'y a plus de canal physique avant le vendredi 4 décembre</b> — le jour de son test, à sept jours de l'entrevue. Ce week-end, il reste l'écrit : un MIO qui demande <b>le lien ET les pondérations dans le même message</b>, en proposant deux plages précises. Si rien n'est revenu lundi midi, passer au secrétariat du département.<br /><br />C'est la plus grosse note de la session et les plages se réservent dans l'ordre d'arrivée. <b>Il reste treize jours.</b>
 </callout>
 
 <callout icon="🗣️" color="orange_bg">
-<b>Le final oral d'anglais (30 %) était hier matin — et rien ne confirme qu'il a eu lieu.</b><br /><br />La question « groupe A le 26, ou groupe B le 3 décembre ? » a été posée par MIO le 12 novembre. <b>Quinze jours sans réponse.</b> Elle avait une réponse hier, en salle, à A311.<br /><br /><b>Si l'oral a eu lieu :</b> 30 % sont tombés, l'anglais passe à 70 % joué, et il ne reste que le final écrit du 10 décembre.<br /><b>Si mon groupe est le B :</b> l'oral tombe <b>jeudi 3 décembre</b>, dans six jours, et il reste entièrement à préparer.<br /><br />Deux plans de semaine 14 complètement différents tiennent à cette ligne. <b>Une ouverture de LÉA tranche</b> ; à défaut, MIO à A. Serebrenik aujourd'hui.
+<b>Le final oral d'anglais (30 %) était avant-hier — et rien ne confirme encore qu'il a eu lieu.</b><br /><br />La question « groupe A le 26, ou groupe B le 3 décembre ? » a été posée par MIO le 12 novembre. <b>Seize jours sans réponse.</b><br /><br /><b>Si l'oral a eu lieu :</b> 30 % sont tombés, l'anglais reste à 70 % joué, et il ne reste que le final écrit du 10 décembre.<br /><b>Si mon groupe est le B :</b> l'oral tombe <b>jeudi 3 décembre</b>, dans cinq jours, il reste entièrement à préparer, et le gros bloc du jeudi redevient celui de l'anglais.<br /><br />Deux plans de semaine 14 complètement différents tiennent à cette ligne — et <b>LÉA répond aussi le samedi</b>. C'est la tâche la moins coûteuse et la plus décisive du week-end.
 </callout>
 
 <callout icon="🔍" color="gray_bg">
-<b>Onze évaluations passées au statut incertain, pour 127 % de points.</b><br /><br />Le final oral d'hier rejoint les dix lignes déjà en attente. Tant qu'elles ne sont pas vérifiées, <b>mon avancement est une hypothèse, pas un fait</b>. Le <b>TP4 (MVVM, 10 %)</b> déposé le 20 n'a toujours pas de trace confirmée, et chez Grenier un travail en retard vaut zéro.<br /><br />Une seule ouverture de LÉA les règle toutes. <b>Dix minutes</b>, et c'est le même écran que pour le lien Bookings.
+<b>Douze évaluations passées au statut incertain, pour 131 % de points.</b><br /><br />La <b>remise du TP4 EF Core</b> d'hier rejoint les onze lignes déjà en attente : sa date est passée sans trace de dépôt. Tant qu'elles ne sont pas vérifiées, <b>mon avancement est une hypothèse, pas un fait</b>. Le <b>TP4 (MVVM, 10 %)</b> déposé le 20 n'a toujours pas de trace confirmée, et chez Grenier un travail en retard vaut zéro.<br /><br />Une seule ouverture de LÉA les règle toutes. <b>Dix minutes</b>, un samedi matin, sans sortir de chez moi.
 </callout>
 
 ---
 
 ## ✅ À faire aujourd'hui
 
-- [ ] 🔴 <b>11 h 35 · EN SORTANT DE E204</b> — ⚖️ <b>demander le lien Bookings à C. Gagnon, de vive voix</b>, + les pondérations dans la même phrase. <b>40 %</b>, <b>6ᵉ jour</b>, et elle est là <b>aujourd'hui seulement</b>
-- [ ] 🔴 <b>13 h 30 · A307</b> — 🌐 <b>remise du TP4 EF Core</b> — si le dépôt d'hier n'a pas été fait, c'est maintenant
-- [ ] 🔴 <b>DÈS QUE POSSIBLE, SUR LÉA</b> — 🗣️ <b>l'oral final (30 %) a-t-il eu lieu hier ?</b> C'est la seule inconnue qui change le plan de la semaine 14
-- [ ] 🟠 <b>11 h 35 – 13 h 30</b> — 🛒 <b>COOPSCO</b> : <i>Marie-Claire</i> (doc. 808) + carton #723 + photo du reçu. <b>Fermé la fin de semaine</b> — sans le document, le bloc de lecture de samedi tombe à vide
-- [ ] 🟠 <b>11 h 45 – 12 h 45</b> — ⚖️ <b>une réponse d'entrevue construite, dite à voix haute</b> — les notes du matin sont encore chaudes, et l'entrevue vaut <b>40 %</b>
-- [ ] 🟠 <b>CE SOIR</b> — 📖 <i>Marie-Claire</i> p. 97-145 <i>(en retard depuis mardi)</i> — la dissertation terminale du 8 décembre porte dessus
-- [ ] 🔵 <b>SI LE TEXTE DE PHILLIPS N'EST PAS LU</b> — ⚖️ il portait le cours de ce matin, mais il porte <b>encore</b> le test du 4 déc. <i>et</i> l'entrevue finale. Le rattraper vaut toujours la peine
+- [ ] 🔴 <b>DIX MINUTES, N'IMPORTE QUAND</b> — 💻 <b>ouvrir LÉA</b> : les <b>12 lignes non confirmées (131 %)</b>, et surtout <b>l'oral d'anglais (30 %) — le 26, ou le 3 décembre ?</b>
+- [ ] 🔴 <b>DANS LA FOULÉE</b> — ⚖️ <b>un MIO à C. Gagnon</b> : le <b>lien Bookings (40 %)</b> ET les pondérations dans le même message, avec <b>deux plages précises proposées</b>
+- [ ] 🟠 <b>09 h 00 – 12 h 00</b> — 📖 <i>Marie-Claire</i> <b>p. 146-197</b> pour mardi, <b>en annotant</b> — la dissertation terminale du 8 décembre (30 %) porte dessus
+- [ ] 🟠 <b>SI LE DOCUMENT N'A PAS ÉTÉ ACHETÉ HIER</b> — 🛒 la COOPSCO est fermée : le bloc bascule sur <b>le texte de Phillips</b>, qui porte le test du 4 déc. <i>et</i> l'entrevue finale
+- [ ] 🟠 <b>DANS LE MÊME BLOC</b> — 📖 <i>Marie-Claire</i> p. 97-145 <i>(en retard depuis le 24)</i> — quatre jours de retard, c'est encore rattrapable
+- [ ] 🔵 <b>SI L'ÉNERGIE EST LÀ</b> — ⚖️ <b>une réponse d'entrevue construite, dite à voix haute</b> — l'entrevue vaut <b>40 %</b> et ne se prépare pas en relisant
+- [ ] 🔵 <b>CETTE SEMAINE</b> — 📕 se procurer <i>Oscar et la dame rose</i> pour les cercles du 15 décembre (10 %)
 
-> ⚠️ Le vendredi est une journée courte : deux cours et un seul bloc d'une heure. <b>Tout ce qui compte aujourd'hui se joue dans les interstices</b> — 11 h 35 pour Gagnon et la COOPSCO, 13 h 30 pour le TP4. Le vrai travail de fond reprend demain matin.
+> ⚠️ Le samedi est un bloc de trois heures, pas une journée de travail. <b>L'après-midi et la soirée restent vides, et c'est voulu</b> — à treize jours du dernier final, c'est précisément ce qu'il ne faut pas sacrifier. Les deux écrans du matin, le bloc de lecture, et on arrête.
 
 ---
 
@@ -52,18 +52,10 @@ Ce que je fais
 </tr>
 <tr>
 <td>
-<b>ven. 27 nov.</b> ← <i>aujourd'hui</i>
+<b>sam. 28 nov.</b> ← <i>aujourd'hui</i>
 </td>
 <td>
-⚖️ 08 h 55 – 11 h 35 · E204 — <b>11 h 35 : le lien Bookings, en personne (40 %)</b><br />🛒 11 h 35 – 13 h 30 COOPSCO · 🌐 13 h 30 · A307 — <b>remise du TP4 EF Core</b>
-</td>
-</tr>
-<tr>
-<td>
-<b>sam. 28 nov.</b>
-</td>
-<td>
-<b>09 h 00 – 12 h 00</b> Lectures longues — 📖 <i>Marie-Claire</i> p. 146-197 pour mardi, <b>en annotant</b>
+💻 <b>Dix minutes : LÉA, puis un MIO à C. Gagnon</b><br /><b>09 h 00 – 12 h 00</b> Lectures longues — 📖 <i>Marie-Claire</i> p. 146-197 pour mardi, <b>en annotant</b>
 </td>
 </tr>
 <tr>
@@ -79,7 +71,7 @@ Ce que je fais
 <b>lun. 30 nov.</b>
 </td>
 <td>
-💻 10 h 45 · A307 — 🌐 13 h 30 · A307<br /><b>16 h 30 – 18 h 00</b> — 🌐 final de Prog. Web (35 %) : refaire un TP <b>sans la correction</b>
+💻 10 h 45 · A307 — 🛒 <b>12 h 30 – 13 h 30 COOPSCO</b> — 🌐 13 h 30 · A307<br /><b>16 h 30 – 18 h 00</b> — 🌐 final de Prog. Web (35 %) : refaire un TP <b>sans la correction</b>
 </td>
 </tr>
 <tr>
@@ -106,13 +98,21 @@ Ce que je fais
 🗣️ 08 h 55 – 11 h 35 · A311 — ⚠️ <b>si mon groupe est le B, le final oral (30 %) tombe ICI</b><br /><b>12 h 30 – 15 h 30</b> GROS BLOC — 🗣️ final Reading & Writing (30 %), à <b>J-7</b>
 </td>
 </tr>
+<tr>
+<td>
+<b>ven. 4 déc.</b>
+</td>
+<td>
+⚖️ 08 h 55 – 11 h 35 · E204 — <b>TEST NUSSBAUM / PHILLIPS (5 %)</b><br /><b>11 h 35 : la dernière fenêtre en personne pour le lien Bookings</b> · 🌐 13 h 30 · A307
+</td>
+</tr>
 </table>
 
 > 🎯 <b>La semaine 14 est la dernière vraie semaine de travail de la session.</b> Il n'y tombe que 5 % de points — c'est exactement ce qui en fait la piste d'envol : <b>tout ce qui ne sera pas prêt le 6 décembre au soir ne le sera pas.</b>
 
 ---
 
-## 🚩 Mon plan de révision des finaux — il reste 14 jours
+## 🚩 Mon plan de révision des finaux — il reste 13 jours
 
 > Chaque bloc de ma semaine type porte un final attitré. Trois passages espacés par final, et aucune journée bloquée. <b>184 % des points tombent entre le 8 et le 15 décembre</b>, et rien ne s'apprend en semaine 15.
 
@@ -159,18 +159,18 @@ Final Reading & Writing (30 %) — à voix haute, chronométré
 </tr>
 <tr>
 <td>
-<b>Vendredi 11 h 45 – 12 h 45</b> ← <i>aujourd'hui</i>
+Vendredi 11 h 45 – 12 h 45
 </td>
 <td>
-<b>Entrevue de philo (40 %) — une réponse construite, dite à voix haute</b><br /><i>les notes du matin sont encore chaudes : c'est le meilleur moment de la semaine pour ça</i>
+Entrevue de philo (40 %) — une réponse construite, dite à voix haute
 </td>
 </tr>
 <tr>
 <td>
-Samedi 09 h 00 – 12 h 00
+<b>Samedi 09 h 00 – 12 h 00</b> ← <i>aujourd'hui</i>
 </td>
 <td>
-Lectures : <i>Marie-Claire</i>  • les textes de philo, en annotant
+<b>Lectures : </b><i><b>Marie-Claire</b></i><b> p. 146-197 • le texte de Phillips, en annotant</b><br /><i>trois heures d'affilée : le plus long bloc continu de la semaine</i>
 </td>
 </tr>
 <tr>
@@ -185,9 +185,9 @@ Bilan : ce qui a bougé, ce qui glisse, plan de la semaine
 
 ---
 
-## 🔴 À confirmer — 11 lignes, 127 % de points
+## 🔴 À confirmer — 12 lignes, 131 % de points
 
-> Onze évaluations passées dont rien ne confirme qu'elles ont été déposées, ou même tenues. Tant qu'elles sont là, mon avancement est une hypothèse, pas un fait.
+> Douze évaluations passées dont rien ne confirme qu'elles ont été déposées, ou même tenues. Tant qu'elles sont là, mon avancement est une hypothèse, pas un fait.
 
 <table fit-page-width="true" header-row="true">
 <tr>
@@ -202,6 +202,20 @@ Poids
 </td>
 <td>
 Était prévu le
+</td>
+</tr>
+<tr>
+<td>
+<b>Remise TP4 — EF Core</b>
+</td>
+<td>
+🌐 Programmation Web I
+</td>
+<td>
+4 % <i>(estimé)</i>
+</td>
+<td>
+<b>ven. 27 nov.</b> — <i>hier : le dépôt a-t-il été fait ?</i>
 </td>
 </tr>
 <tr>
@@ -368,16 +382,17 @@ ven. 25 sept.
 
 ## 📌 À régler
 
-- [ ] 🔴 <b>Éthique : le lien Microsoft Bookings, puis réserver l'entrevue finale (40 %)</b> — <b>6ᵉ jour de blocage.</b> Le lien n'est dans aucun document reçu. <b>Aujourd'hui, en personne, à 11 h 35.</b> Plus grosse note de la session, <b>14 jours</b>.
-- [ ] 🔴 <b>Anglais : l'oral final (30 %) a-t-il eu lieu hier, ou tombe-t-il le 3 décembre ?</b> — <i>15 jours sans réponse au MIO.</i> <b>LÉA tranche en dix secondes, et c'est la seule inconnue du plan de la semaine 14.</b>
-- [ ] 🟠 <b>COOPSCO : </b><i><b>Marie-Claire</b></i><b> (doc. 808) + carton #723 d'anglais, photo du reçu</b> — <b>entre 11 h 35 et 13 h 30, aujourd'hui.</b> Fermé la fin de semaine, et <i>Marie-Claire</i> p. 146-197 est à lire pour mardi.
+- [ ] 🔴 <b>Éthique : le lien Microsoft Bookings, puis réserver l'entrevue finale (40 %)</b> — <b>7ᵉ jour de blocage.</b> La fenêtre en personne d'hier est passée ; <b>la prochaine est le vendredi 4 décembre</b>. Ce week-end : un MIO écrit, deux plages proposées. Plus grosse note de la session, <b>13 jours</b>.
+- [ ] 🔴 <b>Anglais : l'oral final (30 %) a-t-il eu lieu le 26, ou tombe-t-il le 3 décembre ?</b> — <i>16 jours sans réponse au MIO.</i> <b>LÉA tranche en dix secondes, même un samedi, et c'est la seule inconnue du plan de la semaine 14.</b>
+- [ ] 🟠 <b>COOPSCO : </b><i><b>Marie-Claire</b></i><b> (doc. 808) + carton #723 d'anglais, photo du reçu</b> — <b>fermé la fin de semaine.</b> Si ce n'est pas fait, la prochaine fenêtre est <b>lundi entre 12 h 30 et 13 h 30</b>, et la lecture passe alors au lundi soir.
 - [ ] 🔴 <b>Dév. logiciels : confirmer le dépôt du TP4 (MVVM, 10 %) sur LÉA</b> — Chez Grenier, un travail en retard vaut zéro : une capture de la trace de dépôt vaut 10 %.
-- [ ] 🔴 <b>LÉA : vérifier les 11 évaluations passées non confirmées</b> — 127 % de points au statut incertain. MIO au prof le jour même pour chaque ligne non déposée.
+- [ ] 🔴 <b>Prog. Web : confirmer la remise du TP4 EF Core (4 %), attendue hier à 13 h 30</b> — Sa date est passée sans trace. Et le TP5 du 11 décembre s'appuie dessus.
+- [ ] 🔴 <b>LÉA : vérifier les 12 évaluations passées non confirmées</b> — 131 % de points au statut incertain. MIO au prof le jour même pour chaque ligne non déposée.
 - [ ] 🔴 <b>Anglais : confirmer que le journal Odyssey (5 %) est bien déposé sur LÉA</b> — remis en classe le 19, vérifier la trace.
 - [ ] 🔴 <b>Dév. logiciels : le Contrôle 2 a-t-il eu lieu le 16 ? relever la note</b> — Jamais confirmé, et les deux dates possibles sont passées.
-- [ ] 🟠 <b>LÉA : relever mes notes de mi-session et réajuster les difficultés</b> — Toute la répartition du temps tourne encore sur mes estimations d'août. <b>À 14 jours du dernier final, la fenêtre se referme.</b>
+- [ ] 🟠 <b>LÉA : relever mes notes de mi-session et réajuster les difficultés</b> — Toute la répartition du temps tourne encore sur mes estimations d'août. <b>À 13 jours du dernier final, la fenêtre se referme.</b>
 - [ ] 🟠 <b>Prog. Web : dates officielles des TP3 à TP5 et répartition exacte des 20 %</b> — Les 4 % par TP sont une hypothèse, pas une donnée du plan de cours.
-- [ ] 🟡 <b>Éthique : faire confirmer les pondérations</b> — Le PDF reçu est une version Hiver 2026 / services sociaux. <b>À poser dans la même phrase que la demande du lien Bookings, ce matin.</b>
+- [ ] 🟡 <b>Éthique : faire confirmer les pondérations</b> — Le PDF reçu est une version Hiver 2026 / services sociaux. <b>À poser dans le même MIO que la demande du lien Bookings : un seul message, deux réponses.</b>
 - [ ] 🔵 <b>Littérature : se procurer </b><i><b>Oscar et la dame rose</b></i> — pour les cercles de discussion du 15 décembre (10 %).
 - [ ] 🔁 Anglais : vérifier les Communiqués MIO/LÉA chaque mercredi soir
 
@@ -411,26 +426,6 @@ Compte à rebours
 🔴
 </td>
 <td>
-ven. 27 nov.
-</td>
-<td>
-🌐 Programmation Web I
-</td>
-<td>
-Remise TP4 — EF Core
-</td>
-<td>
-4 % <i>(estimé)</i>
-</td>
-<td>
-<b>AUJOURD'HUI</b>
-</td>
-</tr>
-<tr>
-<td>
-🟠
-</td>
-<td>
 ven. 4 déc.
 </td>
 <td>
@@ -443,7 +438,7 @@ Test Nussbaum / Phillips
 5 %
 </td>
 <td>
-J-7
+<b>J-6</b>
 </td>
 </tr>
 <tr>
@@ -463,7 +458,7 @@ Dissertation complète (épreuve terminale)
 <b>30 %</b>
 </td>
 <td>
-J-11
+J-10
 </td>
 </tr>
 <tr>
@@ -483,7 +478,7 @@ Examen final
 <b>35 %</b>
 </td>
 <td>
-J-12
+J-11
 </td>
 </tr>
 <tr>
@@ -503,7 +498,7 @@ Final Reading & Writing
 <b>30 %</b>
 </td>
 <td>
-J-13
+J-12
 </td>
 </tr>
 <tr>
@@ -523,7 +518,7 @@ ven. 11 déc.
 <b>40 %</b>
 </td>
 <td>
-J-14
+J-13
 </td>
 </tr>
 <tr>
@@ -543,7 +538,7 @@ Examen final
 <b>35 %</b>
 </td>
 <td>
-J-14
+J-13
 </td>
 </tr>
 <tr>
@@ -563,7 +558,7 @@ Remise TP5 — fetch + API
 4 % <i>(estimé)</i>
 </td>
 <td>
-J-14
+J-13
 </td>
 </tr>
 <tr>
@@ -583,7 +578,7 @@ Cercles de discussion
 10 %
 </td>
 <td>
-J-18
+J-17
 </td>
 </tr>
 </table>
@@ -608,35 +603,35 @@ Cours
 </tr>
 <tr>
 <td>
-<b>mar. 24 nov.</b> — <i>en retard</i>
+<b>mar. 24 nov.</b> — <i>en retard de 4 jours</i>
 </td>
 <td>
 📕 Littérature et imaginaire
 </td>
 <td>
-<i><b>Marie-Claire</b></i><b> p. 97-145</b> — <b>à rattraper ce soir</b> : le cours est passé, la dissertation terminale (30 %) non
+<i><b>Marie-Claire</b></i><b> p. 97-145</b> — encore rattrapable dans le bloc de ce matin : la dissertation terminale (30 %) porte dessus
 </td>
 </tr>
 <tr>
 <td>
-<b>ven. 27 nov.</b> — <i>aujourd'hui</i>
+<b>ven. 27 nov.</b> — <i>en retard depuis hier</i>
 </td>
 <td>
 ⚖️ Éthique et politique
 </td>
 <td>
-<b>Extrait « Espaces publics, vies privées » d'Anne Phillips</b> — portait le cours de ce matin, porte <b>encore</b> le test du 4 déc. <i>et</i> l'entrevue finale
+<b>Extrait « Espaces publics, vies privées » d'Anne Phillips</b> — il porte <b>encore</b> le test du 4 déc. <i>et</i> l'entrevue finale : le repli naturel si <i>Marie-Claire</i> n'a pas été acheté
 </td>
 </tr>
 <tr>
 <td>
-mar. 1ᵉʳ déc.
+<b>mar. 1ᵉʳ déc.</b> ← <i>le bloc de ce matin</i>
 </td>
 <td>
 📕 Littérature et imaginaire
 </td>
 <td>
-<i>Marie-Claire</i> p. 146-197 — <b>le bloc de demain matin</b>, si le document est acheté aujourd'hui
+<i><b>Marie-Claire</b></i><b> p. 146-197</b> — <b>trois jours</b>, et c'est la dernière lecture avant la dissertation terminale
 </td>
 </tr>
 <tr>
@@ -758,7 +753,7 @@ Statut
 <b>34 %</b>
 </td>
 <td>
-🔥 <b>dernier jour de cours — jour 5</b>
+✅ passée <i>(les deux lignes à confirmer)</i>
 </td>
 </tr>
 <tr>
@@ -792,7 +787,7 @@ Statut
 <b>184 %</b>
 </td>
 <td>
-⏳ dans 11 jours
+⏳ dans 10 jours
 </td>
 </tr>
 </table>
@@ -859,7 +854,7 @@ Jeudi 12 h 30 – 15 h 30
 </tr>
 <tr>
 <td>
-<b>Vendredi 11 h 45 – 12 h 45</b> ← <i>aujourd'hui</i>
+Vendredi 11 h 45 – 12 h 45
 </td>
 <td>
 1 h
@@ -870,13 +865,13 @@ Jeudi 12 h 30 – 15 h 30
 </tr>
 <tr>
 <td>
-Samedi 09 h 00 – 12 h 00
+<b>Samedi 09 h 00 – 12 h 00</b> ← <i>aujourd'hui</i>
 </td>
 <td>
-3 h
+<b>3 h</b>
 </td>
 <td>
-📕⚖️ Lectures longues (roman, textes de philo)
+<b>📕⚖️ Lectures longues (roman, textes de philo)</b>
 </td>
 </tr>
 <tr>
@@ -892,7 +887,7 @@ Dimanche 16 h 00 – 18 h 00
 </tr>
 </table>
 
-> ⚠️ Vendredi soir, samedi après-midi et dimanche matin restent <b>vides</b>. Ce n'est pas du temps perdu : c'est ce qui rend le reste tenable, semaine après semaine. <b>À quatorze jours de la fin, c'est précisément ce qu'il ne faut pas sacrifier.</b>
+> ⚠️ Vendredi soir, samedi après-midi et dimanche matin restent <b>vides</b>. Ce n'est pas du temps perdu : c'est ce qui rend le reste tenable, semaine après semaine. <b>À treize jours de la fin, c'est précisément ce qu'il ne faut pas sacrifier.</b>
 
 ---
 
@@ -970,7 +965,7 @@ Part de la note déjà jouée
 🌐 Programmation Web I
 </td>
 <td>
-57 % <i>(dont 12 % à confirmer)</i>
+61 % <i>(dont 16 % à confirmer)</i>
 </td>
 <td>
 <code>▰▰▰▰▰▰▱▱▱▱</code>
@@ -989,6 +984,6 @@ Part de la note déjà jouée
 </tr>
 </table>
 
-> <b>61 %</b> de la session est joué en moyenne. Il reste <b>193 %</b> de points à jouer, dont <b>184 %</b> entre le 8 et le 15 décembre. Et <b>127 %</b> de points déjà joués restent au statut incertain tant que les onze lignes ci-dessus ne sont pas confirmées sur LÉA.
+> <b>62 %</b> de la session est joué en moyenne. Il reste <b>189 %</b> de points à jouer, dont <b>184 %</b> entre le 8 et le 15 décembre. Et <b>131 %</b> de points déjà joués restent au statut incertain tant que les douze lignes ci-dessus ne sont pas confirmées sur LÉA.
 
-<i>Mis à jour le vendredi 27 novembre · source : </i><i><code>donnees-session.json</code></i><i>, commité sur la branche </i><i><code>claude/epic-newton-yddu6z</code></i>
+<i>Mis à jour le samedi 28 novembre · source : </i><i><code>donnees-session.json</code></i><i>, commité sur la branche </i><i><code>claude/epic-newton-so84lr</code></i>

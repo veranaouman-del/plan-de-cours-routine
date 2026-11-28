@@ -144,21 +144,35 @@ Réglages → Routines de l'app Claude, tous les jours à 6 h 30.
    une fenêtre qui ne se représente pas** — un prof présent, un comptoir qui ferme — la
    nommer en tête du message Slack et du visuel, au-dessus de la carte générée.
 
+21. **Les notes de `taches_admin` sont écrites au présent du jour où elles sont produites.**
+   Le 27, la tâche Bookings disait « AUJOURD'HUI LA PROF EST DEVANT MOI » ; le 28 au matin
+   c'était faux, et la carte l'aurait répété tel quel. **Une routine ne met pas seulement à
+   jour les compteurs : elle réécrit toute note qui parle d'« aujourd'hui », d'« hier » ou
+   d'une fenêtre horaire.** Au passage, nommer la prochaine occasion réelle — ici le
+   vendredi 4 décembre — plutôt que de laisser une fenêtre périmée. Corrigé le 28 novembre.
+
+22. **Une fenêtre manquée se remplace, elle ne disparaît pas.** Le canal « en personne »
+   n'existe pas la fin de semaine : le samedi, la vraie priorité est ce qui marche depuis
+   un navigateur (LÉA, un MIO), pas ce qui demande un comptoir ouvert. La carte doit donc
+   nommer en tête les gestes réalisables **ce jour-là**, pas les plus gros en valeur.
+
 ## Points à confirmer auprès des profs
 
-État au 27 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
+État au 28 novembre. La liste vivante est dans `taches_admin` de `donnees-session.json`,
 triée par `priorite` ; celle-ci n'en est que le résumé.
 
 - **Éthique** : le lien Microsoft Bookings de l'entrevue finale (40 %) reste **introuvable**
-  — il n'est dans aucun des cinq plans ni dans Omnivox. Ce n'est pas un retard, c'est un
-  blocage, et il dure depuis le 21 novembre. À demander **de vive voix** : la prof est en
-  salle les vendredis de 8 h 55 à 11 h 35, E204.
+  — il n'est dans aucun des cinq plans ni dans Omnivox. Blocage ouvert depuis le 21 novembre,
+  7e jour. La fenêtre en personne du 27 est passée ; **la prochaine est le vendredi
+  4 décembre, 8 h 55 – 11 h 35, E204** — le jour de son test, à sept jours de l'entrevue.
+  D'ici là : MIO écrit (lien + pondérations dans le même message), puis le secrétariat du
+  département si rien ne revient.
 - **Anglais** : le Final Speaking & Listening (30 %) a-t-il eu lieu le 26 novembre, ou
-  tombe-t-il le 3 décembre ? Question posée le 12 novembre, sans réponse depuis 15 jours.
+  tombe-t-il le 3 décembre ? Question posée le 12 novembre, sans réponse depuis 16 jours.
   **Une ouverture de LÉA tranche** — c'est la seule inconnue du plan de la semaine 14.
-- **LÉA** : onze évaluations passées, 127 % de points, dont rien ne confirme le dépôt.
+- **LÉA** : douze évaluations passées, 131 % de points, dont rien ne confirme le dépôt.
   Dont le Contrôle 2, qui n'a peut-être jamais eu lieu. (Recompté depuis le JSON
-  le 27 novembre : le final oral d'anglais a rejoint les dix autres — piège 14 et 19.)
+  le 28 novembre : la remise du TP4 EF Core a rejoint les onze autres — pièges 14 et 19.)
 - **Prog. Web** : les 4 % par TP sont une hypothèse. Demander la répartition réelle des 20 %.
 - **Éthique** : le PDF reçu est une version « Hiver 2026 / services sociaux ».
   Confirmer les pondérations avec Cyndelle Gagnon.
